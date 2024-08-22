@@ -1,10 +1,12 @@
 package com.example.fitpet.di
 
+import com.example.fitpet.data.FitPetDataStore
 import com.example.fitpet.util.Config.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -19,11 +21,11 @@ import javax.inject.Singleton
 object NetworkModule {
     @Singleton
     @Provides
-    fun provideOkHttpClient(blogDataStore: BlogDataStore): OkHttpClient {
+    fun provideOkHttpClient(dataStore: FitPetDataStore): OkHttpClient {
         val httpLoggingInterceptor = HttpLoggingInterceptor()
             .setLevel(HttpLoggingInterceptor.Level.BODY)
         val headerInterceptor = Interceptor{ chain ->
-            val tokenFlow = blogDataStore.accessToken
+            val tokenFlow = dataStore.accessToken
             val token = runBlocking {
                 tokenFlow.first()
             }
