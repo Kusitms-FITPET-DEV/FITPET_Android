@@ -37,6 +37,8 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        //noinspection DataBindingWithoutKapt
+        dataBinding = true
     }
 }
 
@@ -76,4 +78,10 @@ dependencies {
     // 코루틴
     implementation(libs.coroutines.core)
     implementation(libs.coroutines.android)
+
+    // RecyclerView
+    implementation(libs.androidx.recyclerView)
+
+    // ViewPager2
+    implementation(libs.androidx.viewPager)
 }
