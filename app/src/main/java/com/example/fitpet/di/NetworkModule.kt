@@ -19,6 +19,8 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
+    private const val AUTHORIZATION = "Authorization"
+
     @Singleton
     @Provides
     fun provideOkHttpClient(dataStore: FitPetDataStore): OkHttpClient {
@@ -32,7 +34,7 @@ object NetworkModule {
             val request = chain.request().newBuilder()
 
             token?.let {
-                request.addHeader("Authorization", "Bearer $it")
+                request.addHeader(AUTHORIZATION, "Bearer $it")
             }
 
             chain.proceed(request.build())
