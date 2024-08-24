@@ -22,6 +22,7 @@ threeten = "1.3.1"
 datastore = "1.1.1"
 recyclerView = "1.3.2"
 viewPager = "1.1.0"
+timber = "4.7.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -63,6 +64,9 @@ androidx-recyclerView = { module = "androidx.recyclerview:recyclerview", version
 
 # ViewPager2
 androidx-viewPager = { module = "androidx.viewpager2:viewpager2", version.ref = "viewPager" }
+
+# Timber
+timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

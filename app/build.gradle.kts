@@ -84,4 +84,7 @@ dependencies {
 
     // ViewPager2
     implementation(libs.androidx.viewPager)
+
+    // Timber
+    implementation(libs.timber)
 }
