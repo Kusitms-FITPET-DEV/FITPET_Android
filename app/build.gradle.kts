@@ -87,4 +87,7 @@ dependencies {
 
     // Timber
     implementation(libs.timber)
+
+    // ViewPager Indicator
+    implementation(libs.viewpagerindicator)
 }
