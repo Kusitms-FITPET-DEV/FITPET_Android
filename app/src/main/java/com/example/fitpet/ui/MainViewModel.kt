@@ -6,8 +6,11 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(): BaseViewModel<MainPageState>(
-    initialState = MainPageState()
-) {
+class MainViewModel @Inject constructor(
 
+): BaseViewModel<MainPageState>() {
+
+    override val uiState = MainPageState(
+        temp = ""
+    )
 }
