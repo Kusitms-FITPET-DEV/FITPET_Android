@@ -11,24 +11,15 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-abstract class BaseViewModel<STATE: PageState>(
-    initialState: STATE
-) : ViewModel() {
+abstract class BaseViewModel<STATE: PageState> : ViewModel() {
 
-    protected val _uiState = MutableStateFlow(initialState)
-    val uiState = _uiState.asStateFlow()
+    abstract val uiState:STATE
 
     private val _eventFlow = MutableSharedFlow<Event>()
     val eventFlow = _eventFlow.asSharedFlow()
 
     private val _isLoading = MutableStateFlow(false)
     val isLoading = _isLoading.asStateFlow()
-
-    protected fun updateState(state: STATE) {
-        viewModelScope.launch {
-            _uiState.update { state }
-        }
-    }
 
     protected fun emitEventFlow(event: Event) {
         viewModelScope.launch {
