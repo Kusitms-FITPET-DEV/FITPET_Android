@@ -31,7 +31,7 @@
             android:id="@+id/indicatorView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="76.5dp"
+            android:layout_marginBottom="86dp"
             android:visibility="@{vm.uiState.isLastPage ? View.GONE : View.VISIBLE}"
             app:dotsColor="@color/neutral_400"
             app:selectedDotColor="@color/point_blue"
@@ -45,9 +45,10 @@
         
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnStart"
-            android:layout_width="320dp"
-            android:layout_height="48dp"
-            android:layout_marginBottom="59dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="66dp"
+            android:layout_marginHorizontal="28dp"
             android:text="@string/start"
             android:textAppearance="@style/body3_large"
             android:textColor="@color/white"
