@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavOptions
+import androidx.navigation.fragment.findNavController
 import com.example.fitpet.PageState
 import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
@@ -22,6 +24,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding, PageState.Default, Sp
     override fun initView() {
         binding.apply {
             vm = viewModel
+            viewModel.processSplash()
             // 추후에는 자동 로그인 처리와 관련된 함수가 추가될 수 있습니다.
         }
     }
@@ -38,7 +41,14 @@ class SplashFragment : BaseFragment<FragmentSplashBinding, PageState.Default, Sp
 
     private fun handleEvent(event: SplashEvent) {
         when (event) {
-            SplashEvent.GoToOnBoarding -> TODO()
+            SplashEvent.GoToOnBoarding -> goToOnBoarding()
         }
+    }
+
+    private fun goToOnBoarding() {
+        val action = SplashFragmentDirections.actionSplashToOnboarding()
+        findNavController().navigate(action, NavOptions.Builder()
+            .setPopUpTo(R.id.fragmentSplash, true)
+            .build())
     }
 }

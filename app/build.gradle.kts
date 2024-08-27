@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.hilt)
     kotlin("kapt")
+
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -87,4 +89,7 @@ dependencies {
 
     // Timber
     implementation(libs.timber)
+
+    // ViewPager Indicator
+    implementation(libs.viewpagerindicator)
 }
