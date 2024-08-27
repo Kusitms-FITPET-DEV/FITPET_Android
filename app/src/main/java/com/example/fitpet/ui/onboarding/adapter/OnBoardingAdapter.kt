@@ -24,6 +24,6 @@ class OnBoardingAdapter: ListAdapter<OnBoardingItemVo, RecyclerView.ViewHolder>(
 }
 
 class OnBoardingItemDiffCallBack : DiffUtil.ItemCallback<OnBoardingItemVo>() {
-    override fun areItemsTheSame(oldItem: OnBoardingItemVo, newItem: OnBoardingItemVo): Boolean = oldItem == newItem
+    override fun areItemsTheSame(oldItem: OnBoardingItemVo, newItem: OnBoardingItemVo): Boolean = oldItem.title == newItem.title
     override fun areContentsTheSame(oldItem: OnBoardingItemVo, newItem: OnBoardingItemVo): Boolean = oldItem == newItem
 }
