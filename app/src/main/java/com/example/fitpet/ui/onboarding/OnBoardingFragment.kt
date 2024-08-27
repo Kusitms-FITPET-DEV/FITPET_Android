@@ -6,26 +6,68 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.viewpager2.widget.ViewPager2
 import com.example.fitpet.R
+import com.example.fitpet.base.BaseFragment
+import com.example.fitpet.databinding.FragmentOnBoardingBinding
+import com.example.fitpet.ui.onboarding.adapter.OnBoardingAdapter
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
-class OnBoardingFragment : Fragment() {
+@AndroidEntryPoint
+class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding, OnBoardingPageState, OnBoardingViewModel>(
+    FragmentOnBoardingBinding::inflate
+) {
+    override val viewModel: OnBoardingViewModel by viewModels()
 
-    companion object {
-        fun newInstance() = OnBoardingFragment()
+    private val onBoardingAdapter = OnBoardingAdapter()
+
+    override fun initView() {
+        binding.apply {
+            vm = viewModel
+
+            onBoardingViewPager.apply {
+                adapter = onBoardingAdapter
+                indicatorView.attachTo(onBoardingViewPager)
+                registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+                    override fun onPageSelected(position: Int) {
+                        super.onPageSelected(position)
+                        if(position == adapter?.itemCount?.minus(1)) {
+                            viewModel.setIsLastPage(true)
+                        } else {
+                            viewModel.setIsLastPage(false)
+                        }
+                    }
+                })
+            }
+//         viewPager를 설정하는 코드인데, 눈여겨 볼 부분은 onPageSelected 함수입니다. 용도에 대해 말씀드리자면 뷰페이저의 마지막 페이지가 되면 시작하기 버튼이 등장하고
+//         indicator는 사라지게 됩니다. 이 기능을 위해서 뷰페이저의 현재 페이지값이 전체 아이템 개수에서 1을 뺀 값과 같으면 마지막 페이지에 도달한 것이기 때문에
+//         OnBoardingPageState에 존재하는 isLastPage 값을 true로 설정하고 마지막 페이지가 아니라면 false로 설정합니다.
+//         isLastPage값은 xml 파일에서 data binding을 활용하여 접근하고 이 값에 따라 버튼과 indicator의 visibility를 조정합니다.
+
+            viewModel.initOnBoardingItem()
+        }
     }
 
-    private val viewModel: OnBoardingViewModel by viewModels()
+    override fun initState() {
+        launchWhenStarted(viewLifecycleOwner) {
+            launch {
+                viewModel.eventFlow.collect { event ->
+                    handleEvent(event as OnBoardingEvent)
+                }
+            }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        // TODO: Use the ViewModel
+            launch {    // onBoardingItemList 변경이 감지되면 어댑터에게 이를 알립니다.
+                viewModel.uiState.onBoardingItemList.collect {
+                    onBoardingAdapter.submitList(it)
+                }
+            }
+        }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.fragment_on_boarding, container, false)
+    private fun handleEvent(event: OnBoardingEvent) {
+        when (event) {
+            OnBoardingEvent.GoToKakaoLogin -> TODO()
+        }
     }
 }
