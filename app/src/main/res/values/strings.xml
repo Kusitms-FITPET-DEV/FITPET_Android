@@ -16,4 +16,5 @@
     <!--  KakaoLogin  -->
     <string name="kakao_login_content">스마트커버인슈어런스를 통해 만나보세요!</string>
     <string name="kakao_native_app_key">fb861916118bf9e4868e651607b605b0</string>
+    <string name="kakao_scheme">kakaofb861916118bf9e4868e651607b605b0</string>
 </resources>
