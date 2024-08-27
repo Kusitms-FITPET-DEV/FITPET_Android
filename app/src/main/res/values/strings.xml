@@ -12,4 +12,7 @@
     <string name="onboarding1_content">1:1 전문 상담사를 통해 합리적인\n보험 견적서를 확인하세요.</string>
     <string name="onboarding2_content">가입한 보험을 확인하고\n간단하게 보험 청구를 확인해보세요.</string>
     <string name="onboarding3_content">우리아이와 오랫동안 행복할 수 있는 방법\n반려생활에서 확인하세요</string>
+
+    <!--  KakaoLogin  -->
+    <string name="kakao_login_content">스마트커버인슈어런스를 통해 만나보세요!</string>
 </resources>
