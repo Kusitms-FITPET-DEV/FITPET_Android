@@ -2,77 +2,101 @@
 <resources>
 
     <!-- Heading -->
-    <style name="heading_large">
+    <style name="h1">
         <item name="android:textSize">36sp</item>
         <item name="lineHeight">40dp</item>
         <item name="fontFamily">@font/pretendard_regular</item>
     </style>
 
-    <style name="heading_medium">
+    <style name="h2">
         <item name="android:textSize">30sp</item>
         <item name="lineHeight">36dp</item>
         <item name="fontFamily">@font/pretendard_regular</item>
     </style>
 
-    <style name="heading_small">
+    <style name="h3">
         <item name="android:textSize">24sp</item>
         <item name="lineHeight">32dp</item>
         <item name="fontFamily">@font/pretendard_regular</item>
     </style>
 
+    <style name="h1_S">
+        <item name="android:textSize">36sp</item>
+        <item name="lineHeight">40dp</item>
+        <item name="fontFamily">@font/pretendard_semi_bold</item>
+    </style>
+
+    <style name="h2_S">
+        <item name="android:textSize">30sp</item>
+        <item name="lineHeight">36dp</item>
+        <item name="fontFamily">@font/pretendard_semi_bold</item>
+    </style>
+
+    <style name="h3_S">
+        <item name="android:textSize">24sp</item>
+        <item name="lineHeight">32dp</item>
+        <item name="fontFamily">@font/pretendard_semi_bold</item>
+    </style>
+
     <!--  Body  -->
-    <style name="body1_large">
+    <style name="b1">
         <item name="android:textSize">20sp</item>
         <item name="lineHeight">28dp</item>
         <item name="fontFamily">@font/pretendard_regular</item>
     </style>
 
-    <style name="body1_medium">
+    <style name="b2">
         <item name="android:textSize">16sp</item>
         <item name="lineHeight">24dp</item>
         <item name="fontFamily">@font/pretendard_regular</item>
     </style>
 
-    <style name="body1_small">
+    <style name="b3">
         <item name="android:textSize">12sp</item>
         <item name="lineHeight">16dp</item>
         <item name="fontFamily">@font/pretendard_regular</item>
     </style>
 
-    <style name="body2_large">
+    <style name="b1_M">
         <item name="android:textSize">20sp</item>
         <item name="lineHeight">28dp</item>
         <item name="fontFamily">@font/pretendard_medium</item>
     </style>
 
-    <style name="body2_medium">
+    <style name="b2_M">
         <item name="android:textSize">16sp</item>
         <item name="lineHeight">24dp</item>
         <item name="fontFamily">@font/pretendard_medium</item>
     </style>
 
-    <style name="body2_small">
+    <style name="b3_M">
         <item name="android:textSize">12sp</item>
         <item name="lineHeight">16dp</item>
         <item name="fontFamily">@font/pretendard_medium</item>
     </style>
 
-    <style name="body3_large">
+    <style name="b1_S">
         <item name="android:textSize">20sp</item>
         <item name="lineHeight">28dp</item>
         <item name="fontFamily">@font/pretendard_semi_bold</item>
     </style>
 
-    <style name="body3_medium">
+    <style name="b2_S">
         <item name="android:textSize">16sp</item>
         <item name="lineHeight">24dp</item>
         <item name="fontFamily">@font/pretendard_semi_bold</item>
     </style>
 
-    <style name="body3_small">
+    <style name="b3_S">
         <item name="android:textSize">12sp</item>
         <item name="lineHeight">16dp</item>
         <item name="fontFamily">@font/pretendard_semi_bold</item>
+    </style>
+
+    <style name="b2_B">
+        <item name="android:textSize">16sp</item>
+        <item name="lineHeight">24dp</item>
+        <item name="fontFamily">@font/pretendard_bold</item>
     </style>
 
 </resources>
