@@ -11,6 +11,8 @@
     <string name="fifth_page">5/5</string>
     <string name="next">다음</string>
     <string name="underline_skip"><u>건너뛰기</u></string>
+    <string name="dog">강아지</string>
+    <string name="cat">고양이</string>
 
     <!--  common  -->
     <string name="min_length_guide">1글자 이상 써주세요</string>
@@ -31,5 +33,9 @@
     <!--  PetNameInput  -->
     <string name="my_pet_registration">MY펫 등록</string>
     <string name="pet_name_registration">반려동물 이름을 입력해 주세요.</string>
+    <string name="pet_name_input_hint">예) 홍길동</string>
+    
+    <!--  PetBreed  -->
+    <string name="select_breed">품종을 선택해 주세요.</string>
 
 </resources>

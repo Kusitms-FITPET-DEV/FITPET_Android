@@ -24,4 +24,8 @@ class PetNameInputViewModel @Inject constructor(
             petNameStateFlow.update { newText.toString() }
         }
     }
+
+    fun onClickBtnNext() {
+        emitEventFlow(PetNameInputEvent.GoToPetBreedInput)
+    }
 }

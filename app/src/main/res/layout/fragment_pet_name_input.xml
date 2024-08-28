@@ -12,7 +12,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/bg_white">
 
         <include
             android:id="@+id/top_bar"
@@ -56,6 +57,7 @@
                     android:maxLines="1"
                     android:inputType="text"
                     android:text="@{vm.uiState.petName}"
+                    android:hint="@string/pet_name_input_hint"
                     android:onTextChanged="@{(s, start, before, count) -> vm.onTextChanged(s)}"
                     tools:ignore="LabelFor" />
 
@@ -95,6 +97,7 @@
             android:text="@string/next"
             android:textAppearance="@style/b2_S"
             android:textColor="@color/text_white"
+            android:onClick="@{() -> vm.onClickBtnNext()}"
             android:background="@{vm.uiState.petName.empty ? @drawable/bg_rectangle_filled_bg_primary_radius_8 : @drawable/bg_rectangle_filled_point_blue_radius_8}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
