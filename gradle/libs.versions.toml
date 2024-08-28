@@ -24,6 +24,7 @@ recyclerView = "1.3.2"
 viewPager = "1.1.0"
 timber = "4.7.1"
 viewpagerindicator = "5.0"
+kakao = "2.20.3"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -73,6 +74,8 @@ timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 # ViewPager Indicator
 viewpagerindicator = { module = "com.tbuonomo:dotsindicator", version.ref = "viewpagerindicator" }
 
+# Kakao
+kakao-auth = { module = "com.kakao.sdk:v2-user", version.ref = "kakao" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

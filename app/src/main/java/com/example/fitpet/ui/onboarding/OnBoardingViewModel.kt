@@ -55,6 +55,6 @@ class OnBoardingViewModel @Inject constructor(
     }
 
     fun onClickBtnStart() {
-        // 이후에 카카오 로그인 페이지가 구현되면 OnBoardingPageState의 GoToKakaoLogin을 방출하면 됩니다.
+        emitEventFlow(OnBoardingEvent.GoToKakaoLogin)
     }
 }

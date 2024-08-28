@@ -92,4 +92,7 @@ dependencies {
 
     // ViewPager Indicator
     implementation(libs.viewpagerindicator)
+
+    // kakao
+    implementation(libs.kakao.auth)
 }
