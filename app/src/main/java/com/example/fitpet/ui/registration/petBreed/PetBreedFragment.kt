@@ -7,25 +7,37 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.fitpet.R
+import com.example.fitpet.base.BaseFragment
+import com.example.fitpet.databinding.FragmentPetBreedBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
-class PetBreedFragment : Fragment() {
+@AndroidEntryPoint
+class PetBreedFragment : BaseFragment<FragmentPetBreedBinding, PetBreedPageState, PetBreedViewModel>(
+    FragmentPetBreedBinding::inflate
+) {
 
-    companion object {
-        fun newInstance() = PetBreedFragment()
+    override val viewModel: PetBreedViewModel by viewModels()
+
+    override fun initView() {
+        binding.apply {
+            vm = viewModel
+        }
     }
 
-    private val viewModel: PetBreedViewModel by viewModels()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        // TODO: Use the ViewModel
+    override fun initState() {
+        launchWhenStarted(viewLifecycleOwner) {
+            launch {
+                viewModel.eventFlow.collect { event ->
+                    handleEvent(event as PetBreedEvent)
+                }
+            }
+        }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.fragment_pet_breed, container, false)
+    private fun handleEvent(event: PetBreedEvent) {
+        when (event) {
+            PetBreedEvent.GoToPetBreedDetail -> TODO()
+        }
     }
 }
