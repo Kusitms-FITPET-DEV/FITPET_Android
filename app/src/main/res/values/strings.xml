@@ -4,6 +4,16 @@
 
     <!--  Word  -->
     <string name="start">시작하기</string>
+    <string name="first_page">1/5</string>
+    <string name="second_page">2/5</string>
+    <string name="third_page">3/5</string>
+    <string name="fourth_page">4/5</string>
+    <string name="fifth_page">5/5</string>
+    <string name="next">다음</string>
+    <string name="underline_skip"><u>건너뛰기</u></string>
+
+    <!--  common  -->
+    <string name="min_length_guide">1글자 이상 써주세요</string>
 
     <!--  OnBoarding  -->
     <string name="onboarding1_title">펫보험의 혁신</string>
@@ -17,4 +27,9 @@
     <string name="kakao_login_content">스마트커버인슈어런스를 통해 만나보세요!</string>
     <string name="kakao_native_app_key">fb861916118bf9e4868e651607b605b0</string>
     <string name="kakao_scheme">kakaofb861916118bf9e4868e651607b605b0</string>
+    
+    <!--  PetNameInput  -->
+    <string name="my_pet_registration">MY펫 등록</string>
+    <string name="pet_name_registration">반려동물 이름을 입력해 주세요.</string>
+
 </resources>
