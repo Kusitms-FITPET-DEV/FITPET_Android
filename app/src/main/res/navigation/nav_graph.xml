@@ -71,6 +71,18 @@
         android:label="fragmentPetDetailBreedInput"
         android:layout="@layout/fragment_pet_detail_breed_input">
 
+        <action
+            android:id="@+id/action_pet_detail_breed_input_to_pet_birth_input"
+            app:destination="@id/fragmentPetBirthInput"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentPetBirthInput"
+        android:name="com.example.fitpet.ui.registration.petBirthInput.PetBirthInputFragment"
+        android:label="fragmentPetBirthInput"
+        android:layout="@layout/fragment_pet_birth_input">
+
 
 
     </fragment>

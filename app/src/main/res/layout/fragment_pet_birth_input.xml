@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.example.fitpet.ui.registration.petBirthInput.PetBirthInputViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_white">
+
+        <include
+            android:id="@+id/top_bar"
+            layout="@layout/top_bar"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="41dp"
+            android:layout_marginHorizontal="28dp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/top_bar">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fourth_page"
+                android:textAppearance="@style/b3"
+                android:textColor="@color/point_blue"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="@string/birth_input_registration"
+                android:textAppearance="@style/b1_S"
+                android:textColor="@color/black"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/bg_rectangle_filled_bg_primary_radius_8">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:autofillHints=""
+                    android:paddingHorizontal="24dp"
+                    android:background="@android:color/transparent"
+                    android:maxLines="1"
+                    android:inputType="number"
+                    android:text="@{vm.uiState.birth}"
+                    android:hint="@string/birth_input_hint"
+                    android:onTextChanged="@{(s, start, before, count) -> vm.onTextChanged(s)}"
+                    tools:ignore="LabelFor" />
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="23dp"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:layout_marginTop="6dp"
+                    android:background="@{vm.uiState.birth.empty ? @drawable/ic_circle_text_disable_5 : @drawable/ic_circle_point_blue_5}" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:layout_marginStart="6dp"
+                    android:text="@string/birth_input_guide"
+                    android:textAppearance="@style/b3_S"
+                    android:textColor="@{vm.uiState.birth.empty ? @color/text_disable : @color/point_blue}" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="28dp"
+            android:layout_marginBottom="78dp"
+            android:stateListAnimator="@null"
+            android:text="@string/next"
+            android:textAppearance="@style/b2_S"
+            android:textColor="@color/text_white"
+            android:onClick="@{() -> vm.onClickBtnNext()}"
+            android:background="@{vm.uiState.birth.empty ? @drawable/bg_rectangle_filled_bg_primary_radius_8 : @drawable/bg_rectangle_filled_point_blue_radius_8}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="35dp"
+            android:text="@string/underline_skip"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

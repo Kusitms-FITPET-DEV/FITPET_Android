@@ -7,6 +7,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.fitpet.PageState
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentKakaoLoginBinding
+import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.user.UserApiClient
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -56,9 +57,7 @@ class KakaoLoginFragment : BaseFragment<FragmentKakaoLoginBinding, PageState.Def
                 return@loginWithKakaoTalk
             }
             Toast.makeText(requireContext(), "로그인 성공하였습니다.", Toast.LENGTH_SHORT).show()
-            token?.let {
-                viewModel.login(token.accessToken)
-            }
+            login(token)
         }
     }
 
@@ -70,9 +69,13 @@ class KakaoLoginFragment : BaseFragment<FragmentKakaoLoginBinding, PageState.Def
             }
 
             Toast.makeText(requireContext(), "로그인 성공하였습니다.", Toast.LENGTH_SHORT).show()
-            token?.let {
-                viewModel.login(token.accessToken)
-            }
+            login(token)
+        }
+    }
+
+    private fun login(token: OAuthToken?) {
+        token?.let {
+            viewModel.login(token.accessToken)
         }
     }
 
