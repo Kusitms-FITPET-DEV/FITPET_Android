@@ -33,6 +33,7 @@
     <!--  PetNameInput  -->
     <string name="my_pet_registration">MY펫 등록</string>
     <string name="pet_name_registration">반려동물 이름을 입력해 주세요.</string>
+    <string name="pet_name_input_hint">예) 홍길동</string>
     
     <!--  PetBreed  -->
     <string name="select_breed">품종을 선택해 주세요.</string>
