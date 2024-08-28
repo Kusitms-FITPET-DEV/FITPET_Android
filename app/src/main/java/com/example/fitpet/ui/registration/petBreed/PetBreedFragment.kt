@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentPetBreedBinding
@@ -37,7 +38,12 @@ class PetBreedFragment : BaseFragment<FragmentPetBreedBinding, PetBreedPageState
 
     private fun handleEvent(event: PetBreedEvent) {
         when (event) {
-            PetBreedEvent.GoToPetBreedDetail -> TODO()
+            PetBreedEvent.GoToPetBreedDetail -> goToPetDetailBreedInput()
         }
+    }
+
+    private fun goToPetDetailBreedInput() {
+        val action = PetBreedFragmentDirections.actionPetBreedToPetDetailBreedInput()
+        findNavController().navigate(action)
     }
 }

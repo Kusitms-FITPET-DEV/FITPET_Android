@@ -26,4 +26,8 @@ class PetBreedViewModel @Inject constructor() : BaseViewModel<PetBreedPageState>
             breedStateFlow.update { newType }
         }
     }
+
+    fun onClickBtnNext() {
+        emitEventFlow(PetBreedEvent.GoToPetBreedDetail)
+    }
 }

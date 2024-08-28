@@ -37,5 +37,9 @@
     
     <!--  PetBreed  -->
     <string name="select_breed">품종을 선택해 주세요.</string>
+    
+    <!--  PetDetailBreedInput  -->
+    <string name="detail_breed_registration">상세 품종을 입력해 주세요.</string>
+    <string name="detail_breed_input_hint">예) 말티즈</string>
 
 </resources>
