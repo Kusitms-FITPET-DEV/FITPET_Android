@@ -14,9 +14,22 @@
     <color name="neutral_900">#FF171717</color>
     <color name="neutral_950">#FF0a0a0a</color>
     <color name="text_color">#FF282828</color>
-    <color name="bg_color">#FFf1f4f5</color>
-    <color name="point_blue">#FF008CFF</color>
-    <color name="bg_light_cyan">#FFCDFAFA</color>
-    <color name="point_neon_green">#FF1DF050</color>
     <color name="bg_deep_green">#FF00504D</color>
+
+    <!--  text  -->
+    <color name="text_body">#FF282828</color>
+    <color name="text_white">#FFFFFFFF</color>
+    <color name="text_point">#FF008CFF</color>
+    <color name="text_disable">#FFA9A8AA</color>
+
+    <!--  point  -->
+    <color name="point_blue">#FF0075FF</color>
+    <color name="point_green">#FF1DF050</color>
+
+    <!--  bg  -->
+    <color name="bg_light">#FFCDFAFA</color>
+    <color name="bg_primary">#FFf1f4f5</color>
+    <color name="bg_white">#FFFFFFFF</color>
+    <color name="bg_dark">#FF00504D</color>
+
 </resources>

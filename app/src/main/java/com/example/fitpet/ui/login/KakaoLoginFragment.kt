@@ -3,6 +3,7 @@ package com.example.fitpet.ui.login
 import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.fitpet.PageState
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentKakaoLoginBinding
@@ -36,6 +37,7 @@ class KakaoLoginFragment : BaseFragment<FragmentKakaoLoginBinding, PageState.Def
     private fun handleEvent(event: KakaoLoginEvent) {
         when (event) {
             KakaoLoginEvent.OnClickKakaoLogin -> signInKakao()
+            KakaoLoginEvent.GoToPetNameInput -> goToPetNameInput()
         }
     }
 
@@ -53,8 +55,10 @@ class KakaoLoginFragment : BaseFragment<FragmentKakaoLoginBinding, PageState.Def
                 Timber.tag("KaKao Login Error").e(error.stackTraceToString())
                 return@loginWithKakaoTalk
             }
-
             Toast.makeText(requireContext(), "로그인 성공하였습니다.", Toast.LENGTH_SHORT).show()
+            token?.let {
+                viewModel.login(token.accessToken)
+            }
         }
     }
 
@@ -66,6 +70,14 @@ class KakaoLoginFragment : BaseFragment<FragmentKakaoLoginBinding, PageState.Def
             }
 
             Toast.makeText(requireContext(), "로그인 성공하였습니다.", Toast.LENGTH_SHORT).show()
+            token?.let {
+                viewModel.login(token.accessToken)
+            }
         }
+    }
+
+    private fun goToPetNameInput() {
+        val action = KakaoLoginFragmentDirections.actionToKakaoLoginToPetNameInput()
+        findNavController().navigate(action)
     }
 }
