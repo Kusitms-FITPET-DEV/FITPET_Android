@@ -7,25 +7,37 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.fitpet.R
+import com.example.fitpet.base.BaseFragment
+import com.example.fitpet.databinding.FragmentPetDetailBreedInputBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
-class PetDetailBreedInputFragment : Fragment() {
+@AndroidEntryPoint
+class PetDetailBreedInputFragment : BaseFragment<FragmentPetDetailBreedInputBinding, PetDetailBreedInputPageState, PetDetailBreedInputViewModel>(
+    FragmentPetDetailBreedInputBinding::inflate
+) {
 
-    companion object {
-        fun newInstance() = PetDetailBreedInputFragment()
+    override val viewModel: PetDetailBreedInputViewModel by viewModels()
+
+    override fun initView() {
+        binding.apply {
+            vm = viewModel
+        }
     }
 
-    private val viewModel: PetDetailBreedInputViewModel by viewModels()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        // TODO: Use the ViewModel
+    override fun initState() {
+        launchWhenStarted(viewLifecycleOwner) {
+            launch {
+                viewModel.eventFlow.collect { event ->
+                    handleEvent(event as PetDetailBreedInputEvent)
+                }
+            }
+        }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.fragment_pet_detail_breed_input, container, false)
+    private fun handleEvent(event: PetDetailBreedInputEvent) {
+        when(event) {
+            PetDetailBreedInputEvent.GoToPetBirthInput -> TODO()
+        }
     }
 }
