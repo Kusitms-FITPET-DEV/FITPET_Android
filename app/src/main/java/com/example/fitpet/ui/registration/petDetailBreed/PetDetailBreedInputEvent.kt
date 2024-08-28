@@ -1,4 +1,7 @@
 package com.example.fitpet.ui.registration.petDetailBreed
 
-class PetDetailBreedInputEvent {
+import com.example.fitpet.Event
+
+sealed class PetDetailBreedInputEvent: Event {
+    data object GoToPetBirthInput: PetDetailBreedInputEvent()
 }
