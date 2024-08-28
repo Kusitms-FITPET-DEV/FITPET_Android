@@ -35,6 +35,19 @@
         android:label="fragmentKaKaoLogin"
         android:layout="@layout/fragment_kakao_login">
 
+        <action
+            android:id="@+id/action_to_kakao_login_to_pet_name_input"
+            app:destination="@id/fragmentPetNameInput"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentPetNameInput"
+        android:name="com.example.fitpet.ui.registration.petName.PetNameInputFragment"
+        android:label="fragmentPetNameInput"
+        android:layout="@layout/fragment_pet_name_input">
+
+
 
     </fragment>
 
