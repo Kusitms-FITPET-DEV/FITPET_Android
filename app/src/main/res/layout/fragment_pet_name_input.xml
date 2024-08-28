@@ -57,6 +57,7 @@
                     android:maxLines="1"
                     android:inputType="text"
                     android:text="@{vm.uiState.petName}"
+                    android:hint="@string/pet_name_input_hint"
                     android:onTextChanged="@{(s, start, before, count) -> vm.onTextChanged(s)}"
                     tools:ignore="LabelFor" />
 
