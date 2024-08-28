@@ -42,4 +42,9 @@
     <string name="detail_breed_registration">상세 품종을 입력해 주세요.</string>
     <string name="detail_breed_input_hint">예) 말티즈</string>
 
+    <!--  PetBirthInput  -->
+    <string name="birth_input_registration">출생년도는 언제인가요?</string>
+    <string name="birth_input_hint">예) 2004</string>
+    <string name="birth_input_guide">우리 아이가 태어난 년도 4자리를 적어주세요.\n잘 모르겠다면 추정하여 적어주세요.</string>
+
 </resources>
