@@ -1,5 +1,6 @@
 package com.example.fitpet.base
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
@@ -7,6 +8,7 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.databinding.ViewDataBinding
@@ -60,14 +62,29 @@ abstract class BaseFragment<BINDING: ViewDataBinding, STATE: PageState, VM: Base
         return binding.root
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        view.setOnTouchListener { _, _ ->
+            hideKeyboard()
+            false
+        }
 
         binding.lifecycleOwner = viewLifecycleOwner
         navController = findNavController()
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, onBackPressedCallback)
         initView()
         initState()
+    }
+
+    private fun hideKeyboard() {
+        val imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val view = requireActivity().currentFocus
+        view?.let {
+            imm.hideSoftInputFromWindow(it.windowToken, 0)
+            it.clearFocus()
+        }
     }
 
     protected fun LifecycleOwner.launchWhenStarted(viewLifecycleOwner: LifecycleOwner, block: suspend CoroutineScope.() -> Unit) {
