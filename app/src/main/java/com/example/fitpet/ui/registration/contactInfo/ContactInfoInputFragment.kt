@@ -7,25 +7,38 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.fitpet.R
+import com.example.fitpet.base.BaseFragment
+import com.example.fitpet.databinding.FragmentContactInfoInputBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
-class ContactInfoInputFragment : Fragment() {
+@AndroidEntryPoint
+class ContactInfoInputFragment : BaseFragment<FragmentContactInfoInputBinding, ContactInfoInputPageState, ContactInfoInputViewModel>(
+    FragmentContactInfoInputBinding::inflate
+) {
 
-    companion object {
-        fun newInstance() = ContactInfoInputFragment()
+    override val viewModel: ContactInfoInputViewModel by viewModels()
+
+    override fun initView() {
+        binding.apply {
+            vm = viewModel
+        }
     }
 
-    private val viewModel: ContactInfoInputViewModel by viewModels()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        // TODO: Use the ViewModel
+    override fun initState() {
+        launchWhenStarted(viewLifecycleOwner) {
+            launch {
+                viewModel.eventFlow.collect { event ->
+                    handleEvent(event as ContactInfoInputEvent)
+                }
+            }
+        }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.fragment_contact_info_input, container, false)
+    private fun handleEvent(event: ContactInfoInputEvent) {
+        when(event) {
+            ContactInfoInputEvent.GoToMyPetInsurance -> TODO()
+        }
     }
 }
