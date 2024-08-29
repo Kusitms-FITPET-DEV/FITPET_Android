@@ -1,6 +1,7 @@
 package com.example.fitpet.ui.registration.petBirthInput
 
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentPetBirthInputBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,7 +31,12 @@ class PetBirthInputFragment : BaseFragment<FragmentPetBirthInputBinding, PetBirt
 
     private fun handleEvent(event: PetBirthInputEvent) {
         when(event) {
-            PetBirthInputEvent.GoToContactInfoInput -> TODO()
+            PetBirthInputEvent.GoToContactInfoInput -> goToContactInfoInput()
         }
+    }
+
+    private fun goToContactInfoInput() {
+        val action = PetBirthInputFragmentDirections.actionPetBirthInputToContactInfoInput()
+        findNavController().navigate(action)
     }
 }
