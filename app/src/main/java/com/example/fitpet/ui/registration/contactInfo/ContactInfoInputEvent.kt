@@ -1,4 +1,7 @@
 package com.example.fitpet.ui.registration.contactInfo
 
-class ContactInfoInputEvent {
+import com.example.fitpet.Event
+
+sealed class ContactInfoInputEvent: Event {
+    data object GoToMyPetInsurance: ContactInfoInputEvent()
 }
