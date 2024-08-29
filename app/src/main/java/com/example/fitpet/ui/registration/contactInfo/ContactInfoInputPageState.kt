@@ -1,4 +1,8 @@
 package com.example.fitpet.ui.registration.contactInfo
 
-class ContactInfoInputPageState {
-}
+import com.example.fitpet.PageState
+import kotlinx.coroutines.flow.StateFlow
+
+data class ContactInfoInputPageState(
+    val contactInfo: StateFlow<String>
+): PageState
