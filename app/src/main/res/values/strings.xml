@@ -47,4 +47,9 @@
     <string name="birth_input_hint">예) 2004</string>
     <string name="birth_input_guide">우리 아이가 태어난 년도 4자리를 적어주세요.\n잘 모르겠다면 추정하여 적어주세요.</string>
 
+    <!--  ContactInfoInput  -->
+    <string name="contact_info_input_registration">연락처를 입력해 주세요.</string>
+    <string name="contact_info_input_hint">예) 010 1234 5678</string>
+    <string name="contact_info_input_guide">안심하세요! 전화번호를 입력하더라도\n견적받기 용도 외에는 사용되거나 유출되지 않아요.</string>
+
 </resources>
