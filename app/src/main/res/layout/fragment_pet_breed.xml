@@ -86,7 +86,7 @@
             android:layout_marginBottom="78dp"
             android:stateListAnimator="@null"
             android:text="@string/next"
-            android:textAppearance="@style/b2_S"
+            android:textAppearance="@style/b3_S"
             android:textColor="@color/text_white"
             android:background="@drawable/bg_rectangle_filled_point_blue_radius_8"
             android:onClick="@{() -> vm.onClickBtnNext()}"

@@ -45,13 +45,19 @@
         <item name="fontFamily">@font/pretendard_regular</item>
     </style>
 
-    <style name="b2">
+    <style name="b3">
         <item name="android:textSize">16sp</item>
         <item name="lineHeight">24dp</item>
         <item name="fontFamily">@font/pretendard_regular</item>
     </style>
 
-    <style name="b3">
+    <style name="b4">
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">20dp</item>
+        <item name="fontFamily">@font/pretendard_regular</item>
+    </style>
+
+    <style name="b5">
         <item name="android:textSize">12sp</item>
         <item name="lineHeight">16dp</item>
         <item name="fontFamily">@font/pretendard_regular</item>
@@ -64,12 +70,24 @@
     </style>
 
     <style name="b2_M">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="lineHeight">24dp</item>
         <item name="fontFamily">@font/pretendard_medium</item>
     </style>
 
     <style name="b3_M">
+        <item name="android:textSize">16sp</item>
+        <item name="lineHeight">24dp</item>
+        <item name="fontFamily">@font/pretendard_medium</item>
+    </style>
+
+    <style name="b4_M">
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">20dp</item>
+        <item name="fontFamily">@font/pretendard_medium</item>
+    </style>
+
+    <style name="b5_M">
         <item name="android:textSize">12sp</item>
         <item name="lineHeight">16dp</item>
         <item name="fontFamily">@font/pretendard_medium</item>
@@ -88,12 +106,24 @@
     </style>
 
     <style name="b3_S">
+        <item name="android:textSize">16sp</item>
+        <item name="lineHeight">24dp</item>
+        <item name="fontFamily">@font/pretendard_semi_bold</item>
+    </style>
+
+    <style name="b4_S">
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">20dp</item>
+        <item name="fontFamily">@font/pretendard_semi_bold</item>
+    </style>
+
+    <style name="b5_S">
         <item name="android:textSize">12sp</item>
         <item name="lineHeight">16dp</item>
         <item name="fontFamily">@font/pretendard_semi_bold</item>
     </style>
 
-    <style name="b2_B">
+    <style name="b3_B">
         <item name="android:textSize">16sp</item>
         <item name="lineHeight">24dp</item>
         <item name="fontFamily">@font/pretendard_bold</item>

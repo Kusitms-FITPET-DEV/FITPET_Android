@@ -57,6 +57,7 @@
                     android:maxLines="1"
                     android:inputType="number"
                     android:text="@{vm.uiState.contactInfo}"
+                    android:textAppearance="@style/b3"
                     android:hint="@string/contact_info_input_hint"
                     android:onTextChanged="@{(s, start, before, count) -> vm.onTextChanged(s)}"
                     tools:ignore="LabelFor" />
@@ -83,7 +84,7 @@
                     android:layout_gravity="top"
                     android:layout_marginStart="6dp"
                     android:text="@string/contact_info_input_guide"
-                    android:textAppearance="@style/b3_S"
+                    android:textAppearance="@style/b5_S"
                     android:textColor="@{vm.uiState.contactInfo.empty ? @color/text_disable : @color/point_blue}" />
 
             </LinearLayout>
@@ -97,7 +98,7 @@
             android:layout_marginBottom="78dp"
             android:stateListAnimator="@null"
             android:text="@string/next"
-            android:textAppearance="@style/b2_S"
+            android:textAppearance="@style/b3_S"
             android:textColor="@color/text_white"
             android:onClick="@{() -> vm.onClickBtnNext()}"
             android:background="@{vm.uiState.contactInfo.empty ? @drawable/bg_rectangle_filled_bg_primary_radius_8 : @drawable/bg_rectangle_filled_point_blue_radius_8}"
