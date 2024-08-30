@@ -4,6 +4,8 @@ import com.example.fitpet.base.BaseViewModel
 import com.example.fitpet.ui.onboarding.OnBoardingPageState
 import com.example.fitpet.util.ResourceProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject
 
 @HiltViewModel
@@ -13,4 +15,5 @@ class MypetMainViewModel @Inject constructor(
     override val uiState: MypetMainPageState
         get() = TODO("Not yet implemented")
 
+    val tabTitles = listOf("마이펫 보험", "반려생활")
 }

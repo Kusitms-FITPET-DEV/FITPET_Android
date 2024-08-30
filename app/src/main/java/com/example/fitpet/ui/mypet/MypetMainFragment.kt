@@ -1,22 +1,44 @@
 package com.example.fitpet.ui.mypet
 
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentMypetMainBinding
+import com.example.fitpet.ui.mypet.adapter.MypetMainVPA
+import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MypetMainFragment : BaseFragment<FragmentMypetMainBinding, MypetMainPageState, MypetMainViewModel>(
     FragmentMypetMainBinding::inflate
 ) {
-    override val viewModel: MypetMainViewModel
-        get() = TODO("Not yet implemented")
+    private var _mypetVPA: MypetMainVPA? = null
+    private val mypetVPA get() = _mypetVPA
+    private val navigator by lazy { findNavController() }
+
+    override val viewModel: MypetMainViewModel by viewModels()
 
     override fun initView() {
-        TODO("Not yet implemented")
+        initListVPAdapter()
     }
 
     override fun initState() {
-        TODO("Not yet implemented")
+
+    }
+
+    private fun initListVPAdapter() {
+        _mypetVPA = MypetMainVPA(this)
+        with(binding) {
+            vpMypetMain.adapter = mypetVPA
+            TabLayoutMediator(tabMypetMain, vpMypetMain) { tab, position ->
+                tab.text = viewModel.tabTitles[position]
+            }.attach()
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _mypetVPA = null
     }
 
 }
