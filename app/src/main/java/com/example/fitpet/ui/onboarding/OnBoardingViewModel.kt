@@ -31,17 +31,17 @@ class OnBoardingViewModel @Inject constructor(
                     OnBoardingItemVo(
                         title = resourceProvider.getString(R.string.onboarding1_title),
                         content = resourceProvider.getString(R.string.onboarding1_content),
-                        img = R.drawable.img_onboarding
+                        img = R.drawable.ic_onboarding1
                     ),
                     OnBoardingItemVo(
                         title = resourceProvider.getString(R.string.onboarding2_title),
                         content = resourceProvider.getString(R.string.onboarding2_content),
-                        img = R.drawable.img_onboarding
+                        img = R.drawable.ic_onboarding2
                     ),
                     OnBoardingItemVo(
                         title = resourceProvider.getString(R.string.onboarding3_title),
                         content = resourceProvider.getString(R.string.onboarding3_content),
-                        img = R.drawable.img_onboarding
+                        img = R.drawable.ic_onboarding3
                     )
                 )
             }
