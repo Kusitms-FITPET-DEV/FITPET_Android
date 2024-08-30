@@ -55,6 +55,6 @@ class OnBoardingViewModel @Inject constructor(
     }
 
     fun onClickBtnStart() {
-        emitEventFlow(OnBoardingEvent.GoToKakaoLogin)
+        emitEventFlow(OnBoardingEvent.GoToPermissionSettings)
     }
 }
