@@ -34,15 +34,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="80dp"
-                android:text="@string/onboarding1_title"
-                android:textAppearance="@style/h3_S"/>
+                android:text="@string/kakao_login_title"
+                android:textAppearance="@style/b1_S"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:gravity="center"
                 android:text="@string/kakao_login_content"
-                android:textAppearance="@style/b2"/>
+                android:textAppearance="@style/b3"/>
 
         </LinearLayout>
 

@@ -52,6 +52,7 @@
             android:text="@string/start"
             android:textAppearance="@style/b2_S"
             android:textColor="@color/white"
+            android:stateListAnimator="@null"
             android:background="@drawable/bg_rectangle_filled_point_blue_radius_8"
             android:visibility="@{vm.uiState.isLastPage ? View.VISIBLE : View.GONE}"
             android:onClick="@{() -> vm.onClickBtnStart()}"

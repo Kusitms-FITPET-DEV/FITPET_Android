@@ -7,7 +7,7 @@
     <data>
         <variable
             name="vm"
-            type="com.example.fitpet.ui.registration.petBirthInput.PetBirthInputViewModel" />
+            type="com.example.fitpet.ui.registration.contactInfo.ContactInfoInputViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -30,7 +30,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/fourth_page"
+                android:text="@string/fifth_page"
                 android:textAppearance="@style/b3"
                 android:textColor="@color/point_blue"/>
 
@@ -38,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
-                android:text="@string/birth_input_registration"
+                android:text="@string/contact_info_input_registration"
                 android:textAppearance="@style/b1_S"
                 android:textColor="@color/black"/>
 
@@ -56,9 +56,9 @@
                     android:background="@android:color/transparent"
                     android:maxLines="1"
                     android:inputType="number"
+                    android:text="@{vm.uiState.contactInfo}"
                     android:textAppearance="@style/b3"
-                    android:text="@{vm.uiState.birth}"
-                    android:hint="@string/birth_input_hint"
+                    android:hint="@string/contact_info_input_hint"
                     android:onTextChanged="@{(s, start, before, count) -> vm.onTextChanged(s)}"
                     tools:ignore="LabelFor" />
 
@@ -76,16 +76,16 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="top"
                     android:layout_marginTop="6dp"
-                    android:background="@{vm.uiState.birth.empty ? @drawable/ic_circle_text_disable_5 : @drawable/ic_circle_point_blue_5}" />
+                    android:background="@{vm.uiState.contactInfo.empty ? @drawable/ic_circle_text_disable_5 : @drawable/ic_circle_point_blue_5}" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="top"
                     android:layout_marginStart="6dp"
-                    android:text="@string/birth_input_guide"
+                    android:text="@string/contact_info_input_guide"
                     android:textAppearance="@style/b5_S"
-                    android:textColor="@{vm.uiState.birth.empty ? @color/text_disable : @color/point_blue}" />
+                    android:textColor="@{vm.uiState.contactInfo.empty ? @color/text_disable : @color/point_blue}" />
 
             </LinearLayout>
 
@@ -101,7 +101,7 @@
             android:textAppearance="@style/b3_S"
             android:textColor="@color/text_white"
             android:onClick="@{() -> vm.onClickBtnNext()}"
-            android:background="@{vm.uiState.birth.empty ? @drawable/bg_rectangle_filled_bg_primary_radius_8 : @drawable/bg_rectangle_filled_point_blue_radius_8}"
+            android:background="@{vm.uiState.contactInfo.empty ? @drawable/bg_rectangle_filled_bg_primary_radius_8 : @drawable/bg_rectangle_filled_point_blue_radius_8}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>

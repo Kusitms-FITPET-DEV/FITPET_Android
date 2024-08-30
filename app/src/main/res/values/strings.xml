@@ -26,7 +26,8 @@
     <string name="onboarding3_content">우리아이와 오랫동안 행복할 수 있는 방법\n반려생활에서 확인하세요</string>
 
     <!--  KakaoLogin  -->
-    <string name="kakao_login_content">스마트커버인슈어런스를 통해 만나보세요!</string>
+    <string name="kakao_login_title">신뢰할 수 있는 보험 관리 플랫폼</string>
+    <string name="kakao_login_content">우리 아이 건강을 위해\n한 발짝, 같이 내딛어 봐요</string>
     <string name="kakao_native_app_key">fb861916118bf9e4868e651607b605b0</string>
     <string name="kakao_scheme">kakaofb861916118bf9e4868e651607b605b0</string>
     
@@ -46,5 +47,10 @@
     <string name="birth_input_registration">출생년도는 언제인가요?</string>
     <string name="birth_input_hint">예) 2004</string>
     <string name="birth_input_guide">우리 아이가 태어난 년도 4자리를 적어주세요.\n잘 모르겠다면 추정하여 적어주세요.</string>
+
+    <!--  ContactInfoInput  -->
+    <string name="contact_info_input_registration">연락처를 입력해 주세요.</string>
+    <string name="contact_info_input_hint">예) 010 1234 5678</string>
+    <string name="contact_info_input_guide">안심하세요! 전화번호를 입력하더라도\n견적받기 용도 외에는 사용되거나 유출되지 않아요.</string>
 
 </resources>
