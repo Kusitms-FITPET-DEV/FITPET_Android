@@ -1,0 +1,39 @@
+package com.example.fitpet.ui.insurance.charge
+
+import androidx.fragment.app.viewModels
+import com.example.fitpet.PageState
+import com.example.fitpet.base.BaseFragment
+import com.example.fitpet.databinding.FragmentInsuranceChargeCauseBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+
+@AndroidEntryPoint
+class InsuranceChargeCauseFragment: BaseFragment<FragmentInsuranceChargeCauseBinding, PageState.Default, InsuranceChargeCauseViewModel>(
+    FragmentInsuranceChargeCauseBinding::inflate
+){
+
+    override val viewModel: InsuranceChargeCauseViewModel by viewModels()
+
+    override fun initView() {
+        binding.apply {
+            viewModel = viewModel
+        }
+    }
+
+    override fun initState() {
+        launchWhenStarted(viewLifecycleOwner) {
+            launch {
+                viewModel.eventFlow.collect { event ->
+                    handleEvent(event as InsuranceChargeCauseEvent)
+                }
+            }
+        }
+    }
+
+    private fun handleEvent(event: InsuranceChargeCauseEvent) {
+        when (event) {
+//            else -> {}
+        }
+    }
+
+}

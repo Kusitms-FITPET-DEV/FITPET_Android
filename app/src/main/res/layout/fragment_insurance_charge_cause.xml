@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.fitpet.ui.insurance.charge.InsuranceChargeCauseViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_white">
+
+        <include
+            android:id="@+id/tb_insurance_charge"
+            layout="@layout/top_bar_insurance_charge" />
+
+        <TextView
+            android:id="@+id/tv_insurance_charge_cause_index"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1/5"
+            android:textAppearance="@style/b5"
+            android:textColor="@color/point_blue"
+            android:layout_marginTop="32dp"
+            android:layout_marginStart="24dp"
+            app:layout_constraintTop_toBottomOf="@id/tb_insurance_charge"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_insurance_charge_cause_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="어떤 이유로 보험금을\n청구하나요?"
+            android:textAppearance="@style/b1_S"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_insurance_charge_cause_index"
+            app:layout_constraintStart_toStartOf="@id/tv_insurance_charge_cause_index" />
+
+        <TextView
+            android:id="@+id/tv_insurance_charge_cause_injury"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="통원"
+            android:textAppearance="@style/b4_M"
+            android:textColor="@color/text_body"
+            android:background="@drawable/bg_rectangle_filled_bg_primary_radius_16"
+            android:paddingVertical="8dp"
+            android:gravity="center"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="24dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_insurance_charge_cause_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_insurance_charge_cause_hospital" />
+
+        <TextView
+            android:id="@+id/tv_insurance_charge_cause_hospital"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="입원/수술"
+            android:textAppearance="@style/b4_M"
+            android:textColor="@color/text_body"
+            android:background="@drawable/bg_rectangle_filled_bg_primary_radius_16"
+            android:paddingVertical="8dp"
+            android:gravity="center"
+            android:layout_marginStart="12dp"
+            app:layout_constraintTop_toTopOf="@id/tv_insurance_charge_cause_injury"
+            app:layout_constraintBottom_toBottomOf="@id/tv_insurance_charge_cause_injury"
+            app:layout_constraintStart_toEndOf="@id/tv_insurance_charge_cause_injury"
+            app:layout_constraintEnd_toStartOf="@id/tv_insurance_charge_cause_etc" />
+
+        <TextView
+            android:id="@+id/tv_insurance_charge_cause_etc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="기타"
+            android:textAppearance="@style/b4_M"
+            android:textColor="@color/text_body"
+            android:background="@drawable/bg_rectangle_filled_bg_primary_radius_16"
+            android:paddingVertical="8dp"
+            android:gravity="center"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintTop_toTopOf="@id/tv_insurance_charge_cause_injury"
+            app:layout_constraintBottom_toBottomOf="@id/tv_insurance_charge_cause_injury"
+            app:layout_constraintStart_toEndOf="@id/tv_insurance_charge_cause_hospital"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_insurance_charge_cause_date_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="병원방문일"
+            android:textColor="@color/black"
+            android:textAppearance="@style/b3"
+            android:layout_marginTop="46dp"
+            android:layout_marginStart="24dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_insurance_charge_cause_injury"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/btn_insurance_charge_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_calendar"
+            android:layout_marginTop="22dp"
+            android:layout_marginEnd="28dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_insurance_charge_cause_date_title" />
+
+        <TextView
+            android:id="@+id/tv_insurance_charge_cause_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2024. 08. 31"
+            android:textAppearance="@style/b1_M"
+            android:textColor="@color/text_disable"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="28dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_insurance_charge_cause_date_title"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            app:dividerColor="@color/neutral_400"
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="6dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_insurance_charge_cause_date"
+            app:layout_constraintStart_toStartOf="@id/tv_insurance_charge_cause_date"
+            app:layout_constraintEnd_toStartOf="@id/btn_insurance_charge_date" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_insurance_charge_cause_next"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingVertical="12dp"
+            android:text="다음"
+            android:textColor="@color/text_disable"
+            android:textAppearance="@style/b3_S"
+            android:background="@drawable/bg_rectangle_filled_neural200_radius_8"
+            android:layout_marginHorizontal="28dp"
+            android:layout_marginBottom="36dp"
+            android:outlineProvider="none"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
