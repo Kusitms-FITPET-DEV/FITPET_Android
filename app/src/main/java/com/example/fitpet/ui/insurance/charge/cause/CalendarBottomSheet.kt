@@ -34,4 +34,8 @@ class CalendarBottomSheet: BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
     }
+
+    companion object {
+        const val BOTTOM_SHEET = "BOTTOM_SHEET"
+    }
 }
