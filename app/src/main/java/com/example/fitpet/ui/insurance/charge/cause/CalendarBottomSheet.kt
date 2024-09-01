@@ -4,15 +4,26 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.example.fitpet.databinding.BottomSheetCalendarBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import kotlinx.coroutines.launch
 
 class CalendarBottomSheet: BottomSheetDialogFragment() {
+
+    private val viewModel by viewModels<CalendarViewModel>()
 
     private var _binding: BottomSheetCalendarBinding? = null
     val binding: BottomSheetCalendarBinding
         get() = requireNotNull(_binding as BottomSheetCalendarBinding)
+
+    private var _calendarAdapter: CalendarAdapter? = null
+    private val calendarAdapter
+        get() = requireNotNull(_calendarAdapter)
 
     override fun onStart() {
         super.onStart()
@@ -33,6 +44,28 @@ class CalendarBottomSheet: BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.viewModel = viewModel
+
+        initSetAdapter()
+        initSetDateList()
+    }
+
+    private fun initSetAdapter() {
+        _calendarAdapter = CalendarAdapter()
+        binding.rcvCalendarDate.adapter = calendarAdapter
+    }
+
+    private fun initSetDateList() {
+        viewModel.initSetCalendarValue()
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                launch {
+                    viewModel.uiState.monthDateList.collect {
+                        calendarAdapter.submitList(it)
+                    }
+                }
+            }
+        }
     }
 
     companion object {
