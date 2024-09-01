@@ -12,7 +12,7 @@ import timber.log.Timber
 
 @AndroidEntryPoint
 class InsuranceChargeCauseFragment :
-    BaseFragment<FragmentInsuranceChargeCauseBinding, PageState.Default, InsuranceChargeCauseViewModel>(
+    BaseFragment<FragmentInsuranceChargeCauseBinding, InsuranceChargeCausePageState, InsuranceChargeCauseViewModel>(
         FragmentInsuranceChargeCauseBinding::inflate
     ) {
 
@@ -40,7 +40,7 @@ class InsuranceChargeCauseFragment :
 
     private fun showCalendarBottomSheet() {
         Timber.d("[보험금 청구: 1/5] 캘린더 바텀시트")
-        CalendarBottomSheet().show(parentFragmentManager, BOTTOM_SHEET)
+        CalendarBottomSheet{viewModel.getSelectedDate(it)}.show(parentFragmentManager, BOTTOM_SHEET)
     }
 
 }

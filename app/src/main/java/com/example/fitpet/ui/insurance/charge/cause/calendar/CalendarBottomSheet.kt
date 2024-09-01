@@ -15,7 +15,9 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
-class CalendarBottomSheet: BottomSheetDialogFragment() {
+class CalendarBottomSheet(
+    private val onSelectedDate: (String) -> Unit
+): BottomSheetDialogFragment() {
 
     private val viewModel by viewModels<CalendarViewModel>()
 
@@ -80,6 +82,9 @@ class CalendarBottomSheet: BottomSheetDialogFragment() {
 
     private fun clickSelectBtn() {
         binding.btnCalendarDateSelect.setOnClickListener {
+            with (viewModel.uiState) {
+                onSelectedDate("${currentYear.value}. ${currentMonth.value}. ${selectedDate.value}")
+            }
             dismiss()
         }
     }
