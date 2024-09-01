@@ -4,14 +4,18 @@ import androidx.lifecycle.viewModelScope
 import com.example.fitpet.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import org.threeten.bp.LocalDateTime
 import javax.inject.Inject
 
 @HiltViewModel
-class InsuranceChargeCauseViewModel @Inject constructor(): BaseViewModel<InsuranceChargeCausePageState>() {
+class InsuranceChargeCauseViewModel @Inject constructor() :
+    BaseViewModel<InsuranceChargeCausePageState>() {
 
     private val _selectedCause: MutableStateFlow<String> = MutableStateFlow("")
     private val _currentDate: MutableStateFlow<String> = MutableStateFlow("")
@@ -20,7 +24,14 @@ class InsuranceChargeCauseViewModel @Inject constructor(): BaseViewModel<Insuran
     override val uiState = InsuranceChargeCausePageState(
         selectedCause = _selectedCause.asStateFlow(),
         currentDate = _currentDate.asStateFlow(),
-        selectedDate = _selectedDate.asStateFlow()
+        selectedDate = _selectedDate.asStateFlow(),
+        isBtnEnabled = combine(_selectedCause, _selectedDate) { cause, date ->
+            isGoNextValid(cause, date)
+        }.stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.Lazily,
+            initialValue = false
+        )
     )
 
     fun initSetCurrentDate() {
@@ -45,5 +56,9 @@ class InsuranceChargeCauseViewModel @Inject constructor(): BaseViewModel<Insuran
         viewModelScope.launch {
             _selectedDate.update { date }
         }
+    }
+
+    private fun isGoNextValid(cause: String, date: String): Boolean {
+        return cause.isNotEmpty() && date.isNotEmpty()
     }
 }

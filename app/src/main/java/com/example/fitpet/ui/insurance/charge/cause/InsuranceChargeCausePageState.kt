@@ -6,5 +6,6 @@ import kotlinx.coroutines.flow.StateFlow
 data class InsuranceChargeCausePageState (
     val selectedCause: StateFlow<String>,
     val currentDate: StateFlow<String>,
-    val selectedDate: StateFlow<String>
+    val selectedDate: StateFlow<String>,
+    val isBtnEnabled: StateFlow<Boolean>
 ): PageState
