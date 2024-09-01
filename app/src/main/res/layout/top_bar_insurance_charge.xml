@@ -19,13 +19,13 @@
         android:id="@+id/tv_top_bar_insurance_charge_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="보험금 청구"
+        android:text="@string/insurance_charge"
         android:textAppearance="@style/b3"
         android:textColor="@color/black"
-        app:layout_constraintTop_toTopOf="@id/btn_top_bar_insurance_charge_back"
         app:layout_constraintBottom_toBottomOf="@id/btn_top_bar_insurance_charge_back"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="@id/btn_top_bar_insurance_charge_back" />
 
     <View
         android:id="@+id/divider_top_bar_insurance_charge"

@@ -18,6 +18,7 @@
     <string name="notification">알림</string>
     <string name="agree">동의하기</string>
     <string name="blank" />
+    <string name="select">선택하기</string>
 
     <!-- Tab -->
     <string name="tab_insurance">마이 펫보험</string>
@@ -71,10 +72,18 @@
     <string name="access_permission_revoke_path">설정 > 개인(신용)정보보호 > 해당 접근권한 > 접근권한 철회</string>
 
     <!--  InsuranceCharge  -->
+    <string name="insurance_charge">보험금 청구</string>
     <string name="insurance_charge_cause_title">어떤 이유로 보험금을\n청구하나요?</string>
     <string name="insurance_charge_cause_injury">통원</string>
     <string name="insurance_charge_cause_hospital">입원/수술</string>
     <string name="insurance_charge_cause_etc">기타</string>
     <string name="insurance_charge_cause_date_title">병원방문일</string>
+    <string name="insurance_charge_date_sun">일</string>
+    <string name="insurance_charge_date_mon">월</string>
+    <string name="insurance_charge_date_tues">화</string>
+    <string name="insurance_charge_date_wed">수</string>
+    <string name="insurance_charge_date_thurs">목</string>
+    <string name="insurance_charge_date_fri">금</string>
+    <string name="insurance_charge_date_sat">토</string>
 
 </resources>
