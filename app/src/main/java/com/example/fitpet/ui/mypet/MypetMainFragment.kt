@@ -31,7 +31,7 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainBinding, MypetMainPageSt
         with(binding) {
             vpMypetMain.adapter = mypetVPA
             TabLayoutMediator(tabMypetMain, vpMypetMain) { tab, position ->
-                tab.text = viewModel.tabTitles[position]
+//                tab.text = viewModel.tabTitles[position]
             }.attach()
         }
     }

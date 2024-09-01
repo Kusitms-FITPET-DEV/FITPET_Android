@@ -33,6 +33,7 @@
     <color name="bg_primary">#FFf1f4f5</color>
     <color name="bg_white">#FFFFFFFF</color>
     <color name="bg_dark">#FF00504D</color>
+    <color name="bg_main">#F1F4F5</color>
 
     <!--  etc  -->
     <color name="gray">#FFD9D9D9</color>
