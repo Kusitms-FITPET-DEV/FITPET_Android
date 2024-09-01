@@ -9,9 +9,11 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.fitpet.databinding.BottomSheetCalendarBinding
+import com.example.fitpet.model.CalendarDate
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 class CalendarBottomSheet: BottomSheetDialogFragment() {
 
@@ -51,7 +53,13 @@ class CalendarBottomSheet: BottomSheetDialogFragment() {
     }
 
     private fun initSetAdapter() {
-        _calendarAdapter = CalendarAdapter()
+        _calendarAdapter = CalendarAdapter().apply {
+            setOnItemClickListener(object : CalendarAdapter.OnItemClickListener {
+                override fun onItemClick(item: CalendarDate, position: Int) {
+                    Timber.d("[보험금 청구] 캘린더 클릭 날짜 -> ${item.date}")
+                }
+            })
+        }
         binding.rcvCalendarDate.adapter = calendarAdapter
     }
 

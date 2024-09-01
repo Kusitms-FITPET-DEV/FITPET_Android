@@ -11,13 +11,15 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="36dp"
-        android:layout_height="36dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="4dp">
 
         <TextView
             android:id="@+id/tv_item_calendar_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:gravity="center"
             android:text="@{Integer.toString(item.date)}"
             android:textAppearance="@style/b3"
             android:textColor="@color/black"
