@@ -3,6 +3,7 @@ package com.example.fitpet.app
 import android.app.Application
 import android.util.Log
 import com.example.fitpet.R
+import com.jakewharton.threetenabp.AndroidThreeTen
 import com.kakao.sdk.common.KakaoSdk
 import com.kakao.sdk.v2.auth.BuildConfig
 import dagger.hilt.android.HiltAndroidApp
@@ -14,5 +15,6 @@ class FitPetApplication: Application() {
         super.onCreate()
         KakaoSdk.init(this, getString(R.string.kakao_native_app_key))
         Timber.plant(Timber.DebugTree())
+        AndroidThreeTen.init(this)
     }
 }
