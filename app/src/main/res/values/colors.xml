@@ -21,6 +21,7 @@
     <color name="text_white">#FFFFFFFF</color>
     <color name="text_point">#FF008CFF</color>
     <color name="text_disable">#FFA9A8AA</color>
+    <color name="tab_disable">#A9A8AA</color>
     <color name="text_grey">#FF737373</color>
 
     <!--  point  -->
