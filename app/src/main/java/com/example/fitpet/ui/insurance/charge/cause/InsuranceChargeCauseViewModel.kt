@@ -1,9 +1,8 @@
-package com.example.fitpet.ui.insurance.charge
+package com.example.fitpet.ui.insurance.charge.cause
 
 import com.example.fitpet.PageState
 import com.example.fitpet.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel

@@ -1,4 +1,4 @@
-package com.example.fitpet.ui.insurance.charge.cause
+package com.example.fitpet.ui.insurance.charge.cause.calendar
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitpet.databinding.ItemCalendarDateBinding

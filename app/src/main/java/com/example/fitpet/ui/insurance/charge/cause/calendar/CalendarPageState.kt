@@ -1,4 +1,4 @@
-package com.example.fitpet.ui.insurance.charge.cause
+package com.example.fitpet.ui.insurance.charge.cause.calendar
 
 import com.example.fitpet.PageState
 import com.example.fitpet.model.CalendarDate

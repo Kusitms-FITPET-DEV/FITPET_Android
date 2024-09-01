@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fragmentInsuranceChargeCause"
-        android:name="com.example.fitpet.ui.insurance.charge.InsuranceChargeCauseFragment"
+        android:name="com.example.fitpet.ui.insurance.charge.cause.InsuranceChargeCauseFragment"
         android:label="fragmentInsuranceChargeCause"
         android:layout="@layout/fragment_insurance_charge_cause"
         tools:layout="@layout/fragment_insurance_charge_cause">

@@ -1,4 +1,4 @@
-package com.example.fitpet.ui.insurance.charge.cause
+package com.example.fitpet.ui.insurance.charge.cause.calendar
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -50,6 +50,7 @@ class CalendarBottomSheet: BottomSheetDialogFragment() {
 
         initSetAdapter()
         initSetDateList()
+        clickSelectBtn()
     }
 
     private fun initSetAdapter() {
@@ -74,6 +75,12 @@ class CalendarBottomSheet: BottomSheetDialogFragment() {
                     }
                 }
             }
+        }
+    }
+
+    private fun clickSelectBtn() {
+        binding.btnCalendarDateSelect.setOnClickListener {
+            dismiss()
         }
     }
 

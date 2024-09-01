@@ -1,4 +1,4 @@
-package com.example.fitpet.ui.insurance.charge
+package com.example.fitpet.ui.insurance.charge.cause
 
 import com.example.fitpet.Event
 
