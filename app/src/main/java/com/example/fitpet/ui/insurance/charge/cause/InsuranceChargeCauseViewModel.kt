@@ -13,10 +13,12 @@ import javax.inject.Inject
 @HiltViewModel
 class InsuranceChargeCauseViewModel @Inject constructor(): BaseViewModel<InsuranceChargeCausePageState>() {
 
+    private val _selectedCause: MutableStateFlow<String> = MutableStateFlow("")
     private val _currentDate: MutableStateFlow<String> = MutableStateFlow("")
     private val _selectedDate: MutableStateFlow<String> = MutableStateFlow("")
 
     override val uiState = InsuranceChargeCausePageState(
+        selectedCause = _selectedCause.asStateFlow(),
         currentDate = _currentDate.asStateFlow(),
         selectedDate = _selectedDate.asStateFlow()
     )
@@ -29,11 +31,19 @@ class InsuranceChargeCauseViewModel @Inject constructor(): BaseViewModel<Insuran
         }
     }
 
+    fun onClickChargeCause(cause: String) {
+        viewModelScope.launch {
+            _selectedCause.update { cause }
+        }
+    }
+
     fun onClickCalendar() {
         emitEventFlow(InsuranceChargeCauseEvent.ClickCalendar)
     }
 
     fun getSelectedDate(date: String) {
-        _selectedDate.update { date }
+        viewModelScope.launch {
+            _selectedDate.update { date }
+        }
     }
 }

@@ -1,6 +1,7 @@
 package com.example.fitpet.ui.insurance.charge.cause
 
 import androidx.fragment.app.viewModels
+import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceChargeCauseBinding
 import com.example.fitpet.ui.insurance.charge.cause.calendar.CalendarBottomSheet
@@ -27,6 +28,18 @@ class InsuranceChargeCauseFragment :
             launch {
                 viewModel.eventFlow.collect { event ->
                     handleEvent(event as InsuranceChargeCauseEvent)
+                }
+            }
+            launch {
+
+                viewModel.uiState.selectedCause.collect { cause ->
+                    with (binding) {
+                        when (cause) {
+                            getString(R.string.insurance_charge_cause_injury) -> tvInsuranceChargeCauseInjury.setTextAppearance(R.style.b4_S)
+                            getString(R.string.insurance_charge_cause_hospital) -> tvInsuranceChargeCauseHospital.setTextAppearance(R.style.b4_S)
+                            getString(R.string.insurance_charge_cause_etc) -> tvInsuranceChargeCauseEtc.setTextAppearance(R.style.b4_S)
+                        }
+                    }
                 }
             }
         }
