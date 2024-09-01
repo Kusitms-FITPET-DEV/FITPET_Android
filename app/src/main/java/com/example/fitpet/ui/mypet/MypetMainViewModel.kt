@@ -1,5 +1,6 @@
 package com.example.fitpet.ui.mypet
 
+import com.example.fitpet.R
 import com.example.fitpet.base.BaseViewModel
 import com.example.fitpet.ui.onboarding.OnBoardingPageState
 import com.example.fitpet.util.ResourceProvider
@@ -15,5 +16,5 @@ class MypetMainViewModel @Inject constructor(
     override val uiState: MypetMainPageState
         get() = TODO("Not yet implemented")
 
-    val tabTitles = listOf("마이펫 보험", "반려생활")
+    val tabTitles = listOf(R.string.tab_insurance, R.string.tab_life)
 }
