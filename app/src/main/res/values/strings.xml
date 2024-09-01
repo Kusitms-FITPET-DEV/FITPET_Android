@@ -13,17 +13,25 @@
     <string name="underline_skip"><u>건너뛰기</u></string>
     <string name="dog">강아지</string>
     <string name="cat">고양이</string>
+    <string name="camera">카메라</string>
+    <string name="gallery">저장공간</string>
+    <string name="notification">알림</string>
+    <string name="agree">동의하기</string>
+
+    <!-- Tab -->
+    <string name="tab_insurance">마이 펫보험</string>
+    <string name="tab_life">반려생활</string>
 
     <!--  common  -->
     <string name="min_length_guide">1글자 이상 써주세요</string>
 
     <!--  OnBoarding  -->
-    <string name="onboarding1_title">펫보험의 혁신</string>
+    <string name="onboarding1_title">간편한 상담</string>
     <string name="onboarding2_title">편리한 관리</string>
     <string name="onboarding3_title">풍부한 반려생활</string>
     <string name="onboarding1_content">1:1 전문 상담사를 통해 합리적인\n보험 견적서를 확인하세요.</string>
     <string name="onboarding2_content">가입한 보험을 확인하고\n간단하게 보험 청구를 확인해보세요.</string>
-    <string name="onboarding3_content">우리아이와 오랫동안 행복할 수 있는 방법\n반려생활에서 확인하세요</string>
+    <string name="onboarding3_content">우리아이와 오랫동안 행복할 수 있는 방법,\n반려생활에서 확인하세요</string>
 
     <!--  KakaoLogin  -->
     <string name="kakao_login_title">신뢰할 수 있는 보험 관리 플랫폼</string>
@@ -53,4 +61,12 @@
     <string name="contact_info_input_hint">예) 010 1234 5678</string>
     <string name="contact_info_input_guide">안심하세요! 전화번호를 입력하더라도\n견적받기 용도 외에는 사용되거나 유출되지 않아요.</string>
 
+    <!--  PermissionSettingsBottomSheet  -->
+    <string name="permission_title">서비스 이용을 위해\n접근 권한에 동의해 주세요</string>
+    <string name="camera_content">보험금 청구 시 사진 촬영</string>
+    <string name="gallery_content">보험금 청구 시 사진 첨부</string>
+    <string name="notification_content">중요 메시지 수신</string>
+    <string name="revoke_access_permission">접근권한 철회 방법</string>
+    <string name="access_permission_revoke_path">설정 > 개인(신용)정보보호 > 해당 접근권한 > 접근권한 철회</string>
+    
 </resources>
