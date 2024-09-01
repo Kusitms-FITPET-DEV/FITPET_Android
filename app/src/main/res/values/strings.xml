@@ -18,6 +18,10 @@
     <string name="notification">알림</string>
     <string name="agree">동의하기</string>
 
+    <!-- Tab -->
+    <string name="tab_insurance">마이 펫보험</string>
+    <string name="tab_life">반려생활</string>
+
     <!--  common  -->
     <string name="min_length_guide">1글자 이상 써주세요</string>
 
