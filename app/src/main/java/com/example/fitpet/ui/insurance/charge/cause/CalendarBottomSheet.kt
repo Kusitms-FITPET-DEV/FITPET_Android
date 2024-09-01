@@ -54,9 +54,10 @@ class CalendarBottomSheet: BottomSheetDialogFragment() {
 
     private fun initSetAdapter() {
         _calendarAdapter = CalendarAdapter().apply {
-            setOnItemClickListener(object : CalendarAdapter.OnItemClickListener {
+            setOnClickListener(object : CalendarAdapter.OnItemClickListener {
                 override fun onItemClick(item: CalendarDate, position: Int) {
                     Timber.d("[보험금 청구] 캘린더 클릭 날짜 -> ${item.date}")
+                    viewModel.setSelectedDate(item.date)
                 }
             })
         }

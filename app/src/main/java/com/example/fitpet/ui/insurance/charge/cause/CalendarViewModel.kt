@@ -18,12 +18,15 @@ class CalendarViewModel @Inject constructor() : BaseViewModel<CalendarPageState>
     private val _currentYear: MutableStateFlow<Int> = MutableStateFlow(0)
     private val _currentMonth: MutableStateFlow<Int> = MutableStateFlow(0)
     private val _monthDateList: MutableStateFlow<List<CalendarDate>> = MutableStateFlow(emptyList())
+    private val _selectedDate: MutableStateFlow<Int> = MutableStateFlow(0)
+
     private val currentDateTime = LocalDateTime.now()
 
     override val uiState = CalendarPageState(
         currentYear = _currentYear.asStateFlow(),
         currentMonth = _currentMonth.asStateFlow(),
-        monthDateList = _monthDateList.asStateFlow()
+        monthDateList = _monthDateList.asStateFlow(),
+        selectedDate = _selectedDate.asStateFlow()
     )
 
     fun initSetCalendarValue() {
@@ -32,6 +35,10 @@ class CalendarViewModel @Inject constructor() : BaseViewModel<CalendarPageState>
             _currentMonth.update { currentDateTime.monthValue }
             _monthDateList.update { setMonthDate() }
         }
+    }
+
+    fun setSelectedDate(date: Int) {
+        _selectedDate.update { date }
     }
 
     private fun setMonthDate(): List<CalendarDate> {
