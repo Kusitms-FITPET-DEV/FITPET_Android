@@ -1,7 +1,6 @@
 package com.example.fitpet.ui.insurance.charge.cause
 
 import androidx.fragment.app.viewModels
-import com.example.fitpet.PageState
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceChargeCauseBinding
 import com.example.fitpet.ui.insurance.charge.cause.calendar.CalendarBottomSheet
@@ -20,6 +19,7 @@ class InsuranceChargeCauseFragment :
 
     override fun initView() {
         binding.viewModel = viewModel
+        viewModel.initSetCurrentDate()
     }
 
     override fun initState() {

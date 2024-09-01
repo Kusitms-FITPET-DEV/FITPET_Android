@@ -4,5 +4,6 @@ import com.example.fitpet.PageState
 import kotlinx.coroutines.flow.StateFlow
 
 data class InsuranceChargeCausePageState (
+    val currentDate: StateFlow<String>,
     val selectedDate: StateFlow<String>
 ): PageState
