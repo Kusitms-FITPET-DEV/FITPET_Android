@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.view.View" />
         <variable
             name="vm"
             type="com.example.fitpet.ui.mypet.insurance.nopet.InsuranceNoPetViewModel" />
@@ -296,35 +297,19 @@
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/fabInsuranceKakaoBig"
-            android:layout_width="126dp"
+            android:layout_width="140dp"
             android:layout_height="44dp"
             android:layout_marginEnd="26dp"
             android:layout_marginBottom="35dp"
-            android:background="@drawable/ic_floating_btn_kakao"
+            android:backgroundTint="@color/ic_kakao"
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlayExtended"
             app:icon="@drawable/ic_kakao"
+            app:iconTint="@null"
+            android:text="@string/kakao_floating"
+            android:textAppearance="@style/describe_b5_M"
             app:borderWidth="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:elevation="0dp"
-            android:visibility="invisible"
-            />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabInsuranceKakaoSmall"
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            android:layout_marginEnd="26dp"
-            android:layout_marginBottom="33dp"
-            android:src="@drawable/ic_kakao"
-            app:tint="@null"
-            app:fabCustomSize="44dp"
-            android:backgroundTint="#FAE100"
-            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlayExtended"
-            app:borderWidth="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:elevation="0dp"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
