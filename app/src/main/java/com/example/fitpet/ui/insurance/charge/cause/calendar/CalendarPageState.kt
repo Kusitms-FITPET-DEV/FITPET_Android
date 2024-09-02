@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.StateFlow
 data class CalendarPageState(
     val currentYear: StateFlow<Int>,
     val currentMonth: StateFlow<Int>,
+    val currentCalendarPage: StateFlow<Int>,
     val monthDateList: StateFlow<List<CalendarDate>>,
     val selectedDate: StateFlow<Int>
 ): PageState
