@@ -13,6 +13,7 @@
     <string name="underline_skip"><u>건너뛰기</u></string>
     <string name="dog">강아지</string>
     <string name="cat">고양이</string>
+    <string name="go_to_mypet">MY펫 등록</string>
 
     <!-- Tab -->
     <string name="tab_insurance">마이 펫보험</string>
@@ -56,5 +57,10 @@
     <string name="contact_info_input_registration">연락처를 입력해 주세요.</string>
     <string name="contact_info_input_hint">예) 010 1234 5678</string>
     <string name="contact_info_input_guide">안심하세요! 전화번호를 입력하더라도\n견적받기 용도 외에는 사용되거나 유출되지 않아요.</string>
+
+    <!-- InsuranceNoRegister -->
+    <string name="insurance_no_register_box1">우리 아이, 갑자기 아프면 어떡하지?...</string>
+    <string name="insurance_no_register_box2">마이펫을 등록하고 간단히 보험 견적을 확인하세요.</string>
+
 
 </resources>
