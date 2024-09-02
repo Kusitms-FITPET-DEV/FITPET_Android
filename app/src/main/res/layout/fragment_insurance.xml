@@ -210,7 +210,7 @@
                         android:id="@+id/tvInsuranceInfo"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:textAppearance="@style/insurance_box_bold"
+                        android:textAppearance="@style/b3_S"
                         android:textColor="@color/black"
                         android:text="@string/insurance_no_register_info_box1"
                         app:layout_constraintTop_toBottomOf="@id/viewInsuranceInfoBoxTopMg1"
@@ -283,7 +283,6 @@
                     android:text="@string/insurance_no_register_bottom"
                     app:layout_constraintTop_toBottomOf="@id/viewInsuranceBottomMg1"
                     app:layout_constraintStart_toEndOf="@id/viewInsuranceBottomMg1"
-                    app:layout_constraintEnd_toStartOf="@id/viewInsuranceBottomMg2"
                     />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
