@@ -67,7 +67,7 @@
     <!-- InsuranceNoRegister -->
     <string name="insurance_no_register_box1">우리 아이, 갑자기 아프면 어떡하지?...</string>
     <string name="insurance_no_register_box2">마이펫을 등록하고 보험 견적을 확인해 보세요!</string>
-    <string name="insurance_no_register_info_box1">스마트커버인슈어런스에서는 보험 관리에 필요한 \n <font color="#FF008CFF">시간을 30% 이상 단축</font>하고 있어요!</string>
+    <string name="insurance_no_register_info_box1">스마트커버인슈어런스에서는 보험 관리에 \n 필요한 <font color="#FF008CFF">시간을 30% 이상 단축</font>하고 있어요!</string>
     <string name="insurance_no_register_info_box2">견적 조회만, 가입상담만 하지 않습니다! \n보험관리에 필요한 모든 절차를 SC가 책임질게요</string>
     <string name="insurance_no_register_bottom">[ 필수안내사항 ]\n
         ※ 보험대리점 : 스마트커버 인슈어런스(주) \n
