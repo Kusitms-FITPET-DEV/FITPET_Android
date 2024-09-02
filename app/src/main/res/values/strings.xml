@@ -17,6 +17,7 @@
     <string name="gallery">저장공간</string>
     <string name="notification">알림</string>
     <string name="agree">동의하기</string>
+    <string name="resume">계속하기</string>
 
     <!-- Tab -->
     <string name="tab_insurance">마이 펫보험</string>
@@ -68,5 +69,9 @@
     <string name="notification_content">중요 메시지 수신</string>
     <string name="revoke_access_permission">접근권한 철회 방법</string>
     <string name="access_permission_revoke_path">설정 > 개인(신용)정보보호 > 해당 접근권한 > 접근권한 철회</string>
+
+    <!--  SkipDialog  -->
+    <string name="stop_registration_title">등록을 멈추고 싶으신가요?</string>
+    <string name="stop_registration_content">지금 등록하시면 보험 견적까지\n한 번에 받아볼 수 있어요!</string>
     
 </resources>
