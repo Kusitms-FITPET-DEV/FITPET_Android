@@ -4,6 +4,8 @@ import androidx.fragment.app.viewModels
 import com.example.fitpet.PageState
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceChargeDocumentBinding
+import com.example.fitpet.ui.insurance.charge.cause.calendar.CalendarBottomSheet.Companion.BOTTOM_SHEET
+import com.example.fitpet.ui.insurance.charge.document.photo.AddPhotoBottomSheet
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -37,6 +39,6 @@ class InsuranceChargeDocumentFragment :
     }
 
     private fun showAddPhotoBottomSheet() {
-        Timber.d("[보험금 청구] 영수증 추가 클릭")
+        AddPhotoBottomSheet().show(parentFragmentManager, BOTTOM_SHEET)
     }
 }
