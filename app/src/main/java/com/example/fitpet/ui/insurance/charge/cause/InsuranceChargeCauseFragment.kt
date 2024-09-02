@@ -32,18 +32,6 @@ class InsuranceChargeCauseFragment :
                     handleEvent(event as InsuranceChargeCauseEvent)
                 }
             }
-            launch {
-
-                viewModel.uiState.selectedCause.collect { cause ->
-                    with (binding) {
-                        when (cause) {
-                            getString(R.string.insurance_charge_cause_injury) -> tvInsuranceChargeCauseInjury.setTextAppearance(R.style.b4_S)
-                            getString(R.string.insurance_charge_cause_hospital) -> tvInsuranceChargeCauseHospital.setTextAppearance(R.style.b4_S)
-                            getString(R.string.insurance_charge_cause_etc) -> tvInsuranceChargeCauseEtc.setTextAppearance(R.style.b4_S)
-                        }
-                    }
-                }
-            }
         }
     }
 
