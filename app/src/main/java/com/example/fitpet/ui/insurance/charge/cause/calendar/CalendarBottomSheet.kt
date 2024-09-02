@@ -74,6 +74,7 @@ class CalendarBottomSheet(
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
                     viewModel.uiState.monthDateList.collect {
+                        initSetAdapter()
                         calendarAdapter.submitList(it)
                     }
                 }
