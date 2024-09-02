@@ -58,6 +58,10 @@ class InsuranceChargeCauseViewModel @Inject constructor() :
         }
     }
 
+    fun onClickNextBtn() {
+        emitEventFlow(InsuranceChargeCauseEvent.GoToDocumentPage)
+    }
+
     private fun isGoNextValid(cause: String, date: String): Boolean {
         return cause.isNotEmpty() && date.isNotEmpty()
     }

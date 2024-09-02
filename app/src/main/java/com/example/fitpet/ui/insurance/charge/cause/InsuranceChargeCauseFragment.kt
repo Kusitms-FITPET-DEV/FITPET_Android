@@ -1,6 +1,8 @@
 package com.example.fitpet.ui.insurance.charge.cause
 
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavOptions
+import androidx.navigation.fragment.findNavController
 import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceChargeCauseBinding
@@ -48,12 +50,18 @@ class InsuranceChargeCauseFragment :
     private fun handleEvent(event: InsuranceChargeCauseEvent) {
         when (event) {
             InsuranceChargeCauseEvent.ClickCalendar -> showCalendarBottomSheet()
+            InsuranceChargeCauseEvent.GoToDocumentPage -> goToDocumentPage()
         }
     }
 
     private fun showCalendarBottomSheet() {
         Timber.d("[보험금 청구: 1/5] 캘린더 바텀시트")
         CalendarBottomSheet{viewModel.getSelectedDate(it)}.show(parentFragmentManager, BOTTOM_SHEET)
+    }
+
+    private fun goToDocumentPage() {
+        val action = InsuranceChargeCauseFragmentDirections.actionInsuranceChargeCauseToDocument()
+        findNavController().navigate(action, NavOptions.Builder().build())
     }
 
 }

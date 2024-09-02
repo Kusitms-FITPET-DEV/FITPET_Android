@@ -4,4 +4,5 @@ import com.example.fitpet.Event
 
 sealed class InsuranceChargeCauseEvent: Event {
     data object ClickCalendar: InsuranceChargeCauseEvent()
+    data object GoToDocumentPage: InsuranceChargeCauseEvent()
 }

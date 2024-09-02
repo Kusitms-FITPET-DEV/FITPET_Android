@@ -5,6 +5,7 @@ import com.example.fitpet.PageState
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceChargeDocumentBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class InsuranceChargeDocumentFragment: BaseFragment<FragmentInsuranceChargeDocumentBinding, PageState.Default, InsuranceChargeDocumentViewModel>(
@@ -18,6 +19,10 @@ class InsuranceChargeDocumentFragment: BaseFragment<FragmentInsuranceChargeDocum
     }
 
     override fun initState() {
-        TODO("Not yet implemented")
+        launchWhenStarted(viewLifecycleOwner) {
+            launch {
+                // TODO 서류 등록
+            }
+        }
     }
 }

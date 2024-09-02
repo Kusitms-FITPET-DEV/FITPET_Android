@@ -12,6 +12,20 @@
         android:layout="@layout/fragment_insurance_charge_cause"
         tools:layout="@layout/fragment_insurance_charge_cause">
 
+        <action
+            android:id="@+id/action_insurance_charge_cause_to_document"
+            app:destination="@id/fragmentInsuranceChargeDocument"/>
+
     </fragment>
+
+    <fragment
+        android:id="@+id/fragmentInsuranceChargeDocument"
+        android:name="com.example.fitpet.ui.insurance.charge.document.InsuranceChargeDocumentFragment"
+        android:label="fragmentInsuranceChargeDocument"
+        android:layout="@layout/fragment_insurance_charge_document"
+        tools:layout="@layout/fragment_insurance_charge_document">
+
+    </fragment>
+
 
 </navigation>
