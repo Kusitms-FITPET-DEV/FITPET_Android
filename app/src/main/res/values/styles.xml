@@ -142,9 +142,10 @@
     </style>
 
 
-    <style name="ShapeAppearanceOverlayExtended" parent="">
+    <style name="ShapeAppearanceOverlayExtended" parent="Widget.MaterialComponents.ExtendedFloatingActionButton">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">90dp</item>
         <item name="elevation">0dp</item>
     </style>
+
 </resources>

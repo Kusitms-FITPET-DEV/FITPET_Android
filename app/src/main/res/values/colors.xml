@@ -34,4 +34,7 @@
     <color name="bg_white">#FFFFFFFF</color>
     <color name="bg_dark">#FF00504D</color>
 
+    <!-- kakao -->
+    <color name="ic_kakao">#FFFAE100</color>
+
 </resources>

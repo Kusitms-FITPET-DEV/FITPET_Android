@@ -13,12 +13,12 @@
     <string name="underline_skip"><u>건너뛰기</u></string>
     <string name="dog">강아지</string>
     <string name="cat">고양이</string>
-
     <string name="camera">카메라</string>
     <string name="gallery">저장공간</string>
     <string name="notification">알림</string>
     <string name="agree">동의하기</string>
     <string name="go_to_mypet">펫보험 견적 알아보기</string>
+    <string name="kakao_floating">바로 상담하기</string>
 
 
     <!-- Tab -->
