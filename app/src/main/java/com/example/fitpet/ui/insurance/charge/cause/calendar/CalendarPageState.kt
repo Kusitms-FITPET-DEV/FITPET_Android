@@ -9,5 +9,6 @@ data class CalendarPageState(
     val currentMonth: StateFlow<Int>,
     val currentCalendarPage: StateFlow<Int>,
     val monthDateList: StateFlow<List<CalendarDate>>,
-    val selectedDate: StateFlow<Int>
+    val selectedDate: StateFlow<Int>,
+    val selectedDatePositionInAdapter: StateFlow<Int>
 ): PageState

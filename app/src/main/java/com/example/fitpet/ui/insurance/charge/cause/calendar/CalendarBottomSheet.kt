@@ -50,13 +50,15 @@ class CalendarBottomSheet(
         super.onViewCreated(view, savedInstanceState)
         binding.viewModel = viewModel
 
+        viewModel.initSetCalendarValue()
+
         initSetAdapter()
         initSetDateList()
         clickSelectBtn()
     }
 
     private fun initSetAdapter() {
-        _calendarAdapter = CalendarAdapter().apply {
+        _calendarAdapter = CalendarAdapter(viewModel.uiState.selectedDatePositionInAdapter.value).apply {
             setOnClickListener(object : CalendarAdapter.OnItemClickListener {
                 override fun onItemClick(item: CalendarDate, position: Int) {
                     Timber.d("[보험금 청구] 캘린더 클릭 날짜 -> ${item.date}")
@@ -68,7 +70,6 @@ class CalendarBottomSheet(
     }
 
     private fun initSetDateList() {
-        viewModel.initSetCalendarValue()
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {

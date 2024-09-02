@@ -1,6 +1,7 @@
 package com.example.fitpet.ui.insurance.charge.cause.calendar
 
 import androidx.lifecycle.viewModelScope
+import androidx.recyclerview.widget.RecyclerView
 import com.example.fitpet.base.BaseViewModel
 import com.example.fitpet.model.CalendarDate
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -21,6 +22,7 @@ class CalendarViewModel @Inject constructor() : BaseViewModel<CalendarPageState>
     private val _currentCalendarPage: MutableStateFlow<Int> = MutableStateFlow(0)
     private val _monthDateList: MutableStateFlow<List<CalendarDate>> = MutableStateFlow(emptyList())
     private val _selectedDate: MutableStateFlow<Int> = MutableStateFlow(0)
+    private val _selectedDatePositionInAdapter: MutableStateFlow<Int> = MutableStateFlow(0)
 
     private val currentDateTime = LocalDateTime.now()
 
@@ -29,7 +31,8 @@ class CalendarViewModel @Inject constructor() : BaseViewModel<CalendarPageState>
         currentMonth = _currentMonth.asStateFlow(),
         currentCalendarPage = _currentCalendarPage.asStateFlow(),
         monthDateList = _monthDateList.asStateFlow(),
-        selectedDate = _selectedDate.asStateFlow()
+        selectedDate = _selectedDate.asStateFlow(),
+        selectedDatePositionInAdapter = _selectedDatePositionInAdapter.asStateFlow()
     )
 
     fun initSetCalendarValue() {
@@ -37,6 +40,7 @@ class CalendarViewModel @Inject constructor() : BaseViewModel<CalendarPageState>
             _currentYear.update { currentDateTime.year }
             _currentMonth.update { currentDateTime.monthValue }
             _monthDateList.update { setMonthDateList(currentDateTime.monthValue) }
+            _selectedDatePositionInAdapter.update { RecyclerView.NO_POSITION }
         }
     }
 
