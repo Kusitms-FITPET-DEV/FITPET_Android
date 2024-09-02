@@ -13,7 +13,7 @@
     <string name="underline_skip"><u>건너뛰기</u></string>
     <string name="dog">강아지</string>
     <string name="cat">고양이</string>
-    <string name="go_to_mypet">MY펫 등록</string>
+    <string name="go_to_mypet">펫보험 견적 알아보기</string>
 
     <!-- Tab -->
     <string name="tab_insurance">마이 펫보험</string>
@@ -61,6 +61,20 @@
     <!-- InsuranceNoRegister -->
     <string name="insurance_no_register_box1">우리 아이, 갑자기 아프면 어떡하지?...</string>
     <string name="insurance_no_register_box2">마이펫을 등록하고 간단히 보험 견적을 확인하세요.</string>
-
+    <string name="insurance_no_register_info_box1">스마트커버인슈어런스에서는 보험 관리에 필요한 <font color="#FF008CFF">시간을 30% 이상 단축</font>하고 있어요!</string>
+    <string name="insurance_no_register_info_box2">견적 조회만, 가입상담만 하지 않습니다! \n보험관리에 필요한 모든 절차를 SC가 책임질게요</string>
+    <string name="insurance_no_register_bottom">[ 필수안내사항 ]&#10;
+        ※ 보험대리점 : 스마트커버 인슈어런스(주) &#10;
+        &#32;&#32;협회등록번호 : 제2023120019호&#10;
+        ※ 본 광고는 광고심의기준을 준수하였으며,&#10;
+        &#32;&#32;유효기간은 심의일로부터 1년입니다.&#10;
+        ※ 보험계약자가 기존 보험계약을 해지하고 새로운 보험계약을&#10;
+        &#32;&#32;체결하는 과정에서&#10;
+        &#32;&#32;① 질병이력, 연령증가 등으로 가입이 거절되거나 보험료가&#10;
+        &#32;&#32;&#32;&#32;인상될 수 있습니다.&#10;
+        &#32;&#32;② 가입 상품에 따라 새로운 면책기간 적용 및 보장 제한 등&#10;
+        &#32;&#32;&#32;&#32;기타 불이익이 발생할 수 있습니다.&#10;
+        준법심의필 제2024-07-0011호 (2024.07.26 ~ 2025.07.26)
+    </string>
 
 </resources>
