@@ -11,16 +11,188 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/bg_white">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <include
+            android:id="@+id/tb_insurance_charge"
+            layout="@layout/top_bar_insurance_charge" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/tb_insurance_charge"
+            app:layout_constraintBottom_toTopOf="@id/layout_insurance_charge_document_bottom">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_insurance_charge_document_index"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/second_page"
+                        android:textAppearance="@style/b5"
+                        android:textColor="@color/point_blue"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginStart="24dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_insurance_charge_document_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/insurance_charge_document_title"
+                        android:textAppearance="@style/b1_S"
+                        android:layout_marginTop="16dp"
+                        app:layout_constraintTop_toBottomOf="@id/tv_insurance_charge_document_index"
+                        app:layout_constraintStart_toStartOf="@id/tv_insurance_charge_document_index" />
+
+                    <TextView
+                        android:id="@+id/tv_insurance_charge_document_receipt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/insurance_charge_document_receipt_title"
+                        android:textAppearance="@style/b4_M"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="36dp"
+                        app:layout_constraintTop_toBottomOf="@id/tv_insurance_charge_document_title"
+                        app:layout_constraintStart_toStartOf="@id/tv_insurance_charge_document_index"/>
+
+                    <ImageButton
+                        android:id="@+id/btn_insurance_charge_document_receipt"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_plus"
+                        android:background="@drawable/bg_rectangle_line_neural_300_radius_8"
+                        android:paddingVertical="16dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginHorizontal="30dp"
+                        app:layout_constraintTop_toBottomOf="@id/tv_insurance_charge_document_receipt"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/tv_insurance_charge_document_detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/insurance_charge_document_detail_title"
+                        android:textAppearance="@style/b4_M"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="48dp"
+                        app:layout_constraintTop_toBottomOf="@id/btn_insurance_charge_document_receipt"
+                        app:layout_constraintStart_toStartOf="@id/tv_insurance_charge_document_index"/>
+
+                    <ImageButton
+                        android:id="@+id/btn_insurance_charge_document_detail"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_plus"
+                        android:background="@drawable/bg_rectangle_line_neural_300_radius_8"
+                        android:paddingVertical="16dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginHorizontal="30dp"
+                        app:layout_constraintTop_toBottomOf="@id/tv_insurance_charge_document_detail"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/tv_insurance_charge_document_etc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/insurance_charge_document_etc_title"
+                        android:textAppearance="@style/b4_M"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="48dp"
+                        app:layout_constraintTop_toBottomOf="@id/btn_insurance_charge_document_detail"
+                        app:layout_constraintStart_toStartOf="@id/tv_insurance_charge_document_index"/>
+
+                    <ImageButton
+                        android:id="@+id/btn_insurance_charge_document_etc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_plus"
+                        android:background="@drawable/bg_rectangle_line_neural_300_radius_8"
+                        android:paddingVertical="16dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginHorizontal="30dp"
+                        app:layout_constraintTop_toBottomOf="@id/tv_insurance_charge_document_etc"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/tv_insurance_charge_document_notice_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/insurance_charge_document_notice_title"
+                        android:textColor="@color/neutral_500"
+                        android:textAppearance="@style/b5_M"
+                        android:layout_marginTop="44dp"
+                        android:layout_marginStart="24dp"
+                        app:layout_constraintTop_toBottomOf="@id/btn_insurance_charge_document_etc"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/tv_insurance_charge_document_notice_info"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/insurance_charge_document_info"
+                        android:textColor="@color/neutral_500"
+                        android:textAppearance="@style/b5_M"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginHorizontal="24dp"
+                        app:layout_constraintTop_toBottomOf="@id/tv_insurance_charge_document_notice_title"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_insurance_charge_document_bottom"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="서류 등록"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <View
+                android:id="@+id/divider_insurance_charge_document"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/neutral_100"
+                android:elevation="1dp"
+                android:layout_marginBottom="36dp"
+                app:layout_constraintBottom_toTopOf="@id/btn_insurance_charge_document_next"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_insurance_charge_document_next"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingVertical="12dp"
+                android:text="@string/next"
+                android:textColor="@color/text_disable"
+                android:textAppearance="@style/b3_S"
+                android:background="@drawable/bg_rectangle_filled_neural200_radius_8"
+                android:layout_marginHorizontal="28dp"
+                android:layout_marginBottom="36dp"
+                android:outlineProvider="none"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

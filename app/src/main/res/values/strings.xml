@@ -85,5 +85,11 @@
     <string name="insurance_charge_date_thurs">목</string>
     <string name="insurance_charge_date_fri">금</string>
     <string name="insurance_charge_date_sat">토</string>
+    <string name="insurance_charge_document_title">서류를 등록해주세요</string>
+    <string name="insurance_charge_document_receipt_title">1. 병원 진료비 영수증 [필수]</string>
+    <string name="insurance_charge_document_detail_title">2. 진료비 세부내역서 [필수]</string>
+    <string name="insurance_charge_document_etc_title">3. 기타 서류(진단서, 수술기록지, 처방전 등)[선택]</string>
+    <string name="insurance_charge_document_notice_title">[ 필수안내사항 ]</string>
+    <string name="insurance_charge_document_info">- 서류 파일은 jpg, jpeg, png, pdf 확장자만 업로드 가능합니다.\n- 파일당 15MB를 초과할 수 없으며, 최대 30개까지 업로드 가능합니다.\n- 진료비 납입확인서와 카드매출전표는 진료내역이 자세히 확인 되지 않아 보험금 청구 서류로 등록할 수 없습니다</string>
 
 </resources>
