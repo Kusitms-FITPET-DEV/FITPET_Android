@@ -4,4 +4,5 @@ import com.example.fitpet.Event
 
 sealed class ContactInfoInputEvent: Event {
     data object GoToMyPetInsurance: ContactInfoInputEvent()
+    data object ShowSkipDialog: ContactInfoInputEvent()
 }
