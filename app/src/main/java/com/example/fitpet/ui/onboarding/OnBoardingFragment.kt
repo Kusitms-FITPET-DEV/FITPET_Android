@@ -1,11 +1,16 @@
 package com.example.fitpet.ui.onboarding
 
+import android.Manifest
+import android.content.pm.PackageManager
 import androidx.fragment.app.viewModels
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
@@ -13,8 +18,10 @@ import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentOnBoardingBinding
 import com.example.fitpet.ui.onboarding.adapter.OnBoardingAdapter
+import com.example.fitpet.ui.onboarding.bottomsheet.PermissionSettingsBottomSheet
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @AndroidEntryPoint
 class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding, OnBoardingPageState, OnBoardingViewModel>(
@@ -23,6 +30,14 @@ class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding, OnBoardingPag
     override val viewModel: OnBoardingViewModel by viewModels()
 
     private val onBoardingAdapter = OnBoardingAdapter()
+    private val requestPermissionsLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
+            val deniedPermissions = permissions.filterValues { !it }.keys
+
+            if (deniedPermissions.isEmpty()) {
+                goToKaKaoLogin()
+            }
+        }
 
     override fun initView() {
         binding.apply {
@@ -69,12 +84,50 @@ class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding, OnBoardingPag
 
     private fun handleEvent(event: OnBoardingEvent) {
         when (event) {
-            OnBoardingEvent.GoToKakaoLogin -> goToKaKaoLogin()
+            OnBoardingEvent.GoToPermissionSettings -> checkPermissions()
+        }
+    }
+
+    private fun checkPermissions() {
+        if (arePermissionsGranted()) {
+            goToKaKaoLogin()
+        } else {
+            showBottomSheet()
+        }
+    }
+
+    private fun arePermissionsGranted(): Boolean {
+        val requiredPermissions = arrayOf(
+            Manifest.permission.CAMERA,
+            Manifest.permission.POST_NOTIFICATIONS,
+            Manifest.permission.READ_MEDIA_IMAGES
+        )
+
+        return requiredPermissions.all { permission ->
+            ContextCompat.checkSelfPermission(requireContext(), permission) == PackageManager.PERMISSION_GRANTED
         }
     }
 
     private fun goToKaKaoLogin() {
         val action = OnBoardingFragmentDirections.actionOnboardingToKakaoLogin()
         findNavController().navigate(action)
+    }
+
+    private fun showBottomSheet() {
+        val onClickBtnAgreement = {
+            requestPermissions()
+        }
+
+        val bottomSheet = PermissionSettingsBottomSheet(onClickBtnAgreement)
+        bottomSheet.show(parentFragmentManager, "")
+    }
+
+    private fun requestPermissions() {
+        val permissions = arrayOf(
+            Manifest.permission.CAMERA,
+            Manifest.permission.POST_NOTIFICATIONS,
+            Manifest.permission.READ_MEDIA_IMAGES
+        )
+        requestPermissionsLauncher.launch(permissions)
     }
 }
