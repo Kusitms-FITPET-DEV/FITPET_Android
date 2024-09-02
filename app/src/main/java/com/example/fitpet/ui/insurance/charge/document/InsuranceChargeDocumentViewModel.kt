@@ -10,4 +10,8 @@ class InsuranceChargeDocumentViewModel @Inject constructor(): BaseViewModel<Page
 
     override val uiState: PageState.Default
         get() = TODO("Not yet implemented")
+
+    fun onClickAddReceipt() {
+        emitEventFlow(InsuranceChargeDocumentEvent.ClickAddReceiptBtn)
+    }
 }

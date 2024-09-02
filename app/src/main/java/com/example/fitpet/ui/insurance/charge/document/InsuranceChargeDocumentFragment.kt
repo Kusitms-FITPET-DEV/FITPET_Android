@@ -6,11 +6,13 @@ import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceChargeDocumentBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @AndroidEntryPoint
-class InsuranceChargeDocumentFragment: BaseFragment<FragmentInsuranceChargeDocumentBinding, PageState.Default, InsuranceChargeDocumentViewModel>(
-    FragmentInsuranceChargeDocumentBinding::inflate
-) {
+class InsuranceChargeDocumentFragment :
+    BaseFragment<FragmentInsuranceChargeDocumentBinding, PageState.Default, InsuranceChargeDocumentViewModel>(
+        FragmentInsuranceChargeDocumentBinding::inflate
+    ) {
 
     override val viewModel: InsuranceChargeDocumentViewModel by viewModels()
 
@@ -21,8 +23,20 @@ class InsuranceChargeDocumentFragment: BaseFragment<FragmentInsuranceChargeDocum
     override fun initState() {
         launchWhenStarted(viewLifecycleOwner) {
             launch {
-                // TODO 서류 등록
+                viewModel.eventFlow.collect { event ->
+                    handleEvent(event as InsuranceChargeDocumentEvent)
+                }
             }
         }
+    }
+
+    private fun handleEvent(event: InsuranceChargeDocumentEvent) {
+        when (event) {
+            InsuranceChargeDocumentEvent.ClickAddReceiptBtn -> showAddPhotoBottomSheet()
+        }
+    }
+
+    private fun showAddPhotoBottomSheet() {
+        Timber.d("[보험금 청구] 영수증 추가 클릭")
     }
 }
