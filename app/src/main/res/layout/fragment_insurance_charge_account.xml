@@ -89,48 +89,23 @@
             app:layout_constraintTop_toBottomOf="@id/edt_insurance_charge_account_owner"
             app:layout_constraintStart_toStartOf="@id/tv_insurance_charge_account_owner"/>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_insurance_charge_account_bank"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <Spinner
+            android:id="@+id/spinner_insurance_charge_account_bank"
+            android:layout_width="71dp"
+            android:layout_height="44dp"
+            android:spinnerMode="dropdown"
             android:layout_marginStart="28dp"
             android:layout_marginTop="20dp"
-            android:onClick="@{() -> viewModel.onClickBankInput()}"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_insurance_charge_account_number">
+            app:layout_constraintTop_toBottomOf="@id/tv_insurance_charge_account_number" />
 
-            <TextView
-                android:id="@+id/tv_insurance_charge_account_bank"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/insurance_charge_account"
-                android:textAppearance="@style/b1"
-                android:textColor="@color/black"
-                android:layout_marginVertical="8dp"
-                android:layout_marginStart="4dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
-
-            <ImageButton
-                android:id="@+id/iv_insurance_charge_account_bank"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_drop_down"
-                android:background="@android:color/transparent"
-                android:layout_marginStart="12dp"
-                app:layout_constraintStart_toEndOf="@id/tv_insurance_charge_account_bank"
-                app:layout_constraintTop_toTopOf="@id/tv_insurance_charge_account_bank"
-                app:layout_constraintBottom_toBottomOf="@id/tv_insurance_charge_account_bank"/>
-
-            <com.google.android.material.divider.MaterialDivider
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                app:dividerColor="@color/neutral_300"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            app:dividerColor="@color/neutral_300"
+            app:layout_constraintStart_toStartOf="@id/spinner_insurance_charge_account_bank"
+            app:layout_constraintEnd_toEndOf="@id/spinner_insurance_charge_account_bank"
+            app:layout_constraintBottom_toBottomOf="@id/spinner_insurance_charge_account_bank"/>
 
         <EditText
             android:id="@+id/edt_insurance_charge_account_number"
@@ -147,9 +122,9 @@
             style="@style/b1"
             android:text="@={viewModel.uiState.accountNumber}"
             android:background="@android:color/transparent"
-            app:layout_constraintTop_toTopOf="@id/layout_insurance_charge_account_bank"
-            app:layout_constraintBottom_toBottomOf="@id/layout_insurance_charge_account_bank"
-            app:layout_constraintStart_toEndOf="@id/layout_insurance_charge_account_bank"
+            app:layout_constraintTop_toTopOf="@id/spinner_insurance_charge_account_bank"
+            app:layout_constraintBottom_toBottomOf="@id/spinner_insurance_charge_account_bank"
+            app:layout_constraintStart_toEndOf="@id/spinner_insurance_charge_account_bank"
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <com.google.android.material.divider.MaterialDivider

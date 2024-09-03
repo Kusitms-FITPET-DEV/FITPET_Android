@@ -12,8 +12,4 @@ class InsuranceChargeAccountViewModel @Inject constructor(): BaseViewModel<Insur
         accountOwner = MutableStateFlow(""),
         accountNumber = MutableStateFlow("")
     )
-
-    fun onClickBankInput() {
-        emitEventFlow(InsuranceChargeAccountEvent.ClickBankInput)
-    }
 }
