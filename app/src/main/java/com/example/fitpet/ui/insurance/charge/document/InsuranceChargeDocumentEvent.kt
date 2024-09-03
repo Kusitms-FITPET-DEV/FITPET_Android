@@ -6,4 +6,5 @@ sealed class InsuranceChargeDocumentEvent: Event {
     data object ClickAddReceiptBtn: InsuranceChargeDocumentEvent()
     data object ClickAddDetailBtn: InsuranceChargeDocumentEvent()
     data object ClickAddEtcBtn: InsuranceChargeDocumentEvent()
+    data object GoToAccountPage: InsuranceChargeDocumentEvent()
 }

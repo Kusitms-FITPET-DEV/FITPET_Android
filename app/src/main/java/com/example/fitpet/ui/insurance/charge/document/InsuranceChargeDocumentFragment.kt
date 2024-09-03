@@ -1,6 +1,8 @@
 package com.example.fitpet.ui.insurance.charge.document
 
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavOptions
+import androidx.navigation.fragment.findNavController
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceChargeDocumentBinding
 import com.example.fitpet.ui.insurance.charge.cause.calendar.CalendarBottomSheet.Companion.BOTTOM_SHEET
@@ -38,10 +40,20 @@ class InsuranceChargeDocumentFragment :
             InsuranceChargeDocumentEvent.ClickAddReceiptBtn -> showAddPhotoBottomSheet(RECEIPT_PHOTO)
             InsuranceChargeDocumentEvent.ClickAddDetailBtn -> showAddPhotoBottomSheet(DETAIL_PHOTO)
             InsuranceChargeDocumentEvent.ClickAddEtcBtn -> showAddPhotoBottomSheet(ETC_PHOTO)
+            InsuranceChargeDocumentEvent.GoToAccountPage -> goToAccountPage()
         }
     }
 
     private fun showAddPhotoBottomSheet(photoType: String) {
-        AddPhotoBottomSheet{ photo, uri -> viewModel.getPhoto(photo, uri, photoType)}.show(parentFragmentManager, BOTTOM_SHEET)
+        AddPhotoBottomSheet { photo, uri -> viewModel.getPhoto(photo, uri, photoType) }.show(
+            parentFragmentManager,
+            BOTTOM_SHEET
+        )
+    }
+
+    private fun goToAccountPage() {
+        val action =
+            InsuranceChargeDocumentFragmentDirections.actionInsuranceChargeDocumentToAccount()
+        findNavController().navigate(action, NavOptions.Builder().build())
     }
 }

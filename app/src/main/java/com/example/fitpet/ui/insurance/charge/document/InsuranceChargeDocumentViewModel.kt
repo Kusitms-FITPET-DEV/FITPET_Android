@@ -52,6 +52,10 @@ class InsuranceChargeDocumentViewModel @Inject constructor(): BaseViewModel<Insu
         emitEventFlow(InsuranceChargeDocumentEvent.ClickAddEtcBtn)
     }
 
+    fun onClickNextBtn() {
+        emitEventFlow(InsuranceChargeDocumentEvent.GoToAccountPage)
+    }
+
     fun getPhoto(photo: String, photoUri: Uri, photoType: String) {
         Timber.d("[사진] -> type: $photoType && Photo: $photo && URI: $photoUri")
 

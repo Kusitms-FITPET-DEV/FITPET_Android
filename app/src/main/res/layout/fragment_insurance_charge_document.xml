@@ -295,6 +295,7 @@
                 android:layout_marginBottom="36dp"
                 android:outlineProvider="none"
                 android:clickable="@{viewModel.uiState.isBtnEnabled}"
+                android:onClick="@{() -> viewModel.onClickNextBtn()}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent" />
