@@ -11,4 +11,5 @@ data class InsuranceChargeDocumentPageState(
     val detailPhotoUri: StateFlow<Uri>,
     val etcPhoto: StateFlow<String>,
     val etcPhotoUri: StateFlow<Uri>,
+    val isBtnEnabled: StateFlow<Boolean>
 ) : PageState

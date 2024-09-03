@@ -5,7 +5,10 @@ import androidx.lifecycle.viewModelScope
 import com.example.fitpet.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -27,7 +30,14 @@ class InsuranceChargeDocumentViewModel @Inject constructor(): BaseViewModel<Insu
         detailPhoto = _detailPhoto.asStateFlow(),
         detailPhotoUri = _detailPhotoUri.asStateFlow(),
         etcPhoto = _etcPhoto.asStateFlow(),
-        etcPhotoUri = _etcPhotoUri.asStateFlow()
+        etcPhotoUri = _etcPhotoUri.asStateFlow(),
+        isBtnEnabled = combine(_receiptPhoto, _detailPhoto) { receipt, detail ->
+            isGoNextValid(receipt, detail)
+        }.stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.Lazily,
+            initialValue = false
+        )
     )
 
     fun onClickAddReceipt() {
@@ -52,6 +62,10 @@ class InsuranceChargeDocumentViewModel @Inject constructor(): BaseViewModel<Insu
                 ETC_PHOTO -> _etcPhoto.update { photo }
             }
         }
+    }
+
+    private fun isGoNextValid(receiptOpt: String, detailOpt: String): Boolean {
+        return receiptOpt.isNotEmpty() && detailOpt.isNotEmpty()
     }
 
     companion object {
