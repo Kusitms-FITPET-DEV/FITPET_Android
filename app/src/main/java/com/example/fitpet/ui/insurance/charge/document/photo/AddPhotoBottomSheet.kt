@@ -1,16 +1,15 @@
 package com.example.fitpet.ui.insurance.charge.document.photo
 
 import android.app.Activity.RESULT_OK
-import android.content.ContentValues
 import android.content.Intent
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.provider.MediaStore
+import android.os.Environment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.FileProvider
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -22,6 +21,7 @@ import kotlinx.coroutines.launch
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Date
+import java.util.Locale
 
 class AddPhotoBottomSheet(
     private val onSelectedPhoto: (String, Uri) -> Unit
@@ -36,8 +36,8 @@ class AddPhotoBottomSheet(
     private var photoUri: Uri? = null
     private val getTakePhoto = registerForActivityResult(ActivityResultContracts.TakePicture()) {
         if(it) {
-            photoUri?.let {
-                photoUri -> onSelectedPhoto(photoUri.toString(), photoUri)
+            photoUri?.let { photoUri ->
+                onSelectedPhoto(photoUri.toString(), photoUri)
                 dismiss()
             }
     } }
@@ -45,9 +45,8 @@ class AddPhotoBottomSheet(
     private val getGalleryImg = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == RESULT_OK) {
             val imgUri = result.data?.data
-            imgUri?.let {
-                onSelectedPhoto(imgUri.toString(), imgUri)
-                val imgFile = File(getRealPathFromURI(imgUri))
+            imgUri?.let { selectedUri ->
+                onSelectedPhoto(selectedUri.toString(), selectedUri)
                 dismiss()
             }
         }
@@ -90,45 +89,31 @@ class AddPhotoBottomSheet(
     }
 
     private fun showCamera() {
-        photoUri = createImageFile()
+        val photoFile = createImageFile()
+        photoUri = getUriForFile(photoFile)
         getTakePhoto.launch(photoUri)
     }
 
     private fun showGallery() {
         val intent = Intent(Intent.ACTION_PICK)
-        intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, getString(R.string.gallery_file_format))
+        intent.type = getString(R.string.gallery_file_format)
         getGalleryImg.launch(intent)
     }
 
-    private fun createImageFile(): Uri? {
-        val now = SimpleDateFormat(getString(R.string.camera_photo_date_format)).format(Date())
-        val fileName = String.format(getString(R.string.img_file_name), now)
-        val content = ContentValues().apply {
-            put(MediaStore.Images.Media.DISPLAY_NAME, fileName)
-            put(MediaStore.Images.Media.MIME_TYPE, getString(R.string.img_file_format))
-        }
-        return requireContext().contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, content)
+    private fun getUriForFile(file: File): Uri {
+        val authority = getString(R.string.file_provider_format, requireContext().packageName)
+        return FileProvider.getUriForFile(requireContext(), authority, file)
     }
 
-    private fun getRealPathFromURI(uri: Uri): String {
-        val buildName = Build.MANUFACTURER
-        if (buildName.equals(getString(R.string.gallery_phone_build))) {
-            return uri.path ?: ""
-        }
-        var columnIndex = 0
-        var result = ""
-        val proj = arrayOf(MediaStore.Images.Media.DATA)
-        val cursor = requireContext().contentResolver.query(uri, proj, null, null, null)
+    private fun createImageFile(): File {
+        val now = SimpleDateFormat(getString(R.string.camera_photo_date_format), Locale.getDefault()).format(Date())
+        val storageDir = requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
 
-        if (cursor != null) {
-            if (cursor.moveToFirst()) {
-                columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
-            }
-            result = cursor.getString(columnIndex)
-            cursor.close()
-            return result
-        }
-
-        return result
+        return File.createTempFile(
+            getString(R.string.file_name_format, now),
+            getString(R.string.jpg_format),
+            storageDir
+        )
     }
+
 }

@@ -102,6 +102,11 @@
     <string name="camera_photo_date_format">yyMMdd_HHmmss</string>
     <string name="img_file_format">image/jpg</string>
     <string name="img_file_name">img_%s.jpg</string>
+    <string name="jpg_format">.jpg</string>
+    <string name="file_provider_suffix">.fileprovider</string>
+    <string name="jpeg_format">JPEG_</string>
+    <string name="file_provider_format">%1$s.fileprovider</string>
+    <string name="file_name_format">JPEG_%1$s_</string>
     <string name="gallery_file_format">image/*</string>
     <string name="gallery_phone_build">Xiaomi</string>
 
