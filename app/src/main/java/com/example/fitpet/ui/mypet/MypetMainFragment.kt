@@ -7,9 +7,11 @@ import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentMypetMainBinding
 import com.example.fitpet.ui.mypet.adapter.MypetMainVPA
 import com.example.fitpet.ui.mypet.insurance.nopet.InsuranceNoPetEvent
+import com.example.fitpet.util.ResourceProvider
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MypetMainFragment : BaseFragment<FragmentMypetMainBinding, MypetMainPageState, MypetMainViewModel>(
@@ -20,6 +22,9 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainBinding, MypetMainPageSt
     private val navigator by lazy { findNavController() }
 
     override val viewModel: MypetMainViewModel by viewModels()
+
+    @Inject
+    lateinit var resourceProvider: ResourceProvider
 
     override fun initView() {
         initListVPAdapter()
@@ -50,7 +55,7 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainBinding, MypetMainPageSt
         with(binding) {
             vpMypetMain.adapter = mypetVPA
             TabLayoutMediator(tabMypetMain, vpMypetMain) { tab, position ->
-                tab.text = context?.getString(tabTitles[position])
+                tab.text = resourceProvider.getString(tabTitles[position])
             }.attach()
         }
     }
