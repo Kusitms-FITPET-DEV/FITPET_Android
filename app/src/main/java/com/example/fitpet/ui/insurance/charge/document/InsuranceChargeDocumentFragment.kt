@@ -1,18 +1,16 @@
 package com.example.fitpet.ui.insurance.charge.document
 
 import androidx.fragment.app.viewModels
-import com.example.fitpet.PageState
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceChargeDocumentBinding
 import com.example.fitpet.ui.insurance.charge.cause.calendar.CalendarBottomSheet.Companion.BOTTOM_SHEET
 import com.example.fitpet.ui.insurance.charge.document.photo.AddPhotoBottomSheet
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 @AndroidEntryPoint
 class InsuranceChargeDocumentFragment :
-    BaseFragment<FragmentInsuranceChargeDocumentBinding, PageState.Default, InsuranceChargeDocumentViewModel>(
+    BaseFragment<FragmentInsuranceChargeDocumentBinding, InsuranceChargeDocumentPageState, InsuranceChargeDocumentViewModel>(
         FragmentInsuranceChargeDocumentBinding::inflate
     ) {
 
@@ -39,6 +37,6 @@ class InsuranceChargeDocumentFragment :
     }
 
     private fun showAddPhotoBottomSheet() {
-        AddPhotoBottomSheet().show(parentFragmentManager, BOTTOM_SHEET)
+        AddPhotoBottomSheet{ photo, uri -> viewModel.getSelectedPhoto(photo, uri)}.show(parentFragmentManager, BOTTOM_SHEET)
     }
 }
