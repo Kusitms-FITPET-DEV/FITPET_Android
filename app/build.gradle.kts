@@ -95,4 +95,7 @@ dependencies {
 
     // kakao
     implementation(libs.kakao.auth)
+
+    // glide
+    implementation(libs.glide)
 }
