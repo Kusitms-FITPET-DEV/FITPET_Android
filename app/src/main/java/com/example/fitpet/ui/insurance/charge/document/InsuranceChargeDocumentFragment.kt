@@ -1,5 +1,6 @@
 package com.example.fitpet.ui.insurance.charge.document
 
+import androidx.core.net.toUri
 import androidx.fragment.app.viewModels
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceChargeDocumentBinding
@@ -25,6 +26,11 @@ class InsuranceChargeDocumentFragment :
             launch {
                 viewModel.eventFlow.collect { event ->
                     handleEvent(event as InsuranceChargeDocumentEvent)
+                }
+            }
+            launch {
+                viewModel.uiState.selectedPhoto.collect { photo ->
+                    binding.ivInsuranceChargeDocumentReceipt.setImageURI(photo.toUri())
                 }
             }
         }
