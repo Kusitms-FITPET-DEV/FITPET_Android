@@ -125,18 +125,67 @@
                         app:layout_constraintTop_toBottomOf="@id/layout_insurance_charge_document_receipt"
                         app:layout_constraintStart_toStartOf="@id/tv_insurance_charge_document_index"/>
 
-                    <ImageButton
-                        android:id="@+id/btn_insurance_charge_document_detail"
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/btn_insurance_charge_document_detail"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:src="@drawable/ic_plus"-->
+<!--                        android:background="@drawable/bg_rectangle_line_neural_300_radius_8"-->
+<!--                        android:paddingVertical="16dp"-->
+<!--                        android:layout_marginTop="24dp"-->
+<!--                        android:layout_marginHorizontal="30dp"-->
+<!--                        android:onClick="@{() -> viewModel.onClickAddDetail()}"-->
+<!--                        app:layout_constraintTop_toBottomOf="@id/tv_insurance_charge_document_detail"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"/>-->
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout_insurance_charge_document_detail"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_plus"
-                        android:background="@drawable/bg_rectangle_line_neural_300_radius_8"
-                        android:paddingVertical="16dp"
-                        android:layout_marginTop="24dp"
-                        android:layout_marginHorizontal="30dp"
-                        app:layout_constraintTop_toBottomOf="@id/tv_insurance_charge_document_detail"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"/>
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_insurance_charge_document_detail">
+
+                        <ImageButton
+                            android:id="@+id/btn_insurance_charge_document_detail"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_plus"
+                            android:background="@drawable/bg_rectangle_line_neural_300_radius_8"
+                            android:paddingVertical="16dp"
+                            android:layout_marginTop="24dp"
+                            android:layout_marginHorizontal="30dp"
+                            android:visibility="@{viewModel.uiState.detailPhoto.equals(@string/blank) ? View.VISIBLE : View.GONE}"
+                            android:onClick="@{() -> viewModel.onClickAddDetail() }"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"/>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cv_insurance_charge_document_detail"
+                            android:layout_width="156dp"
+                            android:layout_height="156dp"
+                            android:layout_marginTop="24dp"
+                            android:layout_marginStart="24dp"
+                            android:visibility="@{viewModel.uiState.detailPhoto.equals(@string/blank) ? View.GONE : View.VISIBLE}"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="0dp"
+                            android:background="@android:color/transparent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/iv_insurance_charge_document_detail"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:outlineProvider="none"
+                                android:background="@android:color/transparent"
+                                app:setImageUri="@{viewModel.uiState.detailPhoto}"/>
+
+                        </androidx.cardview.widget.CardView>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <TextView
                         android:id="@+id/tv_insurance_charge_document_etc"
@@ -146,7 +195,7 @@
                         android:textAppearance="@style/b4_M"
                         android:textColor="@color/black"
                         android:layout_marginTop="48dp"
-                        app:layout_constraintTop_toBottomOf="@id/btn_insurance_charge_document_detail"
+                        app:layout_constraintTop_toBottomOf="@id/layout_insurance_charge_document_detail"
                         app:layout_constraintStart_toStartOf="@id/tv_insurance_charge_document_index"/>
 
                     <ImageButton

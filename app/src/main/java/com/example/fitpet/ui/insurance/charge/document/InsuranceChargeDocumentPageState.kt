@@ -6,5 +6,7 @@ import kotlinx.coroutines.flow.StateFlow
 
 data class InsuranceChargeDocumentPageState(
     val cameraPhoto: StateFlow<String>,
-    val cameraPhotoUri: StateFlow<Uri>
+    val cameraPhotoUri: StateFlow<Uri>,
+    val detailPhoto: StateFlow<String>,
+    val detailPhotoUri: StateFlow<Uri>,
 ) : PageState

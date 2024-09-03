@@ -33,10 +33,15 @@ class InsuranceChargeDocumentFragment :
     private fun handleEvent(event: InsuranceChargeDocumentEvent) {
         when (event) {
             InsuranceChargeDocumentEvent.ClickAddReceiptBtn -> showAddPhotoBottomSheet()
+            InsuranceChargeDocumentEvent.ClickAddDetailBtn -> showAddDetailPhotoBottomSheet()
         }
     }
 
     private fun showAddPhotoBottomSheet() {
-        AddPhotoBottomSheet{ photo, uri -> viewModel.getSelectedPhoto(photo, uri)}.show(parentFragmentManager, BOTTOM_SHEET)
+        AddPhotoBottomSheet{ photo, uri -> viewModel.getReceiptPhoto(photo, uri)}.show(parentFragmentManager, BOTTOM_SHEET)
+    }
+
+    private fun showAddDetailPhotoBottomSheet() {
+        AddPhotoBottomSheet{ photo, uri -> viewModel.getDetailPhoto(photo, uri)}.show(parentFragmentManager, BOTTOM_SHEET)
     }
 }
