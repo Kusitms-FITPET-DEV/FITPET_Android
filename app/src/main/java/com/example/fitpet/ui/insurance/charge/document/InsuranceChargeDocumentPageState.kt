@@ -5,8 +5,8 @@ import com.example.fitpet.PageState
 import kotlinx.coroutines.flow.StateFlow
 
 data class InsuranceChargeDocumentPageState(
-    val cameraPhoto: StateFlow<String>,
-    val cameraPhotoUri: StateFlow<Uri>,
+    val receiptPhoto: StateFlow<String>,
+    val receiptPhotoUri: StateFlow<Uri>,
     val detailPhoto: StateFlow<String>,
     val detailPhotoUri: StateFlow<Uri>,
 ) : PageState
