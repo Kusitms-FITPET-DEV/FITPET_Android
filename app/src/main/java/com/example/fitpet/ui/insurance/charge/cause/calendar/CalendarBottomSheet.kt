@@ -75,6 +75,7 @@ class CalendarBottomSheet(
                 launch {
                     viewModel.uiState.monthDateList.collect {
                         initSetAdapter()
+                        viewModel.setSelectedDate(0)
                         calendarAdapter.submitList(it)
                     }
                 }
