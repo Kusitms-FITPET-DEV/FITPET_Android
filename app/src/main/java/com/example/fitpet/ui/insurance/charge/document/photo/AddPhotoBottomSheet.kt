@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.example.fitpet.R
 import com.example.fitpet.databinding.BottomSheetAddPhotoBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.coroutines.launch
@@ -31,7 +32,10 @@ class AddPhotoBottomSheet(
     private var photoUri: Uri? = null
     private val getTakePhoto = registerForActivityResult(ActivityResultContracts.TakePicture()) {
         if(it) {
-            photoUri?.let { photoUri -> onSelectedPhoto(photoUri.toString(), photoUri) }
+            photoUri?.let {
+                photoUri -> onSelectedPhoto(photoUri.toString(), photoUri)
+                dismiss()
+            }
     } }
 
     override fun onCreateView(
@@ -75,10 +79,11 @@ class AddPhotoBottomSheet(
     }
 
     private fun createImageFile(): Uri? {
-        val now = SimpleDateFormat("yyMMdd_HHmmss").format(Date())
+        val now = SimpleDateFormat(getString(R.string.camera_photo_date_format)).format(Date())
+        val fileName = String.format(getString(R.string.img_file_name), now)
         val content = ContentValues().apply {
-            put(MediaStore.Images.Media.DISPLAY_NAME, "img_$now.jpg")
-            put(MediaStore.Images.Media.MIME_TYPE, "image/jpg")
+            put(MediaStore.Images.Media.DISPLAY_NAME, fileName)
+            put(MediaStore.Images.Media.MIME_TYPE, getString(R.string.img_file_format))
         }
         return requireContext().contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, content)
     }
