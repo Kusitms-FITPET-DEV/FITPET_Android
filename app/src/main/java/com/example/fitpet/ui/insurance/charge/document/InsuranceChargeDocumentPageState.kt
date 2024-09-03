@@ -9,4 +9,6 @@ data class InsuranceChargeDocumentPageState(
     val receiptPhotoUri: StateFlow<Uri>,
     val detailPhoto: StateFlow<String>,
     val detailPhotoUri: StateFlow<Uri>,
+    val etcPhoto: StateFlow<String>,
+    val etcPhotoUri: StateFlow<Uri>,
 ) : PageState

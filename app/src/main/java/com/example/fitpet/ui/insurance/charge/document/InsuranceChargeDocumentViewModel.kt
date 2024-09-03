@@ -18,12 +18,16 @@ class InsuranceChargeDocumentViewModel @Inject constructor(): BaseViewModel<Insu
     private val _receiptPhotoUri: MutableStateFlow<Uri> = MutableStateFlow(Uri.EMPTY)
     private val _detailPhoto: MutableStateFlow<String> = MutableStateFlow("")
     private val _detailPhotoUri: MutableStateFlow<Uri> = MutableStateFlow(Uri.EMPTY)
+    private val _etcPhoto: MutableStateFlow<String> = MutableStateFlow("")
+    private val _etcPhotoUri: MutableStateFlow<Uri> = MutableStateFlow(Uri.EMPTY)
 
     override val uiState = InsuranceChargeDocumentPageState(
         receiptPhoto = _receiptPhoto.asStateFlow(),
         receiptPhotoUri = _receiptPhotoUri.asStateFlow(),
         detailPhoto = _detailPhoto.asStateFlow(),
-        detailPhotoUri = _detailPhotoUri.asStateFlow()
+        detailPhotoUri = _detailPhotoUri.asStateFlow(),
+        etcPhoto = _etcPhoto.asStateFlow(),
+        etcPhotoUri = _etcPhotoUri.asStateFlow()
     )
 
     fun onClickAddReceipt() {
@@ -34,17 +38,25 @@ class InsuranceChargeDocumentViewModel @Inject constructor(): BaseViewModel<Insu
         emitEventFlow(InsuranceChargeDocumentEvent.ClickAddDetailBtn)
     }
 
-    fun getReceiptPhoto(photo: String, photoUri: Uri) {
-        Timber.d("[사진] 영수증 -> Photo: $photo && URI: $photoUri")
+    fun onClickAddEtc() {
+        emitEventFlow(InsuranceChargeDocumentEvent.ClickAddEtcBtn)
+    }
+
+    fun getPhoto(photo: String, photoUri: Uri, photoType: String) {
+        Timber.d("[사진] -> type: $photoType && Photo: $photo && URI: $photoUri")
+
         viewModelScope.launch {
-            _receiptPhoto.update { photo }
+            when (photoType) {
+                RECEIPT_PHOTO ->  _receiptPhoto.update { photo }
+                DETAIL_PHOTO -> _detailPhoto.update { photo }
+                ETC_PHOTO -> _etcPhoto.update { photo }
+            }
         }
     }
 
-    fun getDetailPhoto(photo: String, photoUri: Uri) {
-        Timber.d("[사진] 세부 내역 -> Photo: $photo && URI: $photoUri")
-        viewModelScope.launch {
-            _detailPhoto.update { photo }
-        }
+    companion object {
+        const val RECEIPT_PHOTO = "RECEIPT_PHOTO"
+        const val DETAIL_PHOTO = "DETAIL_PHOTO"
+        const val ETC_PHOTO = "ETC_PHOTO"
     }
 }

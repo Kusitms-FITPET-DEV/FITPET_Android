@@ -4,6 +4,9 @@ import androidx.fragment.app.viewModels
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceChargeDocumentBinding
 import com.example.fitpet.ui.insurance.charge.cause.calendar.CalendarBottomSheet.Companion.BOTTOM_SHEET
+import com.example.fitpet.ui.insurance.charge.document.InsuranceChargeDocumentViewModel.Companion.DETAIL_PHOTO
+import com.example.fitpet.ui.insurance.charge.document.InsuranceChargeDocumentViewModel.Companion.ETC_PHOTO
+import com.example.fitpet.ui.insurance.charge.document.InsuranceChargeDocumentViewModel.Companion.RECEIPT_PHOTO
 import com.example.fitpet.ui.insurance.charge.document.photo.AddPhotoBottomSheet
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -32,16 +35,13 @@ class InsuranceChargeDocumentFragment :
 
     private fun handleEvent(event: InsuranceChargeDocumentEvent) {
         when (event) {
-            InsuranceChargeDocumentEvent.ClickAddReceiptBtn -> showAddPhotoBottomSheet()
-            InsuranceChargeDocumentEvent.ClickAddDetailBtn -> showAddDetailPhotoBottomSheet()
+            InsuranceChargeDocumentEvent.ClickAddReceiptBtn -> showAddPhotoBottomSheet(RECEIPT_PHOTO)
+            InsuranceChargeDocumentEvent.ClickAddDetailBtn -> showAddPhotoBottomSheet(DETAIL_PHOTO)
+            InsuranceChargeDocumentEvent.ClickAddEtcBtn -> showAddPhotoBottomSheet(ETC_PHOTO)
         }
     }
 
-    private fun showAddPhotoBottomSheet() {
-        AddPhotoBottomSheet{ photo, uri -> viewModel.getReceiptPhoto(photo, uri)}.show(parentFragmentManager, BOTTOM_SHEET)
-    }
-
-    private fun showAddDetailPhotoBottomSheet() {
-        AddPhotoBottomSheet{ photo, uri -> viewModel.getDetailPhoto(photo, uri)}.show(parentFragmentManager, BOTTOM_SHEET)
+    private fun showAddPhotoBottomSheet(photoType: String) {
+        AddPhotoBottomSheet{ photo, uri -> viewModel.getPhoto(photo, uri, photoType)}.show(parentFragmentManager, BOTTOM_SHEET)
     }
 }
