@@ -115,6 +115,6 @@
             app:destination="@id/fragmentPetNameInput"/>
     </fragment>
 
-    <include app:graph="@navigation/insurance_nav_graph" />
+    <include app:graph="@navigation/insurance_no_pet_nav_graph" />
 
 </navigation>
