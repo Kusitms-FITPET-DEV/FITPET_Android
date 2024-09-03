@@ -18,19 +18,14 @@ import javax.inject.Inject
 class InsuranceChargeDocumentViewModel @Inject constructor(): BaseViewModel<InsuranceChargeDocumentPageState>() {
 
     private val _receiptPhoto: MutableStateFlow<String> = MutableStateFlow("")
-    private val _receiptPhotoUri: MutableStateFlow<Uri> = MutableStateFlow(Uri.EMPTY)
     private val _detailPhoto: MutableStateFlow<String> = MutableStateFlow("")
-    private val _detailPhotoUri: MutableStateFlow<Uri> = MutableStateFlow(Uri.EMPTY)
     private val _etcPhoto: MutableStateFlow<String> = MutableStateFlow("")
-    private val _etcPhotoUri: MutableStateFlow<Uri> = MutableStateFlow(Uri.EMPTY)
 
     override val uiState = InsuranceChargeDocumentPageState(
         receiptPhoto = _receiptPhoto.asStateFlow(),
-        receiptPhotoUri = _receiptPhotoUri.asStateFlow(),
         detailPhoto = _detailPhoto.asStateFlow(),
-        detailPhotoUri = _detailPhotoUri.asStateFlow(),
         etcPhoto = _etcPhoto.asStateFlow(),
-        etcPhotoUri = _etcPhotoUri.asStateFlow(),
+
         isBtnEnabled = combine(_receiptPhoto, _detailPhoto) { receipt, detail ->
             isGoNextValid(receipt, detail)
         }.stateIn(
@@ -40,28 +35,20 @@ class InsuranceChargeDocumentViewModel @Inject constructor(): BaseViewModel<Insu
         )
     )
 
-    fun onClickAddReceipt() {
-        emitEventFlow(InsuranceChargeDocumentEvent.ClickAddReceiptBtn)
+    fun onClickAddPhotoBtn(photoType: String) {
+        when (photoType) {
+            RECEIPT_PHOTO -> emitEventFlow(InsuranceChargeDocumentEvent.ClickAddReceiptBtn)
+            DETAIL_PHOTO -> emitEventFlow(InsuranceChargeDocumentEvent.ClickAddDetailBtn)
+            ETC_PHOTO -> emitEventFlow(InsuranceChargeDocumentEvent.ClickAddEtcBtn)
+        }
     }
 
-    fun onClickDeleteReceipt() {
-        emitEventFlow(InsuranceChargeDocumentEvent.ClickDeleteReceiptBtn)
-    }
-
-    fun onClickAddDetail() {
-        emitEventFlow(InsuranceChargeDocumentEvent.ClickAddDetailBtn)
-    }
-
-    fun onClickDeleteDetail() {
-        emitEventFlow(InsuranceChargeDocumentEvent.ClickDeleteDetailBtn)
-    }
-
-    fun onClickAddEtc() {
-        emitEventFlow(InsuranceChargeDocumentEvent.ClickAddEtcBtn)
-    }
-
-    fun onClickDeleteEtc() {
-        emitEventFlow(InsuranceChargeDocumentEvent.ClickDeleteEtcBtn)
+    fun onClickDeletePhotoBtn(photoType: String) {
+        when (photoType) {
+            RECEIPT_PHOTO -> emitEventFlow(InsuranceChargeDocumentEvent.ClickDeleteReceiptBtn)
+            DETAIL_PHOTO -> emitEventFlow(InsuranceChargeDocumentEvent.ClickDeleteDetailBtn)
+            ETC_PHOTO -> emitEventFlow(InsuranceChargeDocumentEvent.ClickDeleteEtcBtn)
+        }
     }
 
     fun onClickNextBtn() {

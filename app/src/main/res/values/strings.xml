@@ -113,6 +113,9 @@
 
     <!--  InsuranceDocument  -->
     <string name="insurance_charge_document_title">서류를 등록해주세요</string>
+    <string name="insurance_charge_document_receipt_type">RECEIPT_PHOTO</string>
+    <string name="insurance_charge_document_detail_type">DETAIL_PHOTO</string>
+    <string name="insurance_charge_document_etc_type">ETC_PHOTO</string>
     <string name="insurance_charge_document_receipt_title">1. 병원 진료비 영수증 [필수]</string>
     <string name="insurance_charge_document_detail_title">2. 진료비 세부내역서 [필수]</string>
     <string name="insurance_charge_document_etc_title">3. 기타 서류(진단서, 수술기록지, 처방전 등)[선택]</string>
