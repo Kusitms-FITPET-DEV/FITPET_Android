@@ -111,6 +111,18 @@
                                 android:background="@android:color/transparent"
                                 app:setImageUri="@{viewModel.uiState.receiptPhoto}"/>
 
+                            <ImageButton
+                                android:id="@+id/btn_insurance_charge_document_receipt_delete"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="5dp"
+                                android:src="@drawable/ic_delete"
+                                android:background="@android:color/transparent"
+                                android:onClick="@{() -> viewModel.onClickDeleteReceipt()}"
+                                android:layout_marginTop="7dp"
+                                android:layout_marginEnd="7dp"
+                                android:layout_gravity="top|end"/>
+
                         </androidx.cardview.widget.CardView>
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -170,6 +182,18 @@
                                 android:background="@android:color/transparent"
                                 app:setImageUri="@{viewModel.uiState.detailPhoto}"/>
 
+                            <ImageButton
+                                android:id="@+id/btn_insurance_charge_document_detail_delete"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="5dp"
+                                android:src="@drawable/ic_delete"
+                                android:background="@android:color/transparent"
+                                android:onClick="@{() -> viewModel.onClickDeleteDetail()}"
+                                android:layout_marginTop="7dp"
+                                android:layout_marginEnd="7dp"
+                                android:layout_gravity="top|end"/>
+
                         </androidx.cardview.widget.CardView>
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -228,6 +252,18 @@
                                 android:outlineProvider="none"
                                 android:background="@android:color/transparent"
                                 app:setImageUri="@{viewModel.uiState.etcPhoto}"/>
+
+                            <ImageButton
+                                android:id="@+id/btn_insurance_charge_document_etc_delete"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="5dp"
+                                android:src="@drawable/ic_delete"
+                                android:background="@android:color/transparent"
+                                android:onClick="@{() -> viewModel.onClickDeleteEtc()}"
+                                android:layout_marginTop="7dp"
+                                android:layout_marginEnd="7dp"
+                                android:layout_gravity="top|end"/>
 
                         </androidx.cardview.widget.CardView>
                     </androidx.constraintlayout.widget.ConstraintLayout>

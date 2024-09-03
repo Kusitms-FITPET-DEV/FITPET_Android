@@ -44,12 +44,24 @@ class InsuranceChargeDocumentViewModel @Inject constructor(): BaseViewModel<Insu
         emitEventFlow(InsuranceChargeDocumentEvent.ClickAddReceiptBtn)
     }
 
+    fun onClickDeleteReceipt() {
+        emitEventFlow(InsuranceChargeDocumentEvent.ClickDeleteReceiptBtn)
+    }
+
     fun onClickAddDetail() {
         emitEventFlow(InsuranceChargeDocumentEvent.ClickAddDetailBtn)
     }
 
+    fun onClickDeleteDetail() {
+        emitEventFlow(InsuranceChargeDocumentEvent.ClickDeleteDetailBtn)
+    }
+
     fun onClickAddEtc() {
         emitEventFlow(InsuranceChargeDocumentEvent.ClickAddEtcBtn)
+    }
+
+    fun onClickDeleteEtc() {
+        emitEventFlow(InsuranceChargeDocumentEvent.ClickDeleteEtcBtn)
     }
 
     fun onClickNextBtn() {
@@ -68,6 +80,16 @@ class InsuranceChargeDocumentViewModel @Inject constructor(): BaseViewModel<Insu
         }
     }
 
+    fun deletePhoto(photoType: String) {
+        viewModelScope.launch {
+            when (photoType) {
+                RECEIPT_PHOTO ->  _receiptPhoto.update { DELETE_PHOTO }
+                DETAIL_PHOTO -> _detailPhoto.update { DELETE_PHOTO }
+                ETC_PHOTO -> _etcPhoto.update { DELETE_PHOTO }
+            }
+        }
+    }
+
     private fun isGoNextValid(receiptOpt: String, detailOpt: String): Boolean {
         return receiptOpt.isNotEmpty() && detailOpt.isNotEmpty()
     }
@@ -76,5 +98,6 @@ class InsuranceChargeDocumentViewModel @Inject constructor(): BaseViewModel<Insu
         const val RECEIPT_PHOTO = "RECEIPT_PHOTO"
         const val DETAIL_PHOTO = "DETAIL_PHOTO"
         const val ETC_PHOTO = "ETC_PHOTO"
+        const val DELETE_PHOTO = ""
     }
 }

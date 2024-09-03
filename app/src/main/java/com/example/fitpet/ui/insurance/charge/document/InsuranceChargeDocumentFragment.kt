@@ -41,6 +41,9 @@ class InsuranceChargeDocumentFragment :
             InsuranceChargeDocumentEvent.ClickAddDetailBtn -> showAddPhotoBottomSheet(DETAIL_PHOTO)
             InsuranceChargeDocumentEvent.ClickAddEtcBtn -> showAddPhotoBottomSheet(ETC_PHOTO)
             InsuranceChargeDocumentEvent.GoToAccountPage -> goToAccountPage()
+            InsuranceChargeDocumentEvent.ClickDeleteReceiptBtn -> viewModel.deletePhoto(RECEIPT_PHOTO)
+            InsuranceChargeDocumentEvent.ClickDeleteDetailBtn -> viewModel.deletePhoto(DETAIL_PHOTO)
+            InsuranceChargeDocumentEvent.ClickDeleteEtcBtn -> viewModel.deletePhoto(ETC_PHOTO)
         }
     }
 
