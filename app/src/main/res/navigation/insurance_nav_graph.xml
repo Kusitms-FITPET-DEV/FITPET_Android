@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/insurance_nav_graph"
+    app:startDestination="@id/fragmentInsuranceChargeCause">
+
+    <fragment
+        android:id="@+id/fragmentInsuranceChargeCause"
+        android:name="com.example.fitpet.ui.insurance.charge.cause.InsuranceChargeCauseFragment"
+        android:label="fragmentInsuranceChargeCause"
+        android:layout="@layout/fragment_insurance_charge_cause"
+        tools:layout="@layout/fragment_insurance_charge_cause">
+
+        <action
+            android:id="@+id/action_insurance_charge_cause_to_document"
+            app:destination="@id/fragmentInsuranceChargeDocument"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentInsuranceChargeDocument"
+        android:name="com.example.fitpet.ui.insurance.charge.document.InsuranceChargeDocumentFragment"
+        android:label="fragmentInsuranceChargeDocument"
+        android:layout="@layout/fragment_insurance_charge_document"
+        tools:layout="@layout/fragment_insurance_charge_document">
+
+    </fragment>
+
+
+</navigation>
