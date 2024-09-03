@@ -75,6 +75,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_gallery"
             android:background="@android:color/transparent"
+            android:onClick="@{() -> viewModel.onClickGalleryBtn()}"
             app:layout_constraintTop_toTopOf="@id/tv_add_photo_gallery"
             app:layout_constraintBottom_toBottomOf="@id/tv_add_photo_gallery"
             app:layout_constraintEnd_toEndOf="@id/btn_add_photo_take_photo"/>
