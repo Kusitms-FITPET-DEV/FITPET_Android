@@ -14,4 +14,8 @@ class AddPhotoViewModel @Inject constructor(): BaseViewModel<PageState.Default>(
     fun onClickCameraBtn() {
         emitEventFlow(AddPhotoEvent.ClickCamera)
     }
+
+    fun onClickGalleryBtn() {
+        emitEventFlow(AddPhotoEvent.ClickGallery)
+    }
 }
