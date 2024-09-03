@@ -5,10 +5,12 @@ import com.example.fitpet.PageState
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceChargeAccountBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @AndroidEntryPoint
-class InsuranceChargeAccountFragment: BaseFragment<FragmentInsuranceChargeAccountBinding, PageState.Default, InsuranceChargeAccountViewModel>(
+class InsuranceChargeAccountFragment: BaseFragment<FragmentInsuranceChargeAccountBinding, InsuranceChargeAccountPageState, InsuranceChargeAccountViewModel>(
     FragmentInsuranceChargeAccountBinding::inflate
 ) {
 
@@ -22,6 +24,15 @@ class InsuranceChargeAccountFragment: BaseFragment<FragmentInsuranceChargeAccoun
         launchWhenStarted(viewLifecycleOwner) {
             launch {
                 // TODO 계좌 등록
+
+                viewModel.uiState.accountOwner.collect {
+                    Timber.d("[테스트] 예금주 -> $it")
+                }
+            }
+            launch {
+                viewModel.uiState.accountNumber.collect {
+                    Timber.d("[테스트] 계좌번호 -> $it")
+                }
             }
         }
     }

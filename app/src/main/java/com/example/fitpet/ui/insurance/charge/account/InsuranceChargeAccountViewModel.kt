@@ -1,13 +1,15 @@
 package com.example.fitpet.ui.insurance.charge.account
 
-import com.example.fitpet.PageState
 import com.example.fitpet.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
 import javax.inject.Inject
 
 @HiltViewModel
-class InsuranceChargeAccountViewModel @Inject constructor(): BaseViewModel<PageState.Default>() {
+class InsuranceChargeAccountViewModel @Inject constructor(): BaseViewModel<InsuranceChargeAccountPageState>() {
 
-    override val uiState: PageState.Default
-        get() = TODO("Not yet implemented")
+    override val uiState = InsuranceChargeAccountPageState(
+        accountOwner = MutableStateFlow(""),
+        accountNumber = MutableStateFlow("")
+    )
 }
