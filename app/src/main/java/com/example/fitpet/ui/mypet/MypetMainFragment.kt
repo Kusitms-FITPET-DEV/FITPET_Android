@@ -47,7 +47,8 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainBinding, MypetMainPageSt
     }
 
     private fun goToAddPet() {
-        navigator.navigate(R.id.action_mypet_to_pet_name_input)
+        val action = MypetMainFragmentDirections.actionMypetToPetNameInput()
+        navigator.navigate(action)
     }
 
     private fun initListVPAdapter() {
