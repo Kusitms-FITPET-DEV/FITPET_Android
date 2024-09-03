@@ -134,4 +134,12 @@
     <string name="gallery_file_format">image/*</string>
     <string name="gallery_phone_build">Xiaomi</string>
 
+    <!--  InsuranceAccount  -->
+    <string name="insurance_charge_account_title">보험금을 지급 받을 계좌를\n입력해 주세요</string>
+    <string name="insurance_charge_account_owner">* 예금주</string>
+    <string name="insurance_charge_account_number">* 보험금 수령계좌</string>
+    <string name="insurance_charge_account">은행</string>
+    <string name="insurance_charge_account_notice_title">확인해주세요</string>
+    <string name="insurance_charge_account_notice">입력한 계좌로 보험금 지급이 불가한 경우 확인을 위해\n보상 담당자에게 연락이 올 수 있어요.</string>
+
 </resources>
