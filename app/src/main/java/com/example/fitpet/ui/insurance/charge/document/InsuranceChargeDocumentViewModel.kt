@@ -14,10 +14,12 @@ import javax.inject.Inject
 @HiltViewModel
 class InsuranceChargeDocumentViewModel @Inject constructor(): BaseViewModel<InsuranceChargeDocumentPageState>() {
 
-    private val _selectedPhoto: MutableStateFlow<String> = MutableStateFlow("")
+    private val _cameraPhoto: MutableStateFlow<String> = MutableStateFlow("")
+    private val _cameraPhotoUri: MutableStateFlow<Uri> = MutableStateFlow(Uri.EMPTY)
 
     override val uiState = InsuranceChargeDocumentPageState(
-        selectedPhoto = _selectedPhoto.asStateFlow()
+        cameraPhoto = _cameraPhoto.asStateFlow(),
+        cameraPhotoUri = _cameraPhotoUri.asStateFlow()
     )
 
     fun onClickAddReceipt() {
@@ -27,7 +29,7 @@ class InsuranceChargeDocumentViewModel @Inject constructor(): BaseViewModel<Insu
     fun getSelectedPhoto(photo: String, photoUri: Uri) {
         Timber.d("[사진] -> Photo: $photo && URI: $photoUri")
         viewModelScope.launch {
-            _selectedPhoto.update { photo }
+            _cameraPhoto.update { photo }
         }
     }
 }

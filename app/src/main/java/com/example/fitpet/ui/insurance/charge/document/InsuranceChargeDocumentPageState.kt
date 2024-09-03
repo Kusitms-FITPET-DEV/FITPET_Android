@@ -1,8 +1,10 @@
 package com.example.fitpet.ui.insurance.charge.document
 
+import android.net.Uri
 import com.example.fitpet.PageState
 import kotlinx.coroutines.flow.StateFlow
 
 data class InsuranceChargeDocumentPageState(
-    val selectedPhoto: StateFlow<String>
+    val cameraPhoto: StateFlow<String>,
+    val cameraPhotoUri: StateFlow<Uri>
 ) : PageState
