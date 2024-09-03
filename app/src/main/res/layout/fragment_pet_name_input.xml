@@ -97,7 +97,7 @@
             android:stateListAnimator="@null"
             android:text="@string/next"
             android:textAppearance="@style/b3_S"
-            android:textColor="@color/text_white"
+            android:textColor="@{vm.uiState.petName.empty ? @color/text_disable : @color/text_white}"
             android:onClick="@{() -> vm.onClickBtnNext()}"
             android:clickable="@{!vm.uiState.petName.empty}"
             android:background="@{vm.uiState.petName.empty ? @drawable/bg_rectangle_filled_bg_primary_radius_8 : @drawable/bg_rectangle_filled_point_blue_radius_8}"
