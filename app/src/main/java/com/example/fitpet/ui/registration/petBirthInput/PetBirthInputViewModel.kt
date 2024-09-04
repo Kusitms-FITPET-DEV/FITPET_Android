@@ -14,14 +14,16 @@ class PetBirthInputViewModel @Inject constructor(
 
 ) : BaseViewModel<PetBirthInputPageState>() {
     private val birthStateFlow: MutableStateFlow<String> = MutableStateFlow("")
+    private val isValidInputStateFlow: MutableStateFlow<Boolean> = MutableStateFlow(false)
 
     override val uiState: PetBirthInputPageState = PetBirthInputPageState(
-        birth = birthStateFlow.asStateFlow()
+        birth = birthStateFlow.asStateFlow(),
+        isValidInput = isValidInputStateFlow.asStateFlow()
     )
 
     fun onTextChanged(input: CharSequence) {
         viewModelScope.launch {
-            birthStateFlow.update { input.toString() }
+            isValidInputStateFlow.update { validInput(input.toString()) }
         }
     }
 
@@ -31,5 +33,9 @@ class PetBirthInputViewModel @Inject constructor(
 
     fun onClickSkip() {
         emitEventFlow(PetBirthInputEvent.ShowSkipDialog)
+    }
+
+    fun validInput(input: String): Boolean {
+        return input.length == 4
     }
 }
