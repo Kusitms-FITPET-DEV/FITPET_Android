@@ -1,12 +1,13 @@
 package com.example.fitpet.ui.insurance.charge.contact
 
-import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.lifecycle.viewModelScope
-import com.example.fitpet.PageState
 import com.example.fitpet.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -19,7 +20,15 @@ class InsuranceChargeContactViewModel @Inject constructor() : BaseViewModel<Insu
 
     override val uiState = InsuranceChargeContactPageState(
         isSelectedKaKao = _isSelectedKaKao.asStateFlow(),
-        isSelectedEmail = _isSelectedEmail.asStateFlow()
+        isSelectedEmail = _isSelectedEmail.asStateFlow(),
+
+        isBtnEnabled = combine(_isSelectedKaKao, _isSelectedEmail) { kakao, email ->
+            isGoNextValid(kakao, email)
+        }.stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.Lazily,
+            initialValue = false
+        )
     )
 
     fun onClickContactMethod(contactType: String) {
@@ -29,6 +38,10 @@ class InsuranceChargeContactViewModel @Inject constructor() : BaseViewModel<Insu
                 METHOD_EMAIL -> _isSelectedEmail.update { !_isSelectedEmail.value }
             }
         }
+    }
+
+    private fun isGoNextValid(isKakaoSelected: Boolean, isEmailSelected: Boolean): Boolean {
+        return isKakaoSelected || isEmailSelected
     }
 
     companion object {

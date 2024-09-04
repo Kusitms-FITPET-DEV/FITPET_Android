@@ -5,5 +5,6 @@ import kotlinx.coroutines.flow.StateFlow
 
 data class InsuranceChargeContactPageState (
     val isSelectedKaKao: StateFlow<Boolean>,
-    val isSelectedEmail: StateFlow<Boolean>
+    val isSelectedEmail: StateFlow<Boolean>,
+    val isBtnEnabled: StateFlow<Boolean>
 ): PageState
