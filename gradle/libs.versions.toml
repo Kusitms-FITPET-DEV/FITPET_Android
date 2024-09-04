@@ -25,6 +25,7 @@ viewPager = "1.1.0"
 timber = "5.0.1"
 viewpagerindicator = "5.0"
 kakao = "2.20.3"
+lottie = "6.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -76,6 +77,9 @@ viewpagerindicator = { module = "com.tbuonomo:dotsindicator", version.ref = "vie
 
 # Kakao
 kakao-auth = { module = "com.kakao.sdk:v2-user", version.ref = "kakao" }
+
+# Lottie
+lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
