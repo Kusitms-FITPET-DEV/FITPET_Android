@@ -44,7 +44,8 @@
             android:id="@+id/btn_insurance_charge_contact_kakao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_check_inactivated"
+            android:src="@{viewModel.uiState.isSelectedKaKao ? @drawable/ic_check_activated : @drawable/ic_check_inactivated}"
+            android:onClick="@{() -> viewModel.onClickContactMethod(@string/method_kakao)}"
             android:layout_marginTop="38dp"
             android:padding="5dp"
             android:layout_marginStart="19dp"
@@ -67,9 +68,10 @@
             android:id="@+id/btn_insurance_charge_contact_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_check_inactivated"
             android:layout_marginTop="34dp"
             android:padding="5dp"
+            android:src="@{viewModel.uiState.isSelectedEmail ? @drawable/ic_check_activated : @drawable/ic_check_inactivated}"
+            android:onClick="@{() -> viewModel.onClickContactMethod(@string/method_email)}"
             app:layout_constraintTop_toBottomOf="@id/tv_insurance_charge_contact_kakao"
             app:layout_constraintStart_toStartOf="@id/btn_insurance_charge_contact_kakao"/>
 

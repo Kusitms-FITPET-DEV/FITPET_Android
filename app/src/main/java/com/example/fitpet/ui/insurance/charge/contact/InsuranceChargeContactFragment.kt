@@ -8,7 +8,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class InsuranceChargeContactFragment: BaseFragment<FragmentInsuranceChargeContactBinding, PageState.Default, InsuranceChargeContactViewModel>(
+class InsuranceChargeContactFragment: BaseFragment<FragmentInsuranceChargeContactBinding, InsuranceChargeContactPageState, InsuranceChargeContactViewModel>(
     FragmentInsuranceChargeContactBinding::inflate
 ) {
 
