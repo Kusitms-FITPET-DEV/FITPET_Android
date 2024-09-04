@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.view.View"/>
         <variable
             name="viewModel"
             type="com.example.fitpet.ui.insurance.charge.contact.InsuranceChargeContactViewModel" />
@@ -101,7 +102,7 @@
             android:paddingHorizontal="24dp"
             android:textAppearance="@style/b3"
             android:background="@drawable/bg_rectangle_filled_bg_primary_radius_8"
-            android:enabled="@{viewModel.uiState.isSelectedEmail}"
+            android:visibility="@{viewModel.uiState.isSelectedEmail ? View.VISIBLE : View.GONE}"
             android:text="@{viewModel.uiState.emailInput}"
             android:onTextChanged="@{(s, start, before, count) -> viewModel.onTextChanged(s)}"
             app:layout_constraintTop_toBottomOf="@id/btn_insurance_charge_contact_email"
@@ -121,7 +122,7 @@
             android:layout_marginBottom="36dp"
             android:outlineProvider="none"
             android:clickable="@{viewModel.uiState.isBtnEnabled}"
-            android:onClick="@{() -> viewModel.onClickNextBtn()}"
+            android:onClick="@{() -> viewModel.onClickNextAgreeBtn()}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
