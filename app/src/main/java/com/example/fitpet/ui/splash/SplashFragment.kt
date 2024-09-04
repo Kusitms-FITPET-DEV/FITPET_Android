@@ -24,13 +24,8 @@ class SplashFragment : BaseFragment<FragmentSplashBinding, PageState.Default, Sp
 
     override fun initView() {
         binding.apply {
-            val videoUri = Uri.parse("android.resource://${requireActivity().packageName}/${R.raw.splash_video}")
             vm = viewModel
-            splashVideoView.apply {
-                setVideoURI(videoUri)
-                setOnCompletionListener { viewModel.processSplash() }
-                start()
-            }
+            viewModel.processSplash()
         }
     }
 

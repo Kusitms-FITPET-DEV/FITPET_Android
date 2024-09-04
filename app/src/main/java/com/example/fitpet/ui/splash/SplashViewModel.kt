@@ -18,7 +18,7 @@ class SplashViewModel @Inject constructor(
 
     fun processSplash() {
         viewModelScope.launch {
-            delay(500)
+            delay(3000)
             goToOnBoarding()
         }
     }
