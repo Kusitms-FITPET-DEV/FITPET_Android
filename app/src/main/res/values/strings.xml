@@ -28,7 +28,8 @@
     <string name="tab_life">반려생활</string>
 
     <!--  common  -->
-    <string name="min_length_guide">1글자 이상 써주세요</string>
+    <string name="min_length_guide">1글자 이상 써주세요.</string>
+    <string name="input_error">특수문자는 제외해야 해요.</string>
 
     <!--  OnBoarding  -->
     <string name="onboarding1_title">간편한 상담</string>
@@ -55,12 +56,15 @@
     
     <!--  PetDetailBreedInput  -->
     <string name="detail_breed_registration">상세 품종을 입력해 주세요.</string>
+    <string name="detail_breed_dog_guide">헷갈리는 품종은 ‘믹스견’를 입력해주세요.</string>
+    <string name="detail_breed_cat_guide">헷갈리는 품종은 ‘믹스묘’를 입력해주세요.</string>
     <string name="detail_breed_input_hint">예) 말티즈</string>
 
     <!--  PetBirthInput  -->
     <string name="birth_input_registration">출생년도는 언제인가요?</string>
     <string name="birth_input_hint">예) 2004</string>
-    <string name="birth_input_guide">우리 아이가 태어난 년도 4자리를 적어주세요.\n잘 모르겠다면 추정하여 적어주세요.</string>
+    <string name="birth_input_guide">4자리 숫자로 써주세요.</string>
+    <string name="birth_guide">잘 모르겠다면 추정하여 적어주세요.</string>
 
     <!--  ContactInfoInput  -->
     <string name="contact_info_input_registration">연락처를 입력해 주세요.</string>
