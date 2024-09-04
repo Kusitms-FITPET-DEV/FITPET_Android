@@ -40,53 +40,78 @@
             android:layout_marginTop="16dp"
             app:layout_constraintTop_toBottomOf="@id/tv_insurance_charge_contact_index"
             app:layout_constraintStart_toStartOf="@id/tv_insurance_charge_contact_index" />
-        
-        <ImageButton
-            android:id="@+id/btn_insurance_charge_contact_kakao"
-            android:layout_width="wrap_content"
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_insurance_charge_contact_kakao"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:src="@{viewModel.uiState.isSelectedKaKao ? @drawable/ic_check_activated : @drawable/ic_check_inactivated}"
+            android:layout_marginTop="31dp"
+            android:paddingVertical="12dp"
             android:onClick="@{() -> viewModel.onClickContactMethod(@string/method_kakao)}"
-            android:layout_marginTop="38dp"
-            android:padding="5dp"
-            android:layout_marginStart="19dp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_insurance_charge_contact_title"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent">
 
-        <TextView
-            android:id="@+id/tv_insurance_charge_contact_kakao"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/insurance_charge_contact_kakao"
-            android:textColor="@color/black"
-            android:textAppearance="@style/b3"
-            android:layout_marginStart="7dp"
-            app:layout_constraintTop_toTopOf="@id/btn_insurance_charge_contact_kakao"
-            app:layout_constraintBottom_toBottomOf="@id/btn_insurance_charge_contact_kakao"
-            app:layout_constraintStart_toEndOf="@id/btn_insurance_charge_contact_kakao"/>
+            <ImageButton
+                android:id="@+id/btn_insurance_charge_contact_kakao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@{viewModel.uiState.isSelectedKaKao ? @drawable/ic_check_activated : @drawable/ic_check_inactivated}"
+                android:onClick="@{() -> viewModel.onClickContactMethod(@string/method_kakao)}"
+                android:padding="5dp"
+                android:layout_marginStart="19dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
 
-        <ImageButton
-            android:id="@+id/btn_insurance_charge_contact_email"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/tv_insurance_charge_contact_kakao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/insurance_charge_contact_kakao"
+                android:textColor="@color/black"
+                android:textAppearance="@style/b3"
+                android:layout_marginStart="7dp"
+                app:layout_constraintTop_toTopOf="@id/btn_insurance_charge_contact_kakao"
+                app:layout_constraintBottom_toBottomOf="@id/btn_insurance_charge_contact_kakao"
+                app:layout_constraintStart_toEndOf="@id/btn_insurance_charge_contact_kakao"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_insurance_charge_contact_email"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="34dp"
-            android:padding="5dp"
-            android:src="@{viewModel.uiState.isSelectedEmail ? @drawable/ic_check_activated : @drawable/ic_check_inactivated}"
+            android:paddingVertical="12dp"
+            android:layout_marginTop="20dp"
             android:onClick="@{() -> viewModel.onClickContactMethod(@string/method_email)}"
-            app:layout_constraintTop_toBottomOf="@id/tv_insurance_charge_contact_kakao"
-            app:layout_constraintStart_toStartOf="@id/btn_insurance_charge_contact_kakao"/>
+            app:layout_constraintStart_toStartOf="@id/layout_insurance_charge_contact_kakao"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_insurance_charge_contact_kakao">
 
-        <TextView
-            android:id="@+id/tv_insurance_charge_contact_email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/insurance_charge_contact_email"
-            android:textColor="@color/black"
-            android:textAppearance="@style/b3"
-            android:layout_marginStart="7dp"
-            app:layout_constraintTop_toTopOf="@id/btn_insurance_charge_contact_email"
-            app:layout_constraintBottom_toBottomOf="@id/btn_insurance_charge_contact_email"
-            app:layout_constraintStart_toEndOf="@id/btn_insurance_charge_contact_email"/>
+            <ImageButton
+                android:id="@+id/btn_insurance_charge_contact_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_marginStart="19dp"
+                android:src="@{viewModel.uiState.isSelectedEmail ? @drawable/ic_check_activated : @drawable/ic_check_inactivated}"
+                android:onClick="@{() -> viewModel.onClickContactMethod(@string/method_email)}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:id="@+id/tv_insurance_charge_contact_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/insurance_charge_contact_email"
+                android:textColor="@color/black"
+                android:textAppearance="@style/b3"
+                android:layout_marginStart="7dp"
+                app:layout_constraintTop_toTopOf="@id/btn_insurance_charge_contact_email"
+                app:layout_constraintBottom_toBottomOf="@id/btn_insurance_charge_contact_email"
+                app:layout_constraintStart_toEndOf="@id/btn_insurance_charge_contact_email"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <EditText
             android:id="@+id/edt_insurance_charge_account_email"
@@ -94,7 +119,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="32dp"
-            android:layout_marginTop="19dp"
+            android:layout_marginTop="12dp"
             android:hint="@string/insurance_charge_contact_email_hint"
             android:textColorHint="@color/text_disable"
             android:textColor="@color/text_body"
@@ -105,7 +130,7 @@
             android:visibility="@{viewModel.uiState.isSelectedEmail ? View.VISIBLE : View.GONE}"
             android:text="@{viewModel.uiState.emailInput}"
             android:onTextChanged="@{(s, start, before, count) -> viewModel.onTextChanged(s)}"
-            app:layout_constraintTop_toBottomOf="@id/btn_insurance_charge_contact_email"
+            app:layout_constraintTop_toBottomOf="@id/layout_insurance_charge_contact_email"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
