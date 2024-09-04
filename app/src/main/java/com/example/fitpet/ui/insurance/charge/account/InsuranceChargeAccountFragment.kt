@@ -6,9 +6,13 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavOptions
+import androidx.navigation.fragment.findNavController
 import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceChargeAccountBinding
+import com.example.fitpet.ui.insurance.charge.document.InsuranceChargeDocumentFragmentDirections
+import com.example.fitpet.ui.registration.petDetailBreed.PetDetailBreedInputFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -38,7 +42,7 @@ class InsuranceChargeAccountFragment: BaseFragment<FragmentInsuranceChargeAccoun
 
     private fun handleEvent(event: InsuranceChargeAccountEvent) {
         when (event) {
-            else -> {}
+            InsuranceChargeAccountEvent.GoToContactPage -> goToContactPage()
         }
     }
 
@@ -82,5 +86,10 @@ class InsuranceChargeAccountFragment: BaseFragment<FragmentInsuranceChargeAccoun
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
+    }
+
+    private fun goToContactPage() {
+        val action = InsuranceChargeAccountFragmentDirections.actionInsuranceChargeAccountToContact()
+        findNavController().navigate(action)
     }
 }

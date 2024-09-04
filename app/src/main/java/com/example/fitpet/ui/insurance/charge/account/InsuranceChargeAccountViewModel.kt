@@ -53,6 +53,10 @@ class InsuranceChargeAccountViewModel @Inject constructor(): BaseViewModel<Insur
         return accountOwner.isNotEmpty() && accountBank.isNotEmpty() && accountNumber.isNotEmpty()
     }
 
+    fun onClickNextBtn() {
+        emitEventFlow(InsuranceChargeAccountEvent.GoToContactPage)
+    }
+
     companion object {
         const val ACCOUNT_OWNER = "ACCOUNT_OWNER"
         const val ACCOUNT_NUMBER = "ACCOUNT_NUMBER"
