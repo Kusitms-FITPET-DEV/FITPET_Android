@@ -141,6 +141,13 @@
         <item name="fontFamily">@font/pretendard_medium</item>
     </style>
 
+    <style name="insurance_pet_info">
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">16dp</item>
+        <item name="fontFamily">@font/pretendard_medium</item>
+    </style>
+
+
     <style name="ShapeAppearanceOverlayExtended" parent="Widget.MaterialComponents.ExtendedFloatingActionButton">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">90dp</item>
