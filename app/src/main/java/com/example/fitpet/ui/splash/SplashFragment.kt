@@ -1,5 +1,6 @@
 package com.example.fitpet.ui.splash
 
+import android.net.Uri
 import androidx.fragment.app.viewModels
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -23,9 +24,13 @@ class SplashFragment : BaseFragment<FragmentSplashBinding, PageState.Default, Sp
 
     override fun initView() {
         binding.apply {
+            val videoUri = Uri.parse("android.resource://${requireActivity().packageName}/${R.raw.splash_video}")
             vm = viewModel
-            viewModel.processSplash()
-            // 추후에는 자동 로그인 처리와 관련된 함수가 추가될 수 있습니다.
+            splashVideoView.apply {
+                setVideoURI(videoUri)
+                setOnCompletionListener { viewModel.processSplash() }
+                start()
+            }
         }
     }
 
