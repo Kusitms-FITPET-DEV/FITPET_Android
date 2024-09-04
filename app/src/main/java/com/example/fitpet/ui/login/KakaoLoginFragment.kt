@@ -7,6 +7,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.fitpet.PageState
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentKakaoLoginBinding
+import com.example.fitpet.model.request.LoginRequest
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.user.UserApiClient
 import dagger.hilt.android.AndroidEntryPoint
@@ -75,7 +76,19 @@ class KakaoLoginFragment : BaseFragment<FragmentKakaoLoginBinding, PageState.Def
 
     private fun login(token: OAuthToken?) {
         token?.let {
-            viewModel.login(token.accessToken)
+            val request = token.idToken?.let { it1 ->
+                LoginRequest(
+                    accessToken = token.accessToken,
+                    accessTokenExpiresAt = token.accessTokenExpiresAt.toString(),
+                    refreshToken = token.refreshToken,
+                    refreshTokenExpiresAt = token.refreshTokenExpiresAt.toString(),
+                    idToken = it1
+                )
+            }
+            if (request != null) {
+                viewModel.login(request)
+                Timber.i(request.toString())
+            }
         }
     }
 

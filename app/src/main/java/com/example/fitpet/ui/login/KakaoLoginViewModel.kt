@@ -24,9 +24,9 @@ class KakaoLoginViewModel @Inject constructor(
         emitEventFlow(KakaoLoginEvent.OnClickKakaoLogin)
     }
 
-    fun login(token: String) {
+    fun login(request: LoginRequest) {
         viewModelScope.launch {
-            authRepository.kakaoLogin(request = LoginRequest(token)).collect {
+            authRepository.kakaoLogin(request = request).collect {
                 resultResponse(it, ::onSuccessKaKaoLogin)
             }
         }
