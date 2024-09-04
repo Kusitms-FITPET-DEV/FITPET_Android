@@ -60,5 +60,6 @@ class InsuranceChargeAccountViewModel @Inject constructor(): BaseViewModel<Insur
     companion object {
         const val ACCOUNT_OWNER = "ACCOUNT_OWNER"
         const val ACCOUNT_NUMBER = "ACCOUNT_NUMBER"
+        const val BANK_SPINNER_DEFAULT = 0
     }
 }
