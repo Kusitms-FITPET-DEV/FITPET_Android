@@ -4,12 +4,19 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentPetNameInputBinding
+import com.example.fitpet.ui.onboarding.dialog.SkipDialog
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class PetNameInputFragment : BaseFragment<FragmentPetNameInputBinding, PetNameInputPageState, PetNameInputViewModel>(
     FragmentPetNameInputBinding::inflate
 ) {
+
+    @Inject
+    lateinit var dialog: SkipDialog
 
     override val viewModel: PetNameInputViewModel by viewModels()
 
@@ -32,11 +39,19 @@ class PetNameInputFragment : BaseFragment<FragmentPetNameInputBinding, PetNameIn
     private fun handleEvent(event: PetNameInputEvent) {
         when (event) {
             PetNameInputEvent.GoToPetBreedInput -> goToPetBreedInput()
+            PetNameInputEvent.ShowSkipDialog -> showSkipDialog()
         }
     }
 
     private fun goToPetBreedInput() {
         val action = PetNameInputFragmentDirections.actionPetNameInputToPetBreed()
         findNavController().navigate(action)
+    }
+
+    private fun showSkipDialog() {
+        dialog.showDialog(
+            onSkipClicked = {},
+            onResumeClicked = {}
+        )
     }
 }
