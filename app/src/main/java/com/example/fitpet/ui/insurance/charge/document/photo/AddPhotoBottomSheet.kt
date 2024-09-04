@@ -36,19 +36,13 @@ class AddPhotoBottomSheet(
     private var photoUri: Uri? = null
     private val getTakePhoto = registerForActivityResult(ActivityResultContracts.TakePicture()) {
         if(it) {
-            photoUri?.let { photoUri ->
-                onSelectedPhoto(photoUri.toString(), photoUri)
-                dismiss()
-            }
+            handlePhotoUriResult(photoUri)
     } }
 
     private val getGalleryImg = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == RESULT_OK) {
             val imgUri = result.data?.data
-            imgUri?.let { selectedUri ->
-                onSelectedPhoto(selectedUri.toString(), selectedUri)
-                dismiss()
-            }
+            handlePhotoUriResult(imgUri)
         }
     }
 
@@ -72,10 +66,8 @@ class AddPhotoBottomSheet(
     private fun initSettingEvent() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                launch {
-                    viewModel.eventFlow.collect { event ->
-                        handleEvent(event as AddPhotoEvent)
-                    }
+                viewModel.eventFlow.collect { event ->
+                    handleEvent(event as AddPhotoEvent)
                 }
             }
         }
@@ -98,6 +90,13 @@ class AddPhotoBottomSheet(
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = getString(R.string.gallery_file_format)
         getGalleryImg.launch(intent)
+    }
+
+    private fun handlePhotoUriResult(uri: Uri?) {
+        uri?.let { selectedUri ->
+            onSelectedPhoto(selectedUri.toString(), selectedUri)
+            dismiss()
+        }
     }
 
     private fun getUriForFile(file: File): Uri {
