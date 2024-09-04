@@ -163,5 +163,8 @@
     <string name="insurance_agree_all">전체 동의</string>
     <string name="insurance_agree_essential">[필수] 개인(신용)정보 조회, 수집•이용 및 제공 동의</string>
     <string name="insurance_agree_choice">[선택] 의료기관 진료비 이상여부 확인을 위한 개인(신용)정보 동의</string>
+    <string name="insurance_agree_type_all">ALL</string>
+    <string name="insurance_agree_type_essential">TYPE_ESSENTIAL</string>
+    <string name="insurance_agree_type_choice">TYPE_CHOICE</string>
 
 </resources>

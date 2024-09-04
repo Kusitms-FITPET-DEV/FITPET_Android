@@ -31,6 +31,7 @@
             android:layout_marginTop="44dp"
             android:layout_marginStart="23dp"
             android:layout_marginEnd="28dp"
+            android:onClick="@{() -> viewModel.onClickAgreeType(@string/insurance_agree_type_all)}"
             app:layout_constraintTop_toBottomOf="@id/iv_insurance_agree_top_bar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
@@ -39,7 +40,7 @@
                 android:id="@+id/iv_insurance_agree_all"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_check_inactivated"
+                android:src="@{viewModel.uiState.isSelectedAll ? @drawable/ic_check_activated : @drawable/ic_check_inactivated}"
                 android:padding="5dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"/>
@@ -62,6 +63,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:onClick="@{() -> viewModel.onClickAgreeType(@string/insurance_agree_type_essential)}"
             app:layout_constraintStart_toStartOf="@id/layout_insurance_agree_all"
             app:layout_constraintEnd_toEndOf="@id/layout_insurance_agree_all"
             app:layout_constraintTop_toBottomOf="@id/layout_insurance_agree_all">
@@ -70,7 +72,7 @@
                 android:id="@+id/iv_insurance_agree_essential"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_check_inactivated"
+                android:src="@{viewModel.uiState.isSelectedEssential ? @drawable/ic_check_activated : @drawable/ic_check_inactivated}"
                 android:padding="5dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"/>
@@ -104,6 +106,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:onClick="@{() -> viewModel.onClickAgreeType(@string/insurance_agree_type_choice)}"
             app:layout_constraintStart_toStartOf="@id/layout_insurance_agree_all"
             app:layout_constraintEnd_toEndOf="@id/layout_insurance_agree_all"
             app:layout_constraintTop_toBottomOf="@id/layout_insurance_agree_essential">
@@ -112,7 +115,7 @@
                 android:id="@+id/iv_insurance_agree_choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_check_inactivated"
+                android:src="@{viewModel.uiState.isSelectedChoice ? @drawable/ic_check_activated : @drawable/ic_check_inactivated}"
                 android:padding="5dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"/>
