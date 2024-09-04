@@ -43,6 +43,7 @@
     <string name="kakao_login_content">우리 아이 건강을 위해\n한 발짝, 같이 내딛어 봐요</string>
     <string name="kakao_native_app_key">fb861916118bf9e4868e651607b605b0</string>
     <string name="kakao_scheme">kakaofb861916118bf9e4868e651607b605b0</string>
+    <string name="kakao_login_text">카카오톡으로 시작하기</string>
     
     <!--  PetNameInput  -->
     <string name="my_pet_registration">MY펫 등록</string>
