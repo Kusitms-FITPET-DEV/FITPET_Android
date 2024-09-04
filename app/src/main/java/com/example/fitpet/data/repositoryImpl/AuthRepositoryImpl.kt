@@ -3,6 +3,7 @@ package com.example.fitpet.data.repositoryImpl
 import com.example.fitpet.R
 import com.example.fitpet.data.repository.AuthRepository
 import com.example.fitpet.data.service.AuthService
+import com.example.fitpet.model.request.LoginRequest
 import com.example.fitpet.model.request.ReissueTokenRequest
 import com.example.fitpet.model.response.LoginResponse
 import kotlinx.coroutines.flow.Flow
@@ -13,7 +14,7 @@ import javax.inject.Inject
 class AuthRepositoryImpl @Inject constructor(
     private val authService: AuthService
 ): AuthRepository {
-    override suspend fun kakaoLogin(request: String): Flow<Result<LoginResponse>> = flow {
+    override suspend fun kakaoLogin(request: LoginRequest): Flow<Result<LoginResponse>> = flow {
         emit(
             kotlin.runCatching {
                 val response = authService.kakaoLogin(request)

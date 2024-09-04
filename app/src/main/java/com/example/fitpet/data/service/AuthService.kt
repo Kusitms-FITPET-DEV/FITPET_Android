@@ -1,5 +1,6 @@
 package com.example.fitpet.data.service
 
+import com.example.fitpet.model.request.LoginRequest
 import com.example.fitpet.model.request.ReissueTokenRequest
 import com.example.fitpet.model.response.LoginResponse
 import retrofit2.Response
@@ -10,9 +11,9 @@ import retrofit2.http.Query
 
 interface AuthService {
 
-    @GET(Endpoints.Auth.LOGIN)
+    @POST(Endpoints.Auth.LOGIN)
     suspend fun kakaoLogin(
-        @Query("code") code: String
+        @Body request: LoginRequest
     ): Response<LoginResponse>
 
     @POST(Endpoints.Auth.LOGOUT)

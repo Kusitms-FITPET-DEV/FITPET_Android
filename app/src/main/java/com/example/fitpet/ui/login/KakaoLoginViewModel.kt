@@ -6,6 +6,7 @@ import com.example.fitpet.PageState
 import com.example.fitpet.base.BaseViewModel
 import com.example.fitpet.data.FitPetDataStore
 import com.example.fitpet.data.repository.AuthRepository
+import com.example.fitpet.model.request.LoginRequest
 import com.example.fitpet.model.response.LoginResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -25,7 +26,7 @@ class KakaoLoginViewModel @Inject constructor(
 
     fun login(token: String) {
         viewModelScope.launch {
-            authRepository.kakaoLogin(request = token).collect {
+            authRepository.kakaoLogin(request = LoginRequest(token)).collect {
                 resultResponse(it, ::onSuccessKaKaoLogin)
             }
         }
