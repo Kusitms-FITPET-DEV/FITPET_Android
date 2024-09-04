@@ -31,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/fifth_page"
-                android:textAppearance="@style/b3"
+                android:textAppearance="@style/b4"
                 android:textColor="@color/point_blue"/>
 
             <TextView
@@ -49,6 +49,7 @@
                 android:background="@drawable/bg_rectangle_filled_bg_primary_radius_8">
 
                 <EditText
+                    android:id="@+id/contactInfoEditText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:autofillHints=""
@@ -56,38 +57,31 @@
                     android:background="@android:color/transparent"
                     android:maxLines="1"
                     android:inputType="number"
+                    android:maxLength="13"
                     android:text="@{vm.uiState.contactInfo}"
                     android:textAppearance="@style/b3"
                     android:hint="@string/contact_info_input_hint"
-                    android:onTextChanged="@{(s, start, before, count) -> vm.onTextChanged(s)}"
                     tools:ignore="LabelFor" />
 
             </FrameLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
+            <FrameLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="23dp"
                 android:layout_marginTop="16dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:layout_marginTop="6dp"
-                    android:background="@{vm.uiState.contactInfo.empty ? @drawable/ic_circle_text_disable_5 : @drawable/ic_circle_point_blue_5}" />
+                android:background="@drawable/bg_rectangle_filled_bg_light_blue_radius_8">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:layout_marginStart="6dp"
+                    android:layout_marginVertical="16dp"
+                    android:layout_marginStart="20dp"
                     android:text="@string/contact_info_input_guide"
-                    android:textAppearance="@style/b5_S"
-                    android:textColor="@{vm.uiState.contactInfo.empty ? @color/text_disable : @color/point_blue}" />
+                    android:textColor="@color/text_point"
+                    android:textAppearance="@style/b5_S"/>
 
-            </LinearLayout>
+            </FrameLayout>
+
 
         </LinearLayout>
 

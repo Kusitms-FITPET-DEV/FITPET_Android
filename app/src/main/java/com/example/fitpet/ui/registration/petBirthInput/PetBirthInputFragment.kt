@@ -1,5 +1,6 @@
 package com.example.fitpet.ui.registration.petBirthInput
 
+import android.text.InputFilter
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.fitpet.base.BaseFragment
@@ -21,6 +22,7 @@ class PetBirthInputFragment : BaseFragment<FragmentPetBirthInputBinding, PetBirt
     override fun initView() {
         binding.apply {
             vm = viewModel
+//            birthInputEditText.filters = arrayOf(InputFilter.LengthFilter(4))
         }
     }
 

@@ -69,6 +69,7 @@
                     android:textAppearance="@style/b3"
                     android:text="@{vm.uiState.birth}"
                     android:hint="@string/birth_input_hint"
+                    android:maxLength="4"
                     android:onTextChanged="@{(s, start, before, count) -> vm.onTextChanged(s)}"
                     tools:ignore="LabelFor" />
 
