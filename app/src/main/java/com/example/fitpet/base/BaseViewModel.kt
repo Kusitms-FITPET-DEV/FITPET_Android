@@ -31,10 +31,23 @@ abstract class BaseViewModel<STATE: PageState> : ViewModel() {
 
     private fun endLoading() { _isLoading.value = false }
 
-    protected fun<D> resultResponse(response: D, successCallback: (D) -> Unit, needLoading: Boolean = false) {
+    protected fun<D> resultResponse(
+        response: Result<D>,
+        successCallback: (D) -> Unit,
+        errorCallback: ((Throwable) -> Unit)? = null,
+        needLoading: Boolean = false
+    ) {
         if (needLoading) showLoading()
 
-        successCallback.invoke(response)
-        endLoading()
+        response.fold(
+            onSuccess = { data ->
+                successCallback.invoke(data) // 성공했을 때
+            },
+            onFailure = { throwable ->
+                errorCallback?.invoke(throwable) // 실패했을 때
+            }
+        )
+
+        if (needLoading) endLoading()
     }
 }
