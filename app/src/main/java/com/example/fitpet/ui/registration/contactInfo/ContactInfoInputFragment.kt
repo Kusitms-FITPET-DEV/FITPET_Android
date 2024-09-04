@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentContactInfoInputBinding
@@ -42,15 +43,20 @@ class ContactInfoInputFragment : BaseFragment<FragmentContactInfoInputBinding, C
 
     private fun handleEvent(event: ContactInfoInputEvent) {
         when(event) {
-            ContactInfoInputEvent.GoToMyPetInsurance -> TODO()
+            ContactInfoInputEvent.GoToMyPetInsurance -> goToMyPetInsurance()
             ContactInfoInputEvent.ShowSkipDialog -> showSkipDialog()
         }
     }
 
     private fun showSkipDialog() {
         dialog.showDialog(
-            onSkipClicked = {},
+            onSkipClicked = { goToMyPetInsurance() },
             onResumeClicked = {}
         )
+    }
+
+    private fun goToMyPetInsurance() {
+        val action = ContactInfoInputFragmentDirections.actionContactInfoInputToMyPet()
+        findNavController().navigate(action)
     }
 }
