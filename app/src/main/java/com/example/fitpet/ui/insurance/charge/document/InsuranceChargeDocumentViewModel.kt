@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -55,25 +54,23 @@ class InsuranceChargeDocumentViewModel @Inject constructor(): BaseViewModel<Insu
         emitEventFlow(InsuranceChargeDocumentEvent.GoToAccountPage)
     }
 
-    fun getPhoto(photo: String, photoUri: Uri, photoType: String) {
-        Timber.d("[사진] -> type: $photoType && Photo: $photo && URI: $photoUri")
+    private fun updatePhoto(photoType: String, photo: String) {
+        when (photoType) {
+            RECEIPT_PHOTO -> _receiptPhoto.update { photo }
+            DETAIL_PHOTO -> _detailPhoto.update { photo }
+            ETC_PHOTO -> _etcPhoto.update { photo }
+        }
+    }
 
+    fun getPhoto(photo: String, photoUri: Uri, photoType: String) {
         viewModelScope.launch {
-            when (photoType) {
-                RECEIPT_PHOTO ->  _receiptPhoto.update { photo }
-                DETAIL_PHOTO -> _detailPhoto.update { photo }
-                ETC_PHOTO -> _etcPhoto.update { photo }
-            }
+            updatePhoto(photoType, photo)
         }
     }
 
     fun deletePhoto(photoType: String) {
         viewModelScope.launch {
-            when (photoType) {
-                RECEIPT_PHOTO ->  _receiptPhoto.update { DELETE_PHOTO }
-                DETAIL_PHOTO -> _detailPhoto.update { DELETE_PHOTO }
-                ETC_PHOTO -> _etcPhoto.update { DELETE_PHOTO }
-            }
+            updatePhoto(photoType, DELETE_PHOTO)
         }
     }
 
