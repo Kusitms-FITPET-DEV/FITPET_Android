@@ -2,6 +2,8 @@ package com.example.fitpet.di
 
 import com.example.fitpet.data.FitPetDataStore
 import com.example.fitpet.data.repository.AuthRepository
+import com.example.fitpet.data.repository.TokenProvider
+import com.example.fitpet.data.repositoryImpl.AuthRepositoryImpl
 import com.example.fitpet.model.request.ReissueTokenRequest
 import com.example.fitpet.util.Config.BASE_URL
 import dagger.Module
@@ -29,7 +31,7 @@ object NetworkModule {
     @Provides
     fun provideOkHttpClient(
         dataStore: FitPetDataStore,
-        authRepository: AuthRepository
+        tokenAuthenticator: TokenAuthenticator
     ): OkHttpClient {
         val httpLoggingInterceptor = HttpLoggingInterceptor()
             .setLevel(HttpLoggingInterceptor.Level.BODY)
@@ -43,25 +45,6 @@ object NetworkModule {
             }
 
             chain.proceed(request.build())
-        }
-
-        val tokenAuthenticator = Authenticator { route, response ->
-            val refreshToken = runBlocking { dataStore.refreshToken.first() }
-            refreshToken?.let {
-                val newTokens = runBlocking {
-                    authRepository.reissueToken(ReissueTokenRequest(refreshToken)).firstOrNull()?.getOrNull()
-                }
-
-                newTokens?.let { token ->
-                    runBlocking {
-                        dataStore.saveAccessToken(token.accessToken)
-                        dataStore.saveRefreshToken(token.refreshToken)
-                    }
-                    response.request.newBuilder()
-                        .header("Authorization", "Bearer ${token.accessToken}")
-                        .build()
-                }
-            }
         }
 
         return OkHttpClient.Builder()
