@@ -142,5 +142,7 @@
     <string name="insurance_charge_account_notice_title">확인해주세요</string>
     <string name="insurance_charge_account_notice">입력한 계좌로 보험금 지급이 불가한 경우 확인을 위해\n보상 담당자에게 연락이 올 수 있어요.</string>
     <string name="insurance_charge_account_number_hint">-없이 입력해주세요</string>
+    <string name="insurance_charge_account_owner_type">ACCOUNT_OWNER</string>
+    <string name="insurance_charge_account_number_type">ACCOUNT_NUMBER</string>
 
 </resources>

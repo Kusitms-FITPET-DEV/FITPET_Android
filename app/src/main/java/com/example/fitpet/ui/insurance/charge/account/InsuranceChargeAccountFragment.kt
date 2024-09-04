@@ -75,7 +75,9 @@ class InsuranceChargeAccountFragment: BaseFragment<FragmentInsuranceChargeAccoun
             ) {
                 val selectedBank = parent?.getItemAtPosition(position).toString()
                 viewModel.isFirstSelection = false
+
                 Timber.d("[테스트] 선택 은행 -> $selectedBank")
+                viewModel.getAccountBank(selectedBank)
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}
