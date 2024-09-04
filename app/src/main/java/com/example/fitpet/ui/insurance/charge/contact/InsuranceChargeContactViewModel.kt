@@ -17,13 +17,15 @@ class InsuranceChargeContactViewModel @Inject constructor() : BaseViewModel<Insu
 
     private val _isSelectedKaKao: MutableStateFlow<Boolean> = MutableStateFlow(false)
     private val _isSelectedEmail: MutableStateFlow<Boolean> = MutableStateFlow(false)
+    private val _emailInput: MutableStateFlow<String> = MutableStateFlow("")
 
     override val uiState = InsuranceChargeContactPageState(
         isSelectedKaKao = _isSelectedKaKao.asStateFlow(),
         isSelectedEmail = _isSelectedEmail.asStateFlow(),
+        emailInput = _emailInput.asStateFlow(),
 
-        isBtnEnabled = combine(_isSelectedKaKao, _isSelectedEmail) { kakao, email ->
-            isGoNextValid(kakao, email)
+        isBtnEnabled = combine(_isSelectedKaKao, _isSelectedEmail, _emailInput) { kakao, email, emailInput ->
+            isGoNextValid(kakao, email, emailInput)
         }.stateIn(
             scope = viewModelScope,
             started = SharingStarted.Lazily,
@@ -40,8 +42,14 @@ class InsuranceChargeContactViewModel @Inject constructor() : BaseViewModel<Insu
         }
     }
 
-    private fun isGoNextValid(isKakaoSelected: Boolean, isEmailSelected: Boolean): Boolean {
-        return isKakaoSelected || isEmailSelected
+    fun onTextChanged(newText: CharSequence) {
+        viewModelScope.launch {
+            _emailInput.update { newText.toString() }
+        }
+    }
+
+    private fun isGoNextValid(isKakaoSelected: Boolean, isEmailSelected: Boolean, emailInput: String): Boolean {
+        return isKakaoSelected || (isEmailSelected && emailInput.isNotEmpty())
     }
 
     companion object {
