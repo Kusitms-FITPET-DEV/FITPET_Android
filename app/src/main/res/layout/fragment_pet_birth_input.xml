@@ -101,6 +101,7 @@
             android:textAppearance="@style/b3_S"
             android:textColor="@color/text_white"
             android:onClick="@{() -> vm.onClickBtnNext()}"
+            android:clickable="@{!vm.uiState.birth.empty}"
             android:background="@{vm.uiState.birth.empty ? @drawable/bg_rectangle_filled_bg_primary_radius_8 : @drawable/bg_rectangle_filled_point_blue_radius_8}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -111,6 +112,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="35dp"
             android:text="@string/underline_skip"
+            android:onClick="@{()->vm.onClickSkip()}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>

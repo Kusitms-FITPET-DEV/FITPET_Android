@@ -28,4 +28,8 @@ class PetBirthInputViewModel @Inject constructor(
     fun onClickBtnNext() {
         emitEventFlow(PetBirthInputEvent.GoToContactInfoInput)
     }
+
+    fun onClickSkip() {
+        emitEventFlow(PetBirthInputEvent.ShowSkipDialog)
+    }
 }
