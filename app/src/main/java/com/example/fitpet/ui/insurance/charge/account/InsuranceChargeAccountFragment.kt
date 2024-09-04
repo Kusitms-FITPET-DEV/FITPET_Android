@@ -6,13 +6,11 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.fragment.app.viewModels
-import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceChargeAccountBinding
-import com.example.fitpet.ui.insurance.charge.document.InsuranceChargeDocumentFragmentDirections
-import com.example.fitpet.ui.registration.petDetailBreed.PetDetailBreedInputFragmentDirections
+import com.example.fitpet.ui.insurance.charge.account.InsuranceChargeAccountViewModel.Companion.BANK_SPINNER_DEFAULT
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -52,21 +50,40 @@ class InsuranceChargeAccountFragment: BaseFragment<FragmentInsuranceChargeAccoun
     }
 
     private fun setSpinnerList() {
-        val adapter = object : ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_item, resources.getStringArray(R.array.insurance_bank)) {
+        val bankList = resources.getStringArray(R.array.insurance_bank).toMutableList()
+        bankList.add(BANK_SPINNER_DEFAULT, getString(R.string.insurance_charge_account))
+
+        val adapter = object : ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_item, bankList) {
             override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
                 val view = super.getView(position, convertView, parent)
                 val textView = view as TextView
 
-                if (viewModel.isFirstSelection && position == 0) {
+                if (position == BANK_SPINNER_DEFAULT) {
                     textView.text = getString(R.string.insurance_charge_account)
+                } else {
+                    textView.text = bankList[position]
                 }
 
                 return view
             }
+
+            override fun getDropDownView(
+                position: Int,
+                convertView: View?,
+                parent: ViewGroup
+            ): View {
+                val dropDownView = super.getDropDownView(position, convertView, parent) as TextView
+                if (position == BANK_SPINNER_DEFAULT) {
+                    dropDownView.visibility = View.GONE
+                } else {
+                    dropDownView.visibility = View.VISIBLE
+                }
+                dropDownView.text = bankList[position]
+                return dropDownView
+            }
         }
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerInsuranceChargeAccountBank.adapter = adapter
-
     }
 
     private fun setSpinnerSelectedListener() {
@@ -77,11 +94,13 @@ class InsuranceChargeAccountFragment: BaseFragment<FragmentInsuranceChargeAccoun
                 position: Int,
                 id: Long
             ) {
-                val selectedBank = parent?.getItemAtPosition(position).toString()
-                viewModel.isFirstSelection = false
+                if (position != BANK_SPINNER_DEFAULT) {
+                    val selectedBank = parent?.getItemAtPosition(position).toString()
+                    viewModel.isFirstSelection = false
 
-                Timber.d("[테스트] 선택 은행 -> $selectedBank")
-                viewModel.getAccountBank(selectedBank)
+                    Timber.d("[스피너] 선택 은행 -> $selectedBank")
+                    viewModel.getAccountBank(selectedBank)
+                }
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}
