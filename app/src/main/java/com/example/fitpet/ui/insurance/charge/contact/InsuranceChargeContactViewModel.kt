@@ -48,6 +48,10 @@ class InsuranceChargeContactViewModel @Inject constructor() : BaseViewModel<Insu
         }
     }
 
+    fun onClickNextAgreeBtn() {
+        emitEventFlow(InsuranceChargeContactEvent.ClickNextAgreeBtn)
+    }
+
     private fun isGoNextValid(isKakaoSelected: Boolean, isEmailSelected: Boolean, emailInput: String): Boolean {
         return isKakaoSelected || (isEmailSelected && emailInput.isNotEmpty())
     }

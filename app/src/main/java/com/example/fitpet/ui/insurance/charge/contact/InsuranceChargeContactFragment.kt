@@ -1,7 +1,6 @@
 package com.example.fitpet.ui.insurance.charge.contact
 
 import androidx.fragment.app.viewModels
-import com.example.fitpet.PageState
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceChargeContactBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,8 +20,20 @@ class InsuranceChargeContactFragment: BaseFragment<FragmentInsuranceChargeContac
     override fun initState() {
         launchWhenStarted(viewLifecycleOwner) {
             launch {
-                // TODO 연락 수단 등록
+                viewModel.eventFlow.collect { event ->
+                    handleEvent(event as InsuranceChargeContactEvent)
+                }
             }
         }
+    }
+
+    private fun handleEvent(event: InsuranceChargeContactEvent) {
+        when (event) {
+            InsuranceChargeContactEvent.ClickNextAgreeBtn -> showAgreeBottomSheet()
+        }
+    }
+
+    private fun showAgreeBottomSheet() {
+        //
     }
 }
