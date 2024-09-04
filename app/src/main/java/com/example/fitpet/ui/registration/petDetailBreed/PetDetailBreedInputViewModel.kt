@@ -15,9 +15,11 @@ class PetDetailBreedInputViewModel @Inject constructor(
 
 ) : BaseViewModel<PetDetailBreedInputPageState>() {
     private val detailBreedStateFlow: MutableStateFlow<String> = MutableStateFlow("")
+    private val selectedDetailBreedStateFlow: MutableStateFlow<String> = MutableStateFlow("")
 
     override val uiState: PetDetailBreedInputPageState = PetDetailBreedInputPageState(
-        detailBreed = detailBreedStateFlow.asStateFlow()
+        detailBreed = detailBreedStateFlow.asStateFlow(),
+        selectedDetailBreed = selectedDetailBreedStateFlow.asStateFlow()
     )
 
     fun onTextChanged(input: CharSequence) {
