@@ -90,6 +90,16 @@
 
     <string name="insurance_no_register_pet_box1">우리 아이 보험료는?</string>
     <string name="insurance_no_register_pet_box2">2분 안에 받아보는 예상 보험료</string>
+    <string name="insurance_no_register_pet_box_won">원</string>
+    <string name="insurance_no_register_insurance_nothing">해당 범위로는 알맞는 상품이 보이지 않아요! \n보상범위를 다시 설정해 보시겠어요?</string>
+    <string name="insurance_no_register_insurance_title">에게 알맞는 보험</string>
+    <string name="insurance_no_register_insurance_range">보상범위</string>
+    <string name="insurance_no_register_percent_70">70%</string>
+    <string name="insurance_no_register_percent_80">80%</string>
+    <string name="insurance_no_register_percent_90">90%</string>
+
+
+
 
 
     <!--  PermissionSettingsBottomSheet  -->
