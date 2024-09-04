@@ -1,6 +1,7 @@
 package com.example.fitpet.ui.insurance.charge.contact
 
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceChargeContactBinding
 import com.example.fitpet.ui.insurance.charge.cause.calendar.CalendarBottomSheet.Companion.BOTTOM_SHEET
@@ -26,6 +27,11 @@ class InsuranceChargeContactFragment: BaseFragment<FragmentInsuranceChargeContac
                     handleEvent(event as InsuranceChargeContactEvent)
                 }
             }
+            launch {
+                viewModel.uiState.isClickedAgreement.collect() { agree ->
+                    if (agree) goToNextCheckPage()
+                }
+            }
         }
     }
 
@@ -36,6 +42,11 @@ class InsuranceChargeContactFragment: BaseFragment<FragmentInsuranceChargeContac
     }
 
     private fun showAgreeBottomSheet() {
-        InsuranceAgreeBottomSheet().show(parentFragmentManager, BOTTOM_SHEET)
+        InsuranceAgreeBottomSheet{viewModel.onClickAgreeBtn()}.show(parentFragmentManager, BOTTOM_SHEET)
+    }
+
+    private fun goToNextCheckPage() {
+        val action = InsuranceChargeContactFragmentDirections.actionInsuranceChargeContactToCheck()
+        findNavController().navigate(action)
     }
 }

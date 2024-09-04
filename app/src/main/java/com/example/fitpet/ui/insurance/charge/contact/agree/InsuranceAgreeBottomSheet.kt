@@ -9,7 +9,9 @@ import com.example.fitpet.databinding.BottomSheetInsuranceAgreeBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class InsuranceAgreeBottomSheet(): BottomSheetDialogFragment() {
+class InsuranceAgreeBottomSheet(
+    private val onClickAgreement: () -> Unit
+): BottomSheetDialogFragment() {
 
     private val viewModel by viewModels<InsuranceAgreeViewModel>()
 
@@ -37,5 +39,14 @@ class InsuranceAgreeBottomSheet(): BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewModel = viewModel
+
+        clickAgreeBtn()
+    }
+
+    private fun clickAgreeBtn() {
+        binding.btnInsuranceAgree.setOnClickListener {
+            onClickAgreement()
+            dismiss()
+        }
     }
 }

@@ -18,11 +18,13 @@ class InsuranceChargeContactViewModel @Inject constructor() : BaseViewModel<Insu
     private val _isSelectedKaKao: MutableStateFlow<Boolean> = MutableStateFlow(false)
     private val _isSelectedEmail: MutableStateFlow<Boolean> = MutableStateFlow(false)
     private val _emailInput: MutableStateFlow<String> = MutableStateFlow("")
+    private val _isClickedAgreement: MutableStateFlow<Boolean> = MutableStateFlow(false)
 
     override val uiState = InsuranceChargeContactPageState(
         isSelectedKaKao = _isSelectedKaKao.asStateFlow(),
         isSelectedEmail = _isSelectedEmail.asStateFlow(),
         emailInput = _emailInput.asStateFlow(),
+        isClickedAgreement = _isClickedAgreement.asStateFlow(),
 
         isBtnEnabled = combine(_isSelectedKaKao, _isSelectedEmail, _emailInput) { kakao, email, emailInput ->
             isGoNextValid(kakao, email, emailInput)
@@ -50,6 +52,10 @@ class InsuranceChargeContactViewModel @Inject constructor() : BaseViewModel<Insu
 
     fun onClickNextAgreeBtn() {
         emitEventFlow(InsuranceChargeContactEvent.ClickNextAgreeBtn)
+    }
+
+    fun onClickAgreeBtn() {
+        _isClickedAgreement.update { true }
     }
 
     private fun isGoNextValid(isKakaoSelected: Boolean, isEmailSelected: Boolean, emailInput: String): Boolean {
