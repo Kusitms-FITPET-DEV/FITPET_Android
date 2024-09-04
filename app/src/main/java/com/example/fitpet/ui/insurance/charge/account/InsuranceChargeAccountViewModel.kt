@@ -8,6 +8,8 @@ import javax.inject.Inject
 @HiltViewModel
 class InsuranceChargeAccountViewModel @Inject constructor(): BaseViewModel<InsuranceChargeAccountPageState>() {
 
+    var isFirstSelection = true
+
     override val uiState = InsuranceChargeAccountPageState(
         accountOwner = MutableStateFlow(""),
         accountNumber = MutableStateFlow("")
