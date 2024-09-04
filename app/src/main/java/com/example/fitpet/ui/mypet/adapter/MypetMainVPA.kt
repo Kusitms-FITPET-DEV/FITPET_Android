@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.fitpet.ui.mypet.MypetMainFragment
 import com.example.fitpet.ui.mypet.insurance.InsuranceFragment
+import com.example.fitpet.ui.mypet.insurance.nopet.InsuranceNoPetFragment
 import com.example.fitpet.ui.mypet.life.LifeFragment
 
 class MypetMainVPA(fragment: Fragment) : FragmentStateAdapter(fragment) {
@@ -17,7 +18,7 @@ class MypetMainVPA(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
-            INSURANCE_FRAGMENT_POSITION -> InsuranceFragment()
+            INSURANCE_FRAGMENT_POSITION -> InsuranceNoPetFragment() // 후에 데이터에 따른 fragment 띄우기 구현 예정
             LIFE_FRAGMENT_POSITION -> LifeFragment()
             else -> throw IllegalStateException("Invalid position")
         }

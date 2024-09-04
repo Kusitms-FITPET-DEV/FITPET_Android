@@ -51,6 +51,10 @@
             android:id="@+id/action_pet_name_input_to_pet_breed"
             app:destination="@id/fragmentPetBreed"/>
 
+        <action
+            android:id="@+id/action_pet_name_input_to_my_pet"
+            app:destination="@id/fragmentMypet"/>
+
     </fragment>
 
     <fragment
@@ -95,8 +99,22 @@
         android:label="fragmentContactInfoInput"
         android:layout="@layout/fragment_contact_info_input">
 
-
+        <action
+            android:id="@+id/action_contact_info_input_to_my_pet"
+            app:destination="@id/fragmentMypet"/>
 
     </fragment>
+
+    <fragment
+        android:id="@+id/fragmentMypet"
+        android:name="com.example.fitpet.ui.mypet.MypetMainFragment"
+        android:label="fragmentMypet"
+        android:layout="@layout/fragment_mypet_main">
+        <action
+            android:id="@+id/action_mypet_to_pet_name_input"
+            app:destination="@id/fragmentPetNameInput"/>
+    </fragment>
+
+    <include app:graph="@navigation/insurance_no_pet_nav_graph" />
 
 </navigation>

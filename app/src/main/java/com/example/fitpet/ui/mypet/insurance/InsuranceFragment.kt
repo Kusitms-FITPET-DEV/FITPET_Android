@@ -1,5 +1,6 @@
 package com.example.fitpet.ui.mypet.insurance
 
+import androidx.fragment.app.viewModels
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -8,15 +9,14 @@ import dagger.hilt.android.AndroidEntryPoint
 class InsuranceFragment : BaseFragment<FragmentInsuranceBinding, InsurancePageState, InsuranceViewModel>(
     FragmentInsuranceBinding::inflate
 ) {
-    override val viewModel: InsuranceViewModel
-        get() = TODO("Not yet implemented")
+    override val viewModel: InsuranceViewModel by viewModels()
 
     override fun initView() {
-        TODO("Not yet implemented")
+
     }
 
     override fun initState() {
-        TODO("Not yet implemented")
+
     }
 
 }

@@ -9,6 +9,5 @@ import javax.inject.Inject
 class InsuranceViewModel @Inject constructor(
     private val resourceProvider: ResourceProvider
 ): BaseViewModel<InsurancePageState>() {
-    override val uiState: InsurancePageState
-        get() = TODO("Not yet implemented")
+    override val uiState= InsurancePageState()
 }

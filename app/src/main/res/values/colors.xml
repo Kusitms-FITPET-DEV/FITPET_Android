@@ -38,4 +38,7 @@
     <!--  etc  -->
     <color name="gray">#FFD9D9D9</color>
 
+    <!-- kakao -->
+    <color name="ic_kakao">#FFFAE100</color>
+
 </resources>
