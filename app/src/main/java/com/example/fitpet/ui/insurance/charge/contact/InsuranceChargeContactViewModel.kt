@@ -53,7 +53,7 @@ class InsuranceChargeContactViewModel @Inject constructor() : BaseViewModel<Insu
     }
 
     private fun isGoNextValid(isKakaoSelected: Boolean, isEmailSelected: Boolean, emailInput: String): Boolean {
-        return isKakaoSelected || (isEmailSelected && emailInput.isNotEmpty())
+        return (isKakaoSelected && !isEmailSelected) || (isKakaoSelected && emailInput.isNotEmpty()) || (isEmailSelected && emailInput.isNotEmpty())
     }
 
     companion object {

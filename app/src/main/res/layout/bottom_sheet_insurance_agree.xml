@@ -28,9 +28,10 @@
             android:id="@+id/layout_insurance_agree_all"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="44dp"
+            android:layout_marginTop="39dp"
             android:layout_marginStart="23dp"
             android:layout_marginEnd="28dp"
+            android:paddingVertical="5dp"
             android:onClick="@{() -> viewModel.onClickAgreeType(@string/insurance_agree_type_all)}"
             app:layout_constraintTop_toBottomOf="@id/iv_insurance_agree_top_bar"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,6 +43,7 @@
                 android:layout_height="wrap_content"
                 android:src="@{viewModel.uiState.isSelectedAll ? @drawable/ic_check_activated : @drawable/ic_check_inactivated}"
                 android:padding="5dp"
+                android:onClick="@{() -> viewModel.onClickAgreeType(@string/insurance_agree_type_all)}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"/>
 
@@ -62,7 +64,7 @@
             android:id="@+id/layout_insurance_agree_essential"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="19dp"
             android:onClick="@{() -> viewModel.onClickAgreeType(@string/insurance_agree_type_essential)}"
             app:layout_constraintStart_toStartOf="@id/layout_insurance_agree_all"
             app:layout_constraintEnd_toEndOf="@id/layout_insurance_agree_all"
@@ -74,6 +76,7 @@
                 android:layout_height="wrap_content"
                 android:src="@{viewModel.uiState.isSelectedEssential ? @drawable/ic_check_activated : @drawable/ic_check_inactivated}"
                 android:padding="5dp"
+                android:onClick="@{() -> viewModel.onClickAgreeType(@string/insurance_agree_type_essential)}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"/>
 
@@ -117,6 +120,7 @@
                 android:layout_height="wrap_content"
                 android:src="@{viewModel.uiState.isSelectedChoice ? @drawable/ic_check_activated : @drawable/ic_check_inactivated}"
                 android:padding="5dp"
+                android:onClick="@{() -> viewModel.onClickAgreeType(@string/insurance_agree_type_choice)}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"/>
 
@@ -150,13 +154,14 @@
             android:layout_height="wrap_content"
             android:paddingVertical="12dp"
             android:text="@string/agree_btn"
-            android:textColor="@color/text_disable"
-            android:background="@drawable/bg_rectangle_filled_neural200_radius_8"
+            android:textColor="@{viewModel.uiState.isAgreeBtnEnabled ? @color/white : @color/text_disable}"
+            android:background="@{viewModel.uiState.isAgreeBtnEnabled ? @drawable/bg_rectangle_filled_point_blue_radius_8 : @drawable/bg_rectangle_filled_neural200_radius_8}"
             android:textAppearance="@style/b3_S"
             android:layout_marginHorizontal="28dp"
             android:layout_marginBottom="32dp"
             android:layout_marginTop="40dp"
             android:outlineProvider="none"
+            android:clickable="@{viewModel.uiState.isAgreeBtnEnabled}"
             app:layout_constraintTop_toBottomOf="@id/layout_insurance_agree_choice"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

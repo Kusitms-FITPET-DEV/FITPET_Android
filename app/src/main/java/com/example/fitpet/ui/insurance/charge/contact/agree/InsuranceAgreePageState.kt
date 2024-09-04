@@ -7,4 +7,5 @@ data class InsuranceAgreePageState (
     val isSelectedAll: StateFlow<Boolean>,
     val isSelectedEssential: StateFlow<Boolean>,
     val isSelectedChoice: StateFlow<Boolean>,
+    val isAgreeBtnEnabled: StateFlow<Boolean>
 ): PageState
