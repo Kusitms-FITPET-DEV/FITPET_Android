@@ -9,6 +9,5 @@ import javax.inject.Inject
 class LifeViewModel @Inject constructor(
     private val resourceProvider: ResourceProvider
 ): BaseViewModel<LifePageState>() {
-    override val uiState: LifePageState
-        get() = TODO("Not yet implemented")
+    override val uiState = LifePageState()
 }

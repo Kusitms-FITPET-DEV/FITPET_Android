@@ -13,8 +13,9 @@ import javax.inject.Inject
 class MypetMainViewModel @Inject constructor(
     private val resourceProvider: ResourceProvider
 ): BaseViewModel<MypetMainPageState>() {
-    override val uiState: MypetMainPageState
-        get() = TODO("Not yet implemented")
+    override val uiState = MypetMainPageState()
 
-    val tabTitles = listOf(R.string.tab_insurance, R.string.tab_life)
+    fun onInsuranceNoPetFragmentClick() {
+        emitEventFlow(MypetMainEvent.GoToAddPetButtonClick)
+    }
 }
