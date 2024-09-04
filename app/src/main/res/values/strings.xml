@@ -19,6 +19,7 @@
     <string name="agree">동의하기</string>
     <string name="go_to_mypet">펫보험 견적 알아보기</string>
     <string name="kakao_floating">바로 상담하기</string>
+    <string name="resume">계속하기</string>
     <string name="blank" />
     <string name="select">선택하기</string>
 
@@ -133,5 +134,9 @@
     <string name="file_name_format">JPEG_%1$s_</string>
     <string name="gallery_file_format">image/*</string>
     <string name="gallery_phone_build">Xiaomi</string>
+
+    <!--  SkipDialog  -->
+    <string name="stop_registration_title">등록을 멈추고 싶으신가요?</string>
+    <string name="stop_registration_content">지금 등록하시면 보험 견적까지\n한 번에 받아볼 수 있어요!</string>
 
 </resources>
