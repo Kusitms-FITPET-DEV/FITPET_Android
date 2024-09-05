@@ -177,4 +177,10 @@
     <string name="insurance_charge_check_account_title">보험금 수령계좌</string>
     <string name="insurance_charge_check_contact_title">청구결과 안내방법</string>
 
+    <!--  InsuranceFinish  -->
+    <string name="insurance_charge_check_finish_title">청구가 완료되었어요!</string>
+    <string name="insurance_charge_check_finish_content"><b>보상내역 확인</b>에서 심사 진행 상황을\n살펴 볼 수 있어요!</string>
+    <string name="insurance_charge_check_finish_btn">보상 내역 확인하기</string>
+    <string name="insurance_charge_check_finish_close">창 닫기</string>
+
 </resources>
