@@ -2,6 +2,7 @@ package com.example.fitpet.ui.insurance.charge.contact
 
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceChargeContactBinding
@@ -54,11 +55,13 @@ class InsuranceChargeContactFragment: BaseFragment<FragmentInsuranceChargeContac
 
     private fun setChargeData(): InsuranceCharge {
         val blank = getString(R.string.blank)
+        val arguments: InsuranceChargeContactFragmentArgs by navArgs()
+        val beforeData = arguments.insuranceArgument
 
         with(viewModel.uiState) {
             val methodMsg = if (isSelectedKaKao.value) getString(R.string.insurance_charge_contact_kakao) else blank   // TODO 유저 카카오 로그인 완료 후 카카오계정받기
             val methodEmail = if (isSelectedEmail.value) emailInput.value else blank
-            val chargeData = InsuranceCharge(contactMethodMsg = methodMsg, contactMethodEmail = methodEmail)
+            val chargeData = InsuranceCharge(causeType = beforeData.causeType, hospitalVisitDate = beforeData.hospitalVisitDate, receiptUrl = beforeData.receiptUrl, medicalExpensesUrl = beforeData.medicalExpensesUrl, etcUrl = beforeData.etcUrl, accountOwner = beforeData.accountOwner, accountBank = beforeData.accountBank, accountNumber = beforeData.accountNumber, contactMethodMsg = methodMsg, contactMethodEmail = methodEmail)
             return chargeData
         }
     }

@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceChargeAccountBinding
@@ -114,8 +115,11 @@ class InsuranceChargeAccountFragment: BaseFragment<FragmentInsuranceChargeAccoun
     }
 
     private fun setAccountData(): InsuranceCharge {
+        val arguments: InsuranceChargeAccountFragmentArgs by navArgs()
+        val beforeData = arguments.insuranceArgument
+
         with (viewModel.uiState) {
-            val accountData = InsuranceCharge(accountOwner = accountOwner.value, accountBank = accountBank.value, accountNumber = accountNumber.value)
+            val accountData = InsuranceCharge(causeType = beforeData.causeType, hospitalVisitDate = beforeData.hospitalVisitDate, receiptUrl = beforeData.receiptUrl, medicalExpensesUrl = beforeData.medicalExpensesUrl, etcUrl = beforeData.etcUrl, accountOwner = accountOwner.value, accountBank = accountBank.value, accountNumber = accountNumber.value)
             return accountData
         }
     }
