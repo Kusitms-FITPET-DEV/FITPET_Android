@@ -17,7 +17,7 @@ class InsuranceChargeCheckViewModel @Inject constructor(
 
     fun setInsuranceData(insuranceArgument: InsuranceCharge) {
         with (uiState) {
-            // TODO targetName, phone, contactType은 추후 데이터 넘겨받은 후 구현
+            // TODO targetName, phone은 추후 데이터 넘겨받은 후 구현
 //            targetName =
             causeType = insuranceArgument.causeType
             hospitalVisitDate = insuranceArgument.hospitalVisitDate
@@ -31,7 +31,11 @@ class InsuranceChargeCheckViewModel @Inject constructor(
 //            phone
             essentialAgree = insuranceArgument.essentialAgree
             optionAgree = insuranceArgument.optionAgree
-//            contactType
+
+            // TODO 이메일/카카오톡 둘 다 선택시 디자인 나온 후 로직 변경
+            if (contactMethodEmail.isNotEmpty()) {
+                contactType = resourceProvider.getString(R.string.insurance_charge_contact_email)
+            }
         }
     }
 
