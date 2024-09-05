@@ -38,6 +38,19 @@
         android:layout="@layout/fragment_insurance_charge_account"
         tools:layout="@layout/fragment_insurance_charge_account">
 
+        <action
+            android:id="@+id/action_insurance_charge_account_to_contact"
+            app:destination="@id/fragmentInsuranceChargeContact"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentInsuranceChargeContact"
+        android:name="com.example.fitpet.ui.insurance.charge.contact.InsuranceChargeContactFragment"
+        android:label="fragmentInsuranceChargeContact"
+        android:layout="@layout/fragment_insurance_charge_contact"
+        tools:layout="@layout/fragment_insurance_charge_contact">
+
     </fragment>
 
 
