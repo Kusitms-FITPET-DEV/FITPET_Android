@@ -30,4 +30,8 @@ class PetBreedViewModel @Inject constructor() : BaseViewModel<PetBreedPageState>
     fun onClickBtnNext() {
         emitEventFlow(PetBreedEvent.GoToPetBreedDetail)
     }
+
+    fun onClickSkip() {
+        emitEventFlow(PetBreedEvent.ShowSkipDialog)
+    }
 }

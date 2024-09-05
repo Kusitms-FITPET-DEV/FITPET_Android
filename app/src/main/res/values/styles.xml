@@ -128,7 +128,7 @@
         <item name="lineHeight">24dp</item>
         <item name="fontFamily">@font/pretendard_bold</item>
     </style>
-    
+
     <style name="insurance_box_light">
         <item name="android:textSize">14sp</item>
         <item name="lineHeight">16dp</item>

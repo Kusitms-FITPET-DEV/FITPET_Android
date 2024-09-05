@@ -4,4 +4,5 @@ import com.example.fitpet.Event
 
 sealed class PetBreedEvent: Event {
     data object GoToPetBreedDetail: PetBreedEvent()
+    data object ShowSkipDialog: PetBreedEvent()
 }

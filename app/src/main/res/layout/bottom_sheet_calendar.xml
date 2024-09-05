@@ -13,7 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_rectangle_filled_white_radius_top_30">
+        android:background="@drawable/bg_rectangle_filled_bg_white_radius_top_30">
 
         <ImageView
             android:id="@+id/iv_calendar_top_bar"
