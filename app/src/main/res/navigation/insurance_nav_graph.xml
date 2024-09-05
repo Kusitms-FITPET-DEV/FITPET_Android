@@ -64,6 +64,19 @@
         android:layout="@layout/fragment_insurance_charge_check"
         tools:layout="@layout/fragment_insurance_charge_check">
 
+        <action
+            android:id="@+id/action_insurance_charge_check_to_finish"
+            app:destination="@id/fragmentInsuranceChargeFinish"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentInsuranceChargeFinish"
+        android:name="com.example.fitpet.ui.insurance.charge.finish.InsuranceChargeFinishFragment"
+        android:label="fragmentInsuranceChargeFinish"
+        android:layout="@layout/fragment_insurance_charge_check_finish"
+        tools:layout="@layout/fragment_insurance_charge_check_finish">
+
     </fragment>
 
 

@@ -23,7 +23,7 @@
             android:id="@+id/tv_insurance_charge_account_index"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/fourth_page"
+            android:text="@string/fifth_page"
             android:textAppearance="@style/b5"
             android:textColor="@color/point_blue"
             android:layout_marginTop="32dp"
@@ -200,6 +200,7 @@
             android:layout_marginHorizontal="28dp"
             android:layout_marginBottom="36dp"
             android:outlineProvider="none"
+            android:onClick="@{() -> viewModel.onClickFinishBtn()}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
