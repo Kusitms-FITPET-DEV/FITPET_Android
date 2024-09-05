@@ -1,15 +1,12 @@
 package com.example.fitpet.ui.insurance.charge.contact
 
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceChargeContactBinding
 import com.example.fitpet.ui.insurance.charge.cause.calendar.CalendarBottomSheet.Companion.BOTTOM_SHEET
 import com.example.fitpet.ui.insurance.charge.contact.agree.InsuranceAgreeBottomSheet
-import com.example.fitpet.ui.insurance.charge.document.photo.AddPhotoEvent
 import com.example.fitpet.ui.model.InsuranceCharge
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -51,17 +48,17 @@ class InsuranceChargeContactFragment: BaseFragment<FragmentInsuranceChargeContac
     }
 
     private fun goToNextCheckPage() {
-        val action = InsuranceChargeContactFragmentDirections.actionInsuranceChargeContactToCheck(
-            setChargeData()
-        )
+        val action = InsuranceChargeContactFragmentDirections.actionInsuranceChargeContactToCheck(setChargeData())
         findNavController().navigate(action)
     }
 
     private fun setChargeData(): InsuranceCharge {
+        val blank = getString(R.string.blank)
+
         with(viewModel.uiState) {
-            val methodMsg = if (isSelectedKaKao.value) "카카오톡" else ""   // TODO 유저 카카오 로그인 완료 후 카카오계정받기
-            val methodEmail = if (isSelectedEmail.value) emailInput.value else ""
-            val chargeData = InsuranceCharge("", "", "", "", "", "", "", "", methodMsg, methodEmail, "", false, false)
+            val methodMsg = if (isSelectedKaKao.value) getString(R.string.insurance_charge_contact_kakao) else blank   // TODO 유저 카카오 로그인 완료 후 카카오계정받기
+            val methodEmail = if (isSelectedEmail.value) emailInput.value else blank
+            val chargeData = InsuranceCharge(contactMethodMsg = methodMsg, contactMethodEmail = methodEmail)
             return chargeData
         }
     }

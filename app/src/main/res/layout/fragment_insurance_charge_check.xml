@@ -172,6 +172,7 @@
             android:textColor="@color/black"
             android:textAppearance="@style/b4"
             android:layout_marginEnd="28dp"
+            android:text="@{}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_insurance_charge_check_contact_title"
             app:layout_constraintBottom_toBottomOf="@id/tv_insurance_charge_check_contact_title"
@@ -184,6 +185,7 @@
             android:textColor="@color/text_disable"
             android:textAppearance="@style/b4"
             android:layout_marginEnd="28dp"
+            android:text="@{viewModel.uiState.contactMethodEmail}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_insurance_charge_check_contact_method"
             tools:text="010-1234-1234"/>
