@@ -11,8 +11,8 @@ class TokenProviderImpl @Inject constructor(
 ) : TokenProvider {
     override suspend fun refreshTokens(refreshToken: String): LoginResponse? {
         val response = authService.reissueToken(ReissueTokenRequest(refreshToken))
-        return if (response.isSuccessful) {
-            response.body()
+        return if (response.success) {
+            response.data
         } else {
             null
         }

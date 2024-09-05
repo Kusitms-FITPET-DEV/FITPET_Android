@@ -1,5 +1,6 @@
 package com.example.fitpet.data.service
 
+import com.example.fitpet.base.ApiResponse
 import com.example.fitpet.model.request.LoginRequest
 import com.example.fitpet.model.request.ReissueTokenRequest
 import com.example.fitpet.model.response.LoginResponse
@@ -14,13 +15,13 @@ interface AuthService {
     @POST(Endpoints.Auth.LOGIN)
     suspend fun kakaoLogin(
         @Body request: LoginRequest
-    ): Response<LoginResponse>
+    ): ApiResponse<LoginResponse>
 
     @POST(Endpoints.Auth.LOGOUT)
-    suspend fun logout(): Response<Unit>
+    suspend fun logout(): ApiResponse<Unit>
 
     @POST(Endpoints.Auth.REFRESH)
     suspend fun reissueToken(
         @Body request: ReissueTokenRequest
-    ): Response<LoginResponse>
+    ): ApiResponse<LoginResponse>
 }

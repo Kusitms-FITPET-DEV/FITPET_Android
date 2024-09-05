@@ -9,6 +9,7 @@ import com.example.fitpet.model.response.LoginResponse
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException
+import timber.log.Timber
 import javax.inject.Inject
 
 class AuthRepositoryImpl @Inject constructor(
@@ -18,10 +19,11 @@ class AuthRepositoryImpl @Inject constructor(
         emit(
             kotlin.runCatching {
                 val response = authService.kakaoLogin(request)
-                if (response.isSuccessful) {
-                    response.body() ?: throw NullPointerException("Response Body가 null입니다")
+
+                if (response.success) {
+                    response.data
                 } else {
-                    throw HttpException(response)
+                    throw RuntimeException("Login failed: ${response.status}")
                 }
             }
         )
@@ -31,10 +33,11 @@ class AuthRepositoryImpl @Inject constructor(
         emit(
             kotlin.runCatching {
                 val response = authService.logout()
-                if (response.isSuccessful) {
-                    response.body() ?: throw NullPointerException("Response Body가 null입니다")
+
+                if (response.success) {
+                    Unit
                 } else {
-                    throw HttpException(response)
+                    throw RuntimeException("Logout failed: ${response.status}")
                 }
             }
         )
@@ -44,10 +47,10 @@ class AuthRepositoryImpl @Inject constructor(
         emit(
             kotlin.runCatching {
                 val response = authService.reissueToken(request)
-                if (response.isSuccessful) {
-                    response.body() ?: throw NullPointerException("Response Body가 null입니다")
+                if (response.success) {
+                    response.data
                 } else {
-                    throw HttpException(response)
+                    throw RuntimeException("ReissueToken failed: ${response.status}")
                 }
             }
         )
