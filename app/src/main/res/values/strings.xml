@@ -23,6 +23,7 @@
     <string name="resume">계속하기</string>
     <string name="blank" />
     <string name="select">선택하기</string>
+    <string name="check_btn">확인했습니다</string>
 
     <!-- Tab -->
     <string name="tab_insurance">마이 펫보험</string>
@@ -166,5 +167,14 @@
     <string name="insurance_agree_type_all">ALL</string>
     <string name="insurance_agree_type_essential">TYPE_ESSENTIAL</string>
     <string name="insurance_agree_type_choice">TYPE_CHOICE</string>
+
+    <!--  InsuranceCheck  -->
+    <string name="insurance_charge_check_title">청구 내용이 맞는지\n다시 한 번 확인해 주세요</string>
+    <string name="insurance_charge_check_charge_name">삼성화재 위풍댕댕</string>
+    <string name="insurance_charge_check_semi_title">통원</string>
+    <string name="insurance_charge_check_target_name">청구대상</string>
+    <string name="insurance_charge_check_date_title">병원방문일</string>
+    <string name="insurance_charge_check_account_title">보험금 수령계좌</string>
+    <string name="insurance_charge_check_contact_title">청구결과 안내방법</string>
 
 </resources>

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
@@ -16,6 +18,191 @@
         <include
             android:id="@+id/tb_insurance_charge"
             layout="@layout/top_bar_insurance_charge" />
+
+        <TextView
+            android:id="@+id/tv_insurance_charge_account_index"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fourth_page"
+            android:textAppearance="@style/b5"
+            android:textColor="@color/point_blue"
+            android:layout_marginTop="32dp"
+            android:layout_marginStart="24dp"
+            app:layout_constraintTop_toBottomOf="@id/tb_insurance_charge"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_insurance_charge_account_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/insurance_charge_check_title"
+            android:textAppearance="@style/b1_S"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_insurance_charge_account_index"
+            app:layout_constraintStart_toStartOf="@id/tv_insurance_charge_account_index" />
+
+        <TextView
+            android:id="@+id/tv_insurance_charge_account_charge_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/insurance_charge_check_charge_name"
+            android:textColor="@color/black"
+            android:textAppearance="@style/b2_M"
+            android:layout_marginTop="42dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_insurance_charge_account_title"
+            app:layout_constraintStart_toStartOf="@id/tv_insurance_charge_account_title"/>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/divider_insurance_charge_account"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            app:dividerColor="@color/neutral_200"
+            android:layout_marginHorizontal="28dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_insurance_charge_account_charge_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_insurance_charge_check_cause"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/insurance_charge_check_semi_title"
+            android:textColor="@color/black"
+            android:textAppearance="@style/b3"
+            android:layout_marginTop="28dp"
+            app:layout_constraintTop_toBottomOf="@id/divider_insurance_charge_account"
+            app:layout_constraintStart_toStartOf="@id/divider_insurance_charge_account"/>
+
+        <TextView
+            android:id="@+id/tv_insurance_charge_check_target_name_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/insurance_charge_check_target_name"
+            android:textColor="@color/text_grey"
+            android:textAppearance="@style/b4"
+            android:layout_marginTop="32dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_insurance_charge_check_cause"
+            app:layout_constraintStart_toStartOf="@id/tv_insurance_charge_check_cause"/>
+
+        <TextView
+            android:id="@+id/tv_insurance_charge_check_target_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textAppearance="@style/b4"
+            android:layout_marginEnd="28dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_insurance_charge_check_target_name_title"
+            app:layout_constraintBottom_toBottomOf="@id/tv_insurance_charge_check_target_name_title"
+            tools:text="보리"/>
+
+        <TextView
+            android:id="@+id/tv_insurance_charge_check_date_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/insurance_charge_check_date_title"
+            android:textColor="@color/text_grey"
+            android:textAppearance="@style/b4"
+            android:layout_marginTop="32dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_insurance_charge_check_target_name_title"
+            app:layout_constraintStart_toStartOf="@id/tv_insurance_charge_check_cause"/>
+
+        <TextView
+            android:id="@+id/tv_insurance_charge_check_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textAppearance="@style/b4"
+            android:layout_marginEnd="28dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_insurance_charge_check_date_title"
+            app:layout_constraintBottom_toBottomOf="@id/tv_insurance_charge_check_date_title"
+            tools:text="2024.08.27"/>
+
+        <TextView
+            android:id="@+id/tv_insurance_charge_check_account_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/insurance_charge_check_account_title"
+            android:textColor="@color/text_grey"
+            android:textAppearance="@style/b4"
+            android:layout_marginTop="32dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_insurance_charge_check_date_title"
+            app:layout_constraintStart_toStartOf="@id/tv_insurance_charge_check_cause"/>
+
+        <TextView
+            android:id="@+id/tv_insurance_charge_check_account_owner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textAppearance="@style/b4"
+            android:layout_marginEnd="28dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_insurance_charge_check_account_title"
+            app:layout_constraintBottom_toBottomOf="@id/tv_insurance_charge_check_account_title"
+            tools:text="농협"/>
+
+        <TextView
+            android:id="@+id/tv_insurance_charge_check_account_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_disable"
+            android:textAppearance="@style/b4"
+            android:layout_marginEnd="28dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_insurance_charge_check_account_owner"
+            tools:text="12345678"/>
+
+        <TextView
+            android:id="@+id/tv_insurance_charge_check_contact_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/insurance_charge_check_contact_title"
+            android:textColor="@color/text_grey"
+            android:textAppearance="@style/b4"
+            android:layout_marginTop="51dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_insurance_charge_check_account_title"
+            app:layout_constraintStart_toStartOf="@id/tv_insurance_charge_check_cause"/>
+
+        <TextView
+            android:id="@+id/tv_insurance_charge_check_contact_owner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textAppearance="@style/b4"
+            android:layout_marginEnd="28dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_insurance_charge_check_contact_title"
+            app:layout_constraintBottom_toBottomOf="@id/tv_insurance_charge_check_contact_title"
+            tools:text="문자/알림톡"/>
+
+        <TextView
+            android:id="@+id/tv_insurance_charge_check_contact_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_disable"
+            android:textAppearance="@style/b4"
+            android:layout_marginEnd="28dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_insurance_charge_check_contact_owner"
+            tools:text="010-1234-1234"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_insurance_charge_check_next"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingVertical="12dp"
+            android:text="@string/check_btn"
+            android:textColor="@color/white"
+            android:textAppearance="@style/b3_S"
+            android:background="@drawable/bg_rectangle_filled_point_blue_radius_8"
+            android:layout_marginHorizontal="28dp"
+            android:layout_marginBottom="36dp"
+            android:outlineProvider="none"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
