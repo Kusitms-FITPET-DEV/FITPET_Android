@@ -147,7 +147,7 @@
         <item name="fontFamily">@font/pretendard_medium</item>
     </style>
 
-    <style name="insurance_pet_name">
+    <style name="b1_B">
         <item name="android:textSize">20sp</item>
         <item name="lineHeight">43dp</item>
         <item name="fontFamily">@font/pretendard_extra_bold</item>

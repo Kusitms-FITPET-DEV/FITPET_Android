@@ -22,7 +22,17 @@
     <string name="blank" />
     <string name="select">선택하기</string>
     <string name="go_to_register">1:1 펫보험 상담하기</string>
+    <string name="pet_info">%1$d살 | %2$s</string>
+    <string name="pet_insurance_range"> ~ %s</string>
 
+
+
+    <!-- insuranceCompany -->
+    <string name="db">DB손해보험</string>
+    <string name="kb">KB손해보험</string>
+    <string name="hyundai">현대해상</string>
+    <string name="samsung">삼성화재</string>
+    <string name="meritz">메리츠</string>
 
     <!-- Tab -->
     <string name="tab_insurance">마이 펫보험</string>
@@ -97,8 +107,6 @@
     <string name="insurance_no_register_percent_70">70%</string>
     <string name="insurance_no_register_percent_80">80%</string>
     <string name="insurance_no_register_percent_90">90%</string>
-
-
 
 
 
