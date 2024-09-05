@@ -25,6 +25,19 @@
         android:layout="@layout/fragment_insurance_charge_document"
         tools:layout="@layout/fragment_insurance_charge_document">
 
+        <action
+            android:id="@+id/action_insurance_charge_document_to_account"
+            app:destination="@id/fragmentInsuranceChargeAccount"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentInsuranceChargeAccount"
+        android:name="com.example.fitpet.ui.insurance.charge.account.InsuranceChargeAccountFragment"
+        android:label="fragmentInsuranceChargeAccount"
+        android:layout="@layout/fragment_insurance_charge_account"
+        tools:layout="@layout/fragment_insurance_charge_account">
+
     </fragment>
 
 
