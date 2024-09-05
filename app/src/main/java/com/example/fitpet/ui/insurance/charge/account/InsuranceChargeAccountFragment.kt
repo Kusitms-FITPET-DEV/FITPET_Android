@@ -11,6 +11,7 @@ import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceChargeAccountBinding
 import com.example.fitpet.ui.insurance.charge.account.InsuranceChargeAccountViewModel.Companion.BANK_SPINNER_DEFAULT
+import com.example.fitpet.ui.model.InsuranceCharge
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -108,7 +109,14 @@ class InsuranceChargeAccountFragment: BaseFragment<FragmentInsuranceChargeAccoun
     }
 
     private fun goToContactPage() {
-        val action = InsuranceChargeAccountFragmentDirections.actionInsuranceChargeAccountToContact()
+        val action = InsuranceChargeAccountFragmentDirections.actionInsuranceChargeAccountToContact(setAccountData())
         findNavController().navigate(action)
+    }
+
+    private fun setAccountData(): InsuranceCharge {
+        with (viewModel.uiState) {
+            val accountData = InsuranceCharge(accountOwner = accountOwner.value, accountBank = accountBank.value, accountNumber = accountNumber.value)
+            return accountData
+        }
     }
 }

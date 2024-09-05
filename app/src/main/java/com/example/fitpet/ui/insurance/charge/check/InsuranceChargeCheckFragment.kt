@@ -20,7 +20,7 @@ class InsuranceChargeCheckFragment: BaseFragment<FragmentInsuranceChargeCheckBin
     override fun initView() {
         binding.viewModel = viewModel
 
-        viewModel.setInsuranceData(arguments.contactArgument)
+        viewModel.setInsuranceData(arguments.insuranceArgument)
     }
 
     override fun initState() {

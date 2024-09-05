@@ -67,12 +67,13 @@
             android:id="@+id/tv_insurance_charge_check_cause"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/insurance_charge_check_semi_title"
+            android:text="@{viewModel.uiState.causeType}"
             android:textColor="@color/black"
             android:textAppearance="@style/b3"
             android:layout_marginTop="28dp"
             app:layout_constraintTop_toBottomOf="@id/divider_insurance_charge_account"
-            app:layout_constraintStart_toStartOf="@id/divider_insurance_charge_account"/>
+            app:layout_constraintStart_toStartOf="@id/divider_insurance_charge_account"
+            tools:text="통원"/>
 
         <TextView
             android:id="@+id/tv_insurance_charge_check_target_name_title"
@@ -92,6 +93,7 @@
             android:textColor="@color/black"
             android:textAppearance="@style/b4"
             android:layout_marginEnd="28dp"
+            android:text="@{viewModel.uiState.targetName}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_insurance_charge_check_target_name_title"
             app:layout_constraintBottom_toBottomOf="@id/tv_insurance_charge_check_target_name_title"
@@ -115,6 +117,7 @@
             android:textColor="@color/black"
             android:textAppearance="@style/b4"
             android:layout_marginEnd="28dp"
+            android:text="@{viewModel.uiState.hospitalVisitDate}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_insurance_charge_check_date_title"
             app:layout_constraintBottom_toBottomOf="@id/tv_insurance_charge_check_date_title"
@@ -138,6 +141,7 @@
             android:textColor="@color/black"
             android:textAppearance="@style/b4"
             android:layout_marginEnd="28dp"
+            android:text="@{viewModel.uiState.accountBank}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_insurance_charge_check_account_title"
             app:layout_constraintBottom_toBottomOf="@id/tv_insurance_charge_check_account_title"
@@ -150,6 +154,7 @@
             android:textColor="@color/text_disable"
             android:textAppearance="@style/b4"
             android:layout_marginEnd="28dp"
+            android:text="@{viewModel.uiState.accountNumber}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_insurance_charge_check_account_owner"
             tools:text="12345678"/>
@@ -172,7 +177,7 @@
             android:textColor="@color/black"
             android:textAppearance="@style/b4"
             android:layout_marginEnd="28dp"
-            android:text="@{}"
+            android:text="@{viewModel.uiState.contactType}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_insurance_charge_check_contact_title"
             app:layout_constraintBottom_toBottomOf="@id/tv_insurance_charge_check_contact_title"

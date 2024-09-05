@@ -15,10 +15,16 @@ class InsuranceChargeCheckViewModel @Inject constructor(
 
     override val uiState = InsuranceChargeCheckPageState()
 
-    fun setInsuranceData(contactArgument: InsuranceCharge) {
-        if (contactArgument.contactMethodEmail.isNotEmpty()) {
-            uiState.contactType = resourceProvider.getString(R.string.insurance_charge_contact_email)
-            uiState.contactMethodEmail = contactArgument.contactMethodEmail
+    fun setInsuranceData(insuranceArgument: InsuranceCharge) {
+        with (uiState) {
+            accountBank = insuranceArgument.accountBank
+            accountNumber = insuranceArgument.accountNumber
+            contactMethodMsg = insuranceArgument.contactMethodMsg
+            contactMethodEmail = insuranceArgument.contactMethodEmail
+
+            if (insuranceArgument.contactMethodEmail.isNotEmpty()) {
+                contactType = resourceProvider.getString(R.string.insurance_charge_contact_email)
+            }
         }
     }
 
