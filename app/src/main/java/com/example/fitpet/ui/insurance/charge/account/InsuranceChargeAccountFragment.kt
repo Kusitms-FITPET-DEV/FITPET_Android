@@ -6,7 +6,6 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.fragment.app.viewModels
-import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.fitpet.R
