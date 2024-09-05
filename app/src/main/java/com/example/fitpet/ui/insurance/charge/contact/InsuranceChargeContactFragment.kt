@@ -21,6 +21,7 @@ class InsuranceChargeContactFragment: BaseFragment<FragmentInsuranceChargeContac
 
     override fun initView() {
         binding.viewModel = viewModel
+        binding.tbInsuranceCharge.btnTopBarInsuranceChargeBack.setOnClickListener { findNavController().popBackStack() }
     }
 
     override fun initState() {

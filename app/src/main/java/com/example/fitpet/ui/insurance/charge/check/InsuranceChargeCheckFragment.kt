@@ -1,8 +1,10 @@
 package com.example.fitpet.ui.insurance.charge.check
 
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceChargeCheckBinding
 import com.example.fitpet.ui.insurance.charge.finish.InsuranceChargeCheckEvent
@@ -19,6 +21,7 @@ class InsuranceChargeCheckFragment: BaseFragment<FragmentInsuranceChargeCheckBin
 
     override fun initView() {
         binding.viewModel = viewModel
+        binding.tbInsuranceCharge.btnTopBarInsuranceChargeBack.setOnClickListener { findNavController().popBackStack() }
 
         viewModel.setInsuranceData(arguments.insuranceArgument)
     }
@@ -41,6 +44,10 @@ class InsuranceChargeCheckFragment: BaseFragment<FragmentInsuranceChargeCheckBin
 
     private fun goToFinishPage() {
         val action = InsuranceChargeCheckFragmentDirections.actionInsuranceChargeCheckToFinish()
-        findNavController().navigate(action)
+        val navOptions = NavOptions.Builder()
+            .setPopUpTo(R.id.fragmentInsuranceChargeCause, true)
+            .build()
+
+        findNavController().navigate(action, navOptions)
     }
 }
