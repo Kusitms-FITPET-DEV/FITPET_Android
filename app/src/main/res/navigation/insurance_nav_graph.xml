@@ -67,6 +67,9 @@
         <action
             android:id="@+id/action_insurance_charge_check_to_finish"
             app:destination="@id/fragmentInsuranceChargeFinish"/>
+        <argument
+            android:name="contactArgument"
+            app:argType="com.example.fitpet.ui.model.InsuranceCharge"/>
 
     </fragment>
 
