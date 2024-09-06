@@ -227,6 +227,7 @@
     <string name="insurance_charge_check_finish_close">창 닫기</string>
 
     <!--  InsuranceContractCheck  -->
+    <string name="insurance_name">삼성화재 위풍댕댕</string>
     <string name="insurance_contract_check_top_bar">보험계약 확인</string>
     <string name="insurance_contract">계약정보</string>
     <string name="insurance_coverage">보장내용</string>

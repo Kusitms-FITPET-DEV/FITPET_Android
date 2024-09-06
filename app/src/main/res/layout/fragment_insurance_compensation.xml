@@ -524,7 +524,7 @@
                         android:layout_marginBottom="29dp"
                         android:background="@drawable/bg_rectangle_filled_bg_white_radius_8"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/layout_insurance_compensation_injury"
+                        app:layout_constraintTop_toBottomOf="@id/layout_insurance_compensation_hospital"
                         app:layout_constraintStart_toStartOf="@id/layout_insurance_compensation_injury"
                         app:layout_constraintEnd_toEndOf="@id/layout_insurance_compensation_injury">
 
