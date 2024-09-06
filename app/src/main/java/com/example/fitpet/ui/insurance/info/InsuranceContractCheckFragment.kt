@@ -2,6 +2,7 @@ package com.example.fitpet.ui.insurance.info
 
 import androidx.fragment.app.viewModels
 import com.example.fitpet.PageState
+import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceContractCheckBinding
 import com.example.fitpet.ui.insurance.info.contract.InsuranceInfoContractFragment
@@ -11,13 +12,13 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class InsuranceContractCheckFragment: BaseFragment<FragmentInsuranceContractCheckBinding, PageState.Default, InsuranceContractCheckViewModel>(
+class InsuranceContractCheckFragment: BaseFragment<FragmentInsuranceContractCheckBinding, InsuranceContractCheckPageState, InsuranceContractCheckViewModel>(
     FragmentInsuranceContractCheckBinding::inflate
 ) {
 
     override val viewModel: InsuranceContractCheckViewModel by viewModels()
 
-    private val insurancePage = arrayListOf("계약정보", "보상내용")
+    private val insurancePage = arrayListOf(getString(R.string.insurance_contract), getString(R.string.insurance_coverage))
     private var _insurancePageAdapter: InsuranceContractCheckAdapter? = null
     private val insurancePageAdapter
         get() = requireNotNull(_insurancePageAdapter)
@@ -26,6 +27,7 @@ class InsuranceContractCheckFragment: BaseFragment<FragmentInsuranceContractChec
         binding.viewModel = viewModel
 
         initSetAdapter()
+        viewModel.getInsuranceInfo()
     }
 
     override fun initState() {
