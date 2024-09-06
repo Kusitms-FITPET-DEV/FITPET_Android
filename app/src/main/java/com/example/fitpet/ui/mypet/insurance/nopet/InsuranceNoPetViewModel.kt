@@ -5,6 +5,7 @@ import android.os.Looper
 import androidx.lifecycle.viewModelScope
 import com.example.fitpet.base.BaseViewModel
 import com.example.fitpet.model.domain.PetType
+import com.example.fitpet.ui.mypet.insurance.main.InsuranceMainEvent
 import com.example.fitpet.ui.onboarding.OnBoardingEvent
 import com.example.fitpet.ui.registration.petBreed.PetBreedEvent
 import com.example.fitpet.ui.registration.petBreed.PetBreedPageState
@@ -28,7 +29,7 @@ class InsuranceNoPetViewModel @Inject constructor(
     fun onAddPetClicked() {
         emitEventFlow(InsuranceNoPetEvent.GoToAddPet)
     }
-    fun onKakaoConsultClicked(){
+    fun onClickBtnConsult() {
         emitEventFlow(InsuranceNoPetEvent.GoToConsult)
     }
 }

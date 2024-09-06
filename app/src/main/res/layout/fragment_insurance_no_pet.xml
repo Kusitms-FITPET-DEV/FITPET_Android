@@ -311,7 +311,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:stateListAnimator="@null"
-            android:onClick="@{() -> vm.onKakaoConsultClicked()}"
+            android:onClick="@{() -> vm.onClickBtnConsult()}"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
