@@ -52,11 +52,12 @@ class InsuranceChargeDocumentFragment :
             InsuranceChargeDocumentEvent.ClickDeleteReceiptBtn -> viewModel.deletePhoto(RECEIPT_PHOTO)
             InsuranceChargeDocumentEvent.ClickDeleteDetailBtn -> viewModel.deletePhoto(DETAIL_PHOTO)
             InsuranceChargeDocumentEvent.ClickDeleteEtcBtn -> viewModel.deletePhoto(ETC_PHOTO)
+            InsuranceChargeDocumentEvent.UploadChargeImg -> viewModel.uploadChargeImgToApi()
         }
     }
 
     private fun showAddPhotoBottomSheet(photoType: String) {
-        AddPhotoBottomSheet { photo, uri -> viewModel.getPhoto(photo, uri, photoType) }.show(
+        AddPhotoBottomSheet { photo, file -> viewModel.getPhoto(photo, file, photoType) }.show(
             parentFragmentManager,
             BOTTOM_SHEET
         )
