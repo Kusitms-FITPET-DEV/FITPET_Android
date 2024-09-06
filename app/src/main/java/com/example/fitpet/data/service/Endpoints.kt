@@ -13,4 +13,9 @@ object Endpoints {
         private const val PETS = "/pets"
         const val SEARCH = "$PETS/breeds/search"
     }
+
+    object Charge {
+        private const val CHARGE = "/charge"
+        const val UPLOAD = "$CHARGE/upload"
+    }
 }
