@@ -5,6 +5,8 @@ import androidx.fragment.app.viewModels
 import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceContractCheckBinding
+import com.example.fitpet.ui.insurance.info.InsuranceContractCheckViewModel.Companion.CONTRACT
+import com.example.fitpet.ui.insurance.info.InsuranceContractCheckViewModel.Companion.COVERAGE
 import com.example.fitpet.ui.model.InsuranceContractInfo
 import com.example.fitpet.ui.insurance.info.contract.InsuranceInfoContractFragment
 import com.example.fitpet.ui.insurance.info.coverage.InsuranceInfoCoverageFragment
@@ -19,7 +21,7 @@ class InsuranceContractCheckFragment: BaseFragment<FragmentInsuranceContractChec
 
     override val viewModel: InsuranceContractCheckViewModel by viewModels()
 
-    private val insurancePage = arrayListOf(getString(R.string.insurance_contract), getString(R.string.insurance_coverage))
+    private lateinit var insurancePage: ArrayList<String>
     private var _insurancePageAdapter: InsuranceContractCheckAdapter? = null
     private val insurancePageAdapter
         get() = requireNotNull(_insurancePageAdapter)
@@ -27,8 +29,7 @@ class InsuranceContractCheckFragment: BaseFragment<FragmentInsuranceContractChec
     override fun initView() {
         binding.viewModel = viewModel
 
-//        initSetAdapter()
-        _insurancePageAdapter = InsuranceContractCheckAdapter(this@InsuranceContractCheckFragment)
+        initSetAdapter()
         viewModel.getInsuranceInfo()
     }
 
@@ -36,17 +37,23 @@ class InsuranceContractCheckFragment: BaseFragment<FragmentInsuranceContractChec
         launchWhenStarted(viewLifecycleOwner) {
             launch {
                 viewModel.uiState.insuranceContractInfo.collect { info ->
-                    initSetAdapter(info)
+                    initSetAdapterPage(info)
                 }
             }
         }
     }
 
-    private fun initSetAdapter(info: InsuranceContractInfo) {
-//        _insurancePageAdapter = InsuranceContractCheckAdapter(this@InsuranceContractCheckFragment)
+    private fun initSetAdapter() {
+        _insurancePageAdapter = InsuranceContractCheckAdapter(this@InsuranceContractCheckFragment)
+        insurancePage = arrayListOf(
+            getString(R.string.insurance_contract),
+            getString(R.string.insurance_coverage)
+        )
+    }
 
-        val contractData = Bundle().apply { putParcelable("CONTRACT", info.contract) }
-        val coverageData = Bundle().apply { putParcelable("COVERAGE", info.coverage) }
+    private fun initSetAdapterPage(info: InsuranceContractInfo) {
+        val contractData = Bundle().apply { putParcelable(CONTRACT, info.contract) }
+        val coverageData = Bundle().apply { putParcelable(COVERAGE, info.coverage) }
 
         insurancePageAdapter.apply {
             addFragment(InsuranceInfoContractFragment().apply { arguments = contractData })

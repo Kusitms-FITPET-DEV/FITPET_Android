@@ -37,4 +37,9 @@ class InsuranceContractCheckViewModel @Inject constructor(): BaseViewModel<Insur
             }
         }
     }
+
+    companion object {
+        const val CONTRACT = "CONTRACT"
+        const val COVERAGE = "COVERAGE"
+    }
 }
