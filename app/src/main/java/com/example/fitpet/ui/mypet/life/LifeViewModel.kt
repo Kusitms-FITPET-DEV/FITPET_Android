@@ -10,4 +10,8 @@ class LifeViewModel @Inject constructor(
     private val resourceProvider: ResourceProvider
 ): BaseViewModel<LifePageState>() {
     override val uiState = LifePageState()
+
+    fun onClickGetNewQuote() {
+        emitEventFlow(LifeEvent.GetNewQuote)
+    }
 }
