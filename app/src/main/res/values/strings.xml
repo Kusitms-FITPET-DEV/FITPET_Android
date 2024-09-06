@@ -70,8 +70,8 @@
 
     <!--  PetDetailBreedInput  -->
     <string name="detail_breed_registration">상세 품종을 입력해 주세요.</string>
-    <string name="detail_breed_dog_guide">헷갈리는 품종은 ‘믹스견’를 입력해주세요.</string>
-    <string name="detail_breed_cat_guide">헷갈리는 품종은 ‘믹스묘’를 입력해주세요.</string>
+    <string name="detail_breed_dog_guide">헷갈리는 품종은 ‘믹스견’를 입력해 주세요.</string>
+    <string name="detail_breed_cat_guide">헷갈리는 품종은 ‘믹스묘’를 입력해 주세요.</string>
     <string name="detail_breed_input_hint">예) 말티즈</string>
     <string name="detail_breed_input_hint_cat">예) 코리안숏헤어</string>
 
