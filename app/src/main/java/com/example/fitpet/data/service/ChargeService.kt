@@ -12,7 +12,6 @@ interface ChargeService {
     @Multipart
     @POST(Endpoints.Charge.UPLOAD)
     suspend fun uploadChargeImg(
-//        @Body request: ChargeUploadRequest
         @Part receipt: MultipartBody.Part,
         @Part medicalExpenses: MultipartBody.Part,
         @Part etc: MultipartBody.Part?

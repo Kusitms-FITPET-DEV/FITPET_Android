@@ -3,6 +3,7 @@ package com.example.fitpet.ui.insurance.charge.document
 import androidx.lifecycle.viewModelScope
 import com.example.fitpet.base.BaseViewModel
 import com.example.fitpet.data.repository.ChargeRepository
+import com.example.fitpet.model.response.ChargeUploadResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -29,11 +30,17 @@ class InsuranceChargeDocumentViewModel @Inject constructor(
     private lateinit var _receiptPhotoPart: MultipartBody.Part
     private lateinit var _detailPhotoPart: MultipartBody.Part
     private var _etcPhotoPart: MultipartBody.Part? = null
+    private val _receiptPhotoAPIUrl: MutableStateFlow<String> = MutableStateFlow("")
+    private val _detailPhotoAPIUrl: MutableStateFlow<String> = MutableStateFlow("")
+    private val _etcPhotoAPIUrl: MutableStateFlow<String> = MutableStateFlow("")
 
     override val uiState = InsuranceChargeDocumentPageState(
         receiptPhoto = _receiptPhoto.asStateFlow(),
         detailPhoto = _detailPhoto.asStateFlow(),
         etcPhoto = _etcPhoto.asStateFlow(),
+        receiptPhotoAPIUrl = _receiptPhotoAPIUrl.asStateFlow(),
+        detailPhotoAPIUrl = _detailPhotoAPIUrl.asStateFlow(),
+        etcPhotoAPIUrl = _etcPhotoAPIUrl.asStateFlow(),
 
         isBtnEnabled = combine(_receiptPhoto, _detailPhoto) { receipt, detail ->
             isGoNextValid(receipt, detail)
@@ -65,12 +72,20 @@ class InsuranceChargeDocumentViewModel @Inject constructor(
 
         viewModelScope.launch {
             chargeRepository.uploadChargeImg(_receiptPhotoPart, _detailPhotoPart, etcPart).collect { result ->
-                resultResponse(result, {
-                    Timber.d("[보험 청구] 이미지 등록 -> $result")
-                    goToNextPage()
+                resultResponse(result, { data ->
+                    updatePhotoUrl(data)
                 })
             }
         }
+    }
+
+    private fun updatePhotoUrl(data: ChargeUploadResponse) {
+        _receiptPhotoAPIUrl.update { data.receiptUrl }
+        _detailPhotoAPIUrl.update { data.medicalExpensesUrl }
+        _etcPhotoAPIUrl.update { data.etcUrl }
+        Timber.d("[보험 청구] 이미지 업로드 결과 -> ${uiState.receiptPhotoAPIUrl.value} && ${uiState.detailPhotoAPIUrl.value} && ${uiState.etcPhotoAPIUrl.value}")
+
+        goToNextPage()
     }
 
     private fun createMultipartBodyPart(file: File, partName: String): MultipartBody.Part {
