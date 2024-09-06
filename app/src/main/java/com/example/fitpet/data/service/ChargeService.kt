@@ -1,5 +1,6 @@
 package com.example.fitpet.data.service
 
+import com.example.fitpet.base.ApiResponse
 import com.example.fitpet.model.request.ChargeUploadRequest
 import com.example.fitpet.model.response.ChargeUploadResponse
 import retrofit2.http.Body
@@ -10,5 +11,5 @@ interface ChargeService {
     @POST(Endpoints.Charge.UPLOAD)
     suspend fun uploadChargeImg(
         @Body request: ChargeUploadRequest
-    ): ChargeUploadResponse
+    ): ApiResponse<ChargeUploadResponse>
 }
