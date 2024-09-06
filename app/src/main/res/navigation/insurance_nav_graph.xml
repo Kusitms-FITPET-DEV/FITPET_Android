@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_insurance_charge_document_to_account"
             app:destination="@id/fragmentInsuranceChargeAccount"/>
+        <argument
+            android:name="insuranceArgument"
+            app:argType="com.example.fitpet.ui.model.InsuranceCharge"/>
 
     </fragment>
 
@@ -41,6 +44,9 @@
         <action
             android:id="@+id/action_insurance_charge_account_to_contact"
             app:destination="@id/fragmentInsuranceChargeContact"/>
+        <argument
+            android:name="insuranceArgument"
+            app:argType="com.example.fitpet.ui.model.InsuranceCharge"/>
 
     </fragment>
 
@@ -54,6 +60,9 @@
         <action
             android:id="@+id/action_insurance_charge_contact_to_check"
             app:destination="@id/fragmentInsuranceChargeCheck"/>
+        <argument
+            android:name="insuranceArgument"
+            app:argType="com.example.fitpet.ui.model.InsuranceCharge"/>
 
     </fragment>
 
@@ -63,6 +72,22 @@
         android:label="fragmentInsuranceChargeCheck"
         android:layout="@layout/fragment_insurance_charge_check"
         tools:layout="@layout/fragment_insurance_charge_check">
+
+        <action
+            android:id="@+id/action_insurance_charge_check_to_finish"
+            app:destination="@id/fragmentInsuranceChargeFinish"/>
+        <argument
+            android:name="insuranceArgument"
+            app:argType="com.example.fitpet.ui.model.InsuranceCharge"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentInsuranceChargeFinish"
+        android:name="com.example.fitpet.ui.insurance.charge.finish.InsuranceChargeFinishFragment"
+        android:label="fragmentInsuranceChargeFinish"
+        android:layout="@layout/fragment_insurance_charge_check_finish"
+        tools:layout="@layout/fragment_insurance_charge_check_finish">
 
     </fragment>
 

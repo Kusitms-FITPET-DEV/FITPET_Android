@@ -8,5 +8,6 @@ data class InsuranceChargeContactPageState(
     val isSelectedEmail: StateFlow<Boolean>,
     val emailInput: StateFlow<String>,
     val isBtnEnabled: StateFlow<Boolean>,
-    val isClickedAgreement: StateFlow<Boolean>
+    val isClickedAgreement: StateFlow<Boolean>,
+    val isOptionAgree: StateFlow<Boolean>
 ) : PageState

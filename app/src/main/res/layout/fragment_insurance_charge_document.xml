@@ -106,10 +106,10 @@
                                 android:id="@+id/iv_insurance_charge_document_receipt"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:scaleType="centerCrop"
-                                android:outlineProvider="none"
                                 android:background="@android:color/transparent"
-                                app:setImageUri="@{viewModel.uiState.receiptPhoto}"/>
+                                android:outlineProvider="none"
+                                android:scaleType="centerCrop"
+                                app:setImageUri="@{viewModel.uiState.receiptPhoto}" />
 
                             <ImageButton
                                 android:id="@+id/btn_insurance_charge_document_receipt_delete"

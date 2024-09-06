@@ -12,14 +12,13 @@ import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
 class PetDetailBreedInputViewModel @Inject constructor(
     private val petsRepository: PetsRepository
 ) : BaseViewModel<PetDetailBreedInputPageState>() {
-    private val _breedSearchQuery = MutableStateFlow("")
-
     private val detailBreedStateFlow: MutableStateFlow<String> = MutableStateFlow("")
     private val selectedDetailBreedStateFlow: MutableStateFlow<String> = MutableStateFlow("")
     private val searchedBreedListStateFlow: MutableStateFlow<List<String>> = MutableStateFlow(emptyList())
@@ -29,53 +28,35 @@ class PetDetailBreedInputViewModel @Inject constructor(
         detailBreed = detailBreedStateFlow.asStateFlow(),
         selectedDetailBreed = selectedDetailBreedStateFlow.asStateFlow(),
         searchedBreedList = searchedBreedListStateFlow.asStateFlow(),
-        selectedBreed = selectedBreedStateFlow.asStateFlow()
+        selectedBreed = selectedBreedStateFlow.asStateFlow(),
     )
-
-    init {
-        viewModelScope.launch {
-            _breedSearchQuery
-                .debounce(500L)
-                .filter { it.isNotBlank() }
-                .collect { keyword ->
-                    searchBreeds(keyword)
-                }
-        }
-    }
-
-//    fun onTextChanged(input: CharSequence) {
-//        viewModelScope.launch {
-//            val keyword = input.toString()
-//            detailBreedStateFlow.update { keyword }
-//            petsRepository.searchDetailBreed(keyword).collect {
-//                resultResponse(it, ::onSuccessSearchDetailBreed)
-//            }
-//        }
-//    }
 
     fun onTextChanged(input: CharSequence) {
         viewModelScope.launch {
-            _breedSearchQuery.emit(input.toString())
+            val keyword = input.toString()
+            detailBreedStateFlow.update { keyword }
+            petsRepository.searchDetailBreed(keyword).collect {
+                resultResponse(it, ::onSuccessSearchDetailBreed)
+            }
         }
     }
 
-    private suspend fun searchBreeds(keyword: String) {
-        petsRepository.searchDetailBreed(keyword).collect {
-            resultResponse(it, ::onSuccessSearchDetailBreed)
+    fun onCatTextChanged(input: CharSequence) {
+        viewModelScope.launch {
+            selectedDetailBreedStateFlow.update { input.toString() }
         }
     }
 
     private fun onSuccessSearchDetailBreed(value: SearchPetBreedResponse) {
         viewModelScope.launch {
             searchedBreedListStateFlow.update { value.searchedBreeds }
-            delay(500)
             emitEventFlow(PetDetailBreedInputEvent.ShowDropdown)
         }
     }
 
     fun onBreedSelected(breed: String) {
         viewModelScope.launch {
-            selectedBreedStateFlow.update { breed }
+            selectedDetailBreedStateFlow.update { breed }
         }
     }
 
@@ -85,5 +66,11 @@ class PetDetailBreedInputViewModel @Inject constructor(
 
     fun onClickSkip() {
         emitEventFlow(PetDetailBreedInputEvent.ShowSkipDialog)
+    }
+
+    fun setPetBreed(breed: String) {
+        viewModelScope.launch {
+            selectedBreedStateFlow.update { breed }
+        }
     }
 }
