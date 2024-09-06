@@ -14,14 +14,22 @@ class PetNameInputViewModel @Inject constructor(
 
 ) : BaseViewModel<PetNameInputPageState>() {
     private val petNameStateFlow: MutableStateFlow<String> = MutableStateFlow("")
+    private val isInvalidInputStateFlow: MutableStateFlow<Boolean> = MutableStateFlow(true)
+    private val isLengthValidStateFlow: MutableStateFlow<Boolean> = MutableStateFlow(false)
 
     override val uiState: PetNameInputPageState = PetNameInputPageState(
-        petName = petNameStateFlow.asStateFlow()
+        petName = petNameStateFlow.asStateFlow(),
+        isInvalidInput = isInvalidInputStateFlow.asStateFlow(),
+        isLengthValid = isLengthValidStateFlow.asStateFlow()
     )
 
     fun onTextChanged(newText: CharSequence) {
         viewModelScope.launch {
-            petNameStateFlow.update { newText.toString() }
+            val petName = newText.toString()
+            petNameStateFlow.update { petName }
+
+            isInvalidInputStateFlow.update { validatePetName(petName) }
+            isLengthValidStateFlow.update { validateLength(petName) }
         }
     }
 
@@ -31,5 +39,35 @@ class PetNameInputViewModel @Inject constructor(
 
     fun onClickSkip() {
         emitEventFlow(PetNameInputEvent.ShowSkipDialog)
+    }
+
+    private fun validatePetName(petName: String): Boolean {
+        val specialCharPattern = "[^가-힣]".toRegex()
+        if (specialCharPattern.containsMatchIn(petName)) {
+            return true
+        }
+
+        val consonantsOnly = "^[ㄱ-ㅎㅏ-ㅣ]+$".toRegex()
+        if (consonantsOnly.matches(petName)) {
+            return true
+        }
+
+        if (!petName.matches("^[가-힣]+$".toRegex())) {
+            return true
+        }
+
+        if (petName.contains(" ")) {
+            return true
+        }
+
+        return false
+    }
+
+    private fun validateLength(petName: String): Boolean {
+        val consonantsOnly = "^[ㄱ-ㅎㅏ-ㅣ]+$".toRegex()
+
+        if (petName.isEmpty()) return false
+
+        return !(petName.length == 1 && consonantsOnly.matches(petName))
     }
 }

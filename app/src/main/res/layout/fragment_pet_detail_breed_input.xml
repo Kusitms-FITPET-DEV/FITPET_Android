@@ -31,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/third_page"
-                android:textAppearance="@style/b3"
+                android:textAppearance="@style/b4"
                 android:textColor="@color/point_blue"/>
 
             <TextView
@@ -41,6 +41,15 @@
                 android:text="@string/detail_breed_registration"
                 android:textAppearance="@style/b1_S"
                 android:textColor="@color/black"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="2dp"
+                android:text="@string/detail_breed_dog_guide"
+                android:textAppearance="@style/b5_S"
+                android:textColor="@color/text_disable"/>
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -63,29 +72,6 @@
                     tools:ignore="LabelFor" />
 
             </FrameLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginStart="23dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@{vm.uiState.detailBreed.empty ? @drawable/ic_circle_text_disable_5 : @drawable/ic_circle_point_blue_5}"
-                    android:layout_gravity="center_vertical"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="6dp"
-                    android:text="@string/min_length_guide"
-                    android:textAppearance="@style/b5_S"
-                    android:textColor="@{vm.uiState.detailBreed.empty ? @color/text_disable : @color/point_blue}"/>
-
-            </LinearLayout>
 
         </LinearLayout>
 
