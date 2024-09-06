@@ -46,26 +46,19 @@ class PetDetailBreedInputFragment : BaseFragment<FragmentPetDetailBreedInputBind
             val args: PetDetailBreedInputFragmentArgs by navArgs()
             petName = args.petName
             petBreed = args.petBreed
+            breedAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, viewModel.uiState.searchedBreedList.value)
 
-            binding.detailBreedAutoCompleteTextView.setOnDismissListener {
-                Timber.e("드롭다운이 닫혔습니다.")
-            }
-
-            breedAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, mutableListOf())
-
-            detailBreedAutoCompleteTextView.setAdapter(breedAdapter)
-            detailBreedAutoCompleteTextView.setOnItemClickListener { _, _, position, _ ->
-                val selectedBreed = breedAdapter.getItem(position)
-                selectedBreed?.let {
-                    viewModel.onBreedSelected(it)
+            detailBreedAutoCompleteTextView.apply {
+                setAdapter(breedAdapter)
+                setOnItemClickListener { _, _, position, _ ->
+                    val selectedBreed = breedAdapter.getItem(position)
+                    Timber.e("selected breed: $selectedBreed")
+                    selectedBreed?.let {
+                        viewModel.onBreedSelected(selectedBreed)
+                    }
+                    dismissDropDown()
                 }
-            }
-            val inputMethodManager = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            binding.detailBreedAutoCompleteTextView.setOnFocusChangeListener { v, hasFocus ->
-                if (hasFocus) {
-                    inputMethodManager.showSoftInput(v, InputMethodManager.SHOW_IMPLICIT)
-                    showDropdown()
-                }
+                dropDownAnchor = root.id
             }
         }
     }
@@ -75,11 +68,9 @@ class PetDetailBreedInputFragment : BaseFragment<FragmentPetDetailBreedInputBind
             launch {
                 viewModel.uiState.searchedBreedList.collect { breedList ->
                     Timber.e("업데이트 됐다 $breedList")
-                    breedAdapter.clear()
-                    breedAdapter.addAll(breedList)
-                    breedAdapter.notifyDataSetChanged()
-                    binding.detailBreedAutoCompleteTextView.requestFocus()
+                    breedAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, breedList)
                     binding.detailBreedAutoCompleteTextView.showDropDown()
+                    binding.detailBreedAutoCompleteTextView.setAdapter(breedAdapter)
                 }
             }
 
@@ -100,7 +91,7 @@ class PetDetailBreedInputFragment : BaseFragment<FragmentPetDetailBreedInputBind
     }
 
     private fun goToPetBirthInput() {
-        val detailBreed = viewModel.uiState.selectedDetailBreed.value
+        val detailBreed = viewModel.uiState.selectedBreed.value
         val action = PetDetailBreedInputFragmentDirections.actionPetDetailBreedInputToPetBirthInput(petName = petName, petBreed = petBreed, petDetailBreed = detailBreed)
         findNavController().navigate(action)
     }
@@ -120,11 +111,8 @@ class PetDetailBreedInputFragment : BaseFragment<FragmentPetDetailBreedInputBind
     private fun showDropdown() {
         binding.detailBreedAutoCompleteTextView.apply {
             postDelayed({
-                if (!hasFocus()) {
-                    requestFocus()
-                }
                 showDropDown()
-            }, 300)
+            }, 0)
         }
     }
 }
