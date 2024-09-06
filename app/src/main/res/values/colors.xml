@@ -15,6 +15,7 @@
     <color name="neutral_950">#FF0a0a0a</color>
     <color name="text_color">#FF282828</color>
     <color name="bg_deep_green">#FF00504D</color>
+    <color name="black_opacity_50">#80000000</color>
 
     <!--  text  -->
     <color name="text_body">#FF282828</color>
@@ -42,5 +43,8 @@
     <!-- kakao -->
     <color name="ic_kakao">#FFFAE100</color>
     <color name="kakao_text">#FF000000</color>
+
+    <!--  table  -->
+    <color name="pastel_dark_blue">#FFDFECF7</color>
 
 </resources>
