@@ -7,10 +7,12 @@ import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceChargeAccountBinding
 import com.example.fitpet.ui.insurance.charge.account.InsuranceChargeAccountViewModel.Companion.BANK_SPINNER_DEFAULT
+import com.example.fitpet.ui.model.InsuranceCharge
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -24,6 +26,7 @@ class InsuranceChargeAccountFragment: BaseFragment<FragmentInsuranceChargeAccoun
 
     override fun initView() {
         binding.viewModel = viewModel
+        binding.tbInsuranceCharge.btnTopBarInsuranceChargeBack.setOnClickListener { findNavController().popBackStack() }
 
         initSettingBankSpinner()
     }
@@ -108,7 +111,17 @@ class InsuranceChargeAccountFragment: BaseFragment<FragmentInsuranceChargeAccoun
     }
 
     private fun goToContactPage() {
-        val action = InsuranceChargeAccountFragmentDirections.actionInsuranceChargeAccountToContact()
+        val action = InsuranceChargeAccountFragmentDirections.actionInsuranceChargeAccountToContact(setAccountData())
         findNavController().navigate(action)
+    }
+
+    private fun setAccountData(): InsuranceCharge {
+        val arguments: InsuranceChargeAccountFragmentArgs by navArgs()
+        val beforeData = arguments.insuranceArgument
+
+        with (viewModel.uiState) {
+            val accountData = InsuranceCharge(causeType = beforeData.causeType, hospitalVisitDate = beforeData.hospitalVisitDate, receiptUrl = beforeData.receiptUrl, medicalExpensesUrl = beforeData.medicalExpensesUrl, etcUrl = beforeData.etcUrl, accountOwner = accountOwner.value, accountBank = accountBank.value, accountNumber = accountNumber.value)
+            return accountData
+        }
     }
 }

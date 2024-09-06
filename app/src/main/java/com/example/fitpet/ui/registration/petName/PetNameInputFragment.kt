@@ -56,7 +56,7 @@ class PetNameInputFragment : BaseFragment<FragmentPetNameInputBinding, PetNameIn
     }
 
     private fun goToMyPetInsurance() {
-        val action = PetNameInputFragmentDirections.actionPetNameInputToMyPet()
+        val action = PetNameInputFragmentDirections.actionPetNameInputToPetBreed()
         findNavController().navigate(action)
     }
 }

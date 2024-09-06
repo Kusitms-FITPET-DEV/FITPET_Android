@@ -10,7 +10,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class InsuranceAgreeBottomSheet(
-    private val onClickAgreement: () -> Unit
+    private val onClickAgreement: (Boolean) -> Unit
 ): BottomSheetDialogFragment() {
 
     private val viewModel by viewModels<InsuranceAgreeViewModel>()
@@ -45,7 +45,9 @@ class InsuranceAgreeBottomSheet(
 
     private fun clickAgreeBtn() {
         binding.btnInsuranceAgree.setOnClickListener {
-            onClickAgreement()
+            with (viewModel.uiState) {
+                onClickAgreement(isSelectedChoice.value)
+            }
             dismiss()
         }
     }
