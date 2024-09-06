@@ -199,4 +199,9 @@
     <string name="insurance_agree_type_essential">TYPE_ESSENTIAL</string>
     <string name="insurance_agree_type_choice">TYPE_CHOICE</string>
 
+    <!--  InsuranceContractCheck  -->
+    <string name="insurance_contract_check_top_bar">보험계약 확인</string>
+    <string name="insurance_contract">계약정보</string>
+    <string name="insurance_coverage">보장내용</string>
+
 </resources>
