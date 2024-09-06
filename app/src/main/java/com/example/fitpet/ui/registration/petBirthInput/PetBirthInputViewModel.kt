@@ -36,7 +36,7 @@ class PetBirthInputViewModel @Inject constructor(
     fun onClickBtnNext() {
         val birthYear = birthStateFlow.value.toInt()
         if (birthYear > CURRENT_YEAR) { emitEventFlow(PetBirthInputEvent.InvalidFutureBirthYear) }
-        else if (CURRENT_YEAR - birthYear + 1 >= 11) emitEventFlow(PetBirthInputEvent.IneligibleDueToAge)
+        else if (CURRENT_YEAR - birthYear >= 11) emitEventFlow(PetBirthInputEvent.IneligibleDueToAge)
         else emitEventFlow(PetBirthInputEvent.GoToContactInfoInput)
     }
 
