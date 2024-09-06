@@ -22,8 +22,10 @@ class PetBirthInputViewModel @Inject constructor(
     )
 
     fun onTextChanged(input: CharSequence) {
+        val newValue = input.toString()
         viewModelScope.launch {
-            isValidInputStateFlow.update { validInput(input.toString()) }
+            birthStateFlow.update { newValue }
+            isValidInputStateFlow.update { validInput(newValue) }
         }
     }
 
