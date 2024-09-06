@@ -5,6 +5,10 @@ import com.example.fitpet.Event
 sealed class InsuranceMainEvent: Event {
     data object GoToConsult: InsuranceMainEvent()
     data object GoToCharge: InsuranceMainEvent()
-    data object GoToCheck: InsuranceMainEvent()
+    data object GoToContractCheck: InsuranceMainEvent()
+    data object GoToCompensationCheck: InsuranceMainEvent()
     data object OpenMyPetDialog: InsuranceMainEvent()
+    data object UpdatePetInfo: InsuranceMainEvent()
+    data object UpdateInsuranceInfo: InsuranceMainEvent()
+
 }

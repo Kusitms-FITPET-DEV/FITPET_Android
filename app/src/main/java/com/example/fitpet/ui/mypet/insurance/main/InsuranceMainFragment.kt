@@ -1,9 +1,15 @@
 package com.example.fitpet.ui.mypet.insurance.main
 
+import android.graphics.drawable.Drawable
+import android.os.Build
+import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceMainBinding
 import com.example.fitpet.model.domain.PetType
+import com.example.fitpet.model.domain.insurance.main.InsuranceSuggestion
 import com.example.fitpet.model.domain.insurance.main.MyPet
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -14,13 +20,17 @@ class InsuranceMainFragment : BaseFragment<FragmentInsuranceMainBinding, Insuran
 ) {
     override val viewModel: InsuranceMainViewModel by viewModels()
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun initView() {
         binding.apply {
             vm = viewModel
             lifecycleOwner = viewLifecycleOwner
         }
+        setMonth()
+        // 아래는 더미데이터 설정
         viewModel.updatePrice(106500)
         setMyPet()
+        setInsuranceInfo()
     }
 
     override fun initState() {
@@ -37,8 +47,11 @@ class InsuranceMainFragment : BaseFragment<FragmentInsuranceMainBinding, Insuran
         when(event) {
             InsuranceMainEvent.GoToConsult -> goToConsult()
             InsuranceMainEvent.OpenMyPetDialog -> openMyPetDialog()
-            InsuranceMainEvent.GoToCheck -> goToCheck()
+            InsuranceMainEvent.GoToContractCheck -> goToContractCheck()
+            InsuranceMainEvent.GoToCompensationCheck -> goToCompensationCheck()
             InsuranceMainEvent.GoToCharge -> goToCharge()
+            InsuranceMainEvent.UpdatePetInfo -> setMyPet()
+            InsuranceMainEvent.UpdateInsuranceInfo -> setInsuranceInfo()
         }
     }
 
@@ -46,8 +59,12 @@ class InsuranceMainFragment : BaseFragment<FragmentInsuranceMainBinding, Insuran
         //kakao 채널 연결
     }
 
-    private fun goToCheck() {
+    private fun goToCompensationCheck() {
         //보상내역 확인 연결
+    }
+
+    private fun goToContractCheck() {
+        //보험계약 확인 연결
     }
 
     private fun goToCharge() {
@@ -62,6 +79,32 @@ class InsuranceMainFragment : BaseFragment<FragmentInsuranceMainBinding, Insuran
     private fun setMyPet(){
         val pet = MyPet(PetType.DOG, "보리", 11, "시츄")
         viewModel.updatePetInfo(pet)
+    }
+
+    private fun setInsuranceInfo(){
+        val insurance = InsuranceSuggestion(5, "meritz", "펫블리 반려견보험", 56602)
+        viewModel.updateInsuranceInfo(insurance)
+        setInsuranceImg()
+    }
+
+    private fun setInsuranceImg(){
+        var drawable: Int = 0
+        val company = viewModel.uiState.insuranceInfo.value.insuranceCompany
+        when (company) {
+            "db" -> drawable = R.drawable.ic_db_v3
+            "kb" -> drawable = R.drawable.ic_kb_v3
+            "hyundai" -> drawable = R.drawable.ic_hyundai_v3
+            "samsung" -> drawable = R.drawable.ic_samsung_v3
+            "meritz" -> drawable = R.drawable.ic_meritz_v3
+            else -> drawable = R.drawable.ic_db_v3
+        }
+        viewModel.updateInsuranceImg(drawable)
+        binding.ivInsuranceImg.setImageResource(drawable)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun setMonth(){
+        viewModel.setMonth()
     }
 
 }
