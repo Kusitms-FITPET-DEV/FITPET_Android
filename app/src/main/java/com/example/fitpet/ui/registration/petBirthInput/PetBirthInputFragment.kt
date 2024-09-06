@@ -4,6 +4,7 @@ import android.text.InputFilter
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentPetBirthInputBinding
 import com.example.fitpet.ui.onboarding.dialog.SkipDialog
@@ -50,6 +51,8 @@ class PetBirthInputFragment : BaseFragment<FragmentPetBirthInputBinding, PetBirt
         when(event) {
             PetBirthInputEvent.GoToContactInfoInput -> goToContactInfoInput()
             PetBirthInputEvent.ShowSkipDialog -> showSkipDialog()
+            PetBirthInputEvent.IneligibleDueToAge -> showInvalidAgeDialog()
+            PetBirthInputEvent.InvalidFutureBirthYear -> showFutureYearDialog()
         }
     }
 
@@ -63,6 +66,28 @@ class PetBirthInputFragment : BaseFragment<FragmentPetBirthInputBinding, PetBirt
         dialog.showDialog(
             onSkipClicked = { goToMyPetInsurance() },
             onResumeClicked = {}
+        )
+    }
+
+    private fun showInvalidAgeDialog() {
+        dialog.showDialog(
+            onSkipClicked = {},
+            onResumeClicked = {},
+            titleText = requireContext().getString(R.string.invalid_birth_year_title),
+            contentText = requireContext().getString(R.string.invalid_birth_year_due_to_age),
+            iconResourceId = R.drawable.ic_cat_sad,
+            skipVisibility = false
+        )
+    }
+
+    private fun showFutureYearDialog() {
+        dialog.showDialog(
+            onSkipClicked = {},
+            onResumeClicked = {},
+            titleText = requireContext().getString(R.string.invalid_birth_year_title),
+            contentText = requireContext().getString(R.string.invalid_birth_year_future_year),
+            iconResourceId = R.drawable.ic_cat_sad,
+            skipVisibility = false
         )
     }
 

@@ -66,6 +66,9 @@
     <string name="birth_input_hint">예) 2004</string>
     <string name="birth_input_guide">4자리 숫자로 써주세요.</string>
     <string name="birth_guide">잘 모르겠다면 추정하여 적어주세요.</string>
+    <string name="invalid_birth_year_title">보험 조건에 맞지 않아요</string>
+    <string name="invalid_birth_year_due_to_age">11살 이상으로는 현재 보험 가입이\n어려워요! 더 많은 아이들이 건강을\n보장 받을 수 있도록 계속 노력할게요</string>
+    <string name="invalid_birth_year_future_year">아직 태어나지 않은 반려가족은\n펫보험 등록이 불가능해요!\n건강하게 자라길 기다릴게요</string>
 
     <!--  ContactInfoInput  -->
     <string name="contact_info_input_registration">연락처를 입력해 주세요.</string>
