@@ -211,11 +211,6 @@
     <string name="insurance_agree_type_essential">TYPE_ESSENTIAL</string>
     <string name="insurance_agree_type_choice">TYPE_CHOICE</string>
 
-    <!--  InsuranceContractCheck  -->
-    <string name="insurance_contract_check_top_bar">보험계약 확인</string>
-    <string name="insurance_contract">계약정보</string>
-    <string name="insurance_coverage">보장내용</string>
-
     <!--  InsuranceCheck  -->
     <string name="insurance_charge_check_title">청구 내용이 맞는지\n다시 한 번 확인해 주세요</string>
     <string name="insurance_charge_check_charge_name">삼성화재 위풍댕댕</string>
@@ -230,5 +225,19 @@
     <string name="insurance_charge_check_finish_content"><b>보상내역 확인</b>에서 심사 진행 상황을\n살펴 볼 수 있어요!</string>
     <string name="insurance_charge_check_finish_btn">보상 내역 확인하기</string>
     <string name="insurance_charge_check_finish_close">창 닫기</string>
+
+    <!--  InsuranceContractCheck  -->
+    <string name="insurance_contract_check_top_bar">보험계약 확인</string>
+    <string name="insurance_contract">계약정보</string>
+    <string name="insurance_coverage">보장내용</string>
+    <string name="insurance_contract_contractor">계약자</string>
+    <string name="insurance_contract_insurant">피보험자</string>
+    <string name="insurance_contract_date">보험기간</string>
+    <string name="insurance_contract_updateCycle">갱신주기</string>
+    <string name="insurance_contract_insuranceFee">보험료</string>
+    <string name="insurance_contract_priceRate">보상비율</string>
+    <string name="insurance_contract_payWay">납입 방법</string>
+    <string name="insurance_contract_bank">납입 계좌</string>
+    <string name="insurance_contract_paycycle">납입 주기</string>
 
 </resources>

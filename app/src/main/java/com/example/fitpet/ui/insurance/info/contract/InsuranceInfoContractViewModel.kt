@@ -11,11 +11,10 @@ import javax.inject.Inject
 @HiltViewModel
 class InsuranceInfoContractViewModel @Inject constructor(): BaseViewModel<InsuranceContractPageState>() {
 
-    private val _contractData: MutableStateFlow<InsuranceContractInfo.Contract> = MutableStateFlow(
-        InsuranceContractInfo.Contract())
+    private val _contractData: MutableStateFlow<InsuranceContractInfo.Contract> = MutableStateFlow(InsuranceContractInfo.Contract())
 
     override val uiState = InsuranceContractPageState(
-        contractData = _contractData.asStateFlow()
+        contractData = _contractData.asStateFlow(),
     )
 
     fun setContractData(contractData: InsuranceContractInfo.Contract) {

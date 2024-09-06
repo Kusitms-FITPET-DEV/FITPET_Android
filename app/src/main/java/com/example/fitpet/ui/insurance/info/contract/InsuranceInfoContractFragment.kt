@@ -6,6 +6,7 @@ import com.example.fitpet.databinding.FragmentInsuranceContractCheckContractBind
 import com.example.fitpet.ui.insurance.info.InsuranceContractCheckViewModel.Companion.CONTRACT
 import com.example.fitpet.ui.model.InsuranceContractInfo
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
