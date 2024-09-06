@@ -28,4 +28,8 @@ class MypetMainViewModel @Inject constructor(
     fun onClickCompensationBtn() {
         emitEventFlow(MypetMainEvent.GoTOCompensationPage)
     }
+
+    fun onClickInsuranceCharge() {
+        emitEventFlow(MypetMainEvent.GoToInsuranceChargePage)
+    }
 }

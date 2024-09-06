@@ -60,12 +60,6 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".ui.insurance.InsuranceTempActivity"
-            android:exported="true"
-            android:theme="@style/Theme.FitPet">
-        </activity>
-
     </application>
 
 </manifest>
