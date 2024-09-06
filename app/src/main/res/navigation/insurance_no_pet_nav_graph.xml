@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/insurance_nav_graph"
     app:startDestination="@id/fragmentMypet">
 
@@ -12,6 +13,10 @@
         <action
             android:id="@+id/action_mypet_to_pet_name_input"
             app:destination="@id/fragmentPetNameInput"/>
+
+        <action
+            android:id="@+id/action_mypet_to_insurance_info_check"
+            app:destination="@id/fragmentInsuranceInfoCheck"/>
     </fragment>
 
     <fragment
@@ -31,6 +36,15 @@
         <action
             android:id="@+id/action_pet_name_input_to_pet_breed"
             app:destination="@id/fragmentPetBreed"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentInsuranceInfoCheck"
+        android:name="com.example.fitpet.ui.insurance.info.InsuranceContractCheckFragment"
+        android:label="fragmentInsuranceInfoCheck"
+        android:layout="@layout/fragment_insurance_contract_check"
+        tools:layout="@layout/fragment_insurance_contract_check">
 
     </fragment>
 

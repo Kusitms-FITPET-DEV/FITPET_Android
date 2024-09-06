@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/insurance_nav_graph"
-    app:startDestination="@id/fragmentInsuranceInfoCheck">
+    app:startDestination="@id/fragmentInsuranceChargeCause">
 
     <fragment
         android:id="@+id/fragmentInsuranceChargeCause"
@@ -91,14 +91,14 @@
 
     </fragment>
 
-    <fragment
-        android:id="@+id/fragmentInsuranceInfoCheck"
-        android:name="com.example.fitpet.ui.insurance.info.InsuranceContractCheckFragment"
-        android:label="fragmentInsuranceInfoCheck"
-        android:layout="@layout/fragment_insurance_contract_check"
-        tools:layout="@layout/fragment_insurance_contract_check">
+<!--    <fragment-->
+<!--        android:id="@+id/fragmentInsuranceInfoCheck"-->
+<!--        android:name="com.example.fitpet.ui.insurance.info.InsuranceContractCheckFragment"-->
+<!--        android:label="fragmentInsuranceInfoCheck"-->
+<!--        android:layout="@layout/fragment_insurance_contract_check"-->
+<!--        tools:layout="@layout/fragment_insurance_contract_check">-->
 
-    </fragment>
+<!--    </fragment>-->
 
 
 </navigation>

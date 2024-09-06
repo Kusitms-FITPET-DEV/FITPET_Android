@@ -4,6 +4,7 @@ import android.graphics.drawable.Drawable
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
@@ -11,6 +12,7 @@ import com.example.fitpet.databinding.FragmentInsuranceMainBinding
 import com.example.fitpet.model.domain.PetType
 import com.example.fitpet.model.domain.insurance.main.InsuranceSuggestion
 import com.example.fitpet.model.domain.insurance.main.MyPet
+import com.example.fitpet.ui.mypet.MypetMainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -19,11 +21,13 @@ class InsuranceMainFragment : BaseFragment<FragmentInsuranceMainBinding, Insuran
     FragmentInsuranceMainBinding::inflate
 ) {
     override val viewModel: InsuranceMainViewModel by viewModels()
+    private val myPetMainViewModel: MypetMainViewModel by activityViewModels()
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun initView() {
         binding.apply {
             vm = viewModel
+            mainViewModel = myPetMainViewModel
             lifecycleOwner = viewLifecycleOwner
         }
         setMonth()
@@ -47,7 +51,7 @@ class InsuranceMainFragment : BaseFragment<FragmentInsuranceMainBinding, Insuran
         when(event) {
             InsuranceMainEvent.GoToConsult -> goToConsult()
             InsuranceMainEvent.OpenMyPetDialog -> openMyPetDialog()
-            InsuranceMainEvent.GoToContractCheck -> goToContractCheck()
+//            InsuranceMainEvent.GoToContractCheck -> goToContractCheck()
             InsuranceMainEvent.GoToCompensationCheck -> goToCompensationCheck()
             InsuranceMainEvent.GoToCharge -> goToCharge()
             InsuranceMainEvent.UpdatePetInfo -> setMyPet()

@@ -2,11 +2,13 @@ package com.example.fitpet.ui.mypet
 
 import com.example.fitpet.R
 import com.example.fitpet.base.BaseViewModel
+import com.example.fitpet.ui.mypet.insurance.main.InsuranceMainEvent
 import com.example.fitpet.ui.onboarding.OnBoardingPageState
 import com.example.fitpet.util.ResourceProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -17,5 +19,9 @@ class MypetMainViewModel @Inject constructor(
 
     fun onInsuranceNoPetFragmentClick() {
         emitEventFlow(MypetMainEvent.GoToAddPetButtonClick)
+    }
+
+    fun onClickContractCheckBtn() {
+        emitEventFlow(MypetMainEvent.GoToInsuranceInfoCheckPage)
     }
 }
