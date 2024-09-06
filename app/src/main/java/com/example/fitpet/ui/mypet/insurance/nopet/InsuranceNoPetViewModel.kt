@@ -28,4 +28,7 @@ class InsuranceNoPetViewModel @Inject constructor(
     fun onAddPetClicked() {
         emitEventFlow(InsuranceNoPetEvent.GoToAddPet)
     }
+    fun onKakaoConsultClicked(){
+        emitEventFlow(InsuranceNoPetEvent.GoToConsult)
+    }
 }
