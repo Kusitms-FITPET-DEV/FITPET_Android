@@ -8,4 +8,9 @@ object Endpoints {
         const val LOGOUT = "$AUTH/logout"
         const val REFRESH = "$AUTH/refresh"
     }
+
+    object Pets {
+        private const val PETS = "/pets"
+        const val SEARCH = "$PETS/breeds/search"
+    }
 }
