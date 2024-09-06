@@ -15,7 +15,7 @@ class InsuranceInfoContractFragment : BaseFragment<FragmentInsuranceContractChec
     override val viewModel: InsuranceInfoContractViewModel by viewModels()
 
     override fun initView() {
-        TODO("Not yet implemented")
+        binding.viewModel = viewModel
     }
 
     override fun initState() {
