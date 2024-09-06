@@ -1,13 +1,336 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
+        <variable
+            name="vm"
+            type="com.example.fitpet.ui.mypet.life.LifeViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/bg_primary">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <FrameLayout
+                android:id="@+id/getNewQuoteFrame"
+                android:layout_width="0dp"
+                android:layout_height="92dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginHorizontal="20dp"
+                android:paddingStart="28dp"
+                android:paddingEnd="5dp"
+                android:paddingTop="12dp"
+                android:onClick="@{()->vm.onClickGetNewQuote()}"
+                android:background="@drawable/bg_rectangle_filled_point_blue_radius_12"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_dog_foot"
+                    android:layout_gravity="end|bottom"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/btn_get_new_quote"
+                        android:textAppearance="@style/b5_M"
+                        android:textColor="@color/text_white"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/get_new_quote_content"
+                        android:textAppearance="@style/b4_M"
+                        android:textColor="@color/text_white"/>
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginHorizontal="20dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/getNewQuoteFrame">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/my_pet_health_plus"
+                    android:textAppearance="@style/b1_S"
+                    android:textColor="@color/text_body"/>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="240dp"
+                    android:layout_marginTop="20dp">
+
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/advertisementViewPager"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end|bottom"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginEnd="15dp"
+                        android:paddingHorizontal="9dp"
+                        android:paddingVertical="2dp"
+                        android:orientation="horizontal"
+                        android:background="@drawable/bg_rectangle_filled_black_opacity_50_radius_8">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="1"
+                            android:textColor="@color/text_white"
+                            android:textAppearance="@style/b4_M"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="/"
+                            android:textColor="@color/text_white"
+                            android:textAppearance="@style/b4_M"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="3"
+                            android:textColor="@color/text_white"
+                            android:textAppearance="@style/b4_M"/>
+
+                    </LinearLayout>
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="48dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/my_pet_hospital_record"
+                        android:textAppearance="@style/b1_S"
+                        android:textColor="@color/text_body"/>
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/my_pet_hospital_record_detail"
+                        android:textAppearance="@style/b4_M"
+                        android:textColor="@color/text_body"/>
+
+                </LinearLayout>
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/myPetHospitalRecordViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/quiz_title"
+                    android:textAppearance="@style/b1_S"
+                    android:textColor="@color/text_body"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="20dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_rectangle_filled_bg_white_radius_12">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:textAppearance="@style/b5_M"
+                        android:textColor="@color/text_point"
+                        android:text="@string/quiz_content"/>
+
+                    <TextView
+                        android:id="@+id/quizTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:textAppearance="@style/b3_S"
+                        android:textColor="@color/text_body"
+                        tools:text="테스트 질문"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="32dp"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="1"
+                            android:text="@string/O"
+                            android:textAppearance="@style/h3_S"
+                            android:textColor="@color/text_white"
+                            android:background="@drawable/bg_rectangle_filled_point_blue_radius_8"/>
+
+                        <Space
+                            android:layout_width="20dp"
+                            android:layout_height="0dp"/>
+                        
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="1"
+                            android:text="@string/X"
+                            android:textAppearance="@style/h3_S"
+                            android:textColor="@color/text_body"
+                            android:background="@drawable/bg_rectangle_filled_pastel_dark_blue_radius_8"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="48dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/question"
+                        android:textAppearance="@style/b1_S"
+                        android:textColor="@color/text_body"/>
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:id="@+id/btnQuestionAll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/question_all"
+                        android:textAppearance="@style/b4_M"
+                        android:textColor="@color/text_body"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/question1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="8dp"
+                        android:layout_marginTop="32dp"
+                        android:textAppearance="@style/b4"
+                        android:textColor="@color/text_body"
+                        tools:text="example"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/bg_dark"/>
+
+                    <TextView
+                        android:id="@+id/question2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="8dp"
+                        android:layout_marginTop="32dp"
+                        android:textAppearance="@style/b4"
+                        android:textColor="@color/text_body"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/bg_dark"/>
+
+                    <TextView
+                        android:id="@+id/question3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="8dp"
+                        android:layout_marginTop="32dp"
+                        android:textAppearance="@style/b4"
+                        android:textColor="@color/text_body"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/bg_dark"/>
+
+                    <TextView
+                        android:id="@+id/question4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="8dp"
+                        android:layout_marginTop="32dp"
+                        android:textAppearance="@style/b4"
+                        android:textColor="@color/text_body"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/bg_dark"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="76dp"
+                    android:layout_marginBottom="48dp"
+                    android:text="@string/guide_text"
+                    android:textAppearance="@style/b5_M"
+                    android:textColor="@color/neutral_500"/>
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
 </layout>
