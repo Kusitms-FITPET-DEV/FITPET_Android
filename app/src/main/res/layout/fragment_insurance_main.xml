@@ -7,7 +7,7 @@
         <import type="android.view.View" />
         <variable
             name="vm"
-            type="com.example.fitpet.ui.mypet.insurance.noregister.InsuranceNoRegisterViewModel" />
+            type="com.example.fitpet.ui.mypet.insurance.main.InsuranceMainViewModel" />
 
     </data>
 
@@ -147,6 +147,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        android:onClick="@{() -> vm.onClickContractCheckBtn()}"
                         />
 
                     <View
@@ -165,13 +166,14 @@
                         android:paddingBottom="12dp"
                         app:layout_constraintStart_toStartOf="@id/ivNoRegisterMyPet"
                         app:layout_constraintTop_toBottomOf="@id/viewInsuranceBoxMg4"
-                        app:layout_constraintEnd_toStartOf="@id/viewInsuranceMainBoxMg2">
+                        app:layout_constraintEnd_toStartOf="@id/viewInsuranceMainBoxMg2"
+                        android:onClick="@{() -> vm.onClickContractCheckBtn()}"
+                        >
 
                         <ImageView
                             android:id="@+id/ivInsuranceImg"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:src="@drawable/ic_samsung_v3"
                             app:layout_constraintDimensionRatio="280:24"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -183,7 +185,7 @@
                             android:layout_height="wrap_content"
                             android:textAppearance="@style/b5_S"
                             android:textColor="@color/text_disable"
-                            android:text="위풍댕댕 반려견보험"
+                            android:text="@{vm.uiState.insuranceInfo.insuranceName}"
                             android:layout_marginTop="4dp"
                             app:layout_constraintTop_toBottomOf="@id/ivInsuranceImg"
                             />
@@ -214,7 +216,8 @@
                         android:layout_height="wrap_content"
                         app:layout_constraintStart_toStartOf="@id/ivNoRegisterMyPet"
                         app:layout_constraintTop_toBottomOf="@id/viewInsuranceBoxMg5"
-                        app:layout_constraintEnd_toStartOf="@id/viewInsuranceMainBoxMg2">
+                        app:layout_constraintEnd_toStartOf="@id/viewInsuranceMainBoxMg2"
+                        android:onClick="@{() -> vm.onClickContractCheckBtn()}">
 
                         <TextView
                             android:id="@+id/tvInsuranceBoxMonth"
@@ -222,7 +225,7 @@
                             android:layout_height="wrap_content"
                             android:textAppearance="@style/insurance_main_monthly_title"
                             android:textColor="@color/text_body"
-                            android:text="8"
+                            android:text="@{String.valueOf(vm.uiState.nowMonth)}"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"
                             />
@@ -279,7 +282,7 @@
                             android:textAppearance="@style/h3_S"
                             android:textColor="@color/text_body"
                             android:layout_marginEnd="6dp"
-                            android:text="106,500"
+                            android:text="@{vm.getFormattedPrice() != null ? String.valueOf(vm.getFormattedPrice()) : `` }"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintEnd_toStartOf="@id/tvInsuranceBoxMonthWon"
                             />
@@ -328,7 +331,9 @@
                     app:layout_constraintStart_toStartOf="@id/cvInsuranceMainConsultBlueBtn"
                     app:layout_constraintEnd_toEndOf="@id/cvInsuranceMainConsultBlueBtn"
                     app:layout_constraintTop_toTopOf="@id/cvInsuranceMainConsultBlueBtn"
-                    app:layout_constraintBottom_toBottomOf="@id/cvInsuranceMainConsultBlueBtn">
+                    app:layout_constraintBottom_toBottomOf="@id/cvInsuranceMainConsultBlueBtn"
+                    android:onClick="@{() -> vm.onClickBtnConsult()}"
+                    >
 
                     <TextView
                         android:id="@+id/tvMainConsultBlueBtnTitle1"
@@ -427,7 +432,8 @@
                     app:layout_constraintStart_toStartOf="@id/cvInsuranceMainConsultChargeBtn"
                     app:layout_constraintEnd_toEndOf="@id/cvInsuranceMainConsultChargeBtn"
                     app:layout_constraintTop_toTopOf="@id/cvInsuranceMainConsultChargeBtn"
-                    app:layout_constraintBottom_toBottomOf="@id/cvInsuranceMainConsultChargeBtn">
+                    app:layout_constraintBottom_toBottomOf="@id/cvInsuranceMainConsultChargeBtn"
+                    android:onClick="@{() -> vm.onClickChargeBtn()}">
 
                     <TextView
                         android:id="@+id/tvMainConsultChargeBtnTitle1"
@@ -489,7 +495,8 @@
                     app:layout_constraintStart_toStartOf="@id/cvInsuranceMainConsultCheckBtn"
                     app:layout_constraintEnd_toEndOf="@id/cvInsuranceMainConsultCheckBtn"
                     app:layout_constraintTop_toTopOf="@id/cvInsuranceMainConsultCheckBtn"
-                    app:layout_constraintBottom_toBottomOf="@id/cvInsuranceMainConsultCheckBtn">
+                    app:layout_constraintBottom_toBottomOf="@id/cvInsuranceMainConsultCheckBtn"
+                    android:onClick="@{() -> vm.onClickCompensationCheckBtn()}">
 
                     <TextView
                         android:id="@+id/tvMainConsultCheckBtnTitle1"
