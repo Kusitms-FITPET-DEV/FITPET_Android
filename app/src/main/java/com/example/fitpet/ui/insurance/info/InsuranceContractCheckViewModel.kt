@@ -38,6 +38,10 @@ class InsuranceContractCheckViewModel @Inject constructor(): BaseViewModel<Insur
         }
     }
 
+    fun onClickBackBtn() {
+        emitEventFlow(InsuranceContractCheckEvent.GoBackPage)
+    }
+
     companion object {
         const val CONTRACT = "CONTRACT"
         const val COVERAGE = "COVERAGE"

@@ -15,13 +15,15 @@
         android:layout_height="match_parent"
         android:background="@color/bg_white">
 
-        <ImageView
+        <ImageButton
             android:id="@+id/btn_top_bar_insurance_contract_check"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_arrow_back"
             android:layout_marginTop="18dp"
             android:layout_marginStart="16dp"
+            android:background="@android:color/transparent"
+            android:onClick="@{() -> viewModel.onClickBackBtn()}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
 

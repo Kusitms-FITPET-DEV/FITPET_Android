@@ -2,14 +2,15 @@ package com.example.fitpet.ui.insurance.info
 
 import android.os.Bundle
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceContractCheckBinding
 import com.example.fitpet.ui.insurance.info.InsuranceContractCheckViewModel.Companion.CONTRACT
 import com.example.fitpet.ui.insurance.info.InsuranceContractCheckViewModel.Companion.COVERAGE
-import com.example.fitpet.ui.model.InsuranceContractInfo
 import com.example.fitpet.ui.insurance.info.contract.InsuranceInfoContractFragment
 import com.example.fitpet.ui.insurance.info.coverage.InsuranceInfoCoverageFragment
+import com.example.fitpet.ui.model.InsuranceContractInfo
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -40,7 +41,22 @@ class InsuranceContractCheckFragment: BaseFragment<FragmentInsuranceContractChec
                     initSetAdapterPage(info)
                 }
             }
+            launch {
+                viewModel.eventFlow.collect { event ->
+                    handleEvent(event as InsuranceContractCheckEvent)
+                }
+            }
         }
+    }
+
+    private fun handleEvent(event: InsuranceContractCheckEvent) {
+        when (event) {
+            InsuranceContractCheckEvent.GoBackPage -> goBackPage()
+        }
+    }
+
+    private fun goBackPage() {
+        findNavController().popBackStack()
     }
 
     private fun initSetAdapter() {
