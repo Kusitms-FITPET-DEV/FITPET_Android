@@ -126,20 +126,9 @@ class InsuranceNoRegisterViewModel @Inject constructor(
         }
     }
 
-    fun checkCount(): Int{
-        if(petResponseFlow.value?.petCount==0){
-            return 0
-        }else return 1
-    }
 
     fun getFirstPet(): Int?{
         return petResponseFlow.value?.petList?.get(0)?.petId
-    }
-
-    fun checkInsurance(): Int{
-        if(petInsuranceFlow.value?.insurance == true) {
-            return 0
-        }else return 1
     }
 
     fun getFormattedPriceEnd(): String? {
@@ -183,7 +172,6 @@ class InsuranceNoRegisterViewModel @Inject constructor(
         }
     }
 
-    // Example to access Pet info like name, species, etc.
     fun getPetName(): String? {
         return petInsuranceFlow.value?.name
     }

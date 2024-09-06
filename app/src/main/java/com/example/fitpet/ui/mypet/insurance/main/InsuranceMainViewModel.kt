@@ -7,9 +7,14 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.viewModelScope
 import com.example.fitpet.R
 import com.example.fitpet.base.BaseViewModel
+import com.example.fitpet.data.repository.PetsRepository
 import com.example.fitpet.model.domain.PetType
 import com.example.fitpet.model.domain.insurance.main.InsuranceSuggestion
 import com.example.fitpet.model.domain.insurance.main.MyPet
+import com.example.fitpet.model.response.EstimateList
+import com.example.fitpet.model.response.PetInfo
+import com.example.fitpet.model.response.PetInsuranceResponse
+import com.example.fitpet.model.response.PetResponse
 import com.example.fitpet.ui.mypet.insurance.noregister.InsuranceNoRegisterEvent
 import com.example.fitpet.ui.mypet.insurance.noregister.InsuranceNoRegisterPageState
 import com.example.fitpet.util.ResourceProvider
@@ -26,13 +31,16 @@ import javax.inject.Inject
 
 @HiltViewModel
 class InsuranceMainViewModel @Inject constructor(
-    private val resourceProvider: ResourceProvider
+    private val resourceProvider: ResourceProvider,
+    private val petsRepository: PetsRepository
 ): BaseViewModel<InsuranceMainPageState>() {
-    private val myPetFlow: MutableStateFlow<MyPet> = MutableStateFlow(MyPet(PetType.DOG,"",0,""))
+    private val myPetFlow: MutableStateFlow<PetInfo?> = MutableStateFlow(null)
     private val insurancePriceFlow: MutableStateFlow<Int> = MutableStateFlow(10000)
     private val nowMonthFlow: MutableStateFlow<Int> = MutableStateFlow(8)
-    private val insuranceInfoFlow: MutableStateFlow<InsuranceSuggestion> = MutableStateFlow(InsuranceSuggestion(0,"","",0))
+    private val insuranceInfoFlow: MutableStateFlow<EstimateList?> = MutableStateFlow(null)
     private val insuranceImgFlow: MutableStateFlow<Int> = MutableStateFlow(R.drawable.ic_db_v3)
+    private val petInsuranceFlow: MutableStateFlow<PetInsuranceResponse?> = MutableStateFlow(null)
+    private val petResponseFlow: MutableStateFlow<PetResponse?> = MutableStateFlow(null)
 
 
     override val uiState: InsuranceMainPageState = InsuranceMainPageState(
@@ -40,7 +48,9 @@ class InsuranceMainViewModel @Inject constructor(
         insurancePrice = insurancePriceFlow.asStateFlow(),
         nowMonth = nowMonthFlow.asStateFlow(),
         insuranceInfo = insuranceInfoFlow.asStateFlow(),
-        insuranceImg = insuranceImgFlow.asStateFlow()
+        insuranceImg = insuranceImgFlow.asStateFlow(),
+        petCount = petResponseFlow.asStateFlow(),
+        insuranceSuggestionResponse = petInsuranceFlow.asStateFlow()
     )
 
     // nowMonth 설정
@@ -53,14 +63,14 @@ class InsuranceMainViewModel @Inject constructor(
     }
 
     // pet Info 설정
-    fun updatePetInfo(pet: MyPet){
+    fun updatePetInfo(pet: PetInfo){
         viewModelScope.launch {
             myPetFlow.update { pet }
         }
-        Timber.d(myPetFlow.value.petName)
-        Timber.d(myPetFlow.value.petBreed)
-        Timber.d(myPetFlow.value.petAge.toString())
-        Timber.d(myPetFlow.value.petType.toString())
+        Timber.d(myPetFlow.value?.name)
+        Timber.d(myPetFlow.value?.breed)
+        Timber.d(myPetFlow.value?.age.toString())
+        Timber.d(myPetFlow.value?.species.toString())
     }
 
     fun updatePrice(input: Int) {
@@ -69,7 +79,7 @@ class InsuranceMainViewModel @Inject constructor(
         }
     }
 
-    fun updateInsuranceInfo(insurance: InsuranceSuggestion) {
+    fun updateInsuranceInfo(insurance: EstimateList) {
         viewModelScope.launch {
             insuranceInfoFlow.update { insurance }
         }
@@ -112,5 +122,39 @@ class InsuranceMainViewModel @Inject constructor(
         } else {
             NumberFormat.getNumberInstance(Locale.US).format(priceStart)
         }
+    }
+
+    fun loadPetData() {
+        viewModelScope.launch {
+            petsRepository.getPetAllMainInfo().collect { result ->
+                result.onSuccess { response ->
+                    // Update both pet info and estimate list
+                    petResponseFlow.update { response }
+                    updatePetInfo(response.petList.get(0))
+                }.onFailure {
+                    // Handle error
+                    Timber.e(it)
+                }
+            }
+        }
+    }
+
+    fun fetchPetInsuranceInfo(petId: Int, priceRate: String) {
+        viewModelScope.launch {
+            petsRepository.getPetMainInfo(priceRate, petId).collect { result ->
+                result.onSuccess { petInsuranceResponse ->
+                    // Update both pet info and estimate list
+                    petInsuranceFlow.update { petInsuranceResponse }
+                    emitEventFlow(InsuranceMainEvent.UpdateInsuranceInfo)
+                }.onFailure {
+                    // Handle error
+                    Timber.e(it)
+                }
+            }
+        }
+    }
+
+    fun getFirstPet(): Int?{
+        return petResponseFlow.value?.petList?.get(0)?.petId
     }
 }

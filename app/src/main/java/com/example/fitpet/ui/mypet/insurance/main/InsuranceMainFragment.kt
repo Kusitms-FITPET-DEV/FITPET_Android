@@ -17,6 +17,7 @@ import com.kakao.sdk.common.util.KakaoCustomTabsClient
 import com.kakao.sdk.talk.TalkApiClient
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @AndroidEntryPoint
 class InsuranceMainFragment : BaseFragment<FragmentInsuranceMainBinding, InsuranceMainPageState, InsuranceMainViewModel>(
@@ -34,10 +35,7 @@ class InsuranceMainFragment : BaseFragment<FragmentInsuranceMainBinding, Insuran
             binding.fabInsuranceKakaoBig.shrink()
         }, 5000)
         setMonth()
-        // 아래는 더미데이터 설정
-        viewModel.updatePrice(106500)
-        setMyPet()
-        setInsuranceInfo()
+        viewModel.loadPetData()
     }
 
     override fun initState() {
@@ -45,6 +43,18 @@ class InsuranceMainFragment : BaseFragment<FragmentInsuranceMainBinding, Insuran
             launch {
                 viewModel.eventFlow.collect { event ->
                     handleEvent(event as InsuranceMainEvent)
+                }
+            }
+            launch {
+                viewModel.uiState.petCount.collect {
+                    Timber.tag("log1").d(viewModel.getFirstPet()!!.toString())
+                    viewModel.fetchPetInsuranceInfo(viewModel.getFirstPet()!!, "70%")
+                }
+            }
+            launch {
+                viewModel.uiState.insuranceSuggestionResponse.collect {
+                    viewModel.updatePrice(viewModel.uiState.insuranceSuggestionResponse.value?.estimateList?.get(0)?.insuranceFee!!)
+                    setInsuranceInfo()
                 }
             }
         }
@@ -88,25 +98,23 @@ class InsuranceMainFragment : BaseFragment<FragmentInsuranceMainBinding, Insuran
 
 
     private fun setMyPet(){
-        val pet = MyPet(PetType.DOG, "보리", 11, "시츄")
-        viewModel.updatePetInfo(pet)
+        viewModel.updatePetInfo(viewModel.uiState.petInfo.value!!)
     }
 
     private fun setInsuranceInfo(){
-        val insurance = InsuranceSuggestion(5, "meritz", "펫블리 반려견보험", 56602)
-        viewModel.updateInsuranceInfo(insurance)
+        viewModel.updateInsuranceInfo(viewModel.uiState.insuranceInfo.value!!)
         setInsuranceImg()
     }
 
     private fun setInsuranceImg(){
         var drawable: Int = 0
-        val company = viewModel.uiState.insuranceInfo.value.insuranceCompany
+        val company = viewModel.uiState.insuranceInfo.value?.insuranceCompany
         when (company) {
-            "db" -> drawable = R.drawable.ic_db_v3
-            "kb" -> drawable = R.drawable.ic_kb_v3
-            "hyundai" -> drawable = R.drawable.ic_hyundai_v3
-            "samsung" -> drawable = R.drawable.ic_samsung_v3
-            "meritz" -> drawable = R.drawable.ic_meritz_v3
+            "DB손해보험" -> drawable = R.drawable.ic_db_v3
+            "KB손해보험" -> drawable = R.drawable.ic_kb_v3
+            "현대해상" -> drawable = R.drawable.ic_hyundai_v3
+            "삼성화재" -> drawable = R.drawable.ic_samsung_v3
+            "메리츠" -> drawable = R.drawable.ic_meritz_v3
             else -> drawable = R.drawable.ic_db_v3
         }
         viewModel.updateInsuranceImg(drawable)
