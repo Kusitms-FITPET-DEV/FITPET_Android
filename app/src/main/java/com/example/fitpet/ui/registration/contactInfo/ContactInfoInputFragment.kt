@@ -95,6 +95,7 @@ class ContactInfoInputFragment : BaseFragment<FragmentContactInfoInputBinding, C
         when(event) {
             ContactInfoInputEvent.GoToMyPetInsurance -> goToMyPetInsurance()
             ContactInfoInputEvent.ShowSkipDialog -> showSkipDialog()
+            ContactInfoInputEvent.RegisterPet -> registerPet()
         }
     }
 
@@ -108,5 +109,11 @@ class ContactInfoInputFragment : BaseFragment<FragmentContactInfoInputBinding, C
     private fun goToMyPetInsurance() {
         val action = ContactInfoInputFragmentDirections.actionContactInfoInputToMyPet()
         findNavController().navigate(action)
+    }
+
+    private fun registerPet() {
+        viewModel.registerPet(
+            petName, petBreed, petDetailBreed, petBirth
+        )
     }
 }
