@@ -96,6 +96,9 @@ dependencies {
     // kakao
     implementation(libs.kakao.auth)
 
+    // Lottie
+    implementation(libs.lottie)
+
     // glide
     implementation(libs.glide)
 }

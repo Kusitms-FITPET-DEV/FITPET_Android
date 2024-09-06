@@ -54,8 +54,13 @@ class PetBreedFragment : BaseFragment<FragmentPetBreedBinding, PetBreedPageState
 
     private fun showSkipDialog() {
         dialog.showDialog(
-            onSkipClicked = {},
+            onSkipClicked = { goToMyPetInsurance() },
             onResumeClicked = {}
         )
+    }
+
+    private fun goToMyPetInsurance() {
+        val action = PetBreedFragmentDirections.actionPetBreedToMyPet()
+        findNavController().navigate(action)
     }
 }

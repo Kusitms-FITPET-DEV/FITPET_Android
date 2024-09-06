@@ -40,5 +40,6 @@
 
     <!-- kakao -->
     <color name="ic_kakao">#FFFAE100</color>
+    <color name="kakao_text">#FF000000</color>
 
 </resources>

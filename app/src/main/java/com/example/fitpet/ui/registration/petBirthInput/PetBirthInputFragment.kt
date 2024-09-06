@@ -48,8 +48,13 @@ class PetBirthInputFragment : BaseFragment<FragmentPetBirthInputBinding, PetBirt
 
     private fun showSkipDialog() {
         dialog.showDialog(
-            onSkipClicked = {},
+            onSkipClicked = { goToMyPetInsurance() },
             onResumeClicked = {}
         )
+    }
+
+    private fun goToMyPetInsurance() {
+        val action = PetBirthInputFragmentDirections.actionPetBirthInputToMyPet()
+        findNavController().navigate(action)
     }
 }
