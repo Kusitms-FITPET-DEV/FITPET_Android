@@ -37,12 +37,13 @@ class ContactInfoInputViewModel @Inject constructor(
 
     fun registerPet(petName: String, petBreed: String, petDetailBreed: String, petBirth: String) {
         viewModelScope.launch {
+            val formattedPhone = uiState.contactInfo.value.replace("-", "")
             val request = RegisterPetRequest(
                 petName = petName,
-                breed = petBreed,
-                species = petDetailBreed,
+                breed = petDetailBreed,
+                species = petBreed,
                 birthYear = petBirth.toInt(),
-                phone = uiState.contactInfo.value
+                phone = formattedPhone
             )
             petsRepository.registerPet(request).collect {
                 resultResponse(it, { goToMyPetInsurance() })

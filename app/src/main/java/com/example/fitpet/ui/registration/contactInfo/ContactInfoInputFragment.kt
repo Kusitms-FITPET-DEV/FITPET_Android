@@ -49,8 +49,11 @@ class ContactInfoInputFragment : BaseFragment<FragmentContactInfoInputBinding, C
 
             contactInfoEditText.addTextChangedListener(object : TextWatcher {
                 private var isUpdating = false
+                private var lastInput = ""
 
-                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                    lastInput = s?.toString() ?: ""
+                }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     if (isUpdating) return
@@ -60,6 +63,17 @@ class ContactInfoInputFragment : BaseFragment<FragmentContactInfoInputBinding, C
 
                     if (digitsOnly.length > 11) return
 
+                    isUpdating = true
+
+                    if (before > 0 && count == 0) {
+                        if (lastInput.endsWith("-") && input == lastInput.dropLast(1)) {
+                            contactInfoEditText.setText(input.dropLast(1))
+                            contactInfoEditText.setSelection(input.length - 1)
+                            isUpdating = false
+                            return
+                        }
+                    }
+
                     val formattedNumber = when {
                         digitsOnly.length > 6 -> "${digitsOnly.substring(0, 3)}-${digitsOnly.substring(3, 7)}-${digitsOnly.substring(7)}"
                         digitsOnly.length > 3 -> "${digitsOnly.substring(0, 3)}-${digitsOnly.substring(3)}"
@@ -67,11 +81,10 @@ class ContactInfoInputFragment : BaseFragment<FragmentContactInfoInputBinding, C
                     }
 
                     if (input != formattedNumber) {
-                        isUpdating = true
                         contactInfoEditText.setText(formattedNumber)
                         contactInfoEditText.setSelection(formattedNumber.length)
-                        isUpdating = false
                     }
+                    isUpdating = false
 
                     viewModel.onTextChanged(formattedNumber)
                 }
