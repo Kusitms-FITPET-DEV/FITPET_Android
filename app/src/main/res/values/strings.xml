@@ -23,6 +23,18 @@
     <string name="resume">계속하기</string>
     <string name="blank" />
     <string name="select">선택하기</string>
+    <string name="go_to_register">1:1 펫보험 상담하기</string>
+    <string name="pet_info">%1$d살 | %2$s</string>
+    <string name="pet_insurance_range"> ~ %s</string>
+
+
+
+    <!-- insuranceCompany -->
+    <string name="db">DB손해보험</string>
+    <string name="kb">KB손해보험</string>
+    <string name="hyundai">현대해상</string>
+    <string name="samsung">삼성화재</string>
+    <string name="meritz">메리츠</string>
 
     <!-- Tab -->
     <string name="tab_insurance">마이 펫보험</string>
@@ -73,12 +85,12 @@
     <string name="contact_info_input_hint">예) 010 1234 5678</string>
     <string name="contact_info_input_guide">안심하세요! 전화번호를 입력하더라도\n견적받기 용도 외에는 사용되거나 유출되지 않아요.</string>
 
-    <!-- InsuranceNoRegister -->
-    <string name="insurance_no_register_box1">우리 아이, 갑자기 아프면 어떡하지?...</string>
-    <string name="insurance_no_register_box2">마이펫을 등록하고 보험 견적을 확인해 보세요!</string>
-    <string name="insurance_no_register_info_box1">스마트커버인슈어런스에서는 보험 관리에 \n 필요한 <font color="#FF008CFF">시간을 30% 이상 단축</font>하고 있어요!</string>
-    <string name="insurance_no_register_info_box2">견적 조회만, 가입상담만 하지 않습니다! \n보험관리에 필요한 모든 절차를 SC가 책임질게요</string>
-    <string name="insurance_no_register_bottom">[ 필수안내사항 ]\n
+    <!-- InsuranceNoPet -->
+    <string name="insurance_no_pet_box1">우리 아이, 갑자기 아프면 어떡하지?...</string>
+    <string name="insurance_no_pet_box2">마이펫을 등록하고 보험 견적을 확인해 보세요!</string>
+    <string name="insurance_no_pet_info_box1">스마트커버인슈어런스에서는 보험 관리에 \n 필요한 <font color="#FF008CFF">시간을 30% 이상 단축</font>하고 있어요!</string>
+    <string name="insurance_no_pet_info_box2">견적 조회만, 가입상담만 하지 않습니다! \n보험관리에 필요한 모든 절차를 SC가 책임질게요</string>
+    <string name="insurance_no_pet_bottom">[ 필수안내사항 ]\n
         ※ 보험대리점 : 스마트커버 인슈어런스(주) \n
         \u0020\u0020협회등록번호 : 제2023120019호\n
         ※ 본 광고는 광고심의기준을 준수하였으며,\n
@@ -91,6 +103,20 @@
         \u0020\u0020\u0020\u0020기타 불이익이 발생할 수 있습니다.\n
         준법심의필 제2024-07-0011호 (2024.07.26 ~ 2025.07.26)
 </string>
+
+    <!-- InsuranceNoRegister -->
+
+    <string name="insurance_no_register_pet_box1">우리 아이 보험료는?</string>
+    <string name="insurance_no_register_pet_box2">2분 안에 받아보는 예상 보험료</string>
+    <string name="insurance_no_register_pet_box_won">원</string>
+    <string name="insurance_no_register_insurance_nothing">해당 범위로는 알맞는 상품이 보이지 않아요! \n보상범위를 다시 설정해 보시겠어요?</string>
+    <string name="insurance_no_register_insurance_title">에게 알맞는 보험</string>
+    <string name="insurance_no_register_insurance_range">보상범위</string>
+    <string name="insurance_no_register_percent_70">70%</string>
+    <string name="insurance_no_register_percent_80">80%</string>
+    <string name="insurance_no_register_percent_90">90%</string>
+
+
 
     <!--  PermissionSettingsBottomSheet  -->
     <string name="permission_title">서비스 이용을 위해\n접근 권한에 동의해 주세요</string>
