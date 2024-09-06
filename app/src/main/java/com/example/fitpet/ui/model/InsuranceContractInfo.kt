@@ -1,9 +1,15 @@
-package com.example.fitpet.model
+package com.example.fitpet.ui.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class InsuranceContractInfo (
     val contract: Contract?,
     val coverage: Coverage?
-) {
+): Parcelable {
+
+    @Parcelize
     data class Contract(
         val contractor: String,
         val insurant: String,
@@ -16,8 +22,9 @@ data class InsuranceContractInfo (
         val bank: String,
         val bankAccount: String,
         val payCycle: String
-    )
+    ): Parcelable
 
+    @Parcelize
     data class Coverage(
         val dailyTreatLimit: String,
         val dailySurgeryCostLimit: String,
@@ -32,5 +39,5 @@ data class InsuranceContractInfo (
         val selfBurden: String,
         val compensationLiability: String,
         val funeralAid: String
-    )
+    ): Parcelable
 }

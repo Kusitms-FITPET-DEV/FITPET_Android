@@ -1,10 +1,11 @@
 package com.example.fitpet.ui.insurance.info
 
+import android.os.Bundle
 import androidx.fragment.app.viewModels
-import com.example.fitpet.PageState
 import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceContractCheckBinding
+import com.example.fitpet.ui.model.InsuranceContractInfo
 import com.example.fitpet.ui.insurance.info.contract.InsuranceInfoContractFragment
 import com.example.fitpet.ui.insurance.info.coverage.InsuranceInfoCoverageFragment
 import com.google.android.material.tabs.TabLayoutMediator
@@ -26,24 +27,30 @@ class InsuranceContractCheckFragment: BaseFragment<FragmentInsuranceContractChec
     override fun initView() {
         binding.viewModel = viewModel
 
-        initSetAdapter()
+//        initSetAdapter()
+        _insurancePageAdapter = InsuranceContractCheckAdapter(this@InsuranceContractCheckFragment)
         viewModel.getInsuranceInfo()
     }
 
     override fun initState() {
         launchWhenStarted(viewLifecycleOwner) {
             launch {
-                //
+                viewModel.uiState.insuranceContractInfo.collect { info ->
+                    initSetAdapter(info)
+                }
             }
         }
     }
 
-    private fun initSetAdapter() {
-        _insurancePageAdapter = InsuranceContractCheckAdapter(this@InsuranceContractCheckFragment)
+    private fun initSetAdapter(info: InsuranceContractInfo) {
+//        _insurancePageAdapter = InsuranceContractCheckAdapter(this@InsuranceContractCheckFragment)
+
+        val contractData = Bundle().apply { putParcelable("CONTRACT", info.contract) }
+        val coverageData = Bundle().apply { putParcelable("COVERAGE", info.coverage) }
 
         insurancePageAdapter.apply {
-            addFragment(InsuranceInfoContractFragment())
-            addFragment(InsuranceInfoCoverageFragment())
+            addFragment(InsuranceInfoContractFragment().apply { arguments = contractData })
+            addFragment(InsuranceInfoCoverageFragment().apply { arguments = coverageData })
         }
         binding.viewPagerInsuranceContract.adapter = insurancePageAdapter
 

@@ -2,7 +2,7 @@ package com.example.fitpet.ui.insurance.info
 
 import androidx.lifecycle.viewModelScope
 import com.example.fitpet.base.BaseViewModel
-import com.example.fitpet.model.InsuranceContractInfo
+import com.example.fitpet.ui.model.InsuranceContractInfo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
