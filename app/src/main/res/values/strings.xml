@@ -199,6 +199,8 @@
     <string name="insurance_charge_contact_title">안내 받을 연락 수단을\n모두 선택해 주세요</string>
     <string name="insurance_charge_contact_kakao">카카오톡</string>
     <string name="insurance_charge_contact_email">이메일</string>
+    <string name="insurance_charge_contact_both">알림톡/이메일</string>
+    <string name="insurance_charge_contact_talk">알림톡</string>
     <string name="insurance_charge_contact_email_hint">예) Hongildong@hanmail.com</string>
     <string name="method_kakao">KAKAO</string>
     <string name="method_email">EMAIL</string>

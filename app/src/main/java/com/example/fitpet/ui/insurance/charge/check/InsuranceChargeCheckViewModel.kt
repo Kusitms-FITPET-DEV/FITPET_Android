@@ -32,9 +32,12 @@ class InsuranceChargeCheckViewModel @Inject constructor(
             essentialAgree = insuranceArgument.essentialAgree
             optionAgree = insuranceArgument.optionAgree
 
-            // TODO 이메일/카카오톡 둘 다 선택시 디자인 나온 후 로직 변경
-            if (contactMethodEmail.isNotEmpty()) {
+            if (contactMethodEmail.isNotEmpty() && contactMethodMsg.isNotEmpty()) {
+                contactType = resourceProvider.getString(R.string.insurance_charge_contact_both)
+            } else if (contactMethodEmail.isNotEmpty()) {
                 contactType = resourceProvider.getString(R.string.insurance_charge_contact_email)
+            } else if (contactMethodMsg.isNotEmpty()) {
+                contactType = resourceProvider.getString(R.string.insurance_charge_contact_talk)
             }
         }
     }

@@ -42,6 +42,13 @@
     </fragment>
 
     <fragment
+        android:id="@+id/fragmentInsuranceNoPet"
+        android:name="com.example.fitpet.ui.mypet.insurance.nopet.InsuranceNoPetFragment"
+        android:label="fragmentInsuranceNoPet"
+        android:layout="@layout/fragment_insurance_no_pet">
+    </fragment>
+
+    <fragment
         android:id="@+id/fragmentPetNameInput"
         android:name="com.example.fitpet.ui.registration.petName.PetNameInputFragment"
         android:label="fragmentPetNameInput"
