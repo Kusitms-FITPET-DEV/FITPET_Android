@@ -3,9 +3,12 @@ package com.example.fitpet.ui.mypet.insurance.noregister
 import androidx.lifecycle.viewModelScope
 import com.example.fitpet.R
 import com.example.fitpet.base.BaseViewModel
+import com.example.fitpet.data.repository.PetsRepository
 import com.example.fitpet.model.domain.PetType
 import com.example.fitpet.model.domain.insurance.main.InsuranceSuggestion
 import com.example.fitpet.model.domain.insurance.main.MyPet
+import com.example.fitpet.model.response.EstimateList
+import com.example.fitpet.model.response.PetInsuranceResponse
 import com.example.fitpet.ui.registration.petDetailBreed.PetDetailBreedInputEvent
 import com.example.fitpet.ui.registration.petDetailBreed.PetDetailBreedInputPageState
 import com.example.fitpet.util.ResourceProvider
@@ -22,15 +25,17 @@ import javax.inject.Inject
 
 @HiltViewModel
 class InsuranceNoRegisterViewModel @Inject constructor(
-    private val resourceProvider: ResourceProvider
+    private val resourceProvider: ResourceProvider,
+    private val petsRepository: PetsRepository
 ): BaseViewModel<InsuranceNoRegisterPageState>() {
     private val myPetFlow: MutableStateFlow<MyPet> = MutableStateFlow(MyPet(PetType.DOG,"",0,""))
     private val priceStartFlow: MutableStateFlow<Int> = MutableStateFlow(1000)
     private val priceEndFlow: MutableStateFlow<Int> = MutableStateFlow(10000)
     private val percentRangeFlow: MutableStateFlow<Int> = MutableStateFlow(70)
-    private val suggestionFlow: MutableStateFlow<List<InsuranceSuggestion>> = MutableStateFlow<List<InsuranceSuggestion>>(emptyList())
+    private val suggestionFlow: MutableStateFlow<List<EstimateList>> = MutableStateFlow<List<EstimateList>>(emptyList())
     private val openPercentBoxFlow: MutableStateFlow<Boolean> = MutableStateFlow(false)
     private val nothingInsuranceFlow: MutableStateFlow<Boolean> = MutableStateFlow(false)
+    private val petInsuranceFlow: MutableStateFlow<PetInsuranceResponse?> = MutableStateFlow(null)
 
 
 
@@ -124,6 +129,31 @@ class InsuranceNoRegisterViewModel @Inject constructor(
         } else {
             NumberFormat.getNumberInstance(Locale.US).format(priceEnd)
         }
+    }
+
+    fun fetchPetInsuranceInfo(petId: Int, priceRate: String) {
+        viewModelScope.launch {
+            petsRepository.getPetMainInfo(priceRate, petId).collect { result ->
+                result.onSuccess { petInsuranceResponse ->
+                    // Update both pet info and estimate list
+                    petInsuranceFlow.update { petInsuranceResponse }
+                    suggestionFlow.update { petInsuranceResponse.estimateList }
+                }.onFailure {
+                    // Handle error
+                    Timber.e(it)
+                }
+            }
+        }
+    }
+
+    // Example to access Pet info like name, species, etc.
+    fun getPetName(): String? {
+        return petInsuranceFlow.value?.name
+    }
+
+    fun getFormattedMaxInsuranceFee(): String {
+        val maxInsuranceFee = petInsuranceFlow.value?.maxInsuranceFee ?: 0
+        return NumberFormat.getNumberInstance(Locale.US).format(maxInsuranceFee)
     }
 
 

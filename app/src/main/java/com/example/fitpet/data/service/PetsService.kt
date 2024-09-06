@@ -2,11 +2,15 @@ package com.example.fitpet.data.service
 
 import com.example.fitpet.base.ApiResponse
 import com.example.fitpet.model.request.RegisterPetRequest
+import com.example.fitpet.model.response.EstimateList
+import com.example.fitpet.model.response.PetInsuranceResponse
+import com.example.fitpet.model.response.PetResponse
 import com.example.fitpet.model.response.SearchPetBreedResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface PetsService {
@@ -19,4 +23,14 @@ interface PetsService {
     suspend fun registerPet(
         @Body request: RegisterPetRequest
     ): ApiResponse<Unit>
+
+    @GET("${Endpoints.Pets.PETS}/{petId}")
+    suspend fun getPetMainInfo(
+        @Query("priceRate") priceRate: String,
+        @Path("petId") petId: Int
+    ): ApiResponse<PetInsuranceResponse>
+
+    @GET(Endpoints.Pets.PETS)
+    suspend fun getPetAllMainInfo(
+    ): ApiResponse<PetResponse>
 }
