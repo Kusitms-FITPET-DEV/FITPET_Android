@@ -2,6 +2,8 @@ package com.example.fitpet.ui.mypet.insurance.main
 
 import android.graphics.drawable.Drawable
 import android.os.Build
+import android.os.Handler
+import android.os.Looper
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
@@ -11,6 +13,8 @@ import com.example.fitpet.databinding.FragmentInsuranceMainBinding
 import com.example.fitpet.model.domain.PetType
 import com.example.fitpet.model.domain.insurance.main.InsuranceSuggestion
 import com.example.fitpet.model.domain.insurance.main.MyPet
+import com.kakao.sdk.common.util.KakaoCustomTabsClient
+import com.kakao.sdk.talk.TalkApiClient
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -26,6 +30,9 @@ class InsuranceMainFragment : BaseFragment<FragmentInsuranceMainBinding, Insuran
             vm = viewModel
             lifecycleOwner = viewLifecycleOwner
         }
+        Handler(Looper.getMainLooper()).postDelayed({
+            binding.fabInsuranceKakaoBig.shrink()
+        }, 5000)
         setMonth()
         // 아래는 더미데이터 설정
         viewModel.updatePrice(106500)
@@ -55,8 +62,12 @@ class InsuranceMainFragment : BaseFragment<FragmentInsuranceMainBinding, Insuran
         }
     }
 
-    private fun goToConsult() {
-        //kakao 채널 연결
+    private fun goToConsult(){
+        // 카카오톡 채널 추가하기 URL
+        val url = TalkApiClient.instance.chatChannelUrl(CHANNEL_ID)
+
+        // CustomTabs 로 열기
+        KakaoCustomTabsClient.openWithDefault(requireContext(), url)
     }
 
     private fun goToCompensationCheck() {
@@ -105,6 +116,10 @@ class InsuranceMainFragment : BaseFragment<FragmentInsuranceMainBinding, Insuran
     @RequiresApi(Build.VERSION_CODES.O)
     private fun setMonth(){
         viewModel.setMonth()
+    }
+
+    companion object{
+        const val CHANNEL_ID = "_cxdAfG"
     }
 
 }
