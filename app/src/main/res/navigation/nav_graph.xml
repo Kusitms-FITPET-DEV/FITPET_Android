@@ -49,7 +49,12 @@
 
         <action
             android:id="@+id/action_pet_name_input_to_pet_breed"
-            app:destination="@id/fragmentPetBreed"/>
+            app:destination="@id/fragmentPetBreed">
+
+            <argument
+                android:name="petName"
+                app:argType="string"/>
+        </action>
 
         <action
             android:id="@+id/action_pet_name_input_to_my_pet"
@@ -62,6 +67,10 @@
         android:name="com.example.fitpet.ui.registration.petBreed.PetBreedFragment"
         android:label="fragmentPetBreed"
         android:layout="@layout/fragment_pet_breed">
+
+        <argument
+            android:name="petName"
+            app:argType="string"/>
 
         <action
             android:id="@+id/action_pet_breed_to_pet_detail_breed_input"
@@ -79,6 +88,14 @@
         android:label="fragmentPetDetailBreedInput"
         android:layout="@layout/fragment_pet_detail_breed_input">
 
+        <argument
+            android:name="petName"
+            app:argType="string"/>
+
+        <argument
+            android:name="petBreed"
+            app:argType="string"/>
+
         <action
             android:id="@+id/action_pet_detail_breed_input_to_pet_birth_input"
             app:destination="@id/fragmentPetBirthInput"/>
@@ -95,6 +112,18 @@
         android:label="fragmentPetBirthInput"
         android:layout="@layout/fragment_pet_birth_input">
 
+        <argument
+            android:name="petName"
+            app:argType="string"/>
+
+        <argument
+            android:name="petBreed"
+            app:argType="string"/>
+
+        <argument
+            android:name="petDetailBreed"
+            app:argType="string"/>
+
         <action
             android:id="@+id/action_pet_birth_input_to_contact_info_input"
             app:destination="@id/fragmentContactInfoInput"/>
@@ -110,6 +139,22 @@
         android:name="com.example.fitpet.ui.registration.contactInfo.ContactInfoInputFragment"
         android:label="fragmentContactInfoInput"
         android:layout="@layout/fragment_contact_info_input">
+
+        <argument
+            android:name="petName"
+            app:argType="string"/>
+
+        <argument
+            android:name="petBreed"
+            app:argType="string"/>
+
+        <argument
+            android:name="petDetailBreed"
+            app:argType="string"/>
+
+        <argument
+            android:name="petBirth"
+            app:argType="string"/>
 
         <action
             android:id="@+id/action_contact_info_input_to_my_pet"
