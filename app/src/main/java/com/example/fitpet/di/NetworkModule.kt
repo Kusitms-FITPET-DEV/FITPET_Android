@@ -1,13 +1,19 @@
 package com.example.fitpet.di
 
 import com.example.fitpet.data.FitPetDataStore
+import com.example.fitpet.data.repository.AuthRepository
+import com.example.fitpet.data.repository.TokenProvider
+import com.example.fitpet.data.repositoryImpl.AuthRepositoryImpl
+import com.example.fitpet.model.request.ReissueTokenRequest
 import com.example.fitpet.util.Config.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.runBlocking
+import okhttp3.Authenticator
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -23,14 +29,15 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideOkHttpClient(dataStore: FitPetDataStore): OkHttpClient {
+    fun provideOkHttpClient(
+        dataStore: FitPetDataStore,
+        tokenAuthenticator: TokenAuthenticator
+    ): OkHttpClient {
         val httpLoggingInterceptor = HttpLoggingInterceptor()
             .setLevel(HttpLoggingInterceptor.Level.BODY)
         val headerInterceptor = Interceptor{ chain ->
             val tokenFlow = dataStore.accessToken
-            val token = runBlocking {
-                tokenFlow.first()
-            }
+            val token = runBlocking { tokenFlow.first() }
             val request = chain.request().newBuilder()
 
             token?.let {
@@ -39,12 +46,14 @@ object NetworkModule {
 
             chain.proceed(request.build())
         }
+
         return OkHttpClient.Builder()
             .readTimeout(10, TimeUnit.SECONDS)
             .connectTimeout(10, TimeUnit.SECONDS)
             .writeTimeout(10, TimeUnit.SECONDS)
             .addInterceptor(httpLoggingInterceptor)
             .addInterceptor(headerInterceptor)
+            .authenticator(tokenAuthenticator)
             .build()
     }
 

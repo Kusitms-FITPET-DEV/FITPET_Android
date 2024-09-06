@@ -50,8 +50,13 @@ class PetNameInputFragment : BaseFragment<FragmentPetNameInputBinding, PetNameIn
 
     private fun showSkipDialog() {
         dialog.showDialog(
-            onSkipClicked = {},
+            onSkipClicked = { goToMyPetInsurance() },
             onResumeClicked = {}
         )
+    }
+
+    private fun goToMyPetInsurance() {
+        val action = PetNameInputFragmentDirections.actionPetNameInputToMyPet()
+        findNavController().navigate(action)
     }
 }

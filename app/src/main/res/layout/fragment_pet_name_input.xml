@@ -31,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/first_page"
-                android:textAppearance="@style/b3"
+                android:textAppearance="@style/b4"
                 android:textColor="@color/point_blue"/>
 
             <TextView
@@ -74,7 +74,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@{vm.uiState.petName.empty ? @drawable/ic_circle_text_disable_5 : @drawable/ic_circle_point_blue_5}"
+                    android:background="@{!vm.uiState.isLengthValid() ? @drawable/ic_invalid_input : @drawable/ic_valid_input}"
                     android:layout_gravity="center_vertical"/>
 
                 <TextView
@@ -83,7 +83,30 @@
                     android:layout_marginStart="6dp"
                     android:text="@string/min_length_guide"
                     android:textAppearance="@style/b5_S"
-                    android:textColor="@{vm.uiState.petName.empty ? @color/text_disable : @color/point_blue}"/>
+                    android:textColor="@{!vm.uiState.isLengthValid() ? @color/text_disable : @color/point_blue}"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="23dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@{vm.uiState.isInvalidInput ? @drawable/ic_invalid_input : @drawable/ic_valid_input}"
+                    android:layout_gravity="center_vertical"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:text="@string/input_error"
+                    android:textAppearance="@style/b5_S"
+                    android:textColor="@{vm.uiState.isInvalidInput ? @color/text_disable : @color/point_blue}"/>
 
             </LinearLayout>
 
@@ -97,10 +120,10 @@
             android:stateListAnimator="@null"
             android:text="@string/next"
             android:textAppearance="@style/b3_S"
-            android:textColor="@color/text_white"
+            android:textColor="@{!(vm.uiState.isLengthValid &amp;&amp; !vm.uiState.isInvalidInput) ? @color/text_disable : @color/text_white}"
             android:onClick="@{() -> vm.onClickBtnNext()}"
-            android:clickable="@{!vm.uiState.petName.empty}"
-            android:background="@{vm.uiState.petName.empty ? @drawable/bg_rectangle_filled_bg_primary_radius_8 : @drawable/bg_rectangle_filled_point_blue_radius_8}"
+            android:clickable="@{(vm.uiState.isLengthValid &amp;&amp; !vm.uiState.isInvalidInput)}"
+            android:background="@{(vm.uiState.isLengthValid &amp;&amp; !vm.uiState.isInvalidInput) ? @drawable/bg_rectangle_filled_point_blue_radius_8 : @drawable/bg_rectangle_filled_bg_primary_radius_8}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>

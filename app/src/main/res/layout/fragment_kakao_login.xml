@@ -48,16 +48,38 @@
 
         </LinearLayout>
 
-        <ImageButton
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="66dp"
-            android:src="@drawable/ic_kakao_login"
-            android:background="@android:color/transparent"
+            android:layout_marginHorizontal="28dp"
+            android:layout_marginBottom="78dp"
+            android:background="@drawable/bg_rectangle_filled_kakao_radius_6"
             android:onClick="@{() -> vm.onClickBtnKakaoLogin()}"
+            android:padding="12dp"
+            android:orientation="horizontal"
+            android:gravity="center"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <ImageView
+                android:id="@+id/kakaoImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:gravity="center"
+                android:src="@drawable/ic_empty_kakao" />
+
+            <TextView
+                android:id="@+id/kakaoText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/kakao_login_text"
+                android:textAppearance="@style/b3_S"
+                android:textColor="@color/kakao_text"/>
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

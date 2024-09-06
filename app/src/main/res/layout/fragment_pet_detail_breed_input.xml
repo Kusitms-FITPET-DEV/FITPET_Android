@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View" />
         <variable
             name="vm"
             type="com.example.fitpet.ui.registration.petDetailBreed.PetDetailBreedInputViewModel" />
@@ -31,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/third_page"
-                android:textAppearance="@style/b3"
+                android:textAppearance="@style/b4"
                 android:textColor="@color/point_blue"/>
 
             <TextView
@@ -42,17 +43,38 @@
                 android:textAppearance="@style/b1_S"
                 android:textColor="@color/black"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="2dp"
+                android:text="@string/detail_breed_dog_guide"
+                android:textAppearance="@style/b5_S"
+                android:textColor="@color/text_disable"/>
+
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:layout_marginTop="28dp"
                 android:background="@drawable/bg_rectangle_filled_bg_primary_radius_8">
 
-                <EditText
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/searchBreedView"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:iconifiedByDefault="false"
+                    android:queryHint="Search for a breed"
+                    android:background="@android:color/transparent"
+                    app:searchIcon="@null"/>
+
+                <AutoCompleteTextView
+                    android:id="@+id/detailBreedAutoCompleteTextView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:autofillHints=""
                     android:paddingHorizontal="24dp"
+                    android:dropDownHeight="400dp"
+                    android:completionThreshold="0"
                     android:background="@android:color/transparent"
                     android:maxLines="1"
                     android:inputType="text"
@@ -64,29 +86,6 @@
 
             </FrameLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginStart="23dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@{vm.uiState.detailBreed.empty ? @drawable/ic_circle_text_disable_5 : @drawable/ic_circle_point_blue_5}"
-                    android:layout_gravity="center_vertical"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="6dp"
-                    android:text="@string/min_length_guide"
-                    android:textAppearance="@style/b5_S"
-                    android:textColor="@{vm.uiState.detailBreed.empty ? @color/text_disable : @color/point_blue}"/>
-
-            </LinearLayout>
-
         </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatButton
@@ -97,9 +96,10 @@
             android:stateListAnimator="@null"
             android:text="@string/next"
             android:textAppearance="@style/b3_S"
-            android:textColor="@color/text_white"
+            android:textColor="@{vm.uiState.selectedBreed.empty ? @color/text_disable : @color/text_white}"
             android:onClick="@{() -> vm.onClickBtnNext()}"
-            android:background="@{vm.uiState.detailBreed.empty ? @drawable/bg_rectangle_filled_bg_primary_radius_8 : @drawable/bg_rectangle_filled_point_blue_radius_8}"
+            android:clickable="@{!vm.uiState.selectedBreed.empty}"
+            android:background="@{vm.uiState.selectedBreed.empty ? @drawable/bg_rectangle_filled_bg_primary_radius_8 : @drawable/bg_rectangle_filled_point_blue_radius_8}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>

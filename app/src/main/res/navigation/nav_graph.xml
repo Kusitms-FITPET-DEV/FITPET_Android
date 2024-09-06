@@ -67,6 +67,10 @@
             android:id="@+id/action_pet_breed_to_pet_detail_breed_input"
             app:destination="@id/fragmentPetDetailBreedInput"/>
 
+        <action
+            android:id="@+id/action_pet_breed_to_my_pet"
+            app:destination="@id/fragmentMypet"/>
+
     </fragment>
 
     <fragment
@@ -79,6 +83,10 @@
             android:id="@+id/action_pet_detail_breed_input_to_pet_birth_input"
             app:destination="@id/fragmentPetBirthInput"/>
 
+        <action
+            android:id="@+id/action_pet_detail_breed_input_to_my_pet"
+            app:destination="@id/fragmentMypet"/>
+
     </fragment>
 
     <fragment
@@ -90,6 +98,10 @@
         <action
             android:id="@+id/action_pet_birth_input_to_contact_info_input"
             app:destination="@id/fragmentContactInfoInput"/>
+
+        <action
+            android:id="@+id/action_pet_birth_input_to_my_pet"
+            app:destination="@id/fragmentMypet"/>
 
     </fragment>
 
