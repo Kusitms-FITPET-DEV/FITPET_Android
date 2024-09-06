@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="vm"
+            type="com.example.fitpet.ui.mypet.insurance.main.InsuranceMainViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clInsuranceNoRegisterOut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_primary">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nsvInsuranceNoRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clInsuranceNoRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bg_primary">
+
+                <View
+                    android:id="@+id/viewInsuranceNoRegisterMg1"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="20:35"
+                    app:layout_constraintWidth_percent="0.0556"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <View
+                    android:id="@+id/viewInsuranceNoRegisterMg2"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="20:35"
+                    app:layout_constraintWidth_percent="0.0556"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvInsuranceNoRegisterMypetBoxBg"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="10dp"
+                    app:layout_constraintDimensionRatio="320:226"
+                    app:layout_constraintWidth_percent="0.8889"
+                    app:layout_constraintStart_toEndOf="@id/viewInsuranceNoRegisterMg1"
+                    app:layout_constraintEnd_toStartOf="@id/viewInsuranceNoRegisterMg2"
+                    app:layout_constraintTop_toBottomOf="@id/viewInsuranceNoRegisterMg1"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:elevation="3dp"
+                    app:layout_constraintStart_toStartOf="@id/cvInsuranceNoRegisterMypetBoxBg"
+                    app:layout_constraintEnd_toEndOf="@id/cvInsuranceNoRegisterMypetBoxBg"
+                    app:layout_constraintTop_toTopOf="@id/cvInsuranceNoRegisterMypetBoxBg"
+                    app:layout_constraintBottom_toBottomOf="@id/cvInsuranceNoRegisterMypetBoxBg">
+
+                    <View
+                        android:id="@+id/viewInsuranceBoxMg1"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintDimensionRatio="20:20"
+                        app:layout_constraintWidth_percent="0.0625"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <View
+                        android:id="@+id/viewInsuranceMainBoxMg2"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintDimensionRatio="20:20"
+                        app:layout_constraintWidth_percent="0.0625"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <ImageView
+                        android:id="@+id/ivNoRegisterMyPet"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintDimensionRatio="52:52"
+                        app:layout_constraintWidth_percent="0.1625"
+                        android:background="@drawable/ic_mypet_dog"
+                        app:layout_constraintStart_toEndOf="@id/viewInsuranceBoxMg1"
+                        app:layout_constraintTop_toBottomOf="@id/viewInsuranceBoxMg1"/>
+
+                    <TextView
+                        android:id="@+id/tvNoRegisterMypetName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{vm.uiState.petInfo.petName}"
+                        android:textAppearance="@style/b1_S"
+                        android:layout_marginStart="12dp"
+                        app:layout_constraintStart_toEndOf="@id/ivNoRegisterMyPet"
+                        app:layout_constraintTop_toTopOf="@id/ivNoRegisterMyPet"
+                        />
+
+                    <ImageView
+                        android:id="@+id/ivInsuranceBoxTriangle"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintDimensionRatio="18:14"
+                        app:layout_constraintWidth_percent="0.045"
+                        android:background="@drawable/ic_triangle_mypet"
+                        app:layout_constraintStart_toEndOf="@id/tvNoRegisterMypetName"
+                        app:layout_constraintTop_toTopOf="@id/tvNoRegisterMypetName"
+                        app:layout_constraintBottom_toBottomOf="@id/tvNoRegisterMypetName"/>
+
+                    <TextView
+                        android:id="@+id/tvNoRegisterMypetInfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{String.valueOf(@string/pet_info(vm.uiState.petInfo.petAge, vm.uiState.petInfo.petBreed))}"
+                        android:textAppearance="@style/insurance_pet_info"
+                        android:layout_marginStart="12dp"
+                        app:layout_constraintStart_toEndOf="@id/ivNoRegisterMyPet"
+                        app:layout_constraintBottom_toBottomOf="@id/ivNoRegisterMyPet"
+                        />
+
+                    <View
+                        android:id="@+id/viewInsuranceBoxMg3"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintDimensionRatio="20:16"
+                        app:layout_constraintWidth_percent="0.0625"
+                        app:layout_constraintTop_toBottomOf="@id/ivNoRegisterMyPet"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+
+                    <View
+                        android:id="@+id/viewInsuranceNoRegisterGray"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@drawable/bg_mypet_gray"
+                        app:layout_constraintTop_toBottomOf="@id/viewInsuranceBoxMg3"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:onClick="@{() -> vm.onClickContractCheckBtn()}"
+                        />
+
+                    <View
+                        android:id="@+id/viewInsuranceBoxMg4"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintDimensionRatio="20:12"
+                        app:layout_constraintWidth_percent="0.0625"
+                        app:layout_constraintTop_toTopOf="@id/viewInsuranceNoRegisterGray"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clInsuranceBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="12dp"
+                        app:layout_constraintStart_toStartOf="@id/ivNoRegisterMyPet"
+                        app:layout_constraintTop_toBottomOf="@id/viewInsuranceBoxMg4"
+                        app:layout_constraintEnd_toStartOf="@id/viewInsuranceMainBoxMg2"
+                        android:onClick="@{() -> vm.onClickContractCheckBtn()}"
+                        >
+
+                        <ImageView
+                            android:id="@+id/ivInsuranceImg"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            app:layout_constraintDimensionRatio="280:24"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"/>
+
+                        <TextView
+                            android:id="@+id/tvInsuranceBox2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/b5_S"
+                            android:textColor="@color/text_disable"
+                            android:text="@{vm.uiState.insuranceInfo.insuranceName}"
+                            android:layout_marginTop="4dp"
+                            app:layout_constraintTop_toBottomOf="@id/ivInsuranceImg"
+                            />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <View
+                        android:id="@+id/viewMainLine"
+                        android:layout_width="0dp"
+                        android:layout_height="0.5dp"
+                        android:background="@color/neutral_300"
+                        app:layout_constraintTop_toBottomOf="@id/clInsuranceBox"
+                        app:layout_constraintStart_toStartOf="@id/clInsuranceBox"
+                        app:layout_constraintEnd_toEndOf="@id/clInsuranceBox"/>
+
+                    <View
+                        android:id="@+id/viewInsuranceBoxMg5"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintDimensionRatio="20:20"
+                        app:layout_constraintWidth_percent="0.0625"
+                        app:layout_constraintTop_toBottomOf="@id/viewMainLine"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clInsuranceBoxBottom"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="@id/ivNoRegisterMyPet"
+                        app:layout_constraintTop_toBottomOf="@id/viewInsuranceBoxMg5"
+                        app:layout_constraintEnd_toStartOf="@id/viewInsuranceMainBoxMg2"
+                        android:onClick="@{() -> vm.onClickContractCheckBtn()}">
+
+                        <TextView
+                            android:id="@+id/tvInsuranceBoxMonth"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/insurance_main_monthly_title"
+                            android:textColor="@color/text_body"
+                            android:text="@{String.valueOf(vm.uiState.nowMonth)}"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            />
+
+                        <TextView
+                            android:id="@+id/tvInsuranceBoxMonthAfter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/insurance_main_monthly_title"
+                            android:textColor="@color/text_body"
+                            android:text="@string/insurance_main_month_title"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/tvInsuranceBoxMonth"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            />
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cvInsuranceMainQuestion"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="10dp"
+                            android:layout_marginStart="5dp"
+                            app:cardElevation="0.5dp"
+                            app:layout_constraintStart_toEndOf="@id/tvInsuranceBoxMonthAfter"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent">
+
+                        <ImageView
+                            android:id="@+id/ivInsuranceMainQuestion"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_insurance_main_circle"
+                            />
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:id="@+id/tvInsuranceBoxquestion"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/b5_S"
+                            android:textColor="@color/text_disable"
+                            android:elevation="3dp"
+                            android:text="@string/question"
+                            app:layout_constraintTop_toTopOf="@id/cvInsuranceMainQuestion"
+                            app:layout_constraintBottom_toBottomOf="@id/cvInsuranceMainQuestion"
+                            app:layout_constraintStart_toStartOf="@id/cvInsuranceMainQuestion"
+                            app:layout_constraintEnd_toEndOf="@id/cvInsuranceMainQuestion"
+                            />
+
+                        <TextView
+                            android:id="@+id/tvInsuranceBoxMonthPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/h3_S"
+                            android:textColor="@color/text_body"
+                            android:layout_marginEnd="6dp"
+                            android:text="@{vm.getFormattedPrice() != null ? String.valueOf(vm.getFormattedPrice()) : `` }"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/tvInsuranceBoxMonthWon"
+                            />
+
+                        <TextView
+                            android:id="@+id/tvInsuranceBoxMonthWon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/h3_S"
+                            android:textColor="@color/text_body"
+                            android:text="@string/insurance_no_register_pet_box_won"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:id="@+id/viewInsuranceBlueBtnMg"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="20:20"
+                    app:layout_constraintWidth_percent="0.0556"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cvInsuranceNoRegisterMypetBoxBg"/>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvInsuranceMainConsultBlueBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:cardBackgroundColor="@color/point_blue"
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="12dp"
+                    app:layout_constraintDimensionRatio="320:84"
+                    app:layout_constraintWidth_percent="0.8889"
+                    app:layout_constraintStart_toEndOf="@id/viewInsuranceNoRegisterMg1"
+                    app:layout_constraintEnd_toStartOf="@id/viewInsuranceNoRegisterMg2"
+                    app:layout_constraintTop_toBottomOf="@id/viewInsuranceBlueBtnMg"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clMainConsultBlueBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintStart_toStartOf="@id/cvInsuranceMainConsultBlueBtn"
+                    app:layout_constraintEnd_toEndOf="@id/cvInsuranceMainConsultBlueBtn"
+                    app:layout_constraintTop_toTopOf="@id/cvInsuranceMainConsultBlueBtn"
+                    app:layout_constraintBottom_toBottomOf="@id/cvInsuranceMainConsultBlueBtn"
+                    android:onClick="@{() -> vm.onClickBtnConsult()}"
+                    >
+
+                    <TextView
+                        android:id="@+id/tvMainConsultBlueBtnTitle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/b5"
+                        android:textColor="@color/white"
+                        android:text="@string/insurance_main_blue_title1"
+                        app:layout_constraintTop_toBottomOf="@id/viewInsuranceBlueBtnTitleMg1"
+                        app:layout_constraintStart_toEndOf="@id/viewInsuranceBlueBtnTitleMg1"
+                        />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@drawable/ic_arrow_next"
+                        android:backgroundTint="@color/white"
+                        app:layout_constraintDimensionRatio="5:5"
+                        app:layout_constraintWidth_percent="0.04"
+                        android:layout_marginStart="5dp"
+                        app:layout_constraintTop_toTopOf="@id/tvMainConsultBlueBtnTitle1"
+                        app:layout_constraintBottom_toBottomOf="@id/tvMainConsultBlueBtnTitle1"
+                        app:layout_constraintStart_toEndOf="@id/tvMainConsultBlueBtnTitle1"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvMainConsultBlueBtnTitle2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/b3_B"
+                        android:textColor="@color/white"
+                        android:text="@string/insurance_main_blue_title2"
+                        app:layout_constraintBottom_toTopOf="@id/viewInsuranceBlueBtnTitleMg2"
+                        app:layout_constraintStart_toEndOf="@id/viewInsuranceBlueBtnTitleMg1"
+                        app:layout_constraintTop_toBottomOf="@id/tvMainConsultBlueBtnTitle1"
+                        />
+
+                    <View
+                        android:id="@+id/viewInsuranceBlueBtnTitleMg1"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintDimensionRatio="16:20"
+                        app:layout_constraintWidth_percent="0.05"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <View
+                        android:id="@+id/viewInsuranceBlueBtnTitleMg2"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintDimensionRatio="16:20"
+                        app:layout_constraintWidth_percent="0.05"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:src="@drawable/ic_bulb"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="7dp"
+                        app:layout_constraintDimensionRatio="57:65"
+                        app:layout_constraintWidth_percent="0.18"
+                        app:layout_constraintTop_toBottomOf="@id/viewInsuranceBlueBtnTitleMg1"
+                        app:layout_constraintBottom_toTopOf="@id/viewInsuranceBlueBtnTitleMg2"
+                        app:layout_constraintEnd_toStartOf="@id/viewInsuranceBlueBtnTitleMg2"
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:id="@+id/viewMainConsultBlueBtnMg2"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="20:20"
+                    app:layout_constraintWidth_percent="0.0556"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/clMainConsultBlueBtn"/>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvInsuranceMainConsultChargeBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:cardBackgroundColor="@color/bg_white"
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="8dp"
+                    app:layout_constraintDimensionRatio="154:148"
+                    app:layout_constraintWidth_percent="0.427"
+                    app:layout_constraintStart_toEndOf="@id/viewInsuranceNoRegisterMg1"
+                    app:layout_constraintTop_toBottomOf="@id/viewMainConsultBlueBtnMg2"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clInsuranceMainConsultChargeBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintStart_toStartOf="@id/cvInsuranceMainConsultChargeBtn"
+                    app:layout_constraintEnd_toEndOf="@id/cvInsuranceMainConsultChargeBtn"
+                    app:layout_constraintTop_toTopOf="@id/cvInsuranceMainConsultChargeBtn"
+                    app:layout_constraintBottom_toBottomOf="@id/cvInsuranceMainConsultChargeBtn"
+                    android:onClick="@{() -> vm.onClickChargeBtn()}">
+
+                    <TextView
+                        android:id="@+id/tvMainConsultChargeBtnTitle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/b3_S"
+                        android:textColor="@color/text_body"
+                        android:text="@string/insurance_main_charge_title"
+                        app:layout_constraintTop_toBottomOf="@id/viewMainConsultChargeBtnMg1"
+                        app:layout_constraintStart_toEndOf="@id/viewMainConsultChargeBtnMg1"
+                        />
+
+                    <View
+                        android:id="@+id/viewMainConsultChargeBtnMg1"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintDimensionRatio="16:16"
+                        app:layout_constraintWidth_percent="0.1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <View
+                        android:id="@+id/viewMainConsultChargeBtnMg2"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintDimensionRatio="16:16"
+                        app:layout_constraintWidth_percent="0.1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:src="@drawable/ic_main_charge"
+                        app:layout_constraintDimensionRatio="122:28"
+                        app:layout_constraintBottom_toTopOf="@id/viewMainConsultChargeBtnMg2"
+                        app:layout_constraintEnd_toStartOf="@id/viewMainConsultChargeBtnMg2"
+                        app:layout_constraintStart_toEndOf="@id/viewMainConsultChargeBtnMg1"
+                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvInsuranceMainConsultCheckBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:cardBackgroundColor="@color/bg_white"
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="8dp"
+                    app:layout_constraintDimensionRatio="154:148"
+                    app:layout_constraintWidth_percent="0.427"
+                    app:layout_constraintEnd_toStartOf="@id/viewInsuranceNoRegisterMg2"
+                    app:layout_constraintTop_toTopOf="@id/cvInsuranceMainConsultChargeBtn"/>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clInsuranceMainConsultCheckBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintStart_toStartOf="@id/cvInsuranceMainConsultCheckBtn"
+                    app:layout_constraintEnd_toEndOf="@id/cvInsuranceMainConsultCheckBtn"
+                    app:layout_constraintTop_toTopOf="@id/cvInsuranceMainConsultCheckBtn"
+                    app:layout_constraintBottom_toBottomOf="@id/cvInsuranceMainConsultCheckBtn"
+                    android:onClick="@{() -> vm.onClickCompensationCheckBtn()}">
+
+                    <TextView
+                        android:id="@+id/tvMainConsultCheckBtnTitle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/b3_S"
+                        android:textColor="@color/text_body"
+                        android:text="@string/insurance_main_check_title"
+                        app:layout_constraintTop_toBottomOf="@id/viewMainConsultCheckBtnMg1"
+                        app:layout_constraintStart_toEndOf="@id/viewMainConsultCheckBtnMg1"
+                        />
+
+                    <View
+                        android:id="@+id/viewMainConsultCheckBtnMg1"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintDimensionRatio="16:16"
+                        app:layout_constraintWidth_percent="0.1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <View
+                        android:id="@+id/viewMainConsultCheckBtnMg2"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintDimensionRatio="16:16"
+                        app:layout_constraintWidth_percent="0.1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:src="@drawable/ic_main_check"
+                        app:layout_constraintDimensionRatio="122:28"
+                        app:layout_constraintBottom_toTopOf="@id/viewMainConsultCheckBtnMg2"
+                        app:layout_constraintEnd_toStartOf="@id/viewMainConsultCheckBtnMg2"
+                        app:layout_constraintStart_toEndOf="@id/viewMainConsultCheckBtnMg1"
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <View
+                    android:id="@+id/viewInsuranceInfoBoxMg1"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="20:36"
+                    app:layout_constraintWidth_percent="0.0556"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cvInsuranceNoRegisterMypetBoxBg"/>
+
+                <View
+                    android:id="@+id/viewInsuranceInfoBoxMg2"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="20:36"
+                    app:layout_constraintWidth_percent="0.0556"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cvInsuranceNoRegisterMypetBoxBg"/>
+
+                <View
+                    android:id="@+id/viewInsuranceBottomMg1"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="20:64"
+                    app:layout_constraintWidth_percent="0.0556"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cvInsuranceMainConsultChargeBtn"/>
+
+                <View
+                    android:id="@+id/viewInsuranceBottomMg2"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="20:48"
+                    app:layout_constraintWidth_percent="0.0556"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvInsuranceBottomInfo"/>
+
+
+                <TextView
+                    android:id="@+id/tvInsuranceBottomInfo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/describe_b5_M"
+                    android:textColor="@color/neutral_500"
+                    android:text="@string/insurance_no_pet_bottom"
+                    app:layout_constraintTop_toBottomOf="@id/viewInsuranceBottomMg1"
+                    app:layout_constraintStart_toEndOf="@id/viewInsuranceBottomMg1"
+                    app:layout_constraintEnd_toStartOf="@id/viewInsuranceBottomMg2"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/fabInsuranceKakaoBig"
+            android:layout_width="140dp"
+            android:layout_height="44dp"
+            android:layout_marginEnd="26dp"
+            android:layout_marginBottom="35dp"
+            android:backgroundTint="@color/ic_kakao"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlayExtended"
+            app:icon="@drawable/ic_kakao"
+            app:iconTint="@null"
+            android:text="@string/kakao_floating"
+            android:textAppearance="@style/describe_b5_M"
+            app:borderWidth="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:stateListAnimator="@null"
+            android:onClick="@{() -> vm.onClickBtnConsult()}"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

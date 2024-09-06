@@ -6,7 +6,6 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.fitpet.base.BaseFragment
-import com.example.fitpet.databinding.FragmentInsuranceBinding
 import com.example.fitpet.databinding.FragmentInsuranceNoPetBinding
 import com.example.fitpet.ui.mypet.MypetMainViewModel
 import com.example.fitpet.ui.registration.petDetailBreed.PetDetailBreedInputEvent

@@ -1,28 +1,15 @@
 package com.example.fitpet.ui.registration.petDetailBreed
 
-import android.content.Context
 import androidx.fragment.app.viewModels
-import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
-import androidx.appcompat.widget.SearchView
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.navigation.fragment.navArgs
 import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentPetDetailBreedInputBinding
 import com.example.fitpet.ui.onboarding.dialog.SkipDialog
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -36,30 +23,33 @@ class PetDetailBreedInputFragment : BaseFragment<FragmentPetDetailBreedInputBind
     override val viewModel: PetDetailBreedInputViewModel by viewModels()
 
     private lateinit var breedAdapter: ArrayAdapter<String>
+    private var petName = ""
 
     override fun initView() {
         binding.apply {
             vm = viewModel
+            val args: PetDetailBreedInputFragmentArgs by navArgs()
+            petName = args.petName
+            viewModel.setPetBreed(args.petBreed)
 
-            binding.detailBreedAutoCompleteTextView.setOnDismissListener {
-                Timber.e("드롭다운이 닫혔습니다.")
-            }
+            breedAdapter = PetDetailBreedArrayAdapter(
+                requireContext(),
+                viewModel.uiState.searchedBreedList.value,
+                viewModel.uiState.detailBreed.value
+            )
 
-            breedAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, mutableListOf())
-
-            detailBreedAutoCompleteTextView.setAdapter(breedAdapter)
-            detailBreedAutoCompleteTextView.setOnItemClickListener { _, _, position, _ ->
-                val selectedBreed = breedAdapter.getItem(position)
-                selectedBreed?.let {
-                    viewModel.onBreedSelected(it)
+            detailBreedAutoCompleteTextView.apply {
+                setAdapter(breedAdapter)
+                setOnItemClickListener { _, _, position, _ ->
+                    val selectedBreed = breedAdapter.getItem(position)
+                    Timber.e("selected breed: $selectedBreed")
+                    selectedBreed?.let {
+                        viewModel.onBreedSelected(selectedBreed)
+                    }
+                    dismissDropDown()
                 }
-            }
-            val inputMethodManager = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            binding.detailBreedAutoCompleteTextView.setOnFocusChangeListener { v, hasFocus ->
-                if (hasFocus) {
-                    inputMethodManager.showSoftInput(v, InputMethodManager.SHOW_IMPLICIT)
-                    showDropdown()
-                }
+                setDropDownBackgroundResource(R.drawable.bg_rectangle_filled_bg_primary_radius_8)
+                dropDownAnchor = root.id
             }
         }
     }
@@ -69,11 +59,13 @@ class PetDetailBreedInputFragment : BaseFragment<FragmentPetDetailBreedInputBind
             launch {
                 viewModel.uiState.searchedBreedList.collect { breedList ->
                     Timber.e("업데이트 됐다 $breedList")
-                    breedAdapter.clear()
-                    breedAdapter.addAll(breedList)
-                    breedAdapter.notifyDataSetChanged()
-                    binding.detailBreedAutoCompleteTextView.requestFocus()
+                    breedAdapter = PetDetailBreedArrayAdapter(
+                        requireContext(),
+                        viewModel.uiState.searchedBreedList.value,
+                        viewModel.uiState.detailBreed.value
+                    )
                     binding.detailBreedAutoCompleteTextView.showDropDown()
+                    binding.detailBreedAutoCompleteTextView.setAdapter(breedAdapter)
                 }
             }
 
@@ -94,7 +86,8 @@ class PetDetailBreedInputFragment : BaseFragment<FragmentPetDetailBreedInputBind
     }
 
     private fun goToPetBirthInput() {
-        val action = PetDetailBreedInputFragmentDirections.actionPetDetailBreedInputToPetBirthInput()
+        val detailBreed = viewModel.uiState.selectedDetailBreed.value
+        val action = PetDetailBreedInputFragmentDirections.actionPetDetailBreedInputToPetBirthInput(petName = petName, petBreed = viewModel.uiState.selectedBreed.value, petDetailBreed = detailBreed)
         findNavController().navigate(action)
     }
 
@@ -113,11 +106,8 @@ class PetDetailBreedInputFragment : BaseFragment<FragmentPetDetailBreedInputBind
     private fun showDropdown() {
         binding.detailBreedAutoCompleteTextView.apply {
             postDelayed({
-                if (!hasFocus()) {
-                    requestFocus()
-                }
                 showDropDown()
-            }, 300)
+            }, 0)
         }
     }
 }
