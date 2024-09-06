@@ -2,6 +2,7 @@ package com.example.fitpet.data.repositoryImpl
 
 import com.example.fitpet.data.repository.PetsRepository
 import com.example.fitpet.data.service.PetsService
+import com.example.fitpet.model.request.RegisterPetRequest
 import com.example.fitpet.model.response.SearchPetBreedResponse
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -20,6 +21,20 @@ class PetsRepositoryImpl @Inject constructor(
                     response.data
                 } else {
                     throw RuntimeException("SearchDetailBreed Failed ${response.status}")
+                }
+            }
+        )
+    }
+
+    override suspend fun registerPet(request: RegisterPetRequest): Flow<Result<Unit>> = flow {
+        emit(
+            kotlin.runCatching {
+                val response = petsService.registerPet(request)
+
+                if (response.success) {
+                    response.data
+                } else {
+                    throw RuntimeException("RegisterPet Failed ${response.status}")
                 }
             }
         )
