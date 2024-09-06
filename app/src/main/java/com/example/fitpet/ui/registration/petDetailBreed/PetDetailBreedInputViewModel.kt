@@ -28,7 +28,7 @@ class PetDetailBreedInputViewModel @Inject constructor(
         detailBreed = detailBreedStateFlow.asStateFlow(),
         selectedDetailBreed = selectedDetailBreedStateFlow.asStateFlow(),
         searchedBreedList = searchedBreedListStateFlow.asStateFlow(),
-        selectedBreed = selectedBreedStateFlow.asStateFlow()
+        selectedBreed = selectedBreedStateFlow.asStateFlow(),
     )
 
     fun onTextChanged(input: CharSequence) {
@@ -41,6 +41,12 @@ class PetDetailBreedInputViewModel @Inject constructor(
         }
     }
 
+    fun onCatTextChanged(input: CharSequence) {
+        viewModelScope.launch {
+            selectedDetailBreedStateFlow.update { input.toString() }
+        }
+    }
+
     private fun onSuccessSearchDetailBreed(value: SearchPetBreedResponse) {
         viewModelScope.launch {
             searchedBreedListStateFlow.update { value.searchedBreeds }
@@ -50,7 +56,7 @@ class PetDetailBreedInputViewModel @Inject constructor(
 
     fun onBreedSelected(breed: String) {
         viewModelScope.launch {
-            selectedBreedStateFlow.update { breed }
+            selectedDetailBreedStateFlow.update { breed }
         }
     }
 
@@ -60,5 +66,11 @@ class PetDetailBreedInputViewModel @Inject constructor(
 
     fun onClickSkip() {
         emitEventFlow(PetDetailBreedInputEvent.ShowSkipDialog)
+    }
+
+    fun setPetBreed(breed: String) {
+        viewModelScope.launch {
+            selectedBreedStateFlow.update { breed }
+        }
     }
 }

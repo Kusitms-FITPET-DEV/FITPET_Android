@@ -24,14 +24,13 @@ class PetDetailBreedInputFragment : BaseFragment<FragmentPetDetailBreedInputBind
 
     private lateinit var breedAdapter: ArrayAdapter<String>
     private var petName = ""
-    private var petBreed = ""
 
     override fun initView() {
         binding.apply {
             vm = viewModel
             val args: PetDetailBreedInputFragmentArgs by navArgs()
             petName = args.petName
-            petBreed = args.petBreed
+            viewModel.setPetBreed(args.petBreed)
 
             breedAdapter = PetDetailBreedArrayAdapter(
                 requireContext(),
@@ -87,8 +86,8 @@ class PetDetailBreedInputFragment : BaseFragment<FragmentPetDetailBreedInputBind
     }
 
     private fun goToPetBirthInput() {
-        val detailBreed = viewModel.uiState.selectedBreed.value
-        val action = PetDetailBreedInputFragmentDirections.actionPetDetailBreedInputToPetBirthInput(petName = petName, petBreed = petBreed, petDetailBreed = detailBreed)
+        val detailBreed = viewModel.uiState.selectedDetailBreed.value
+        val action = PetDetailBreedInputFragmentDirections.actionPetDetailBreedInputToPetBirthInput(petName = petName, petBreed = viewModel.uiState.selectedBreed.value, petDetailBreed = detailBreed)
         findNavController().navigate(action)
     }
 

@@ -6,6 +6,7 @@
 
     <data>
         <import type="android.view.View" />
+        <import type="com.example.fitpet.model.domain.PetType"/>
         <variable
             name="vm"
             type="com.example.fitpet.ui.registration.petDetailBreed.PetDetailBreedInputViewModel" />
@@ -82,6 +83,25 @@
                     android:text="@{vm.uiState.detailBreed}"
                     android:hint="@string/detail_breed_input_hint"
                     android:onTextChanged="@{(s, start, before, count) -> vm.onTextChanged(s)}"
+                    android:visibility="@{vm.uiState.selectedBreed == PetType.CAT.name ? View.GONE : View.VISIBLE}"
+                    tools:ignore="LabelFor" />
+
+                <EditText
+                    android:id="@+id/catEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:autofillHints=""
+                    android:paddingHorizontal="24dp"
+                    android:dropDownHeight="200dp"
+                    android:completionThreshold="1"
+                    android:background="@drawable/bg_rectangle_filled_bg_primary_radius_8"
+                    android:maxLines="1"
+                    android:inputType="text"
+                    android:textAppearance="@style/b3"
+                    android:text="@{vm.uiState.selectedDetailBreed}"
+                    android:hint="@string/detail_breed_input_hint_cat"
+                    android:onTextChanged="@{(s, start, before, count) -> vm.onCatTextChanged(s)}"
+                    android:visibility="@{vm.uiState.selectedBreed == PetType.CAT.name ? View.VISIBLE : View.GONE}"
                     tools:ignore="LabelFor" />
 
             </FrameLayout>
