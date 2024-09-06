@@ -17,6 +17,7 @@
     <string name="gallery">저장공간</string>
     <string name="notification">알림</string>
     <string name="agree">동의하기</string>
+    <string name="agree_btn">동의합니다</string>
     <string name="go_to_mypet">펫보험 견적 알아보기</string>
     <string name="kakao_floating">바로 상담하기</string>
     <string name="resume">계속하기</string>
@@ -44,15 +45,16 @@
     <string name="kakao_native_app_key">fb861916118bf9e4868e651607b605b0</string>
     <string name="kakao_scheme">kakaofb861916118bf9e4868e651607b605b0</string>
     <string name="kakao_login_text">카카오톡으로 시작하기</string>
-    
+
+
     <!--  PetNameInput  -->
     <string name="my_pet_registration">MY펫 등록</string>
     <string name="pet_name_registration">반려동물 이름을 입력해 주세요.</string>
     <string name="pet_name_input_hint">예) 홍길동</string>
-    
+
     <!--  PetBreed  -->
     <string name="select_breed">품종을 선택해 주세요.</string>
-    
+
     <!--  PetDetailBreedInput  -->
     <string name="detail_breed_registration">상세 품종을 입력해 주세요.</string>
     <string name="detail_breed_input_hint">예) 말티즈</string>
@@ -94,6 +96,10 @@
     <string name="revoke_access_permission">접근권한 철회 방법</string>
     <string name="access_permission_revoke_path">설정 > 개인(신용)정보보호 > 해당 접근권한 > 접근권한 철회</string>
 
+    <!--  PhotoBottomSheet  -->
+    <string name="take_photo">사진 찍기</string>
+    <string name="photo_gallery">사진 보관함</string>
+
     <!--  InsuranceCharge  -->
     <string name="insurance_charge">보험금 청구</string>
     <string name="insurance_charge_cause_title">어떤 이유로 보험금을\n청구하나요?</string>
@@ -109,8 +115,58 @@
     <string name="insurance_charge_date_fri">금</string>
     <string name="insurance_charge_date_sat">토</string>
 
+    <!--  InsuranceDocument  -->
+    <string name="insurance_charge_document_title">서류를 등록해주세요</string>
+    <string name="insurance_charge_document_receipt_type">RECEIPT_PHOTO</string>
+    <string name="insurance_charge_document_detail_type">DETAIL_PHOTO</string>
+    <string name="insurance_charge_document_etc_type">ETC_PHOTO</string>
+    <string name="insurance_charge_document_receipt_title">1. 병원 진료비 영수증 [필수]</string>
+    <string name="insurance_charge_document_detail_title">2. 진료비 세부내역서 [필수]</string>
+    <string name="insurance_charge_document_etc_title">3. 기타 서류(진단서, 수술기록지, 처방전 등)[선택]</string>
+    <string name="insurance_charge_document_notice_title">[ 필수안내사항 ]</string>
+    <string name="insurance_charge_document_info">- 서류 파일은 jpg, jpeg, png, pdf 확장자만 업로드 가능합니다.\n- 파일당 15MB를 초과할 수 없으며, 최대 30개까지 업로드 가능합니다.\n- 진료비 납입확인서와 카드매출전표는 진료내역이 자세히 확인 되지 않아 보험금 청구 서류로 등록할 수 없습니다</string>
+
+    <!--  document upload  -->
+    <string name="camera_photo_date_format">yyMMdd_HHmmss</string>
+    <string name="img_file_format">image/jpg</string>
+    <string name="img_file_name">img_%s.jpg</string>
+    <string name="jpg_format">.jpg</string>
+    <string name="file_provider_suffix">.fileprovider</string>
+    <string name="jpeg_format">JPEG_</string>
+    <string name="file_provider_format">%1$s.fileprovider</string>
+    <string name="file_name_format">JPEG_%1$s_</string>
+    <string name="gallery_file_format">image/*</string>
+    <string name="gallery_phone_build">Xiaomi</string>
+
+    <!--  InsuranceAccount  -->
+    <string name="insurance_charge_account_title">보험금을 지급 받을 계좌를\n입력해 주세요</string>
+    <string name="insurance_charge_account_owner">* 예금주</string>
+    <string name="insurance_charge_account_number">* 보험금 수령계좌</string>
+    <string name="insurance_charge_account">은행</string>
+    <string name="insurance_charge_account_notice_title">확인해주세요</string>
+    <string name="insurance_charge_account_notice">입력한 계좌로 보험금 지급이 불가한 경우 확인을 위해\n보상 담당자에게 연락이 올 수 있어요.</string>
+    <string name="insurance_charge_account_number_hint">-없이 입력해주세요</string>
+    <string name="insurance_charge_account_owner_type">ACCOUNT_OWNER</string>
+    <string name="insurance_charge_account_number_type">ACCOUNT_NUMBER</string>
+
     <!--  SkipDialog  -->
     <string name="stop_registration_title">등록을 멈추고 싶으신가요?</string>
     <string name="stop_registration_content">지금 등록하시면 보험 견적까지\n한 번에 받아볼 수 있어요!</string>
+
+    <!--  InsuranceContact  -->
+    <string name="insurance_charge_contact_title">안내 받을 연락 수단을\n모두 선택해 주세요</string>
+    <string name="insurance_charge_contact_kakao">카카오톡</string>
+    <string name="insurance_charge_contact_email">이메일</string>
+    <string name="insurance_charge_contact_email_hint">예) Hongildong@hanmail.com</string>
+    <string name="method_kakao">KAKAO</string>
+    <string name="method_email">EMAIL</string>
+
+    <!--  InsuranceAgree  -->
+    <string name="insurance_agree_all">전체 동의</string>
+    <string name="insurance_agree_essential">[필수] 개인(신용)정보 조회, 수집•이용 및 제공 동의</string>
+    <string name="insurance_agree_choice">[선택] 의료기관 진료비 이상여부 확인을 위한 개인(신용)정보 동의</string>
+    <string name="insurance_agree_type_all">ALL</string>
+    <string name="insurance_agree_type_essential">TYPE_ESSENTIAL</string>
+    <string name="insurance_agree_type_choice">TYPE_CHOICE</string>
 
 </resources>

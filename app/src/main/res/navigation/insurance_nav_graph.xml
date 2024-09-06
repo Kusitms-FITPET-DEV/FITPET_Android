@@ -25,6 +25,45 @@
         android:layout="@layout/fragment_insurance_charge_document"
         tools:layout="@layout/fragment_insurance_charge_document">
 
+        <action
+            android:id="@+id/action_insurance_charge_document_to_account"
+            app:destination="@id/fragmentInsuranceChargeAccount"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentInsuranceChargeAccount"
+        android:name="com.example.fitpet.ui.insurance.charge.account.InsuranceChargeAccountFragment"
+        android:label="fragmentInsuranceChargeAccount"
+        android:layout="@layout/fragment_insurance_charge_account"
+        tools:layout="@layout/fragment_insurance_charge_account">
+
+        <action
+            android:id="@+id/action_insurance_charge_account_to_contact"
+            app:destination="@id/fragmentInsuranceChargeContact"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentInsuranceChargeContact"
+        android:name="com.example.fitpet.ui.insurance.charge.contact.InsuranceChargeContactFragment"
+        android:label="fragmentInsuranceChargeContact"
+        android:layout="@layout/fragment_insurance_charge_contact"
+        tools:layout="@layout/fragment_insurance_charge_contact">
+
+        <action
+            android:id="@+id/action_insurance_charge_contact_to_check"
+            app:destination="@id/fragmentInsuranceChargeCheck"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentInsuranceChargeCheck"
+        android:name="com.example.fitpet.ui.insurance.charge.check.InsuranceChargeCheckFragment"
+        android:label="fragmentInsuranceChargeCheck"
+        android:layout="@layout/fragment_insurance_charge_check"
+        tools:layout="@layout/fragment_insurance_charge_check">
+
     </fragment>
 
 

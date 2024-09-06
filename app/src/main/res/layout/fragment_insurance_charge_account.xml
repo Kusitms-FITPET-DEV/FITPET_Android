@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.fitpet.ui.insurance.charge.account.InsuranceChargeAccountViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_white">
+
+        <include
+            android:id="@+id/tb_insurance_charge"
+            layout="@layout/top_bar_insurance_charge" />
+
+        <TextView
+            android:id="@+id/tv_insurance_charge_account_index"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/third_page"
+            android:textAppearance="@style/b5"
+            android:textColor="@color/point_blue"
+            android:layout_marginTop="32dp"
+            android:layout_marginStart="24dp"
+            app:layout_constraintTop_toBottomOf="@id/tb_insurance_charge"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_insurance_charge_account_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/insurance_charge_account_title"
+            android:textAppearance="@style/b1_S"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_insurance_charge_account_index"
+            app:layout_constraintStart_toStartOf="@id/tv_insurance_charge_account_index" />
+
+        <TextView
+            android:id="@+id/tv_insurance_charge_account_owner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/insurance_charge_account_owner"
+            android:textColor="@color/black"
+            android:textAppearance="@style/b4_M"
+            android:layout_marginTop="32dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_insurance_charge_account_title"
+            app:layout_constraintStart_toStartOf="@id/tv_insurance_charge_account_title"/>
+
+        <EditText
+            android:id="@+id/edt_insurance_charge_account_owner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="28dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginVertical="18dp"
+            android:paddingVertical="4dp"
+            android:inputType="text"
+            android:textColorHint="@color/text_disable"
+            android:textColor="@color/text_body"
+            style="@style/b1"
+            android:text="@{viewModel.uiState.accountOwner}"
+            android:onTextChanged="@{(s, start, before, count) -> viewModel.onTextChanged(@string/insurance_charge_account_owner_type, s)}"
+            android:background="@android:color/transparent"
+            app:layout_constraintTop_toBottomOf="@id/tv_insurance_charge_account_owner"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            app:dividerColor="@color/neutral_300"
+            app:layout_constraintTop_toBottomOf="@id/edt_insurance_charge_account_owner"
+            app:layout_constraintStart_toStartOf="@id/edt_insurance_charge_account_owner"
+            app:layout_constraintEnd_toEndOf="@id/edt_insurance_charge_account_owner"/>
+
+        <TextView
+            android:id="@+id/tv_insurance_charge_account_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/insurance_charge_account_number"
+            android:textColor="@color/black"
+            android:textAppearance="@style/b4_M"
+            android:layout_marginTop="42dp"
+            app:layout_constraintTop_toBottomOf="@id/edt_insurance_charge_account_owner"
+            app:layout_constraintStart_toStartOf="@id/tv_insurance_charge_account_owner"/>
+
+        <Spinner
+            android:id="@+id/spinner_insurance_charge_account_bank"
+            android:layout_width="71dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:background="@drawable/bank_spinner_background"
+            android:layout_weight="1"
+            android:dropDownWidth="match_parent"
+            android:dropDownHeight="50dp"
+            android:spinnerMode="dropdown"
+            android:dropDownVerticalOffset="0dp"
+            android:popupBackground="@drawable/bg_rectangle_line_neural_300_radius_8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/edt_insurance_charge_account_number"
+            app:layout_constraintBottom_toBottomOf="@id/edt_insurance_charge_account_number"/>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            app:dividerColor="@color/neutral_300"
+            app:layout_constraintStart_toStartOf="@id/spinner_insurance_charge_account_bank"
+            app:layout_constraintEnd_toEndOf="@id/spinner_insurance_charge_account_bank"
+            app:layout_constraintTop_toBottomOf="@id/spinner_insurance_charge_account_bank"/>
+
+        <EditText
+            android:id="@+id/edt_insurance_charge_account_number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="28dp"
+            android:paddingVertical="8dp"
+            android:paddingStart="4dp"
+            android:inputType="number"
+            android:hint="@string/insurance_charge_account_number_hint"
+            android:textColorHint="@color/text_disable"
+            android:textColor="@color/text_body"
+            style="@style/b1"
+            android:text="@{viewModel.uiState.accountNumber}"
+            android:onTextChanged="@{(s, start, before, count) -> viewModel.onTextChanged(@string/insurance_charge_account_number_type, s)}"
+            android:background="@android:color/transparent"
+            app:layout_constraintTop_toBottomOf="@id/tv_insurance_charge_account_number"
+            app:layout_constraintStart_toEndOf="@id/spinner_insurance_charge_account_bank"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            app:dividerColor="@color/neutral_300"
+            app:layout_constraintTop_toBottomOf="@id/edt_insurance_charge_account_number"
+            app:layout_constraintStart_toStartOf="@id/edt_insurance_charge_account_number"
+            app:layout_constraintEnd_toEndOf="@id/edt_insurance_charge_account_number"/>
+
+        <TextView
+            android:id="@+id/tv_insurance_charge_account_notice_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/insurance_charge_account_notice_title"
+            android:textColor="@color/text_body"
+            android:textAppearance="@style/b5_M"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="12dp"
+            app:layout_constraintBottom_toTopOf="@id/tv_insurance_charge_account_notice"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_insurance_charge_account_notice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/insurance_charge_account_notice"
+            android:textAppearance="@style/b5_M"
+            android:textColor="@color/neutral_500"
+            android:layout_marginBottom="39dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintBottom_toTopOf="@id/btn_insurance_charge_notice_next"
+            app:layout_constraintStart_toStartOf="@id/tv_insurance_charge_account_notice_title"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_insurance_charge_notice_next"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingVertical="12dp"
+            android:text="@string/next"
+            android:textColor="@{viewModel.uiState.isBtnEnabled ? @color/white : @color/text_disable}"
+            android:textAppearance="@style/b3_S"
+            android:background="@{viewModel.uiState.isBtnEnabled ? @drawable/bg_rectangle_filled_point_blue_radius_8 : @drawable/bg_rectangle_filled_neural200_radius_8}"
+            android:layout_marginHorizontal="28dp"
+            android:layout_marginBottom="36dp"
+            android:outlineProvider="none"
+            android:clickable="@{viewModel.uiState.isBtnEnabled}"
+            android:onClick="@{() -> viewModel.onClickNextBtn()}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
