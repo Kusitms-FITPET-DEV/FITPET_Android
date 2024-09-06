@@ -1,4 +1,4 @@
-package com.example.fitpet.ui.mypet.insurance
+package com.example.fitpet.ui.mypet.insurance.main
 
 import androidx.fragment.app.viewModels
 import com.example.fitpet.base.BaseFragment
@@ -6,10 +6,10 @@ import com.example.fitpet.databinding.FragmentInsuranceBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class InsuranceFragment : BaseFragment<FragmentInsuranceBinding, InsurancePageState, InsuranceViewModel>(
+class InsuranceMainFragment : BaseFragment<FragmentInsuranceBinding, InsuranceMainPageState, InsuranceMainViewModel>(
     FragmentInsuranceBinding::inflate
 ) {
-    override val viewModel: InsuranceViewModel by viewModels()
+    override val viewModel: InsuranceMainViewModel by viewModels()
 
     override fun initView() {
 
