@@ -499,7 +499,7 @@
                     app:layout_constraintEnd_toEndOf="@id/cvInsuranceMainConsultCheckBtn"
                     app:layout_constraintTop_toTopOf="@id/cvInsuranceMainConsultCheckBtn"
                     app:layout_constraintBottom_toBottomOf="@id/cvInsuranceMainConsultCheckBtn"
-                    android:onClick="@{() -> vm.onClickCompensationCheckBtn()}">
+                    android:onClick="@{() ->  mainViewModel.onClickCompensationBtn()}">
 
                     <TextView
                         android:id="@+id/tvMainConsultCheckBtnTitle1"

@@ -46,6 +46,7 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainBinding, MypetMainPageSt
         when(event) {
             is MypetMainEvent.GoToAddPetButtonClick -> goToAddPet()
             is MypetMainEvent.GoToInsuranceInfoCheckPage -> goToInsuranceInfo()
+            is MypetMainEvent.GoTOCompensationPage -> goToCompensation()
         }
     }
 
@@ -56,6 +57,11 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainBinding, MypetMainPageSt
 
     private fun goToInsuranceInfo() {
         val action = MypetMainFragmentDirections.actionMypetToInsuranceInfoCheck()
+        navigator.navigate(action)
+    }
+
+    private fun goToCompensation() {
+        val action = MypetMainFragmentDirections.actionMypetToInsuranceCompensation()
         navigator.navigate(action)
     }
 

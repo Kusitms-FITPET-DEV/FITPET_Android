@@ -3,6 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+            name="viewModel"
+            type="com.example.fitpet.ui.insurance.compensation.InsuranceCompensationViewModel" />
 
     </data>
 
@@ -18,6 +21,7 @@
             android:src="@drawable/ic_arrow_back"
             android:layout_marginTop="18dp"
             android:layout_marginStart="16dp"
+            android:onClick="@{() -> viewModel.onClickBackBtn()}"
             android:background="@android:color/transparent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>

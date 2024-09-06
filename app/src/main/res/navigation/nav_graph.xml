@@ -169,6 +169,10 @@
         <action
             android:id="@+id/action_mypet_to_insurance_info_check"
             app:destination="@id/fragmentInsuranceInfoCheck"/>
+
+        <action
+            android:id="@+id/action_mypet_to_insurance_compensation"
+            app:destination="@id/fragmentInsuranceCompensation"/>
     </fragment>
 
     <fragment
@@ -177,6 +181,15 @@
         android:label="fragmentInsuranceInfoCheck"
         android:layout="@layout/fragment_insurance_contract_check"
         tools:layout="@layout/fragment_insurance_contract_check">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentInsuranceCompensation"
+        android:name="com.example.fitpet.ui.insurance.compensation.InsuranceCompensationFragment"
+        android:label="fragmentInsuranceCompensation"
+        android:layout="@layout/fragment_insurance_compensation"
+        tools:layout="@layout/fragment_insurance_compensation">
 
     </fragment>
 
