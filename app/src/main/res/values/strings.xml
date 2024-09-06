@@ -239,5 +239,19 @@
     <string name="insurance_contract_payWay">납입 방법</string>
     <string name="insurance_contract_bank">납입 계좌</string>
     <string name="insurance_contract_paycycle">납입 주기</string>
+    <string name="insurance_contract_dailyTreatLimit">치료비 1일 보상한도</string>
+    <string name="insurance_contract_dailySurgeryCostLimit">수술비 1일 보상한다</string>
+    <string name="insurance_coverage_yearReward">연간 보상한도</string>
+    <string name="insurance_contract_name">보장명</string>
+    <string name="insurance_contract_hipJointLimit">슬고관절 수술비</string>
+    <string name="insurance_contract_skinDisease">피부병</string>
+    <string name="insurance_contract_skinEtc">아포퀠/사이토포인트</string>
+    <string name="insurance_contract_oralCoverage">구강질환 보장</string>
+    <string name="insurance_contract_dentalCoverage">치과질환 보장</string>
+    <string name="insurance_contract_inspectionCoverage">MRI/CT검사 보장</string>
+    <string name="insurance_contract_foreignObjectRemoval">이물제거 보장</string>
+    <string name="insurance_contract_selfBurden">자기부담금</string>
+    <string name="insurance_contract_compensationLiability">반려견 배상책임</string>
+    <string name="insurance_contract_funeralAid">장례 지원금</string>
 
 </resources>
