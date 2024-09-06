@@ -75,7 +75,7 @@
                     android:paddingHorizontal="24dp"
                     android:dropDownHeight="200dp"
                     android:completionThreshold="1"
-                    android:background="@android:color/transparent"
+                    android:background="@drawable/bg_rectangle_filled_bg_primary_radius_8"
                     android:maxLines="1"
                     android:inputType="text"
                     android:textAppearance="@style/b3"
