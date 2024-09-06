@@ -16,6 +16,7 @@
             app:layout_constraintBottom_toBottomOf="parent">
 
             <ImageView
+                android:id="@+id/icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="58dp"
@@ -23,6 +24,7 @@
                 android:src="@drawable/ic_dog_sad"/>
 
             <TextView
+                android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
@@ -31,6 +33,7 @@
                 android:textAppearance="@style/b3_B"/>
 
             <TextView
+                android:id="@+id/content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -62,6 +65,12 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <View
+                android:id="@+id/singleBtnSpace"
+                android:layout_width="0dp"
+                android:layout_height="32dp"
+                android:visibility="gone"/>
 
         </LinearLayout>
 
