@@ -49,12 +49,7 @@
 
         <action
             android:id="@+id/action_pet_name_input_to_pet_breed"
-            app:destination="@id/fragmentPetBreed">
-
-            <argument
-                android:name="petName"
-                app:argType="string"/>
-        </action>
+            app:destination="@id/fragmentPetBreed"/>
 
         <action
             android:id="@+id/action_pet_name_input_to_my_pet"
