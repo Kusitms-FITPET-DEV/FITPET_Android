@@ -2,7 +2,6 @@ package com.example.fitpet.ui.insurance.charge.check
 
 import com.example.fitpet.R
 import com.example.fitpet.base.BaseViewModel
-import com.example.fitpet.ui.insurance.charge.finish.InsuranceChargeCheckEvent
 import com.example.fitpet.ui.model.InsuranceCharge
 import com.example.fitpet.util.ResourceProvider
 import dagger.hilt.android.lifecycle.HiltViewModel

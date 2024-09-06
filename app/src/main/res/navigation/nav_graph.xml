@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/fragmentSplash">
+    app:startDestination="@id/fragmentMypet">
 
     <fragment
         android:id="@+id/fragmentSplash"
@@ -287,6 +287,14 @@
         android:label="fragmentInsuranceChargeFinish"
         android:layout="@layout/fragment_insurance_charge_check_finish"
         tools:layout="@layout/fragment_insurance_charge_check_finish">
+
+        <action
+            android:id="@+id/action_insurance_finish_to_my_pet"
+            app:destination="@id/fragmentMypet"/>
+
+        <action
+            android:id="@+id/action_insurance_finish_to_compensation"
+            app:destination="@id/fragmentInsuranceCompensation"/>
 
     </fragment>
 
