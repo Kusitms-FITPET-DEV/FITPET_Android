@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.fitpet.ui.insurance.charge.contact.agree.InsuranceAgreeViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_rectangle_filled_bg_white_top_radius_30">
+
+        <ImageView
+            android:id="@+id/iv_insurance_agree_top_bar"
+            android:layout_width="60dp"
+            android:layout_height="4dp"
+            android:background="@drawable/bg_rectangle_filled_gray_radius_10"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_insurance_agree_all"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="39dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginEnd="28dp"
+            android:paddingVertical="5dp"
+            android:onClick="@{() -> viewModel.onClickAgreeType(@string/insurance_agree_type_all)}"
+            app:layout_constraintTop_toBottomOf="@id/iv_insurance_agree_top_bar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageButton
+                android:id="@+id/iv_insurance_agree_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@{viewModel.uiState.isSelectedAll ? @drawable/ic_check_activated : @drawable/ic_check_inactivated}"
+                android:padding="5dp"
+                android:onClick="@{() -> viewModel.onClickAgreeType(@string/insurance_agree_type_all)}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/insurance_agree_all"
+                android:textColor="@color/black"
+                android:textAppearance="@style/b3"
+                android:layout_marginStart="13dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_insurance_agree_all"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_insurance_agree_essential"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
+            android:onClick="@{() -> viewModel.onClickAgreeType(@string/insurance_agree_type_essential)}"
+            app:layout_constraintStart_toStartOf="@id/layout_insurance_agree_all"
+            app:layout_constraintEnd_toEndOf="@id/layout_insurance_agree_all"
+            app:layout_constraintTop_toBottomOf="@id/layout_insurance_agree_all">
+
+            <ImageButton
+                android:id="@+id/iv_insurance_agree_essential"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@{viewModel.uiState.isSelectedEssential ? @drawable/ic_check_activated : @drawable/ic_check_inactivated}"
+                android:padding="5dp"
+                android:onClick="@{() -> viewModel.onClickAgreeType(@string/insurance_agree_type_essential)}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:id="@+id/tv_insurance_agree_essential"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/insurance_agree_essential"
+                android:textColor="@color/black"
+                android:textAppearance="@style/b3"
+                android:layout_marginStart="13dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_insurance_agree_essential"
+                app:layout_constraintEnd_toStartOf="@id/iv_insurance_agree_essential_arrow"/>
+
+            <ImageView
+                android:id="@+id/iv_insurance_agree_essential_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_forward"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_insurance_agree_choice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:onClick="@{() -> viewModel.onClickAgreeType(@string/insurance_agree_type_choice)}"
+            app:layout_constraintStart_toStartOf="@id/layout_insurance_agree_all"
+            app:layout_constraintEnd_toEndOf="@id/layout_insurance_agree_all"
+            app:layout_constraintTop_toBottomOf="@id/layout_insurance_agree_essential">
+
+            <ImageButton
+                android:id="@+id/iv_insurance_agree_choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@{viewModel.uiState.isSelectedChoice ? @drawable/ic_check_activated : @drawable/ic_check_inactivated}"
+                android:padding="5dp"
+                android:onClick="@{() -> viewModel.onClickAgreeType(@string/insurance_agree_type_choice)}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:id="@+id/tv_insurance_agree_choice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/insurance_agree_choice"
+                android:textColor="@color/black"
+                android:textAppearance="@style/b3"
+                android:layout_marginStart="13dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_insurance_agree_choice"
+                app:layout_constraintEnd_toStartOf="@id/iv_insurance_agree_choice_arrow"/>
+
+            <ImageView
+                android:id="@+id/iv_insurance_agree_choice_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_forward"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_insurance_agree"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingVertical="12dp"
+            android:text="@string/agree_btn"
+            android:textColor="@{viewModel.uiState.isAgreeBtnEnabled ? @color/white : @color/text_disable}"
+            android:background="@{viewModel.uiState.isAgreeBtnEnabled ? @drawable/bg_rectangle_filled_point_blue_radius_8 : @drawable/bg_rectangle_filled_neural200_radius_8}"
+            android:textAppearance="@style/b3_S"
+            android:layout_marginHorizontal="28dp"
+            android:layout_marginBottom="32dp"
+            android:layout_marginTop="40dp"
+            android:outlineProvider="none"
+            android:clickable="@{viewModel.uiState.isAgreeBtnEnabled}"
+            app:layout_constraintTop_toBottomOf="@id/layout_insurance_agree_choice"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
