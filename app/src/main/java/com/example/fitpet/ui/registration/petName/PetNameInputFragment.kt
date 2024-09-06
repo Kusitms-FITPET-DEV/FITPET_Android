@@ -44,7 +44,8 @@ class PetNameInputFragment : BaseFragment<FragmentPetNameInputBinding, PetNameIn
     }
 
     private fun goToPetBreedInput() {
-        val action = PetNameInputFragmentDirections.actionPetNameInputToPetBreed()
+        val petName = viewModel.uiState.petName.value
+        val action = PetNameInputFragmentDirections.actionPetNameInputToPetBreed(petName)
         findNavController().navigate(action)
     }
 

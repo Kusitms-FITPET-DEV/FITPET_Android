@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentPetBreedBinding
@@ -23,8 +24,11 @@ class PetBreedFragment : BaseFragment<FragmentPetBreedBinding, PetBreedPageState
     lateinit var dialog: SkipDialog
 
     override val viewModel: PetBreedViewModel by viewModels()
+    private var petName = ""
 
     override fun initView() {
+        val args: PetBreedFragmentArgs by navArgs()
+        petName = args.petName
         binding.apply {
             vm = viewModel
         }
@@ -48,7 +52,8 @@ class PetBreedFragment : BaseFragment<FragmentPetBreedBinding, PetBreedPageState
     }
 
     private fun goToPetDetailBreedInput() {
-        val action = PetBreedFragmentDirections.actionPetBreedToPetDetailBreedInput()
+        val petBreed = viewModel.uiState.breed.value.name
+        val action = PetBreedFragmentDirections.actionPetBreedToPetDetailBreedInput(petName = petName, petBreed = petBreed)
         findNavController().navigate(action)
     }
 

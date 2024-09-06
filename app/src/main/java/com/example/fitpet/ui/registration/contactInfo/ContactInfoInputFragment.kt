@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentContactInfoInputBinding
@@ -18,6 +19,7 @@ import com.example.fitpet.ui.onboarding.dialog.SkipDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -29,9 +31,22 @@ class ContactInfoInputFragment : BaseFragment<FragmentContactInfoInputBinding, C
 
     override val viewModel: ContactInfoInputViewModel by viewModels()
 
+    private var petName = ""
+    private var petBreed = ""
+    private var petDetailBreed = ""
+    private var petBirth = ""
+
     override fun initView() {
         binding.apply {
             vm = viewModel
+            val args: ContactInfoInputFragmentArgs by navArgs()
+            petName = args.petName
+            petBreed = args.petBreed
+            petDetailBreed = args.petDetailBreed
+            petBirth = args.petBirth
+
+            Timber.e("petName: $petName, petBreed: $petBreed, petDetailBreed: $petDetailBreed, petBirth: $petBirth")
+
             contactInfoEditText.addTextChangedListener(object : TextWatcher {
                 private var isUpdating = false
 

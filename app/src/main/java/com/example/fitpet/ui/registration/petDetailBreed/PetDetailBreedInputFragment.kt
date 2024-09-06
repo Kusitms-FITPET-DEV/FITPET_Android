@@ -13,6 +13,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import androidx.appcompat.widget.SearchView
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
@@ -36,10 +37,15 @@ class PetDetailBreedInputFragment : BaseFragment<FragmentPetDetailBreedInputBind
     override val viewModel: PetDetailBreedInputViewModel by viewModels()
 
     private lateinit var breedAdapter: ArrayAdapter<String>
+    private var petName = ""
+    private var petBreed = ""
 
     override fun initView() {
         binding.apply {
             vm = viewModel
+            val args: PetDetailBreedInputFragmentArgs by navArgs()
+            petName = args.petName
+            petBreed = args.petBreed
 
             binding.detailBreedAutoCompleteTextView.setOnDismissListener {
                 Timber.e("드롭다운이 닫혔습니다.")
@@ -94,7 +100,8 @@ class PetDetailBreedInputFragment : BaseFragment<FragmentPetDetailBreedInputBind
     }
 
     private fun goToPetBirthInput() {
-        val action = PetDetailBreedInputFragmentDirections.actionPetDetailBreedInputToPetBirthInput()
+        val detailBreed = viewModel.uiState.selectedDetailBreed.value
+        val action = PetDetailBreedInputFragmentDirections.actionPetDetailBreedInputToPetBirthInput(petName = petName, petBreed = petBreed, petDetailBreed = detailBreed)
         findNavController().navigate(action)
     }
 
