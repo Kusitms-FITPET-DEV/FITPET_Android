@@ -153,6 +153,12 @@
         <item name="fontFamily">@font/pretendard_extra_bold</item>
     </style>
 
+    <style name="insurance_main_monthly_title">
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">24dp</item>
+        <item name="fontFamily">@font/pretendard_semi_bold</item>
+    </style>
+
 
     <style name="ShapeAppearanceOverlayExtended" parent="Widget.MaterialComponents.ExtendedFloatingActionButton">
         <item name="cornerFamily">rounded</item>
