@@ -17,6 +17,7 @@
     <string name="gallery">저장공간</string>
     <string name="notification">알림</string>
     <string name="agree">동의하기</string>
+    <string name="agree_btn">동의합니다</string>
     <string name="go_to_mypet">펫보험 견적 알아보기</string>
     <string name="kakao_floating">바로 상담하기</string>
     <string name="resume">계속하기</string>
@@ -141,8 +142,35 @@
     <string name="gallery_file_format">image/*</string>
     <string name="gallery_phone_build">Xiaomi</string>
 
+    <!--  InsuranceAccount  -->
+    <string name="insurance_charge_account_title">보험금을 지급 받을 계좌를\n입력해 주세요</string>
+    <string name="insurance_charge_account_owner">* 예금주</string>
+    <string name="insurance_charge_account_number">* 보험금 수령계좌</string>
+    <string name="insurance_charge_account">은행</string>
+    <string name="insurance_charge_account_notice_title">확인해주세요</string>
+    <string name="insurance_charge_account_notice">입력한 계좌로 보험금 지급이 불가한 경우 확인을 위해\n보상 담당자에게 연락이 올 수 있어요.</string>
+    <string name="insurance_charge_account_number_hint">-없이 입력해주세요</string>
+    <string name="insurance_charge_account_owner_type">ACCOUNT_OWNER</string>
+    <string name="insurance_charge_account_number_type">ACCOUNT_NUMBER</string>
+
     <!--  SkipDialog  -->
     <string name="stop_registration_title">등록을 멈추고 싶으신가요?</string>
     <string name="stop_registration_content">지금 등록하시면 보험 견적까지\n한 번에 받아볼 수 있어요!</string>
+
+    <!--  InsuranceContact  -->
+    <string name="insurance_charge_contact_title">안내 받을 연락 수단을\n모두 선택해 주세요</string>
+    <string name="insurance_charge_contact_kakao">카카오톡</string>
+    <string name="insurance_charge_contact_email">이메일</string>
+    <string name="insurance_charge_contact_email_hint">예) Hongildong@hanmail.com</string>
+    <string name="method_kakao">KAKAO</string>
+    <string name="method_email">EMAIL</string>
+
+    <!--  InsuranceAgree  -->
+    <string name="insurance_agree_all">전체 동의</string>
+    <string name="insurance_agree_essential">[필수] 개인(신용)정보 조회, 수집•이용 및 제공 동의</string>
+    <string name="insurance_agree_choice">[선택] 의료기관 진료비 이상여부 확인을 위한 개인(신용)정보 동의</string>
+    <string name="insurance_agree_type_all">ALL</string>
+    <string name="insurance_agree_type_essential">TYPE_ESSENTIAL</string>
+    <string name="insurance_agree_type_choice">TYPE_CHOICE</string>
 
 </resources>
