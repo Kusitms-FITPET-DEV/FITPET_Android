@@ -27,6 +27,7 @@
     <string name="go_to_register">1:1 펫보험 상담하기</string>
     <string name="pet_info">%1$d살 | %2$s</string>
     <string name="pet_insurance_range"> ~ %s</string>
+    <string name="question">\?</string>
 
 
 
@@ -71,15 +72,19 @@
 
     <!--  PetDetailBreedInput  -->
     <string name="detail_breed_registration">상세 품종을 입력해 주세요.</string>
-    <string name="detail_breed_dog_guide">헷갈리는 품종은 ‘믹스견’를 입력해주세요.</string>
-    <string name="detail_breed_cat_guide">헷갈리는 품종은 ‘믹스묘’를 입력해주세요.</string>
+    <string name="detail_breed_dog_guide">헷갈리는 품종은 ‘믹스견’를 입력해 주세요.</string>
+    <string name="detail_breed_cat_guide">헷갈리는 품종은 ‘믹스묘’를 입력해 주세요.</string>
     <string name="detail_breed_input_hint">예) 말티즈</string>
+    <string name="detail_breed_input_hint_cat">예) 코리안숏헤어</string>
 
     <!--  PetBirthInput  -->
     <string name="birth_input_registration">출생년도는 언제인가요?</string>
     <string name="birth_input_hint">예) 2004</string>
     <string name="birth_input_guide">4자리 숫자로 써주세요.</string>
     <string name="birth_guide">잘 모르겠다면 추정하여 적어주세요.</string>
+    <string name="invalid_birth_year_title">보험 조건에 맞지 않아요</string>
+    <string name="invalid_birth_year_due_to_age">11살 이상으로는 현재 보험 가입이\n어려워요! 더 많은 아이들이 건강을\n보장 받을 수 있도록 계속 노력할게요</string>
+    <string name="invalid_birth_year_future_year">아직 태어나지 않은 반려가족은\n펫보험 등록이 불가능해요!\n건강하게 자라길 기다릴게요</string>
 
     <!--  ContactInfoInput  -->
     <string name="contact_info_input_registration">연락처를 입력해 주세요.</string>
@@ -118,6 +123,12 @@
     <string name="insurance_no_register_percent_90">90%</string>
 
 
+    <!-- InsuranceMain -->
+    <string name="insurance_main_month_title">월 납입보험료</string>
+    <string name="insurance_main_blue_title1">자세한 설명을 듣고 싶어요</string>
+    <string name="insurance_main_blue_title2">상담사 연결하기</string>
+    <string name="insurance_main_charge_title">보험금 \n청구</string>
+    <string name="insurance_main_check_title">보상내역 \n확인</string>
 
     <!--  PermissionSettingsBottomSheet  -->
     <string name="permission_title">서비스 이용을 위해\n접근 권한에 동의해 주세요</string>

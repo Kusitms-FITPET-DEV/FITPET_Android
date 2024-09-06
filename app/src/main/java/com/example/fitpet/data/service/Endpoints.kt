@@ -10,7 +10,7 @@ object Endpoints {
     }
 
     object Pets {
-        private const val PETS = "/pets"
+        const val PETS = "/pets"
         const val SEARCH = "$PETS/breeds/search"
     }
 

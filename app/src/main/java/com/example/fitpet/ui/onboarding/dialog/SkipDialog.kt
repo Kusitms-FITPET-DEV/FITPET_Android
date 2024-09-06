@@ -7,6 +7,7 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
+import android.view.View
 import android.view.WindowManager
 import androidx.databinding.DataBindingUtil
 import com.example.fitpet.R
@@ -41,9 +42,23 @@ class SkipDialog @Inject constructor(
 
     fun showDialog(
         onResumeClicked: () -> Unit,
-        onSkipClicked: () -> Unit
+        onSkipClicked: () -> Unit,
+        titleText: String = "",
+        contentText: String = "",
+        iconResourceId: Int = R.drawable.ic_dog_sad,
+        buttonText: String = "",
+        skipVisibility: Boolean = true
     ) {
         binding.apply {
+            if (titleText.isNotEmpty()) title.text = titleText
+            if (contentText.isNotEmpty()) content.text = contentText
+            if (buttonText.isNotEmpty()) btnResume.text = buttonText
+
+            icon.setImageResource(iconResourceId)
+
+            btnSkip.visibility = if (skipVisibility) View.VISIBLE else View.GONE
+            singleBtnSpace.visibility = if (skipVisibility) View.GONE else View.VISIBLE
+
             btnResume.setOnClickListener {
                 onResumeClicked()
                 dialog.dismiss()

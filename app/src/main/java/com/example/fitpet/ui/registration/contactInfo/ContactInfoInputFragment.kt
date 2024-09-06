@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentContactInfoInputBinding
@@ -18,6 +19,7 @@ import com.example.fitpet.ui.onboarding.dialog.SkipDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -29,13 +31,29 @@ class ContactInfoInputFragment : BaseFragment<FragmentContactInfoInputBinding, C
 
     override val viewModel: ContactInfoInputViewModel by viewModels()
 
+    private var petName = ""
+    private var petBreed = ""
+    private var petDetailBreed = ""
+    private var petBirth = ""
+
     override fun initView() {
         binding.apply {
             vm = viewModel
+            val args: ContactInfoInputFragmentArgs by navArgs()
+            petName = args.petName
+            petBreed = args.petBreed
+            petDetailBreed = args.petDetailBreed
+            petBirth = args.petBirth
+
+            Timber.e("petName: $petName, petBreed: $petBreed, petDetailBreed: $petDetailBreed, petBirth: $petBirth")
+
             contactInfoEditText.addTextChangedListener(object : TextWatcher {
                 private var isUpdating = false
+                private var lastInput = ""
 
-                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                    lastInput = s?.toString() ?: ""
+                }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     if (isUpdating) return
@@ -45,6 +63,17 @@ class ContactInfoInputFragment : BaseFragment<FragmentContactInfoInputBinding, C
 
                     if (digitsOnly.length > 11) return
 
+                    isUpdating = true
+
+                    if (before > 0 && count == 0) {
+                        if (lastInput.endsWith("-") && input == lastInput.dropLast(1)) {
+                            contactInfoEditText.setText(input.dropLast(1))
+                            contactInfoEditText.setSelection(input.length - 1)
+                            isUpdating = false
+                            return
+                        }
+                    }
+
                     val formattedNumber = when {
                         digitsOnly.length > 6 -> "${digitsOnly.substring(0, 3)}-${digitsOnly.substring(3, 7)}-${digitsOnly.substring(7)}"
                         digitsOnly.length > 3 -> "${digitsOnly.substring(0, 3)}-${digitsOnly.substring(3)}"
@@ -52,11 +81,10 @@ class ContactInfoInputFragment : BaseFragment<FragmentContactInfoInputBinding, C
                     }
 
                     if (input != formattedNumber) {
-                        isUpdating = true
                         contactInfoEditText.setText(formattedNumber)
                         contactInfoEditText.setSelection(formattedNumber.length)
-                        isUpdating = false
                     }
+                    isUpdating = false
 
                     viewModel.onTextChanged(formattedNumber)
                 }
@@ -80,6 +108,7 @@ class ContactInfoInputFragment : BaseFragment<FragmentContactInfoInputBinding, C
         when(event) {
             ContactInfoInputEvent.GoToMyPetInsurance -> goToMyPetInsurance()
             ContactInfoInputEvent.ShowSkipDialog -> showSkipDialog()
+            ContactInfoInputEvent.RegisterPet -> registerPet()
         }
     }
 
@@ -93,5 +122,11 @@ class ContactInfoInputFragment : BaseFragment<FragmentContactInfoInputBinding, C
     private fun goToMyPetInsurance() {
         val action = ContactInfoInputFragmentDirections.actionContactInfoInputToMyPet()
         findNavController().navigate(action)
+    }
+
+    private fun registerPet() {
+        viewModel.registerPet(
+            petName, petBreed, petDetailBreed, petBirth
+        )
     }
 }

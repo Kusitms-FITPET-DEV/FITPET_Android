@@ -21,14 +21,23 @@ class PetBirthInputViewModel @Inject constructor(
         isValidInput = isValidInputStateFlow.asStateFlow()
     )
 
+    companion object {
+        const val CURRENT_YEAR = 2024
+    }
+
     fun onTextChanged(input: CharSequence) {
+        val newValue = input.toString()
         viewModelScope.launch {
-            isValidInputStateFlow.update { validInput(input.toString()) }
+            birthStateFlow.update { newValue }
+            isValidInputStateFlow.update { validInput(newValue) }
         }
     }
 
     fun onClickBtnNext() {
-        emitEventFlow(PetBirthInputEvent.GoToContactInfoInput)
+        val birthYear = birthStateFlow.value.toInt()
+        if (birthYear > CURRENT_YEAR) { emitEventFlow(PetBirthInputEvent.InvalidFutureBirthYear) }
+        else if (CURRENT_YEAR - birthYear >= 11) emitEventFlow(PetBirthInputEvent.IneligibleDueToAge)
+        else emitEventFlow(PetBirthInputEvent.GoToContactInfoInput)
     }
 
     fun onClickSkip() {
