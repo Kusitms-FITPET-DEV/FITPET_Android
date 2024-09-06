@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.fitpet.R
 import com.example.fitpet.databinding.ItemNoRegisterInsuranceBinding
 import com.example.fitpet.model.domain.insurance.main.InsuranceSuggestion
+import com.example.fitpet.model.response.EstimateList
 import com.example.fitpet.ui.mypet.insurance.noregister.InsuranceNoRegisterEvent
 import com.example.fitpet.util.ItemDiffCallback
 import com.example.fitpet.util.ResourceProvider
@@ -21,8 +22,8 @@ import javax.inject.Inject
 
 class InsuranceNoRegisterRVA(
     val resourceProvider: ResourceProvider,
-    val onClicked: (InsuranceSuggestion) -> Unit) : ListAdapter<InsuranceSuggestion, InsuranceNoRegisterRVA.ListViewHolder>(
-    ItemDiffCallback<InsuranceSuggestion>(
+    val onClicked: (EstimateList) -> Unit) : ListAdapter<EstimateList, InsuranceNoRegisterRVA.ListViewHolder>(
+    ItemDiffCallback<EstimateList>(
         onItemsTheSame = { oldItem, newItem -> oldItem.priceId == newItem.priceId },  // ID로 항목 비교
         onContentsTheSame = { oldItem, newItem -> oldItem == newItem }      // 객체 내용 비교
     )
@@ -45,7 +46,7 @@ class InsuranceNoRegisterRVA(
 
     inner class ListViewHolder(private val binding: ItemNoRegisterInsuranceBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(insurance: InsuranceSuggestion){
+        fun bind(insurance: EstimateList){
             with(binding){
                 tvItemInsuranceName.text = insurance.insuranceName
                 tvItemInsurancePrice.text = NumberFormat.getNumberInstance(Locale.US).format(insurance.insuranceFee).toString()

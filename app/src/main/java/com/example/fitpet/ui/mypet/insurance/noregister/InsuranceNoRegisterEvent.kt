@@ -7,5 +7,5 @@ sealed class InsuranceNoRegisterEvent: Event {
     data object OpenMyPetDialog: InsuranceNoRegisterEvent()
     data object ChangeRange: InsuranceNoRegisterEvent()
     data object ShowNothing: InsuranceNoRegisterEvent()
-
+    data object FetchInsurance: InsuranceNoRegisterEvent()
 }

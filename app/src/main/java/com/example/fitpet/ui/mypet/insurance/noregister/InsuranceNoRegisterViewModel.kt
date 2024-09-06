@@ -8,7 +8,9 @@ import com.example.fitpet.model.domain.PetType
 import com.example.fitpet.model.domain.insurance.main.InsuranceSuggestion
 import com.example.fitpet.model.domain.insurance.main.MyPet
 import com.example.fitpet.model.response.EstimateList
+import com.example.fitpet.model.response.PetInfo
 import com.example.fitpet.model.response.PetInsuranceResponse
+import com.example.fitpet.model.response.PetResponse
 import com.example.fitpet.ui.registration.petDetailBreed.PetDetailBreedInputEvent
 import com.example.fitpet.ui.registration.petDetailBreed.PetDetailBreedInputPageState
 import com.example.fitpet.util.ResourceProvider
@@ -28,7 +30,7 @@ class InsuranceNoRegisterViewModel @Inject constructor(
     private val resourceProvider: ResourceProvider,
     private val petsRepository: PetsRepository
 ): BaseViewModel<InsuranceNoRegisterPageState>() {
-    private val myPetFlow: MutableStateFlow<MyPet> = MutableStateFlow(MyPet(PetType.DOG,"",0,""))
+    private val myPetFlow: MutableStateFlow<PetInfo?> = MutableStateFlow(null)
     private val priceStartFlow: MutableStateFlow<Int> = MutableStateFlow(1000)
     private val priceEndFlow: MutableStateFlow<Int> = MutableStateFlow(10000)
     private val percentRangeFlow: MutableStateFlow<Int> = MutableStateFlow(70)
@@ -36,6 +38,7 @@ class InsuranceNoRegisterViewModel @Inject constructor(
     private val openPercentBoxFlow: MutableStateFlow<Boolean> = MutableStateFlow(false)
     private val nothingInsuranceFlow: MutableStateFlow<Boolean> = MutableStateFlow(false)
     private val petInsuranceFlow: MutableStateFlow<PetInsuranceResponse?> = MutableStateFlow(null)
+    private val petResponseFlow: MutableStateFlow<PetResponse?> = MutableStateFlow(null)
 
 
 
@@ -46,18 +49,20 @@ class InsuranceNoRegisterViewModel @Inject constructor(
         insuranceRangePercent = percentRangeFlow.asStateFlow(),
         insuranceSuggestion = suggestionFlow.asStateFlow(),
         openPercentBox = openPercentBoxFlow.asStateFlow(),
-        nothingInsurance = nothingInsuranceFlow.asStateFlow()
+        nothingInsurance = nothingInsuranceFlow.asStateFlow(),
+        petCount = petResponseFlow.asStateFlow(),
+        insuranceSuggestionResponse = petInsuranceFlow.asStateFlow()
     )
 
     // pet Info 설정
-    fun updatePetInfo(pet: MyPet){
+    fun updatePetInfo(pet: PetInfo){
         viewModelScope.launch {
             myPetFlow.update { pet }
         }
-        Timber.d(myPetFlow.value.petName)
-        Timber.d(myPetFlow.value.petBreed)
-        Timber.d(myPetFlow.value.petAge.toString())
-        Timber.d(myPetFlow.value.petType.toString())
+        Timber.d(myPetFlow.value?.name)
+        Timber.d(myPetFlow.value?.breed)
+        Timber.d(myPetFlow.value?.age.toString())
+        Timber.d(myPetFlow.value?.species.toString())
     }
 
     // 보험 데이터 없을 시 UI
@@ -121,6 +126,22 @@ class InsuranceNoRegisterViewModel @Inject constructor(
         }
     }
 
+    fun checkCount(): Int{
+        if(petResponseFlow.value?.petCount==0){
+            return 0
+        }else return 1
+    }
+
+    fun getFirstPet(): Int?{
+        return petResponseFlow.value?.petList?.get(0)?.petId
+    }
+
+    fun checkInsurance(): Int{
+        if(petInsuranceFlow.value?.insurance == true) {
+            return 0
+        }else return 1
+    }
+
     fun getFormattedPriceEnd(): String? {
         val priceEnd = priceEndFlow.value
         Timber.d(NumberFormat.getNumberInstance(Locale.US).format(priceEnd))
@@ -131,6 +152,21 @@ class InsuranceNoRegisterViewModel @Inject constructor(
         }
     }
 
+    fun loadPetData() {
+        viewModelScope.launch {
+            petsRepository.getPetAllMainInfo().collect { result ->
+                result.onSuccess { response ->
+                    // Update both pet info and estimate list
+                    petResponseFlow.update { response }
+                    updatePetInfo(response.petList.get(0))
+                }.onFailure {
+                    // Handle error
+                    Timber.e(it)
+                }
+            }
+        }
+    }
+
     fun fetchPetInsuranceInfo(petId: Int, priceRate: String) {
         viewModelScope.launch {
             petsRepository.getPetMainInfo(priceRate, petId).collect { result ->
@@ -138,6 +174,7 @@ class InsuranceNoRegisterViewModel @Inject constructor(
                     // Update both pet info and estimate list
                     petInsuranceFlow.update { petInsuranceResponse }
                     suggestionFlow.update { petInsuranceResponse.estimateList }
+                    emitEventFlow(InsuranceNoRegisterEvent.FetchInsurance)
                 }.onFailure {
                     // Handle error
                     Timber.e(it)
@@ -155,6 +192,7 @@ class InsuranceNoRegisterViewModel @Inject constructor(
         val maxInsuranceFee = petInsuranceFlow.value?.maxInsuranceFee ?: 0
         return NumberFormat.getNumberInstance(Locale.US).format(maxInsuranceFee)
     }
+
 
 
     companion object {
