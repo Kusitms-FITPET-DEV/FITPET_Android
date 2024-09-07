@@ -7,6 +7,7 @@ import android.os.Looper
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceMainBinding
@@ -16,6 +17,7 @@ import com.example.fitpet.model.domain.insurance.main.MyPet
 import com.kakao.sdk.common.util.KakaoCustomTabsClient
 import com.kakao.sdk.talk.TalkApiClient
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
@@ -31,9 +33,15 @@ class InsuranceMainFragment : BaseFragment<FragmentInsuranceMainBinding, Insuran
             vm = viewModel
             lifecycleOwner = viewLifecycleOwner
         }
-        Handler(Looper.getMainLooper()).postDelayed({
-            binding.fabInsuranceKakaoBig.shrink()
-        }, 5000)
+        lifecycleScope.launch {
+            delay(5000)
+            binding?.let { binding ->
+                if (isAdded) {
+                    binding.fabInsuranceKakaoBig.shrink()
+                }
+            }
+        }
+
         setMonth()
         viewModel.loadPetData()
     }
@@ -43,18 +51,6 @@ class InsuranceMainFragment : BaseFragment<FragmentInsuranceMainBinding, Insuran
             launch {
                 viewModel.eventFlow.collect { event ->
                     handleEvent(event as InsuranceMainEvent)
-                }
-            }
-            launch {
-                viewModel.uiState.petCount.collect {
-                    Timber.tag("log1").d(viewModel.getFirstPet()!!.toString())
-                    viewModel.fetchPetInsuranceInfo(viewModel.getFirstPet()!!, "70%")
-                }
-            }
-            launch {
-                viewModel.uiState.insuranceSuggestionResponse.collect {
-                    viewModel.updatePrice(viewModel.uiState.insuranceSuggestionResponse.value?.estimateList?.get(0)?.insuranceFee!!)
-                    setInsuranceInfo()
                 }
             }
         }
@@ -99,9 +95,12 @@ class InsuranceMainFragment : BaseFragment<FragmentInsuranceMainBinding, Insuran
 
     private fun setMyPet(){
         viewModel.updatePetInfo(viewModel.uiState.petInfo.value!!)
+        Timber.tag("log2").d(viewModel.getFirstPet()!!.toString())
+        viewModel.fetchPetInsuranceInfo(viewModel.getFirstPet()!!, "")
     }
 
     private fun setInsuranceInfo(){
+        viewModel.updatePrice(viewModel.uiState.insuranceSuggestionResponse.value?.estimateList?.get(0)?.insuranceFee!!)
         viewModel.updateInsuranceInfo(viewModel.uiState.insuranceInfo.value!!)
         setInsuranceImg()
     }

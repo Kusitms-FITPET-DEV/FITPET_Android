@@ -23,6 +23,8 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainBinding, MypetMainPageSt
     private val mypetVPA get() = _mypetVPA
     private val navigator by lazy { findNavController() }
 
+    private var isFetched : Boolean = false
+
     override val viewModel: MypetMainViewModel by viewModels()
 
     @Inject
@@ -41,25 +43,6 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainBinding, MypetMainPageSt
                     handleEvent(event as MypetMainEvent)
                 }
             }
-            launch {
-                viewModel.uiState.petCount.collect {
-                    if(viewModel.checkCount() > 0) {
-                        Timber.tag("log1").d(viewModel.getFirstPet()!!.toString())
-                        viewModel.fetchPetInsuranceInfo(viewModel.getFirstPet()!!, "70%")
-                    } else {
-                        goToNoPet() // Pet이 없을 때
-                    }
-                }
-            }
-            launch {
-                viewModel.uiState.insuranceSuggestion.collect {
-                    if(viewModel.checkInsurance() == 0) {
-                        goToMain() // 보험 정보가 있을 때
-                    } else {
-                        goToNoRegister() // 보험 정보가 없을 때
-                    }
-                }
-            }
         }
     }
 
@@ -69,12 +52,35 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainBinding, MypetMainPageSt
             MypetMainEvent.GoToMain -> goToMain()
             MypetMainEvent.GoToNoPet -> goToNoPet()
             MypetMainEvent.GoToNoRegister -> goToNoRegister()
+            MypetMainEvent.FetchPetData -> fetchPetData()
+            MypetMainEvent.FetchInsuranceData -> fetchInsuranceData()
         }
     }
 
     private fun goToAddPet() {
         val action = MypetMainFragmentDirections.actionMypetToPetNameInput()
         navigator.navigate(action)
+    }
+
+    private fun fetchPetData() {
+        if(!isFetched){
+            if(viewModel.checkCount() > 0) {
+                Timber.tag("log1").d(viewModel.getFirstPet()!!.toString())
+                viewModel.fetchPetInsuranceInfo(viewModel.getFirstPet()!!, "70%")
+                isFetched = true
+            } else {
+                isFetched = true
+                goToNoPet() // Pet이 없을 때
+            }
+        }
+    }
+
+    private fun fetchInsuranceData() {
+        if(viewModel.checkInsurance() == 0) {
+            goToMain() // 보험 정보가 있을 때
+        } else {
+            goToNoRegister() // 보험 정보가 없을 때
+        }
     }
 
     private fun goToNoPet() {

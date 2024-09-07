@@ -26,8 +26,8 @@ interface PetsService {
 
     @GET("${Endpoints.Pets.PETS}/{petId}")
     suspend fun getPetMainInfo(
-        @Query("priceRate") priceRate: String,
-        @Path("petId") petId: Int
+        @Path("petId") petId: Int,
+        @Query("priceRate") priceRate: String
     ): ApiResponse<PetInsuranceResponse>
 
     @GET(Endpoints.Pets.PETS)

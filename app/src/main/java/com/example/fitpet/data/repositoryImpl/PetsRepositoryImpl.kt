@@ -46,7 +46,7 @@ class PetsRepositoryImpl @Inject constructor(
     override suspend fun getPetMainInfo(priceRate: String, petId: Int): Flow<Result<PetInsuranceResponse>> = flow {
         emit(
             kotlin.runCatching {
-                val response = petsService.getPetMainInfo(priceRate, petId)
+                val response = petsService.getPetMainInfo(petId, priceRate)
 
                 if (response.success) {
                     response.data

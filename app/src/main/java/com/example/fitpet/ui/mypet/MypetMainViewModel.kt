@@ -59,6 +59,16 @@ class MypetMainViewModel @Inject constructor(
         emitEventFlow(MypetMainEvent.GoToNoRegister)
     }
 
+    fun fetchPetData() {
+        emitEventFlow(MypetMainEvent.FetchPetData)
+    }
+
+    fun fetchInsuranceData() {
+        emitEventFlow(MypetMainEvent.FetchInsuranceData)
+    }
+
+
+
     // Pet 정보를 불러오는 함수
     fun loadPetData() {
         viewModelScope.launch {
@@ -66,6 +76,7 @@ class MypetMainViewModel @Inject constructor(
                 result.onSuccess { response ->
                     // Update both pet info and estimate list
                     petResponseFlow.update { response }
+                    fetchPetData()
                 }.onFailure {
                     // Handle error
                     Timber.e(it)
@@ -80,6 +91,8 @@ class MypetMainViewModel @Inject constructor(
                 result.onSuccess { petInsuranceResponse ->
                     // Update both pet info and estimate list
                     petInsuranceFlow.update { petInsuranceResponse }
+                    fetchInsuranceData()
+                    Timber.d("여기야! ")
                 }.onFailure {
                     // Handle error
                     Timber.e(it)

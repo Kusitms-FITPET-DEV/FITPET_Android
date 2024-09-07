@@ -31,8 +31,8 @@ class InsuranceNoRegisterViewModel @Inject constructor(
     private val petsRepository: PetsRepository
 ): BaseViewModel<InsuranceNoRegisterPageState>() {
     private val myPetFlow: MutableStateFlow<PetInfo?> = MutableStateFlow(null)
-    private val priceStartFlow: MutableStateFlow<Int> = MutableStateFlow(1000)
-    private val priceEndFlow: MutableStateFlow<Int> = MutableStateFlow(10000)
+    private val priceStartFlow: MutableStateFlow<Int> = MutableStateFlow(0)
+    private val priceEndFlow: MutableStateFlow<Int> = MutableStateFlow(0)
     private val percentRangeFlow: MutableStateFlow<Int> = MutableStateFlow(70)
     private val suggestionFlow: MutableStateFlow<List<EstimateList>> = MutableStateFlow<List<EstimateList>>(emptyList())
     private val openPercentBoxFlow: MutableStateFlow<Boolean> = MutableStateFlow(false)
@@ -148,6 +148,7 @@ class InsuranceNoRegisterViewModel @Inject constructor(
                     // Update both pet info and estimate list
                     petResponseFlow.update { response }
                     updatePetInfo(response.petList.get(0))
+                    emitEventFlow(InsuranceNoRegisterEvent.FetchPetData)
                 }.onFailure {
                     // Handle error
                     Timber.e(it)
@@ -163,7 +164,13 @@ class InsuranceNoRegisterViewModel @Inject constructor(
                     // Update both pet info and estimate list
                     petInsuranceFlow.update { petInsuranceResponse }
                     suggestionFlow.update { petInsuranceResponse.estimateList }
-                    emitEventFlow(InsuranceNoRegisterEvent.FetchInsurance)
+                    updatePriceStart(petInsuranceResponse.minInsuranceFee)
+                    updatePriceEnd(petInsuranceResponse.maxInsuranceFee)
+                    if(petInsuranceResponse.estimateList.isEmpty()){
+                        emitEventFlow(InsuranceNoRegisterEvent.ShowNothing)
+                    }else {
+                        emitEventFlow(InsuranceNoRegisterEvent.FetchInsurance)
+                    }
                 }.onFailure {
                     // Handle error
                     Timber.e(it)
@@ -171,16 +178,6 @@ class InsuranceNoRegisterViewModel @Inject constructor(
             }
         }
     }
-
-    fun getPetName(): String? {
-        return petInsuranceFlow.value?.name
-    }
-
-    fun getFormattedMaxInsuranceFee(): String {
-        val maxInsuranceFee = petInsuranceFlow.value?.maxInsuranceFee ?: 0
-        return NumberFormat.getNumberInstance(Locale.US).format(maxInsuranceFee)
-    }
-
 
 
     companion object {

@@ -3,6 +3,7 @@ package com.example.fitpet.ui.mypet.insurance.noregister
 import android.os.Handler
 import android.os.Looper
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceNoPetBinding
 import com.example.fitpet.databinding.FragmentInsuranceNoRegisterBinding
@@ -15,6 +16,7 @@ import com.example.fitpet.util.ResourceProvider
 import com.kakao.sdk.common.util.KakaoCustomTabsClient
 import com.kakao.sdk.talk.TalkApiClient
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
@@ -42,9 +44,15 @@ class InsuranceNoRegisterFragment : BaseFragment<FragmentInsuranceNoRegisterBind
             vm = viewModel
             lifecycleOwner = viewLifecycleOwner
         }
-        Handler(Looper.getMainLooper()).postDelayed({
-            binding.fabInsuranceKakaoBig.shrink()
-        }, 5000)
+        lifecycleScope.launch {
+            delay(5000)
+            binding?.let { binding ->
+                if (isAdded) {
+                    binding.fabInsuranceKakaoBig.shrink()
+                }
+            }
+        }
+
         viewModel.loadPetData()
         initInsuranceNoRegisterRVAdapter()
     }
@@ -54,19 +62,6 @@ class InsuranceNoRegisterFragment : BaseFragment<FragmentInsuranceNoRegisterBind
             launch {
                 viewModel.eventFlow.collect { event ->
                     handleEvent(event as InsuranceNoRegisterEvent)
-                }
-            }
-            launch {
-                viewModel.uiState.petCount.collect {
-                        Timber.tag("log1").d(viewModel.getFirstPet()!!.toString())
-                        viewModel.fetchPetInsuranceInfo(viewModel.getFirstPet()!!, viewModel.uiState.insuranceRangePercent.value.toString())
-                }
-            }
-            launch {
-                viewModel.uiState.insuranceSuggestion.collect {
-                    viewModel.updatePriceStart(viewModel.uiState.insuranceSuggestionResponse.value?.minInsuranceFee!!)
-                    viewModel.updatePriceEnd(viewModel.uiState.insuranceSuggestionResponse.value?.maxInsuranceFee!!)
-                    insuranceNoRegisterRVA.submitList(viewModel.uiState.insuranceSuggestion.value)
                 }
             }
         }
@@ -79,16 +74,24 @@ class InsuranceNoRegisterFragment : BaseFragment<FragmentInsuranceNoRegisterBind
             InsuranceNoRegisterEvent.OpenMyPetDialog -> openMyPetDialog()
             InsuranceNoRegisterEvent.ShowNothing -> showNothing()
             InsuranceNoRegisterEvent.FetchInsurance -> fetchInsurance()
+            InsuranceNoRegisterEvent.FetchPetData -> fetchPetData()
         }
     }
 
     private fun fetchInsurance() {
+        viewModel.updatePriceStart(viewModel.uiState.insuranceSuggestionResponse.value?.minInsuranceFee!!)
+        viewModel.updatePriceEnd(viewModel.uiState.insuranceSuggestionResponse.value?.maxInsuranceFee!!)
+        insuranceNoRegisterRVA.submitList(viewModel.uiState.insuranceSuggestion.value)
+    }
 
+    private fun fetchPetData() {
+        Timber.tag("log122").d(viewModel.getFirstPet()!!.toString())
+        viewModel.fetchPetInsuranceInfo(viewModel.getFirstPet()!!, viewModel.uiState.insuranceRangePercent.value.toString()+"%")
     }
 
     private fun changeRange() {
         // api 연결
-        viewModel.fetchPetInsuranceInfo(viewModel.uiState.petInfo.value?.petId!!, viewModel.uiState.insuranceRangePercent.toString()+"%" )
+        viewModel.fetchPetInsuranceInfo(viewModel.uiState.petInfo.value?.petId!!, viewModel.uiState.insuranceRangePercent.value.toString()+"%" )
         // 박스 안 보이게
         setUpBox(false)
     }
