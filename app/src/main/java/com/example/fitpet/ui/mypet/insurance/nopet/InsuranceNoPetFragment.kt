@@ -4,6 +4,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceNoPetBinding
@@ -14,6 +15,7 @@ import com.example.fitpet.ui.registration.petDetailBreed.PetDetailBreedInputView
 import com.kakao.sdk.common.util.KakaoCustomTabsClient
 import com.kakao.sdk.talk.TalkApiClient
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
@@ -28,9 +30,15 @@ class InsuranceNoPetFragment : BaseFragment<FragmentInsuranceNoPetBinding, Insur
         binding.apply {
             vm = viewModel
 
-            Handler(Looper.getMainLooper()).postDelayed({
-                binding.fabInsuranceKakaoBig.shrink()
-            }, 5000)
+            lifecycleScope.launch {
+                delay(5000)
+                binding.let { binding ->
+                    if (isAdded) {
+                        binding.fabInsuranceKakaoBig.shrink()
+                    }
+                }
+            }
+
         }
     }
 
