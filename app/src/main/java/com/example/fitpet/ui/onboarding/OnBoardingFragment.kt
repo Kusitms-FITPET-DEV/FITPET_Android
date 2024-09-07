@@ -2,6 +2,7 @@ package com.example.fitpet.ui.onboarding
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.os.Build
 import androidx.fragment.app.viewModels
 import android.os.Bundle
 import android.util.Log
@@ -97,11 +98,16 @@ class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding, OnBoardingPag
     }
 
     private fun arePermissionsGranted(): Boolean {
-        val requiredPermissions = arrayOf(
+        val requiredPermissions = mutableListOf(
             Manifest.permission.CAMERA,
-            Manifest.permission.POST_NOTIFICATIONS,
-            Manifest.permission.READ_MEDIA_IMAGES
         )
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            requiredPermissions.add(Manifest.permission.READ_MEDIA_IMAGES)
+        } else {
+            requiredPermissions.add(Manifest.permission.READ_EXTERNAL_STORAGE)
+            requiredPermissions.add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        }
 
         return requiredPermissions.all { permission ->
             ContextCompat.checkSelfPermission(requireContext(), permission) == PackageManager.PERMISSION_GRANTED
@@ -123,11 +129,19 @@ class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding, OnBoardingPag
     }
 
     private fun requestPermissions() {
-        val permissions = arrayOf(
+        val permissions = mutableListOf(
             Manifest.permission.CAMERA,
-            Manifest.permission.POST_NOTIFICATIONS,
-            Manifest.permission.READ_MEDIA_IMAGES
         )
-        requestPermissionsLauncher.launch(permissions)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            permissions.add(Manifest.permission.READ_MEDIA_IMAGES)
+        } else {
+            permissions.add(Manifest.permission.READ_EXTERNAL_STORAGE)
+            permissions.add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        }
+
+        val formattedList: Array<String> = permissions.toTypedArray()
+
+        requestPermissionsLauncher.launch(formattedList)
     }
 }
