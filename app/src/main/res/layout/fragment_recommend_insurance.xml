@@ -89,10 +89,9 @@
 
                     <ImageView
                         android:id="@+id/iv_company"
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        app:layout_constraintDimensionRatio="280:24"
-                        android:src="@drawable/ic_meritz_v3"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_meritz_recommend"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@id/tv_insurance_name"
                         app:layout_constraintBottom_toBottomOf="@id/tv_insurance_name" />
@@ -101,11 +100,11 @@
                         android:id="@+id/tv_insurance_name"
                         android:layout_width="wrap_content"
                         android:layout_height="24dp"
-                        android:layout_marginStart="60dp"
+                        android:layout_marginStart="12dp"
                         android:text="@{vm.uiState.insuranceSuggestionResponse.insuranceCompany}"
                         android:textAppearance="@style/b3"
                         android:textColor="@color/white"
-                        app:layout_constraintStart_toStartOf="@id/iv_company" />
+                        app:layout_constraintStart_toEndOf="@id/iv_company" />
 
 
                     <TextView
@@ -125,7 +124,6 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="@style/h3_S"
                         android:textColor="@color/white"
-                        android:text="@{String.valueOf(vm.uiState.insuranceSuggestionResponse.afterDiscountFee)}"
                         app:layout_constraintTop_toTopOf="@id/tv_insurance_price_before_month"
                         app:layout_constraintStart_toEndOf="@id/tv_insurance_price_before_month"
 
@@ -721,8 +719,7 @@
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/cl_detail_7"
                             android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            app:layout_constraintDimensionRatio="300:36"
+                            android:layout_height="wrap_content"
                             app:layout_constraintWidth_percent="0.8333"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -732,6 +729,8 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginBottom="8dp"
                                 android:text="이물제거 보장"
                                 android:textAppearance="@style/b4_M"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -744,6 +743,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="O"
                                 android:textAppearance="@style/b4"
+                                android:maxWidth="200dp"
                                 android:textColor="@color/text_disable"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
@@ -912,7 +912,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:onClick="@{() -> vm.onClickBtnConsult()}"/>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -45,8 +45,12 @@ class InsuranceRecommendViewModel @Inject constructor(
         }
     }
 
+    fun onClickBtnConsult() {
+        emitEventFlow(InsuranceRecommendEvent.GoToConsult)
+    }
+
     fun updateDetailPopup(){
-        Timber.d("눌렀어")
+        Timber.d(" 테스트 ${isOpenedFlow.value}")
         isOpenedFlow.update { !isOpenedFlow.value }
     }
 

@@ -7,7 +7,10 @@ import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceNoRegisterBinding
 import com.example.fitpet.databinding.FragmentRecommendInsuranceBinding
 import com.example.fitpet.ui.mypet.MypetMainViewModel
+import com.example.fitpet.ui.mypet.insurance.noregister.InsuranceNoRegisterFragment.Companion.CHANNEL_ID
 import com.example.fitpet.util.ResourceProvider
+import com.kakao.sdk.common.util.KakaoCustomTabsClient
+import com.kakao.sdk.talk.TalkApiClient
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -33,6 +36,10 @@ class InsuranceRecommendFragment : BaseFragment<FragmentRecommendInsuranceBindin
     }
 
     override fun initView() {
+        binding.apply {
+            vm = viewModel
+            lifecycleOwner = viewLifecycleOwner
+        }
         viewModel.loadInsuranceData(petId!!, priceId!!)
         binding.icBackRecommend.setOnClickListener {
             findNavController().navigateUp()
@@ -52,6 +59,7 @@ class InsuranceRecommendFragment : BaseFragment<FragmentRecommendInsuranceBindin
     private fun handleEvent(event: InsuranceRecommendEvent) {
         when(event) {
             InsuranceRecommendEvent.FetchInsurance -> fetchInsurance()
+            InsuranceRecommendEvent.GoToConsult -> goToConsult()
         }
     }
 
@@ -59,7 +67,7 @@ class InsuranceRecommendFragment : BaseFragment<FragmentRecommendInsuranceBindin
         with(binding){
             tvInsuranceName.text = viewModel.uiState.insuranceSuggestionResponse.value?.insuranceCompany
             tvInsuranceBoxMonthPrice.text = viewModel.getFormattedPrice(viewModel.uiState.insuranceSuggestionResponse.value?.afterDiscountFee!!)
-            tvInsuranceBoxMonthPrice2.text = viewModel.getFormattedPrice(viewModel.uiState.insuranceSuggestionResponse.value?.afterDiscountFee!!)
+            tvInsuranceBoxMonthPrice2.text = viewModel.getFormattedPrice(viewModel.uiState.insuranceSuggestionResponse.value?.beforeDiscountFee!!)
             tvRangeNumberPercent.text = viewModel.uiState.insuranceSuggestionResponse.value?.discountList?.get(0)
             tvRangeNumberPercent2.text = viewModel.uiState.insuranceSuggestionResponse.value?.discountList?.get(1)
             tvGarenty1.text = viewModel.uiState.insuranceSuggestionResponse.value?.positiveList?.get(0)
@@ -83,15 +91,23 @@ class InsuranceRecommendFragment : BaseFragment<FragmentRecommendInsuranceBindin
         setInsuranceImg()
     }
 
+    private fun goToConsult(){
+        // 카카오톡 채널 추가하기 URL
+        val url = TalkApiClient.instance.chatChannelUrl(CHANNEL_ID)
+
+        // CustomTabs 로 열기
+        KakaoCustomTabsClient.openWithDefault(requireContext(), url)
+    }
+
     private fun setInsuranceImg(){
         var drawable: Int = 0
         val company = company
         when (company) {
-            "DB손해보험" -> drawable = R.drawable.ic_db_v3
-            "KB손해보험" -> drawable = R.drawable.ic_kb_v3
-            "현대해상" -> drawable = R.drawable.ic_hyundai_v3
-            "삼성화재" -> drawable = R.drawable.ic_samsung_v3
-            "메리츠" -> drawable = R.drawable.ic_meritz_v3
+            "DB손해보험" -> drawable = R.drawable.ic_db_recommend
+            "KB손해보험" -> drawable = R.drawable.ic_kb_recommend
+            "현대해상" -> drawable = R.drawable.ic_hyundai_recommend
+            "삼성화재" -> drawable = R.drawable.ic_samsung_recommend
+            "메리츠" -> drawable = R.drawable.ic_meritz_recommend
             else -> drawable = R.drawable.ic_db_v3
         }
         binding.ivCompany.setImageResource(drawable)
