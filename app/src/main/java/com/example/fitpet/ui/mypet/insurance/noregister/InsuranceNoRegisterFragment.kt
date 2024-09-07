@@ -3,6 +3,8 @@ package com.example.fitpet.ui.mypet.insurance.noregister
 import android.os.Handler
 import android.os.Looper
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceNoPetBinding
 import com.example.fitpet.databinding.FragmentInsuranceNoRegisterBinding
@@ -23,6 +25,7 @@ import javax.inject.Inject
 class InsuranceNoRegisterFragment : BaseFragment<FragmentInsuranceNoRegisterBinding, InsuranceNoRegisterPageState, InsuranceNoRegisterViewModel>(
     FragmentInsuranceNoRegisterBinding::inflate
 ) {
+    private val mypetMainViewModel: MypetMainViewModel by viewModels({ requireParentFragment() })
     override val viewModel: InsuranceNoRegisterViewModel by viewModels()
 
     @Inject
@@ -32,7 +35,7 @@ class InsuranceNoRegisterFragment : BaseFragment<FragmentInsuranceNoRegisterBind
         InsuranceNoRegisterRVA(
             resourceProvider = resourceProvider,
             onClicked = { insurance ->
-                //navigate
+                goToRecommend(viewModel.getFirstPet()!!,insurance.priceId, insurance.insuranceCompany)
             }
         )
     }
@@ -42,9 +45,14 @@ class InsuranceNoRegisterFragment : BaseFragment<FragmentInsuranceNoRegisterBind
             vm = viewModel
             lifecycleOwner = viewLifecycleOwner
         }
-        Handler(Looper.getMainLooper()).postDelayed({
-            binding.fabInsuranceKakaoBig.shrink()
-        }, 5000)
+        lifecycleScope.launch {
+            delay(5000)
+            if (isAdded && view != null) {
+                binding.fabInsuranceKakaoBig.shrink()
+            }
+        }
+
+        viewModel.loadPetData()
         initInsuranceNoRegisterRVAdapter()
         viewModel.updatePriceStart(56000)
         viewModel.updatePriceEnd(60000)
@@ -113,6 +121,10 @@ class InsuranceNoRegisterFragment : BaseFragment<FragmentInsuranceNoRegisterBind
 
         // CustomTabs 로 열기
         KakaoCustomTabsClient.openWithDefault(requireContext(), url)
+    }
+
+    private fun goToRecommend(petId: Int, priceId: Int, company:String) {
+        mypetMainViewModel.onInsuranceRecommendFragmentClick(petId, priceId, company)
     }
 
     companion object{
