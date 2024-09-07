@@ -2,6 +2,7 @@ package com.example.fitpet.data.repositoryImpl
 
 import com.example.fitpet.data.repository.ChargeRepository
 import com.example.fitpet.data.service.ChargeService
+import com.example.fitpet.model.request.ChargeInsuranceRequest
 import com.example.fitpet.model.response.ChargeUploadResponse
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -29,6 +30,23 @@ class ChargeRepositoryImpl @Inject constructor(
                     response.data
                 } else {
                     throw RuntimeException("Charge Img Upload Failed -> ${response.status}")
+                }
+            }
+        )
+    }
+
+    override suspend fun chargeInsurance(
+        petId: Int,
+        request: ChargeInsuranceRequest
+    ): Flow<Result<Unit>> = flow {
+        emit(
+            runCatching {
+                val response = chargeService.chargeInsurance(petId, request)
+
+                if (response.success) {
+                    response.data
+                } else {
+                    throw RuntimeException("Charge Insurance Failed -> ${response.status}")
                 }
             }
         )

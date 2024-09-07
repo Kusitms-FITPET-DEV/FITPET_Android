@@ -15,7 +15,7 @@ object Endpoints {
     }
 
     object Charge {
-        private const val CHARGE = "/charge"
+        const val CHARGE = "/charge"
         const val UPLOAD = "$CHARGE/upload"
     }
 }
