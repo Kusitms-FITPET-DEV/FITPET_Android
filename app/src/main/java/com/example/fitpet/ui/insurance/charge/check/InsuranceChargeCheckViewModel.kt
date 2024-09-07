@@ -9,6 +9,7 @@ import com.example.fitpet.ui.model.InsuranceCharge
 import com.example.fitpet.util.ResourceProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -51,7 +52,8 @@ class InsuranceChargeCheckViewModel @Inject constructor(
             with(uiState) {
                 val request = ChargeInsuranceRequest(
                     causeType,
-                    hospitalVisitDate,
+//                    hospitalVisitDate,
+                    "2024-09-01",
                     receiptUrl,
                     medicalExpensesUrl,
                     etcUrl,
@@ -65,8 +67,10 @@ class InsuranceChargeCheckViewModel @Inject constructor(
                     optionAgree
                 )
 
-                chargeRepository.chargeInsurance(petId, request).collect {
-                    resultResponse(it, { goToFinishPage() })
+                chargeRepository.chargeInsurance(12, request).collect {
+                    resultResponse(it, {
+                        Timber.d("[보험금 청구] 서버통신 성공")
+                        goToFinishPage() })
                 }
             }
         }
