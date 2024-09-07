@@ -113,8 +113,15 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainBinding, MypetMainPageSt
     }
 
     private fun goToCompensation() {
-        val action = MypetMainFragmentDirections.actionMypetToInsuranceCompensation()
-        navigator.navigate(action)
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiState.petCount.collect { petCount ->
+                    val petInfo = petCount?.petList?.get(0)?.petId ?: 0
+                    val action = MypetMainFragmentDirections.actionMypetToInsuranceCompensation(petInfo)
+                    navigator.navigate(action)
+                }
+            }
+        }
     }
 
     private fun goToInsuranceCharge() {

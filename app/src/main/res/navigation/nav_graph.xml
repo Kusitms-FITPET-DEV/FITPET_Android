@@ -223,6 +223,10 @@
         android:layout="@layout/fragment_insurance_compensation"
         tools:layout="@layout/fragment_insurance_compensation">
 
+        <argument
+            android:name="petId"
+            app:argType="integer"/>
+
     </fragment>
 
     <fragment
