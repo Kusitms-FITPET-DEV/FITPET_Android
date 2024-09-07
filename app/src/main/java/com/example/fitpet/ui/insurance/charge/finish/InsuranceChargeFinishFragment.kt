@@ -44,7 +44,7 @@ class InsuranceChargeFinishFragment: BaseFragment<FragmentInsuranceChargeCheckFi
     }
 
     private fun goToCompensationPage() {
-        val action = InsuranceChargeFinishFragmentDirections.actionInsuranceFinishToCompensation()
-        findNavController().navigate(action)
+//        val action = InsuranceChargeFinishFragmentDirections.actionInsuranceFinishToCompensation()
+//        findNavController().navigate(action)
     }
 }
