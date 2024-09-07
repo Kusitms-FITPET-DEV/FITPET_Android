@@ -13,4 +13,8 @@ object Endpoints {
         const val PETS = "/pets"
         const val SEARCH = "$PETS/breeds/search"
     }
+
+    object PetLife{
+        const val HOME = "/home"
+    }
 }
