@@ -10,4 +10,5 @@ sealed class InsuranceChargeDocumentEvent: Event {
     data object ClickDeleteDetailBtn: InsuranceChargeDocumentEvent()
     data object ClickDeleteEtcBtn: InsuranceChargeDocumentEvent()
     data object GoToAccountPage: InsuranceChargeDocumentEvent()
+    data object UploadChargeImg: InsuranceChargeDocumentEvent()
 }

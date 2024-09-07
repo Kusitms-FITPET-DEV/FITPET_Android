@@ -1,25 +1,34 @@
 package com.example.fitpet.ui.insurance.charge.check
 
+import androidx.lifecycle.viewModelScope
 import com.example.fitpet.R
 import com.example.fitpet.base.BaseViewModel
+import com.example.fitpet.data.repository.ChargeRepository
+import com.example.fitpet.model.request.ChargeInsuranceRequest
 import com.example.fitpet.ui.model.InsuranceCharge
 import com.example.fitpet.util.ResourceProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import timber.log.Timber
+import java.text.SimpleDateFormat
+import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
 class InsuranceChargeCheckViewModel @Inject constructor(
-    private val resourceProvider: ResourceProvider
-): BaseViewModel<InsuranceChargeCheckPageState>() {
+    private val resourceProvider: ResourceProvider,
+    private val chargeRepository: ChargeRepository
+) : BaseViewModel<InsuranceChargeCheckPageState>() {
 
     override val uiState = InsuranceChargeCheckPageState()
 
     fun setInsuranceData(insuranceArgument: InsuranceCharge) {
         with (uiState) {
-            // TODO targetName, phone은 추후 데이터 넘겨받은 후 구현
-//            targetName =
+            petId = insuranceArgument.petId
+            targetName = insuranceArgument.targetName
             causeType = insuranceArgument.causeType
             hospitalVisitDate = insuranceArgument.hospitalVisitDate
+            hospitalVisitDateBindingFormat = formatDate(insuranceArgument.hospitalVisitDate)
             receiptUrl = insuranceArgument.receiptUrl
             medicalExpensesUrl = insuranceArgument.medicalExpensesUrl
             etcUrl = insuranceArgument.etcUrl
@@ -27,7 +36,6 @@ class InsuranceChargeCheckViewModel @Inject constructor(
             accountNumber = insuranceArgument.accountNumber
             contactMethodMsg = insuranceArgument.contactMethodMsg
             contactMethodEmail = insuranceArgument.contactMethodEmail
-//            phone
             essentialAgree = insuranceArgument.essentialAgree
             optionAgree = insuranceArgument.optionAgree
 
@@ -42,6 +50,42 @@ class InsuranceChargeCheckViewModel @Inject constructor(
     }
 
     fun onClickFinishBtn() {
+        viewModelScope.launch {
+            with(uiState) {
+                val request = ChargeInsuranceRequest(
+                    causeType,
+                    hospitalVisitDate,
+                    receiptUrl,
+                    medicalExpensesUrl,
+                    etcUrl,
+                    accountOwner,
+                    accountBank,
+                    accountNumber,
+                    contactMethodMsg,
+                    contactMethodEmail,
+                    phone,
+                    essentialAgree,
+                    optionAgree
+                )
+
+                chargeRepository.chargeInsurance(petId, request).collect {
+                    resultResponse(it, {
+                        Timber.d("[보험금 청구] 서버통신 성공")
+                        goToFinishPage() })
+                }
+            }
+        }
+    }
+
+    private fun goToFinishPage() {
         emitEventFlow(InsuranceChargeCheckEvent.GoToFinishPage)
+    }
+
+    private fun formatDate(inputDate: String): String {
+        val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val outputFormat = SimpleDateFormat("yyyy. MM. dd", Locale.getDefault())
+
+        val date = inputFormat.parse(inputDate)
+        return outputFormat.format(date)
     }
 }

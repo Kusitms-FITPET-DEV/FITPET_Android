@@ -17,4 +17,9 @@ object Endpoints {
     object PetLife{
         const val HOME = "/home"
     }
+
+    object Charge {
+        const val CHARGE = "/charge"
+        const val UPLOAD = "$CHARGE/upload"
+    }
 }

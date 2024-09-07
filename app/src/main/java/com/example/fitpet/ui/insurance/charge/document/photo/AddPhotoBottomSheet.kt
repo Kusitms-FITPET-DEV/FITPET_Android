@@ -1,10 +1,12 @@
 package com.example.fitpet.ui.insurance.charge.document.photo
 
 import android.app.Activity.RESULT_OK
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
+import android.provider.OpenableColumns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,12 +21,14 @@ import com.example.fitpet.databinding.BottomSheetAddPhotoBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.coroutines.launch
 import java.io.File
+import java.io.FileOutputStream
+import java.io.InputStream
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
 class AddPhotoBottomSheet(
-    private val onSelectedPhoto: (String, Uri) -> Unit
+    private val onSelectedPhoto: (String, File) -> Unit
 ): BottomSheetDialogFragment() {
 
     private val viewModel by viewModels<AddPhotoViewModel>()
@@ -94,7 +98,8 @@ class AddPhotoBottomSheet(
 
     private fun handlePhotoUriResult(uri: Uri?) {
         uri?.let { selectedUri ->
-            onSelectedPhoto(selectedUri.toString(), selectedUri)
+            val file = uri.toFile(requireContext())
+            onSelectedPhoto(selectedUri.toString(), file)
             dismiss()
         }
     }
@@ -115,4 +120,26 @@ class AddPhotoBottomSheet(
         )
     }
 
+    fun Uri.toFile(context: Context): File {
+        val contentResolver = context.contentResolver
+        val fileName = getFileName(context) ?: "temp_file"
+        val file = File(context.cacheDir, fileName)
+        val inputStream: InputStream? = contentResolver.openInputStream(this)
+        val outputStream = FileOutputStream(file)
+        inputStream?.copyTo(outputStream)
+        inputStream?.close()
+        outputStream.close()
+        return file
+    }
+
+    private fun Uri.getFileName(context: Context): String? {
+        var name: String? = null
+        val cursor = context.contentResolver.query(this, null, null, null, null)
+        cursor?.use {
+            if (it.moveToFirst()) {
+                name = it.getString(it.getColumnIndexOrThrow(OpenableColumns.DISPLAY_NAME))
+            }
+        }
+        return name
+    }
 }
