@@ -2,9 +2,11 @@ package com.example.fitpet.di
 
 import com.example.fitpet.data.repository.AuthRepository
 import com.example.fitpet.data.repository.ChargeRepository
+import com.example.fitpet.data.repository.InsuranceDetailRepository
 import com.example.fitpet.data.repository.PetsRepository
 import com.example.fitpet.data.repositoryImpl.AuthRepositoryImpl
 import com.example.fitpet.data.repositoryImpl.ChargeRepositoryImpl
+import com.example.fitpet.data.repositoryImpl.InsuranceDetailRepositoryImpl
 import com.example.fitpet.data.repositoryImpl.PetsRepositoryImpl
 import dagger.Binds
 import dagger.Module
@@ -26,4 +28,8 @@ abstract class RepositoryModule {
     @Singleton
     @Binds
     abstract fun providesChargeUploadRepository(repositoryImpl: ChargeRepositoryImpl): ChargeRepository
+
+    @Singleton
+    @Binds
+    abstract fun proveidesInsuranceDetailRepository(repositoryImpl: InsuranceDetailRepositoryImpl): InsuranceDetailRepository
 }
