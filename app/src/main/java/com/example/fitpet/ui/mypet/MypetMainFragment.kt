@@ -89,7 +89,9 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainBinding, MypetMainPageSt
     }
 
     private fun goToInsuranceInfo() {
-        val action = MypetMainFragmentDirections.actionMypetToInsuranceInfoCheck()
+        // TODO 드롭다운 변경 이후 petId 로직 수정
+        val petInfo = viewModel.uiState.petCount.value?.petList?.get(2)?.petId ?: 0
+        val action = MypetMainFragmentDirections.actionMypetToInsuranceInfoCheck(petInfo)
         navigator.navigate(action)
     }
 

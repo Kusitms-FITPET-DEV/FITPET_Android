@@ -214,6 +214,10 @@
         android:layout="@layout/fragment_insurance_contract_check"
         tools:layout="@layout/fragment_insurance_contract_check">
 
+        <argument
+            android:name="petId"
+            app:argType="integer"/>
+
     </fragment>
 
     <fragment
