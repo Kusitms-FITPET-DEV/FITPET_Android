@@ -12,6 +12,8 @@ import com.example.fitpet.model.domain.insurance.main.MyPet
 import com.example.fitpet.ui.mypet.MypetMainViewModel
 import com.example.fitpet.ui.mypet.adapter.InsuranceNoRegisterRVA
 import com.example.fitpet.util.ResourceProvider
+import com.kakao.sdk.common.util.KakaoCustomTabsClient
+import com.kakao.sdk.talk.TalkApiClient
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -40,6 +42,9 @@ class InsuranceNoRegisterFragment : BaseFragment<FragmentInsuranceNoRegisterBind
             vm = viewModel
             lifecycleOwner = viewLifecycleOwner
         }
+        Handler(Looper.getMainLooper()).postDelayed({
+            binding.fabInsuranceKakaoBig.shrink()
+        }, 5000)
         initInsuranceNoRegisterRVAdapter()
         viewModel.updatePriceStart(56000)
         viewModel.updatePriceEnd(60000)
@@ -63,10 +68,6 @@ class InsuranceNoRegisterFragment : BaseFragment<FragmentInsuranceNoRegisterBind
             InsuranceNoRegisterEvent.OpenMyPetDialog -> openMyPetDialog()
             InsuranceNoRegisterEvent.ShowNothing -> showNothing()
         }
-    }
-
-    private fun goToConsult() {
-        //kakao 채널 연결
     }
 
     private fun changeRange() {
@@ -104,6 +105,18 @@ class InsuranceNoRegisterFragment : BaseFragment<FragmentInsuranceNoRegisterBind
     fun setMyPet(){
         val pet = MyPet(PetType.DOG, "보리", 11, "시츄")
         viewModel.updatePetInfo(pet)
+    }
+
+    private fun goToConsult(){
+        // 카카오톡 채널 추가하기 URL
+        val url = TalkApiClient.instance.chatChannelUrl(CHANNEL_ID)
+
+        // CustomTabs 로 열기
+        KakaoCustomTabsClient.openWithDefault(requireContext(), url)
+    }
+
+    companion object{
+        const val CHANNEL_ID = "_cxdAfG"
     }
 
 }
