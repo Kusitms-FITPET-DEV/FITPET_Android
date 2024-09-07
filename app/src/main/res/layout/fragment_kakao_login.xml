@@ -18,13 +18,13 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="180dp"
+            android:layout_height="0dp"
             android:orientation="vertical"
             android:gravity="center"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/btnKaKaoLinear">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -34,7 +34,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="54dp"
                 android:text="@string/kakao_login_title"
                 android:textAppearance="@style/b1_S"/>
 
@@ -49,6 +49,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/btnKaKaoLinear"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="28dp"
