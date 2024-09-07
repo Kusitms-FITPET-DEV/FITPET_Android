@@ -141,6 +141,12 @@
         <item name="fontFamily">@font/pretendard_medium</item>
     </style>
 
+    <style name="describe_b6">
+        <item name="android:textSize">10sp</item>
+        <item name="lineHeight">14dp</item>
+        <item name="fontFamily">@font/pretendard_medium</item>
+    </style>
+
     <style name="insurance_pet_info">
         <item name="android:textSize">14sp</item>
         <item name="lineHeight">16dp</item>
