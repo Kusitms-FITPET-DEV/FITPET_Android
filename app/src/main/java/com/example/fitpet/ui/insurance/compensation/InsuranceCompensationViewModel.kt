@@ -54,7 +54,7 @@ class InsuranceCompensationViewModel @Inject constructor(
         val tempList = ArrayList<CompensationListItem>()
         for (i in 0 until data.compensationlist.size) {
             with (data.compensationlist[i]) {
-                tempList.add(CompensationListItem(compensationType, progress, applyDate, chargePerson, receiveMoney))
+                tempList.add(CompensationListItem(i, compensationType, progress, applyDate, chargePerson, receiveMoney))
             }
         }
 
