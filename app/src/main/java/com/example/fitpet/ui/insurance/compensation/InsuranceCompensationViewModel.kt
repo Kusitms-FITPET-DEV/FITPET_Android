@@ -35,7 +35,7 @@ class InsuranceCompensationViewModel @Inject constructor(
 
     fun getCompensationList(petId: Int) {
         viewModelScope.launch {
-            insuranceDetailRepository.getInsuranceDetail(petId).collect { result ->
+            insuranceDetailRepository.getInsuranceCompensation(petId).collect { result ->
                 resultResponse(result, { data ->
                     updateCompensationData(data)
                 })
