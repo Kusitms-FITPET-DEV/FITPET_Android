@@ -13,9 +13,6 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import com.example.fitpet.ui.mypet.insurance.main.InsuranceMainEvent
 import com.example.fitpet.ui.onboarding.OnBoardingPageState
-import com.example.fitpet.util.ResourceProvider
-import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import timber.log.Timber
 import javax.inject.Inject
@@ -105,6 +102,7 @@ class MypetMainViewModel @Inject constructor(
                 }
             }
         }
+    }
 
     fun onClickContractCheckBtn() {
         emitEventFlow(MypetMainEvent.GoToInsuranceInfoCheckPage)

@@ -99,9 +99,6 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainBinding, MypetMainPageSt
         initListVPAdapter(isNoPet = false, isNoRegister = false)
     }
 
-    private fun initListVPAdapter(isNoPet: Boolean, isNoRegister: Boolean) {
-        _mypetVPA = MypetMainVPA(this, isNoPet, isNoRegister)
-
     private fun goToInsuranceInfo() {
         val action = MypetMainFragmentDirections.actionMypetToInsuranceInfoCheck()
         navigator.navigate(action)
@@ -117,8 +114,8 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainBinding, MypetMainPageSt
         navigator.navigate(action)
     }
 
-    private fun initListVPAdapter() {
-        _mypetVPA = MypetMainVPA(this)
+    private fun initListVPAdapter(isNoPet: Boolean, isNoRegister: Boolean) {
+        _mypetVPA = MypetMainVPA(this, isNoPet, isNoRegister)
         with(binding) {
             vpMypetMain.adapter = mypetVPA
             TabLayoutMediator(tabMypetMain, vpMypetMain) { tab, position ->
