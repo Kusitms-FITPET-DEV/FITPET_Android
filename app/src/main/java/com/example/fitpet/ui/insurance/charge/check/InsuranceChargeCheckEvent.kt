@@ -1,4 +1,4 @@
-package com.example.fitpet.ui.insurance.charge.finish
+package com.example.fitpet.ui.insurance.charge.check
 
 import com.example.fitpet.Event
 

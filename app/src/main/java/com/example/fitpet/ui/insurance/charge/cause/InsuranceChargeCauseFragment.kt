@@ -23,6 +23,7 @@ class InsuranceChargeCauseFragment :
     override fun initView() {
         binding.viewModel = viewModel
         viewModel.initSetCurrentDate()
+        binding.tbInsuranceCharge.btnTopBarInsuranceChargeBack.setOnClickListener { findNavController().popBackStack() }
     }
 
     override fun initState() {
@@ -52,7 +53,7 @@ class InsuranceChargeCauseFragment :
 
     private fun goToDocumentPage() {
         val action = InsuranceChargeCauseFragmentDirections.actionInsuranceChargeCauseToDocument(setCauseData())
-        findNavController().navigate(action, NavOptions.Builder().build())
+        findNavController().navigate(action)
     }
 
     private fun setCauseData(): InsuranceCharge {

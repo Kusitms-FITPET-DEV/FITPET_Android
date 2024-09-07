@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.fitpet.ui.insurance.info.contract.InsuranceInfoContractViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_primary">
+
+<!--        <include-->
+<!--            android:id="@+id/insurance_contract_contractor"-->
+<!--            layout="@layout/item_insurance_contract_check"-->
+<!--            android:layout_marginTop="40dp"-->
+<!--            app:layout_constraintTop_toTopOf="parent"/>-->
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_contract_contractor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginHorizontal="20dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                android:id="@+id/tv_insurance_contract_check_contractor_title"
+                android:layout_width="84dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/b5"
+                android:textColor="@color/black"
+                android:paddingStart="12dp"
+                android:paddingVertical="12dp"
+                android:text="@string/insurance_contract_contractor"
+                android:background="@color/pastel_dark_blue"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_insurance_contract_check_contractor_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/b5"
+                android:textColor="@color/black"
+                android:paddingStart="12dp"
+                android:paddingVertical="12dp"
+                android:background="@color/bg_white"
+                android:text="@{viewModel.uiState.contractData.contractor}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_insurance_contract_check_contractor_title"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                app:dividerColor="@color/bg_white"
+                app:layout_constraintTop_toBottomOf="@id/tv_insurance_contract_check_contractor_title"
+                app:layout_constraintStart_toStartOf="@id/tv_insurance_contract_check_contractor_title"
+                app:layout_constraintEnd_toEndOf="@id/tv_insurance_contract_check_contractor_title"/>
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                app:dividerColor="@color/neutral_200"
+                app:layout_constraintTop_toBottomOf="@id/tv_insurance_contract_check_contractor_content"
+                app:layout_constraintStart_toStartOf="@id/tv_insurance_contract_check_contractor_content"
+                app:layout_constraintEnd_toEndOf="@id/tv_insurance_contract_check_contractor_content"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_contract_insurant"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/layout_contract_contractor"
+            app:layout_constraintStart_toStartOf="@id/layout_contract_contractor"
+            app:layout_constraintEnd_toEndOf="@id/layout_contract_contractor">
+
+            <TextView
+                android:id="@+id/tv_insurance_contract_check_insurant_title"
+                android:layout_width="84dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/b5"
+                android:textColor="@color/black"
+                android:paddingStart="12dp"
+                android:paddingVertical="12dp"
+                android:text="@string/insurance_contract_insurant"
+                android:background="@color/pastel_dark_blue"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_insurance_contract_check_insurant_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/b5"
+                android:textColor="@color/black"
+                android:paddingStart="12dp"
+                android:paddingVertical="12dp"
+                android:background="@color/bg_white"
+                android:text="@{viewModel.uiState.contractData.insurant}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_insurance_contract_check_insurant_title"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                app:dividerColor="@color/bg_white"
+                app:layout_constraintTop_toBottomOf="@id/tv_insurance_contract_check_insurant_title"
+                app:layout_constraintStart_toStartOf="@id/tv_insurance_contract_check_insurant_title"
+                app:layout_constraintEnd_toEndOf="@id/tv_insurance_contract_check_insurant_title"/>
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                app:dividerColor="@color/neutral_200"
+                app:layout_constraintTop_toBottomOf="@id/tv_insurance_contract_check_insurant_content"
+                app:layout_constraintStart_toStartOf="@id/tv_insurance_contract_check_insurant_content"
+                app:layout_constraintEnd_toEndOf="@id/tv_insurance_contract_check_insurant_content"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_contract_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/layout_contract_insurant"
+            app:layout_constraintStart_toStartOf="@id/layout_contract_contractor"
+            app:layout_constraintEnd_toEndOf="@id/layout_contract_contractor">
+
+            <TextView
+                android:id="@+id/tv_insurance_contract_check_date_title"
+                android:layout_width="84dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/b5"
+                android:textColor="@color/black"
+                android:paddingStart="12dp"
+                android:paddingVertical="12dp"
+                android:text="@string/insurance_contract_date"
+                android:background="@color/pastel_dark_blue"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_insurance_contract_check_date_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/b5"
+                android:textColor="@color/black"
+                android:paddingStart="12dp"
+                android:paddingVertical="12dp"
+                android:background="@color/bg_white"
+                android:text="@{viewModel.uiState.contractData.startDate + `~` + viewModel.uiState.contractData.endDate}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_insurance_contract_check_date_title"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                app:dividerColor="@color/bg_white"
+                app:layout_constraintTop_toBottomOf="@id/tv_insurance_contract_check_date_title"
+                app:layout_constraintStart_toStartOf="@id/tv_insurance_contract_check_date_title"
+                app:layout_constraintEnd_toEndOf="@id/tv_insurance_contract_check_date_title"/>
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                app:dividerColor="@color/neutral_200"
+                app:layout_constraintTop_toBottomOf="@id/tv_insurance_contract_check_date_content"
+                app:layout_constraintStart_toStartOf="@id/tv_insurance_contract_check_date_content"
+                app:layout_constraintEnd_toEndOf="@id/tv_insurance_contract_check_date_content"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_contract_updateCycle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/layout_contract_date"
+            app:layout_constraintStart_toStartOf="@id/layout_contract_contractor"
+            app:layout_constraintEnd_toEndOf="@id/layout_contract_contractor">
+
+            <TextView
+                android:id="@+id/tv_insurance_contract_check_updateCycle_title"
+                android:layout_width="84dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/b5"
+                android:textColor="@color/black"
+                android:paddingStart="12dp"
+                android:paddingVertical="12dp"
+                android:text="@string/insurance_contract_updateCycle"
+                android:background="@color/pastel_dark_blue"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_insurance_contract_check_updateCycle_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/b5"
+                android:textColor="@color/black"
+                android:paddingStart="12dp"
+                android:paddingVertical="12dp"
+                android:background="@color/bg_white"
+                android:text="@{viewModel.uiState.contractData.updateCycle}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_insurance_contract_check_updateCycle_title"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                app:dividerColor="@color/bg_white"
+                app:layout_constraintTop_toBottomOf="@id/tv_insurance_contract_check_updateCycle_title"
+                app:layout_constraintStart_toStartOf="@id/tv_insurance_contract_check_updateCycle_title"
+                app:layout_constraintEnd_toEndOf="@id/tv_insurance_contract_check_updateCycle_title"/>
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                app:dividerColor="@color/neutral_200"
+                app:layout_constraintTop_toBottomOf="@id/tv_insurance_contract_check_updateCycle_content"
+                app:layout_constraintStart_toStartOf="@id/tv_insurance_contract_check_updateCycle_content"
+                app:layout_constraintEnd_toEndOf="@id/tv_insurance_contract_check_updateCycle_content"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_contract_insuranceFee"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/layout_contract_updateCycle"
+            app:layout_constraintStart_toStartOf="@id/layout_contract_contractor"
+            app:layout_constraintEnd_toEndOf="@id/layout_contract_contractor">
+
+            <TextView
+                android:id="@+id/tv_insurance_contract_check_insuranceFee_title"
+                android:layout_width="84dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/b5"
+                android:textColor="@color/black"
+                android:paddingStart="12dp"
+                android:paddingVertical="12dp"
+                android:text="@string/insurance_contract_insuranceFee"
+                android:background="@color/pastel_dark_blue"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_insurance_contract_check_insuranceFee_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/b5"
+                android:textColor="@color/black"
+                android:paddingStart="12dp"
+                android:paddingVertical="12dp"
+                android:background="@color/bg_white"
+                android:text="@{Integer.toString(viewModel.uiState.contractData.insuranceFee)}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_insurance_contract_check_insuranceFee_title"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                app:dividerColor="@color/bg_white"
+                app:layout_constraintTop_toBottomOf="@id/tv_insurance_contract_check_insuranceFee_title"
+                app:layout_constraintStart_toStartOf="@id/tv_insurance_contract_check_insuranceFee_title"
+                app:layout_constraintEnd_toEndOf="@id/tv_insurance_contract_check_insuranceFee_title"/>
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                app:dividerColor="@color/neutral_200"
+                app:layout_constraintTop_toBottomOf="@id/tv_insurance_contract_check_insuranceFee_content"
+                app:layout_constraintStart_toStartOf="@id/tv_insurance_contract_check_insuranceFee_content"
+                app:layout_constraintEnd_toEndOf="@id/tv_insurance_contract_check_insuranceFee_content"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_contract_priceRate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/layout_contract_insuranceFee"
+            app:layout_constraintStart_toStartOf="@id/layout_contract_contractor"
+            app:layout_constraintEnd_toEndOf="@id/layout_contract_contractor">
+
+            <TextView
+                android:id="@+id/tv_insurance_contract_check_priceRate_title"
+                android:layout_width="84dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/b5"
+                android:textColor="@color/black"
+                android:paddingStart="12dp"
+                android:paddingVertical="12dp"
+                android:text="@string/insurance_contract_priceRate"
+                android:background="@color/pastel_dark_blue"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_insurance_contract_check_priceRate_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/b5"
+                android:textColor="@color/black"
+                android:paddingStart="12dp"
+                android:paddingVertical="12dp"
+                android:background="@color/bg_white"
+                android:text="@{viewModel.uiState.contractData.priceRate}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_insurance_contract_check_priceRate_title"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                app:dividerColor="@color/bg_white"
+                app:layout_constraintTop_toBottomOf="@id/tv_insurance_contract_check_priceRate_title"
+                app:layout_constraintStart_toStartOf="@id/tv_insurance_contract_check_priceRate_title"
+                app:layout_constraintEnd_toEndOf="@id/tv_insurance_contract_check_priceRate_title"/>
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                app:dividerColor="@color/neutral_200"
+                app:layout_constraintTop_toBottomOf="@id/tv_insurance_contract_check_priceRate_content"
+                app:layout_constraintStart_toStartOf="@id/tv_insurance_contract_check_priceRate_content"
+                app:layout_constraintEnd_toEndOf="@id/tv_insurance_contract_check_priceRate_content"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_contract_payWay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/layout_contract_priceRate"
+            app:layout_constraintStart_toStartOf="@id/layout_contract_contractor"
+            app:layout_constraintEnd_toEndOf="@id/layout_contract_contractor">
+
+            <TextView
+                android:id="@+id/tv_insurance_contract_check_payWay_title"
+                android:layout_width="84dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/b5"
+                android:textColor="@color/black"
+                android:paddingStart="12dp"
+                android:paddingVertical="12dp"
+                android:text="@string/insurance_contract_payWay"
+                android:background="@color/pastel_dark_blue"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_insurance_contract_check_payWay_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/b5"
+                android:textColor="@color/black"
+                android:paddingStart="12dp"
+                android:paddingVertical="12dp"
+                android:background="@color/bg_white"
+                android:text="@{viewModel.uiState.contractData.payWay}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_insurance_contract_check_payWay_title"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                app:dividerColor="@color/bg_white"
+                app:layout_constraintTop_toBottomOf="@id/tv_insurance_contract_check_payWay_title"
+                app:layout_constraintStart_toStartOf="@id/tv_insurance_contract_check_payWay_title"
+                app:layout_constraintEnd_toEndOf="@id/tv_insurance_contract_check_payWay_title"/>
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                app:dividerColor="@color/neutral_200"
+                app:layout_constraintTop_toBottomOf="@id/tv_insurance_contract_check_payWay_content"
+                app:layout_constraintStart_toStartOf="@id/tv_insurance_contract_check_payWay_content"
+                app:layout_constraintEnd_toEndOf="@id/tv_insurance_contract_check_payWay_content"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_contract_bank"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/layout_contract_payWay"
+            app:layout_constraintStart_toStartOf="@id/layout_contract_contractor"
+            app:layout_constraintEnd_toEndOf="@id/layout_contract_contractor">
+
+            <TextView
+                android:id="@+id/tv_insurance_contract_check_bank_title"
+                android:layout_width="84dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/b5"
+                android:textColor="@color/black"
+                android:paddingStart="12dp"
+                android:paddingVertical="12dp"
+                android:text="@string/insurance_contract_bank"
+                android:background="@color/pastel_dark_blue"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_insurance_contract_check_bank_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/b5"
+                android:textColor="@color/black"
+                android:paddingStart="12dp"
+                android:paddingVertical="12dp"
+                android:background="@color/bg_white"
+                android:text="@{viewModel.uiState.contractData.bank + `(` + viewModel.uiState.contractData.bankAccount + `)`}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_insurance_contract_check_bank_title"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                app:dividerColor="@color/bg_white"
+                app:layout_constraintTop_toBottomOf="@id/tv_insurance_contract_check_bank_title"
+                app:layout_constraintStart_toStartOf="@id/tv_insurance_contract_check_bank_title"
+                app:layout_constraintEnd_toEndOf="@id/tv_insurance_contract_check_bank_title"/>
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                app:dividerColor="@color/neutral_200"
+                app:layout_constraintTop_toBottomOf="@id/tv_insurance_contract_check_bank_content"
+                app:layout_constraintStart_toStartOf="@id/tv_insurance_contract_check_bank_content"
+                app:layout_constraintEnd_toEndOf="@id/tv_insurance_contract_check_bank_content"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_contract_payCycle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/layout_contract_bank"
+            app:layout_constraintStart_toStartOf="@id/layout_contract_contractor"
+            app:layout_constraintEnd_toEndOf="@id/layout_contract_contractor">
+
+            <TextView
+                android:id="@+id/tv_insurance_contract_check_payCycle_title"
+                android:layout_width="84dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/b5"
+                android:textColor="@color/black"
+                android:paddingStart="12dp"
+                android:paddingVertical="12dp"
+                android:text="@string/insurance_contract_paycycle"
+                android:background="@color/pastel_dark_blue"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_insurance_contract_check_payCycle_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/b5"
+                android:textColor="@color/black"
+                android:paddingStart="12dp"
+                android:paddingVertical="12dp"
+                android:background="@color/bg_white"
+                android:text="@{viewModel.uiState.contractData.payCycle}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_insurance_contract_check_payCycle_title"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

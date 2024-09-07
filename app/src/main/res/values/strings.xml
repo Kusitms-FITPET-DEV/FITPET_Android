@@ -199,6 +199,8 @@
     <string name="insurance_charge_contact_title">안내 받을 연락 수단을\n모두 선택해 주세요</string>
     <string name="insurance_charge_contact_kakao">카카오톡</string>
     <string name="insurance_charge_contact_email">이메일</string>
+    <string name="insurance_charge_contact_both">알림톡/이메일</string>
+    <string name="insurance_charge_contact_talk">알림톡</string>
     <string name="insurance_charge_contact_email_hint">예) Hongildong@hanmail.com</string>
     <string name="method_kakao">KAKAO</string>
     <string name="method_email">EMAIL</string>
@@ -225,5 +227,40 @@
     <string name="insurance_charge_check_finish_content"><b>보상내역 확인</b>에서 심사 진행 상황을\n살펴 볼 수 있어요!</string>
     <string name="insurance_charge_check_finish_btn">보상 내역 확인하기</string>
     <string name="insurance_charge_check_finish_close">창 닫기</string>
+
+    <!--  InsuranceContractCheck  -->
+    <string name="insurance_name">삼성화재 위풍댕댕</string>
+    <string name="insurance_contract_check_top_bar">보험계약 확인</string>
+    <string name="insurance_contract">계약정보</string>
+    <string name="insurance_coverage">보장내용</string>
+    <string name="insurance_contract_contractor">계약자</string>
+    <string name="insurance_contract_insurant">피보험자</string>
+    <string name="insurance_contract_date">보험기간</string>
+    <string name="insurance_contract_updateCycle">갱신주기</string>
+    <string name="insurance_contract_insuranceFee">보험료</string>
+    <string name="insurance_contract_priceRate">보상비율</string>
+    <string name="insurance_contract_payWay">납입 방법</string>
+    <string name="insurance_contract_bank">납입 계좌</string>
+    <string name="insurance_contract_paycycle">납입 주기</string>
+    <string name="insurance_contract_dailyTreatLimit">치료비 1일 보상한도</string>
+    <string name="insurance_contract_dailySurgeryCostLimit">수술비 1일 보상한다</string>
+    <string name="insurance_coverage_yearReward">연간 보상한도</string>
+    <string name="insurance_contract_name">보장명</string>
+    <string name="insurance_contract_hipJointLimit">슬고관절 수술비</string>
+    <string name="insurance_contract_skinDisease">피부병</string>
+    <string name="insurance_contract_skinEtc">아포퀠/사이토포인트</string>
+    <string name="insurance_contract_oralCoverage">구강질환 보장</string>
+    <string name="insurance_contract_dentalCoverage">치과질환 보장</string>
+    <string name="insurance_contract_inspectionCoverage">MRI/CT검사 보장</string>
+    <string name="insurance_contract_foreignObjectRemoval">이물제거 보장</string>
+    <string name="insurance_contract_selfBurden">자기부담금</string>
+    <string name="insurance_contract_compensationLiability">반려견 배상책임</string>
+    <string name="insurance_contract_funeralAid">장례 지원금</string>
+
+    <!--  InsuranceCompensationCheck  -->
+    <string name="insurance_compensation_title">보상내역 확인</string>
+    <string name="insurance_compensation_page_title">보상내역을 확인할 수 있어요</string>
+    <string name="insurance_compensation_name_title">반려동물</string>
+    <string name="insurance_compensation_date_title">가입 기간</string>
 
 </resources>
