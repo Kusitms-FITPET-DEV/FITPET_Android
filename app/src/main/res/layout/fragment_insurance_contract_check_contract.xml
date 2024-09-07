@@ -15,12 +15,6 @@
         android:layout_height="match_parent"
         android:background="@color/bg_primary">
 
-<!--        <include-->
-<!--            android:id="@+id/insurance_contract_contractor"-->
-<!--            layout="@layout/item_insurance_contract_check"-->
-<!--            android:layout_marginTop="40dp"-->
-<!--            app:layout_constraintTop_toTopOf="parent"/>-->
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_contract_contractor"
             android:layout_width="0dp"
