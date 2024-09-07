@@ -116,7 +116,8 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainBinding, MypetMainPageSt
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.petCount.collect { petCount ->
-                    val petInfo = petCount?.petList?.get(0)?.petId ?: 0
+                    // TODO 드롭다운 변경 이후 petId 로직 수정
+                    val petInfo = petCount?.petList?.get(2)?.petId ?: 0
                     val action = MypetMainFragmentDirections.actionMypetToInsuranceCompensation(petInfo)
                     navigator.navigate(action)
                 }
@@ -132,7 +133,8 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainBinding, MypetMainPageSt
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.petCount.collect { petCount ->
-                    val petInfo = petCount?.petList?.get(0)
+                    // TODO 드롭다운 변경 이후 petId 로직 수정
+                    val petInfo = petCount?.petList?.get(2)
                     Timber.d("[보험금 청구] petId 테스트 -> ${petInfo?.petId} && ${petInfo?.name}")
                     val insurancePetData = InsuranceCharge(petId = petInfo?.petId ?: 0, targetName = petInfo?.name ?: "")
 
