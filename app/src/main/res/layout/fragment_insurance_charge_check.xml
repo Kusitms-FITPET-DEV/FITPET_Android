@@ -93,7 +93,7 @@
             android:textColor="@color/black"
             android:textAppearance="@style/b4"
             android:layout_marginEnd="28dp"
-            android:text="보리"
+            android:text="@{viewModel.uiState.targetName}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_insurance_charge_check_target_name_title"
             app:layout_constraintBottom_toBottomOf="@id/tv_insurance_charge_check_target_name_title"

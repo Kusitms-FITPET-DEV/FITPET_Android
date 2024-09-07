@@ -74,7 +74,7 @@ class InsuranceChargeDocumentFragment :
         val causeData = arguments.insuranceArgument
 
         with (viewModel.uiState) {
-            val documentData = InsuranceCharge(causeType = causeData.causeType, hospitalVisitDate = causeData.hospitalVisitDate, receiptUrl = receiptPhotoAPIUrl.value, medicalExpensesUrl = detailPhotoAPIUrl.value, etcUrl = etcPhotoAPIUrl.value)
+            val documentData = InsuranceCharge(petId = causeData.petId, targetName = causeData.targetName, causeType = causeData.causeType, hospitalVisitDate = causeData.hospitalVisitDate, receiptUrl = receiptPhotoAPIUrl.value, medicalExpensesUrl = detailPhotoAPIUrl.value, etcUrl = etcPhotoAPIUrl.value)
             return documentData
         }
     }

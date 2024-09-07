@@ -120,7 +120,7 @@ class InsuranceChargeAccountFragment: BaseFragment<FragmentInsuranceChargeAccoun
         val beforeData = arguments.insuranceArgument
 
         with (viewModel.uiState) {
-            val accountData = InsuranceCharge(causeType = beforeData.causeType, hospitalVisitDate = beforeData.hospitalVisitDate, receiptUrl = beforeData.receiptUrl, medicalExpensesUrl = beforeData.medicalExpensesUrl, etcUrl = beforeData.etcUrl, accountOwner = accountOwner.value, accountBank = accountBank.value, accountNumber = accountNumber.value)
+            val accountData = InsuranceCharge(petId = beforeData.petId, targetName = beforeData.targetName, causeType = beforeData.causeType, hospitalVisitDate = beforeData.hospitalVisitDate, receiptUrl = beforeData.receiptUrl, medicalExpensesUrl = beforeData.medicalExpensesUrl, etcUrl = beforeData.etcUrl, accountOwner = accountOwner.value, accountBank = accountBank.value, accountNumber = accountNumber.value)
             return accountData
         }
     }

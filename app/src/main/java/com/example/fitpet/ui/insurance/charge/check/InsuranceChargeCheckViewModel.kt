@@ -22,8 +22,8 @@ class InsuranceChargeCheckViewModel @Inject constructor(
 
     fun setInsuranceData(insuranceArgument: InsuranceCharge) {
         with (uiState) {
-            // TODO targetName, phone은 추후 데이터 넘겨받은 후 구현
-//            targetName =
+            petId = insuranceArgument.petId
+            targetName = insuranceArgument.targetName
             causeType = insuranceArgument.causeType
             hospitalVisitDate = insuranceArgument.hospitalVisitDate
             receiptUrl = insuranceArgument.receiptUrl
@@ -67,7 +67,7 @@ class InsuranceChargeCheckViewModel @Inject constructor(
                     optionAgree
                 )
 
-                chargeRepository.chargeInsurance(12, request).collect {
+                chargeRepository.chargeInsurance(petId, request).collect {
                     resultResponse(it, {
                         Timber.d("[보험금 청구] 서버통신 성공")
                         goToFinishPage() })
