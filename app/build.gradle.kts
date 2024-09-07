@@ -96,6 +96,7 @@ dependencies {
 
     // kakao
     implementation(libs.kakao.auth)
+    implementation(libs.kakao.channel)
 
     // Lottie
     implementation(libs.lottie)
