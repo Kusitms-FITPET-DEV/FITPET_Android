@@ -16,14 +16,18 @@ class ContactInfoInputViewModel @Inject constructor(
     private val petsRepository: PetsRepository
 ) : BaseViewModel<ContactInfoInputPageState>() {
     private val contactInfoStateFlow: MutableStateFlow<String> = MutableStateFlow("")
+    private val isMaxLengthStateFlow: MutableStateFlow<Boolean> = MutableStateFlow(false)
 
     override val uiState: ContactInfoInputPageState = ContactInfoInputPageState(
-        contactInfo = contactInfoStateFlow.asStateFlow()
+        contactInfo = contactInfoStateFlow.asStateFlow(),
+        isMaxLength = isMaxLengthStateFlow.asStateFlow()
     )
 
     fun onTextChanged(input: CharSequence) {
         viewModelScope.launch {
             contactInfoStateFlow.update { input.toString() }
+            if (input.toString().length == 13) isMaxLengthStateFlow.update { true }
+            else isMaxLengthStateFlow.update { false }
         }
     }
 
