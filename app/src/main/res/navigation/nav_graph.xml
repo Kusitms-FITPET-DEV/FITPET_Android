@@ -42,6 +42,13 @@
     </fragment>
 
     <fragment
+        android:id="@+id/fragmentInsuranceNoPet"
+        android:name="com.example.fitpet.ui.mypet.insurance.nopet.InsuranceNoPetFragment"
+        android:label="fragmentInsuranceNoPet"
+        android:layout="@layout/fragment_insurance_no_pet">
+    </fragment>
+
+    <fragment
         android:id="@+id/fragmentPetNameInput"
         android:name="com.example.fitpet.ui.registration.petName.PetNameInputFragment"
         android:label="fragmentPetNameInput"
@@ -165,8 +172,130 @@
         <action
             android:id="@+id/action_mypet_to_pet_name_input"
             app:destination="@id/fragmentPetNameInput"/>
+
+        <action
+            android:id="@+id/action_mypet_to_insurance_info_check"
+            app:destination="@id/fragmentInsuranceInfoCheck"/>
+
+        <action
+            android:id="@+id/action_mypet_to_insurance_compensation"
+            app:destination="@id/fragmentInsuranceCompensation"/>
+
+        <action
+            android:id="@+id/action_mypet_to_insurance_charge_cause"
+            app:destination="@id/fragmentInsuranceChargeCause"/>
     </fragment>
 
-    <include app:graph="@navigation/insurance_no_pet_nav_graph" />
+    <fragment
+        android:id="@+id/fragmentInsuranceInfoCheck"
+        android:name="com.example.fitpet.ui.insurance.info.InsuranceContractCheckFragment"
+        android:label="fragmentInsuranceInfoCheck"
+        android:layout="@layout/fragment_insurance_contract_check"
+        tools:layout="@layout/fragment_insurance_contract_check">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentInsuranceCompensation"
+        android:name="com.example.fitpet.ui.insurance.compensation.InsuranceCompensationFragment"
+        android:label="fragmentInsuranceCompensation"
+        android:layout="@layout/fragment_insurance_compensation"
+        tools:layout="@layout/fragment_insurance_compensation">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentInsuranceChargeCause"
+        android:name="com.example.fitpet.ui.insurance.charge.cause.InsuranceChargeCauseFragment"
+        android:label="fragmentInsuranceChargeCause"
+        android:layout="@layout/fragment_insurance_charge_cause"
+        tools:layout="@layout/fragment_insurance_charge_cause">
+
+        <action
+            android:id="@+id/action_insurance_charge_cause_to_document"
+            app:destination="@id/fragmentInsuranceChargeDocument"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentInsuranceChargeDocument"
+        android:name="com.example.fitpet.ui.insurance.charge.document.InsuranceChargeDocumentFragment"
+        android:label="fragmentInsuranceChargeDocument"
+        android:layout="@layout/fragment_insurance_charge_document"
+        tools:layout="@layout/fragment_insurance_charge_document">
+
+        <action
+            android:id="@+id/action_insurance_charge_document_to_account"
+            app:destination="@id/fragmentInsuranceChargeAccount"/>
+        <argument
+            android:name="insuranceArgument"
+            app:argType="com.example.fitpet.ui.model.InsuranceCharge"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentInsuranceChargeAccount"
+        android:name="com.example.fitpet.ui.insurance.charge.account.InsuranceChargeAccountFragment"
+        android:label="fragmentInsuranceChargeAccount"
+        android:layout="@layout/fragment_insurance_charge_account"
+        tools:layout="@layout/fragment_insurance_charge_account">
+
+        <action
+            android:id="@+id/action_insurance_charge_account_to_contact"
+            app:destination="@id/fragmentInsuranceChargeContact"/>
+        <argument
+            android:name="insuranceArgument"
+            app:argType="com.example.fitpet.ui.model.InsuranceCharge"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentInsuranceChargeContact"
+        android:name="com.example.fitpet.ui.insurance.charge.contact.InsuranceChargeContactFragment"
+        android:label="fragmentInsuranceChargeContact"
+        android:layout="@layout/fragment_insurance_charge_contact"
+        tools:layout="@layout/fragment_insurance_charge_contact">
+
+        <action
+            android:id="@+id/action_insurance_charge_contact_to_check"
+            app:destination="@id/fragmentInsuranceChargeCheck"/>
+        <argument
+            android:name="insuranceArgument"
+            app:argType="com.example.fitpet.ui.model.InsuranceCharge"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentInsuranceChargeCheck"
+        android:name="com.example.fitpet.ui.insurance.charge.check.InsuranceChargeCheckFragment"
+        android:label="fragmentInsuranceChargeCheck"
+        android:layout="@layout/fragment_insurance_charge_check"
+        tools:layout="@layout/fragment_insurance_charge_check">
+
+        <action
+            android:id="@+id/action_insurance_charge_check_to_finish"
+            app:destination="@id/fragmentInsuranceChargeFinish"/>
+        <argument
+            android:name="insuranceArgument"
+            app:argType="com.example.fitpet.ui.model.InsuranceCharge"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentInsuranceChargeFinish"
+        android:name="com.example.fitpet.ui.insurance.charge.finish.InsuranceChargeFinishFragment"
+        android:label="fragmentInsuranceChargeFinish"
+        android:layout="@layout/fragment_insurance_charge_check_finish"
+        tools:layout="@layout/fragment_insurance_charge_check_finish">
+
+        <action
+            android:id="@+id/action_insurance_finish_to_my_pet"
+            app:destination="@id/fragmentMypet"/>
+
+        <action
+            android:id="@+id/action_insurance_finish_to_compensation"
+            app:destination="@id/fragmentInsuranceCompensation"/>
+
+    </fragment>
 
 </navigation>

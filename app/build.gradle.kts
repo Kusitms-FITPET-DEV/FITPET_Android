@@ -5,6 +5,7 @@ plugins {
     kotlin("kapt")
 
     id("androidx.navigation.safeargs.kotlin")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -95,6 +96,7 @@ dependencies {
 
     // kakao
     implementation(libs.kakao.auth)
+    implementation(libs.kakao.channel)
 
     // Lottie
     implementation(libs.lottie)

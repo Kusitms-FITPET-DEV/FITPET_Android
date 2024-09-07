@@ -3,11 +3,11 @@ package com.example.fitpet.ui.insurance.charge.cause
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
-import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceChargeCauseBinding
 import com.example.fitpet.ui.insurance.charge.cause.calendar.CalendarBottomSheet
 import com.example.fitpet.ui.insurance.charge.cause.calendar.CalendarBottomSheet.Companion.BOTTOM_SHEET
+import com.example.fitpet.ui.model.InsuranceCharge
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -23,6 +23,7 @@ class InsuranceChargeCauseFragment :
     override fun initView() {
         binding.viewModel = viewModel
         viewModel.initSetCurrentDate()
+        binding.tbInsuranceCharge.btnTopBarInsuranceChargeBack.setOnClickListener { findNavController().popBackStack() }
     }
 
     override fun initState() {
@@ -44,12 +45,22 @@ class InsuranceChargeCauseFragment :
 
     private fun showCalendarBottomSheet() {
         Timber.d("[보험금 청구: 1/5] 캘린더 바텀시트")
-        CalendarBottomSheet{viewModel.getSelectedDate(it)}.show(parentFragmentManager, BOTTOM_SHEET)
+        CalendarBottomSheet { viewModel.getSelectedDate(it) }.show(
+            parentFragmentManager,
+            BOTTOM_SHEET
+        )
     }
 
     private fun goToDocumentPage() {
-        val action = InsuranceChargeCauseFragmentDirections.actionInsuranceChargeCauseToDocument()
-        findNavController().navigate(action, NavOptions.Builder().build())
+        val action = InsuranceChargeCauseFragmentDirections.actionInsuranceChargeCauseToDocument(setCauseData())
+        findNavController().navigate(action)
+    }
+
+    private fun setCauseData(): InsuranceCharge {
+        with (viewModel.uiState) {
+            val causeData = InsuranceCharge(causeType = selectedCause.value, hospitalVisitDate = selectedDate.value)
+            return causeData
+        }
     }
 
 }

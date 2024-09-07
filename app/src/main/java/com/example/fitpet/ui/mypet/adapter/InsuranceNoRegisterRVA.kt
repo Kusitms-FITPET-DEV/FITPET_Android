@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.fitpet.R
 import com.example.fitpet.databinding.ItemNoRegisterInsuranceBinding
 import com.example.fitpet.model.domain.insurance.main.InsuranceSuggestion
+import com.example.fitpet.model.response.EstimateList
 import com.example.fitpet.ui.mypet.insurance.noregister.InsuranceNoRegisterEvent
 import com.example.fitpet.util.ItemDiffCallback
 import com.example.fitpet.util.ResourceProvider
@@ -21,8 +22,8 @@ import javax.inject.Inject
 
 class InsuranceNoRegisterRVA(
     val resourceProvider: ResourceProvider,
-    val onClicked: (InsuranceSuggestion) -> Unit) : ListAdapter<InsuranceSuggestion, InsuranceNoRegisterRVA.ListViewHolder>(
-    ItemDiffCallback<InsuranceSuggestion>(
+    val onClicked: (EstimateList) -> Unit) : ListAdapter<EstimateList, InsuranceNoRegisterRVA.ListViewHolder>(
+    ItemDiffCallback<EstimateList>(
         onItemsTheSame = { oldItem, newItem -> oldItem.priceId == newItem.priceId },  // ID로 항목 비교
         onContentsTheSame = { oldItem, newItem -> oldItem == newItem }      // 객체 내용 비교
     )
@@ -45,7 +46,7 @@ class InsuranceNoRegisterRVA(
 
     inner class ListViewHolder(private val binding: ItemNoRegisterInsuranceBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(insurance: InsuranceSuggestion){
+        fun bind(insurance: EstimateList){
             with(binding){
                 tvItemInsuranceName.text = insurance.insuranceName
                 tvItemInsurancePrice.text = NumberFormat.getNumberInstance(Locale.US).format(insurance.insuranceFee).toString()
@@ -60,23 +61,23 @@ class InsuranceNoRegisterRVA(
     fun setInsuranceCompany(company : String, view : ImageView, tv : TextView){
         var drawable: Drawable? = null
         when(company){
-            "db" -> {
+            "DB손해보험" -> {
                 drawable = ContextCompat.getDrawable(view.context, R.drawable.ic_insurance_db)
                 tv.text = resourceProvider.getString(R.string.db)
             }
-            "kb" -> {
+            "KB손해보험" -> {
                 drawable = ContextCompat.getDrawable(view.context, R.drawable.ic_insurance_kb)
                 tv.text = resourceProvider.getString(R.string.kb)
             }
-            "hyundai" -> {
+            "현대해상" -> {
                 drawable = ContextCompat.getDrawable(view.context, R.drawable.ic_insurance_hyundai)
                 tv.text = resourceProvider.getString(R.string.hyundai)
             }
-            "samsung" -> {
+            "삼성화재" -> {
                 drawable = ContextCompat.getDrawable(view.context, R.drawable.ic_insurance_samsung)
                 tv.text = resourceProvider.getString(R.string.samsung)
             }
-            "meritz" -> {
+            "메리츠" -> {
                 drawable = ContextCompat.getDrawable(view.context, R.drawable.ic_insurance_meritz)
                 tv.text = resourceProvider.getString(R.string.meritz)
             }
