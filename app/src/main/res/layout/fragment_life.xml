@@ -103,21 +103,21 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            tools:text="1"
+                            tools:text="@{vm.uiState.currentPage}"
                             android:textColor="@color/text_white"
                             android:textAppearance="@style/b4_M"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            tools:text="/"
+                            android:text="@string/slash"
                             android:textColor="@color/text_white"
                             android:textAppearance="@style/b4_M"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            tools:text="3"
+                            tools:text="@{vm.uiState.pageCount}"
                             android:textColor="@color/text_white"
                             android:textAppearance="@style/b4_M"/>
 
