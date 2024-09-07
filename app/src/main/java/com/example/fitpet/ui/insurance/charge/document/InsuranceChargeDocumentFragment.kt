@@ -52,11 +52,12 @@ class InsuranceChargeDocumentFragment :
             InsuranceChargeDocumentEvent.ClickDeleteReceiptBtn -> viewModel.deletePhoto(RECEIPT_PHOTO)
             InsuranceChargeDocumentEvent.ClickDeleteDetailBtn -> viewModel.deletePhoto(DETAIL_PHOTO)
             InsuranceChargeDocumentEvent.ClickDeleteEtcBtn -> viewModel.deletePhoto(ETC_PHOTO)
+            InsuranceChargeDocumentEvent.UploadChargeImg -> viewModel.uploadChargeImgToApi()
         }
     }
 
     private fun showAddPhotoBottomSheet(photoType: String) {
-        AddPhotoBottomSheet { photo, uri -> viewModel.getPhoto(photo, uri, photoType) }.show(
+        AddPhotoBottomSheet { photo, file -> viewModel.getPhoto(photo, file, photoType) }.show(
             parentFragmentManager,
             BOTTOM_SHEET
         )
@@ -73,7 +74,7 @@ class InsuranceChargeDocumentFragment :
         val causeData = arguments.insuranceArgument
 
         with (viewModel.uiState) {
-            val documentData = InsuranceCharge(causeType = causeData.causeType, hospitalVisitDate = causeData.hospitalVisitDate, receiptUrl = receiptPhoto.value, medicalExpensesUrl = detailPhoto.value, etcUrl = etcPhoto.value)
+            val documentData = InsuranceCharge(petId = causeData.petId, targetName = causeData.targetName, causeType = causeData.causeType, hospitalVisitDate = causeData.hospitalVisitDate, receiptUrl = receiptPhotoAPIUrl.value, medicalExpensesUrl = detailPhotoAPIUrl.value, etcUrl = etcPhotoAPIUrl.value)
             return documentData
         }
     }

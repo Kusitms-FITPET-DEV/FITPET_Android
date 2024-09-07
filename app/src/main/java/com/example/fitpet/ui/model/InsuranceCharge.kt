@@ -5,6 +5,8 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class InsuranceCharge (
+    val petId: Int = 0,
+    val targetName: String = "",
     val causeType: String = "",
     val hospitalVisitDate: String = "",
     val receiptUrl: String = "",

@@ -7,5 +7,8 @@ data class InsuranceChargeDocumentPageState(
     val receiptPhoto: StateFlow<String>,
     val detailPhoto: StateFlow<String>,
     val etcPhoto: StateFlow<String>,
-    val isBtnEnabled: StateFlow<Boolean>
+    val isBtnEnabled: StateFlow<Boolean>,
+    val receiptPhotoAPIUrl: StateFlow<String>,
+    val detailPhotoAPIUrl: StateFlow<String>,
+    val etcPhotoAPIUrl: StateFlow<String>,
 ) : PageState

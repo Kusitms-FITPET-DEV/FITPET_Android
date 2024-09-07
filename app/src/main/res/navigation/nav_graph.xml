@@ -235,6 +235,9 @@
         <action
             android:id="@+id/action_insurance_charge_cause_to_document"
             app:destination="@id/fragmentInsuranceChargeDocument"/>
+        <argument
+            android:name="insuranceArgument"
+            app:argType="com.example.fitpet.ui.model.InsuranceCharge"/>
 
     </fragment>
 

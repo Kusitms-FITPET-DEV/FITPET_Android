@@ -1,21 +1,22 @@
 package com.example.fitpet.ui.mypet
 
-import android.util.Log
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentMypetMainBinding
+import com.example.fitpet.ui.model.InsuranceCharge
 import com.example.fitpet.ui.mypet.adapter.MypetMainVPA
-import com.example.fitpet.ui.mypet.insurance.nopet.InsuranceNoPetEvent
 import com.example.fitpet.util.ResourceProvider
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
+
 @AndroidEntryPoint
 class MypetMainFragment : BaseFragment<FragmentMypetMainBinding, MypetMainPageState, MypetMainViewModel>(
     FragmentMypetMainBinding::inflate
@@ -117,8 +118,22 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainBinding, MypetMainPageSt
     }
 
     private fun goToInsuranceCharge() {
-        val action = MypetMainFragmentDirections.actionMypetToInsuranceChargeCause()
-        navigator.navigate(action)
+        setPetInfoAndNavigation()
+    }
+
+    private fun setPetInfoAndNavigation() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiState.petCount.collect { petCount ->
+                    val petInfo = petCount?.petList?.get(0)
+                    Timber.d("[보험금 청구] petId 테스트 -> ${petInfo?.petId} && ${petInfo?.name}")
+                    val insurancePetData = InsuranceCharge(petId = petInfo?.petId ?: 0, targetName = petInfo?.name ?: "")
+
+                    val action = MypetMainFragmentDirections.actionMypetToInsuranceChargeCause(insurancePetData)
+                    navigator.navigate(action)
+                }
+            }
+        }
     }
 
     private fun initListVPAdapter(isNoPet: Boolean, isNoRegister: Boolean) {

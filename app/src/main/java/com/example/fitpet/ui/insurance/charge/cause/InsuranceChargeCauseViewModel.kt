@@ -11,6 +11,8 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import org.threeten.bp.LocalDateTime
+import java.text.SimpleDateFormat
+import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
@@ -20,11 +22,14 @@ class InsuranceChargeCauseViewModel @Inject constructor() :
     private val _selectedCause: MutableStateFlow<String> = MutableStateFlow("")
     private val _currentDate: MutableStateFlow<String> = MutableStateFlow("")
     private val _selectedDate: MutableStateFlow<String> = MutableStateFlow("")
+    private val _selectedDatePageFormat: MutableStateFlow<String> = MutableStateFlow("")
 
     override val uiState = InsuranceChargeCausePageState(
         selectedCause = _selectedCause.asStateFlow(),
         currentDate = _currentDate.asStateFlow(),
         selectedDate = _selectedDate.asStateFlow(),
+        selectedDatePageFormat = _selectedDatePageFormat.asStateFlow(),
+
         isBtnEnabled = combine(_selectedCause, _selectedDate) { cause, date ->
             isGoNextValid(cause, date)
         }.stateIn(
@@ -55,7 +60,16 @@ class InsuranceChargeCauseViewModel @Inject constructor() :
     fun getSelectedDate(date: String) {
         viewModelScope.launch {
             _selectedDate.update { date }
+            _selectedDatePageFormat.update { formatDate(date) }
         }
+    }
+
+    private fun formatDate(inputDate: String): String {
+        val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val outputFormat = SimpleDateFormat("yyyy. MM. dd", Locale.getDefault())
+
+        val date = inputFormat.parse(inputDate)
+        return outputFormat.format(date)
     }
 
     fun onClickNextBtn() {

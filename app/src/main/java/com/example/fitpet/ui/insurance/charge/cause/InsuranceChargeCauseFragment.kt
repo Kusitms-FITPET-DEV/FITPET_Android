@@ -3,6 +3,7 @@ package com.example.fitpet.ui.insurance.charge.cause
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceChargeCauseBinding
 import com.example.fitpet.ui.insurance.charge.cause.calendar.CalendarBottomSheet
@@ -57,8 +58,11 @@ class InsuranceChargeCauseFragment :
     }
 
     private fun setCauseData(): InsuranceCharge {
+        val arguments: InsuranceChargeCauseFragmentArgs by navArgs()
+        val beforeData = arguments.insuranceArgument
+
         with (viewModel.uiState) {
-            val causeData = InsuranceCharge(causeType = selectedCause.value, hospitalVisitDate = selectedDate.value)
+            val causeData = InsuranceCharge(petId = beforeData.petId, targetName = beforeData.targetName, causeType = selectedCause.value, hospitalVisitDate = selectedDate.value)
             return causeData
         }
     }
