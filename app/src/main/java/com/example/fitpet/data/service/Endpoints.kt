@@ -18,4 +18,8 @@ object Endpoints {
         const val CHARGE = "/charge"
         const val UPLOAD = "$CHARGE/upload"
     }
+
+    object Compensation {
+        const val COMPENSATIONS = "/compensations"
+    }
 }
