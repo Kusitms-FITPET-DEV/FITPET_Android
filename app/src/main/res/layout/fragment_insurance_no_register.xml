@@ -341,7 +341,7 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/clNoRegisterRange"
-                        android:layout_width="64dp"
+                        android:layout_width="68dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
                         android:paddingTop="6dp"
@@ -360,7 +360,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@{String.valueOf(vm.uiState.insuranceRangePercent)}"
-                            android:textAppearance="@style/b5"
+                            android:textAppearance="@style/b4"
                             app:layout_constraintStart_toStartOf="parent" />
 
                         <TextView
@@ -368,7 +368,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="%"
-                            android:textAppearance="@style/b5"
+                            android:textAppearance="@style/b4"
                             app:layout_constraintStart_toEndOf="@id/tvRangeNumber" />
 
                         <ImageView
@@ -473,11 +473,11 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/viewRangeBoxSelect"
-                    android:layout_width="64dp"
+                    android:layout_width="68dp"
                     android:layout_height="0dp"
                     android:layout_marginTop="3dp"
                     android:foreground="@drawable/bg_insurance_range_box"
-                    app:layout_constraintDimensionRatio="64:92"
+                    app:layout_constraintDimensionRatio="68:96"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="0dp"
                     app:layout_constraintEnd_toEndOf="@id/clNoRegisterRangeBox"
@@ -491,7 +491,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="@string/insurance_no_register_percent_70"
-                    android:textAppearance="@style/b5"
+                    android:textAppearance="@style/b4"
                     android:textAlignment="center"
                     app:layout_constraintStart_toStartOf="@id/viewRangeBoxSelect"
                     app:layout_constraintEnd_toEndOf="@id/viewRangeBoxSelect"
@@ -504,7 +504,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/insurance_no_register_percent_80"
-                    android:textAppearance="@style/b5"
+                    android:textAppearance="@style/b4"
                     android:textAlignment="center"
                     app:layout_constraintStart_toStartOf="@id/viewRangeBoxSelect"
                     app:layout_constraintEnd_toEndOf="@id/viewRangeBoxSelect"
@@ -519,7 +519,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:text="@string/insurance_no_register_percent_90"
-                    android:textAppearance="@style/b5"
+                    android:textAppearance="@style/b4"
                     android:textAlignment="center"
                     app:layout_constraintStart_toStartOf="@id/viewRangeBoxSelect"
                     app:layout_constraintEnd_toEndOf="@id/viewRangeBoxSelect"
