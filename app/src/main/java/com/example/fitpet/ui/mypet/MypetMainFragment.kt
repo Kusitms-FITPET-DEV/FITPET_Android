@@ -113,36 +113,19 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainBinding, MypetMainPageSt
     }
 
     private fun goToCompensation() {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.uiState.petCount.collect { petCount ->
-                    // TODO 드롭다운 변경 이후 petId 로직 수정
-                    val petInfo = petCount?.petList?.get(2)?.petId ?: 0
-                    val action = MypetMainFragmentDirections.actionMypetToInsuranceCompensation(petInfo)
-                    navigator.navigate(action)
-                }
-            }
-        }
+        // TODO 드롭다운 변경 이후 petId 로직 수정
+        val petInfo = viewModel.uiState.petCount.value?.petList?.get(2)?.petId ?: 0
+        val action = MypetMainFragmentDirections.actionMypetToInsuranceCompensation(petInfo)
+        navigator.navigate(action)
     }
 
     private fun goToInsuranceCharge() {
-        setPetInfoAndNavigation()
-    }
+        // TODO 드롭다운 변경 이후 petId 로직 수정
+        val petInfo = viewModel.uiState.petCount.value?.petList?.get(2)
+        val insurancePetData = InsuranceCharge(petId = petInfo?.petId ?: 0, targetName = petInfo?.name ?: "")
 
-    private fun setPetInfoAndNavigation() {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.uiState.petCount.collect { petCount ->
-                    // TODO 드롭다운 변경 이후 petId 로직 수정
-                    val petInfo = petCount?.petList?.get(2)
-                    Timber.d("[보험금 청구] petId 테스트 -> ${petInfo?.petId} && ${petInfo?.name}")
-                    val insurancePetData = InsuranceCharge(petId = petInfo?.petId ?: 0, targetName = petInfo?.name ?: "")
-
-                    val action = MypetMainFragmentDirections.actionMypetToInsuranceChargeCause(insurancePetData)
-                    navigator.navigate(action)
-                }
-            }
-        }
+        val action = MypetMainFragmentDirections.actionMypetToInsuranceChargeCause(insurancePetData)
+        navigator.navigate(action)
     }
 
     private fun initListVPAdapter(isNoPet: Boolean, isNoRegister: Boolean) {
