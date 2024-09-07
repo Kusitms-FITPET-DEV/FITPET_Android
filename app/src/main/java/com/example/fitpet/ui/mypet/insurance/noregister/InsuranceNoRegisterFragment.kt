@@ -132,16 +132,4 @@ class InsuranceNoRegisterFragment : BaseFragment<FragmentInsuranceNoRegisterBind
         const val CHANNEL_ID = "_cxdAfG"
     }
 
-    private fun goToConsult(){
-        // 카카오톡 채널 추가하기 URL
-        val url = TalkApiClient.instance.chatChannelUrl(CHANNEL_ID)
-
-        // CustomTabs 로 열기
-        KakaoCustomTabsClient.openWithDefault(requireContext(), url)
-    }
-
-    companion object{
-        const val CHANNEL_ID = "_cxdAfG"
-    }
-
 }
