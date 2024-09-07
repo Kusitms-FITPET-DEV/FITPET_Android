@@ -90,7 +90,7 @@ class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding, OnBoardingPag
     }
 
     private fun checkPermissions() {
-        if (arePermissionsGranted()) {
+        if (!arePermissionsGranted()) {
             goToKaKaoLogin()
         } else {
             showBottomSheet()

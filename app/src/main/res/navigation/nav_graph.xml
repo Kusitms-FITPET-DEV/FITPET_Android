@@ -184,6 +184,27 @@
         <action
             android:id="@+id/action_mypet_to_insurance_charge_cause"
             app:destination="@id/fragmentInsuranceChargeCause"/>
+
+        <action
+            android:id="@+id/action_mypet_to_insurance_recommend"
+            app:destination="@id/fragmentInsuranceRecommend">
+            <argument
+                android:name="petId"
+                app:argType="integer" />
+            <argument
+                android:name="priceId"
+                app:argType="integer" />
+            <argument
+                android:name="company"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentInsuranceRecommend"
+        android:name="com.example.fitpet.ui.mypet.insurance.noregister.InsuranceRecommendFragment"
+        android:label="fragmentInsuranceNoPet"
+        android:layout="@layout/fragment_recommend_insurance">
     </fragment>
 
     <fragment

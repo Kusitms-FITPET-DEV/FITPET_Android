@@ -159,6 +159,12 @@
         <item name="fontFamily">@font/pretendard_semi_bold</item>
     </style>
 
+    <style name="recommend_text">
+        <item name="android:textSize">12sp</item>
+        <item name="lineHeight">13dp</item>
+        <item name="fontFamily">@font/pretendard_medium</item>
+    </style>
+
 
     <style name="ShapeAppearanceOverlayExtended" parent="Widget.MaterialComponents.ExtendedFloatingActionButton">
         <item name="cornerFamily">rounded</item>

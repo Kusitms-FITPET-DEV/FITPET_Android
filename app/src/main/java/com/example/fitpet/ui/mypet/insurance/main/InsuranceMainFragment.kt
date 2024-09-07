@@ -40,16 +40,11 @@ class InsuranceMainFragment : BaseFragment<FragmentInsuranceMainBinding, Insuran
 
         lifecycleScope.launch {
             delay(5000)
-            binding?.let { binding ->
-                if (isAdded) {
-                    binding.fabInsuranceKakaoBig.shrink()
-                }
+            if (isAdded && view != null) {  // view가 여전히 살아 있는지 확인
+                binding.fabInsuranceKakaoBig.shrink()
             }
         }
 
-        Handler(Looper.getMainLooper()).postDelayed({
-            binding.fabInsuranceKakaoBig.shrink()
-        }, 5000)
         setMonth()
         viewModel.loadPetData()
     }
@@ -105,6 +100,13 @@ class InsuranceMainFragment : BaseFragment<FragmentInsuranceMainBinding, Insuran
         viewModel.updatePetInfo(viewModel.uiState.petInfo.value!!)
         Timber.tag("log2").d(viewModel.getFirstPet()!!.toString())
         viewModel.fetchPetInsuranceInfo(viewModel.getFirstPet()!!, "")
+        
+        if(viewModel.uiState.petInfo.value?.species == "DOG"){
+            Timber.d("dog~~")
+            binding.ivNoRegisterMyPet.setImageResource(R.drawable.ic_mypet_dog)
+        }else{
+            binding.ivNoRegisterMyPet.setImageResource(R.drawable.ic_mypet_cat)
+        }
     }
 
     private fun setInsuranceInfo(){
