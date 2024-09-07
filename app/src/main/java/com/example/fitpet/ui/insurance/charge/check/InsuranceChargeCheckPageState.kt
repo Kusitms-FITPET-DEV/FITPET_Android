@@ -7,6 +7,7 @@ data class InsuranceChargeCheckPageState (
     var targetName: String = "",
     var causeType: String = "",
     var hospitalVisitDate: String = "",
+    var hospitalVisitDateBindingFormat: String = "",
     var receiptUrl: String = "",
     var medicalExpensesUrl: String = "",
     var etcUrl: String = "",

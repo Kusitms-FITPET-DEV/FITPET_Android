@@ -12,6 +12,8 @@ import kotlinx.coroutines.launch
 import org.threeten.bp.DayOfWeek
 import org.threeten.bp.LocalDateTime
 import org.threeten.bp.YearMonth
+import java.text.SimpleDateFormat
+import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
@@ -90,6 +92,14 @@ class CalendarViewModel @Inject constructor() : BaseViewModel<CalendarPageState>
         }
 
         return startDate
+    }
+
+    fun formatDate(inputDate: String): String {
+        val inputFormat = SimpleDateFormat("yyyy-M-d", Locale.getDefault())
+        val outputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+
+        val date = inputFormat.parse(inputDate)
+        return outputFormat.format(date)
     }
 
     companion object {

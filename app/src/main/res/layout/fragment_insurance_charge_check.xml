@@ -117,7 +117,7 @@
             android:textColor="@color/black"
             android:textAppearance="@style/b4"
             android:layout_marginEnd="28dp"
-            android:text="@{viewModel.uiState.hospitalVisitDate}"
+            android:text="@{viewModel.uiState.hospitalVisitDateBindingFormat}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_insurance_charge_check_date_title"
             app:layout_constraintBottom_toBottomOf="@id/tv_insurance_charge_check_date_title"

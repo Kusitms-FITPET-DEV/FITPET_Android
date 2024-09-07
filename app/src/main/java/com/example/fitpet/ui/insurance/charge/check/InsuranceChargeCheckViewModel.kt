@@ -10,6 +10,8 @@ import com.example.fitpet.util.ResourceProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import java.text.SimpleDateFormat
+import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
@@ -26,6 +28,7 @@ class InsuranceChargeCheckViewModel @Inject constructor(
             targetName = insuranceArgument.targetName
             causeType = insuranceArgument.causeType
             hospitalVisitDate = insuranceArgument.hospitalVisitDate
+            hospitalVisitDateBindingFormat = formatDate(insuranceArgument.hospitalVisitDate)
             receiptUrl = insuranceArgument.receiptUrl
             medicalExpensesUrl = insuranceArgument.medicalExpensesUrl
             etcUrl = insuranceArgument.etcUrl
@@ -33,7 +36,6 @@ class InsuranceChargeCheckViewModel @Inject constructor(
             accountNumber = insuranceArgument.accountNumber
             contactMethodMsg = insuranceArgument.contactMethodMsg
             contactMethodEmail = insuranceArgument.contactMethodEmail
-//            phone
             essentialAgree = insuranceArgument.essentialAgree
             optionAgree = insuranceArgument.optionAgree
 
@@ -52,8 +54,7 @@ class InsuranceChargeCheckViewModel @Inject constructor(
             with(uiState) {
                 val request = ChargeInsuranceRequest(
                     causeType,
-//                    hospitalVisitDate,
-                    "2024-09-01",
+                    hospitalVisitDate,
                     receiptUrl,
                     medicalExpensesUrl,
                     etcUrl,
@@ -78,5 +79,13 @@ class InsuranceChargeCheckViewModel @Inject constructor(
 
     private fun goToFinishPage() {
         emitEventFlow(InsuranceChargeCheckEvent.GoToFinishPage)
+    }
+
+    private fun formatDate(inputDate: String): String {
+        val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val outputFormat = SimpleDateFormat("yyyy. MM. dd", Locale.getDefault())
+
+        val date = inputFormat.parse(inputDate)
+        return outputFormat.format(date)
     }
 }
