@@ -1,16 +1,21 @@
 package com.example.fitpet.ui.insurance.charge.check
 
+import androidx.lifecycle.viewModelScope
 import com.example.fitpet.R
 import com.example.fitpet.base.BaseViewModel
+import com.example.fitpet.data.repository.ChargeRepository
+import com.example.fitpet.model.request.ChargeInsuranceRequest
 import com.example.fitpet.ui.model.InsuranceCharge
 import com.example.fitpet.util.ResourceProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class InsuranceChargeCheckViewModel @Inject constructor(
-    private val resourceProvider: ResourceProvider
-): BaseViewModel<InsuranceChargeCheckPageState>() {
+    private val resourceProvider: ResourceProvider,
+    private val chargeRepository: ChargeRepository
+) : BaseViewModel<InsuranceChargeCheckPageState>() {
 
     override val uiState = InsuranceChargeCheckPageState()
 
@@ -42,6 +47,32 @@ class InsuranceChargeCheckViewModel @Inject constructor(
     }
 
     fun onClickFinishBtn() {
+        viewModelScope.launch {
+            with(uiState) {
+                val request = ChargeInsuranceRequest(
+                    causeType,
+                    hospitalVisitDate,
+                    receiptUrl,
+                    medicalExpensesUrl,
+                    etcUrl,
+                    accountOwner,
+                    accountBank,
+                    accountNumber,
+                    contactMethodMsg,
+                    contactMethodEmail,
+                    phone,
+                    essentialAgree,
+                    optionAgree
+                )
+
+                chargeRepository.chargeInsurance(petId, request).collect {
+                    resultResponse(it, { goToFinishPage() })
+                }
+            }
+        }
+    }
+
+    private fun goToFinishPage() {
         emitEventFlow(InsuranceChargeCheckEvent.GoToFinishPage)
     }
 }
