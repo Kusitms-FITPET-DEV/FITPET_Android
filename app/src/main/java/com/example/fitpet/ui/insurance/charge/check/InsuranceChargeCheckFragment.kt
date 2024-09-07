@@ -7,7 +7,6 @@ import androidx.navigation.fragment.navArgs
 import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceChargeCheckBinding
-import com.example.fitpet.ui.insurance.charge.finish.InsuranceChargeCheckEvent
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

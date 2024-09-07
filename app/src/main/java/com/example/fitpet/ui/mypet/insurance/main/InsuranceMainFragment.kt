@@ -6,6 +6,7 @@ import android.os.Handler
 import android.os.Looper
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
@@ -13,6 +14,7 @@ import com.example.fitpet.databinding.FragmentInsuranceMainBinding
 import com.example.fitpet.model.domain.PetType
 import com.example.fitpet.model.domain.insurance.main.InsuranceSuggestion
 import com.example.fitpet.model.domain.insurance.main.MyPet
+import com.example.fitpet.ui.mypet.MypetMainViewModel
 import com.kakao.sdk.common.util.KakaoCustomTabsClient
 import com.kakao.sdk.talk.TalkApiClient
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,11 +25,13 @@ class InsuranceMainFragment : BaseFragment<FragmentInsuranceMainBinding, Insuran
     FragmentInsuranceMainBinding::inflate
 ) {
     override val viewModel: InsuranceMainViewModel by viewModels()
+    private val myPetMainViewModel: MypetMainViewModel by activityViewModels()
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun initView() {
         binding.apply {
             vm = viewModel
+            mainViewModel = myPetMainViewModel
             lifecycleOwner = viewLifecycleOwner
         }
         Handler(Looper.getMainLooper()).postDelayed({
@@ -54,7 +58,7 @@ class InsuranceMainFragment : BaseFragment<FragmentInsuranceMainBinding, Insuran
         when(event) {
             InsuranceMainEvent.GoToConsult -> goToConsult()
             InsuranceMainEvent.OpenMyPetDialog -> openMyPetDialog()
-            InsuranceMainEvent.GoToContractCheck -> goToContractCheck()
+//            InsuranceMainEvent.GoToContractCheck -> goToContractCheck()
             InsuranceMainEvent.GoToCompensationCheck -> goToCompensationCheck()
             InsuranceMainEvent.GoToCharge -> goToCharge()
             InsuranceMainEvent.UpdatePetInfo -> setMyPet()

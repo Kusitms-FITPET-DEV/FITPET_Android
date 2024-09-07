@@ -1,5 +1,6 @@
 package com.example.fitpet.ui.mypet
 
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.fitpet.R
@@ -11,6 +12,7 @@ import com.example.fitpet.util.ResourceProvider
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -21,7 +23,7 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainBinding, MypetMainPageSt
     private val mypetVPA get() = _mypetVPA
     private val navigator by lazy { findNavController() }
 
-    override val viewModel: MypetMainViewModel by viewModels()
+    override val viewModel: MypetMainViewModel by activityViewModels()
 
     @Inject
     lateinit var resourceProvider: ResourceProvider
@@ -43,11 +45,29 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainBinding, MypetMainPageSt
     private fun handleEvent(event: MypetMainEvent) {
         when(event) {
             is MypetMainEvent.GoToAddPetButtonClick -> goToAddPet()
+            is MypetMainEvent.GoToInsuranceInfoCheckPage -> goToInsuranceInfo()
+            is MypetMainEvent.GoTOCompensationPage -> goToCompensation()
+            is MypetMainEvent.GoToInsuranceChargePage -> goToInsuranceCharge()
         }
     }
 
     private fun goToAddPet() {
         val action = MypetMainFragmentDirections.actionMypetToPetNameInput()
+        navigator.navigate(action)
+    }
+
+    private fun goToInsuranceInfo() {
+        val action = MypetMainFragmentDirections.actionMypetToInsuranceInfoCheck()
+        navigator.navigate(action)
+    }
+
+    private fun goToCompensation() {
+        val action = MypetMainFragmentDirections.actionMypetToInsuranceCompensation()
+        navigator.navigate(action)
+    }
+
+    private fun goToInsuranceCharge() {
+        val action = MypetMainFragmentDirections.actionMypetToInsuranceChargeCause()
         navigator.navigate(action)
     }
 
