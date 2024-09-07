@@ -100,6 +100,13 @@ class InsuranceMainFragment : BaseFragment<FragmentInsuranceMainBinding, Insuran
         viewModel.updatePetInfo(viewModel.uiState.petInfo.value!!)
         Timber.tag("log2").d(viewModel.getFirstPet()!!.toString())
         viewModel.fetchPetInsuranceInfo(viewModel.getFirstPet()!!, "")
+        
+        if(viewModel.uiState.petInfo.value?.species == "DOG"){
+            Timber.d("dog~~")
+            binding.ivNoRegisterMyPet.setImageResource(R.drawable.ic_mypet_dog)
+        }else{
+            binding.ivNoRegisterMyPet.setImageResource(R.drawable.ic_mypet_cat)
+        }
     }
 
     private fun setInsuranceInfo(){

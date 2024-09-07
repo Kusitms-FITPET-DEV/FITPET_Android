@@ -6,6 +6,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceNoPetBinding
 import com.example.fitpet.databinding.FragmentInsuranceNoRegisterBinding
@@ -83,6 +84,12 @@ class InsuranceNoRegisterFragment : BaseFragment<FragmentInsuranceNoRegisterBind
     private fun updateUI(){
         binding.tvNoRegisterPriceFront.text = viewModel.getFormattedPriceStart()
         binding.tvNoRegisterPriceBack.text = " ~ " + viewModel.getFormattedPriceEnd()
+        if(viewModel.uiState.petInfo.value?.species == "DOG"){
+            Timber.d("dog~~")
+            binding.ivNoRegisterMyPet.setImageResource(R.drawable.ic_mypet_dog)
+        }else{
+            binding.ivNoRegisterMyPet.setImageResource(R.drawable.ic_mypet_cat)
+        }
     }
 
     private fun fetchInsurance() {
