@@ -54,10 +54,48 @@ class InsuranceCompensationViewModel @Inject constructor(
         val tempList = ArrayList<CompensationListItem>()
         for (i in 0 until data.compensationlist.size) {
             with (data.compensationlist[i]) {
-                tempList.add(CompensationListItem(i, compensationType, progress, applyDate, chargePerson, receiveMoney))
+                tempList.add(CompensationListItem(i, compensationType, progress, applyDate, chargePerson, receiveMoney, setProgressFirstItem(progress), setProgressSecondItem(progress), setProgressThirdItem(progress), setProgressFourthItem(progress)))
             }
         }
 
         return tempList
+    }
+
+    private fun setProgressFirstItem(progress: String): Int {
+        when (progress) {
+            PROGRESS_FIRST -> return PROGRESS_CURRENT
+            else -> return PROGRESS_BEFORE
+        }
+    }
+    private fun setProgressSecondItem(progress: String): Int {
+        when (progress) {
+            PROGRESS_FIRST -> return PROGRESS_AFTER
+            PROGRESS_SECOND -> return PROGRESS_CURRENT
+            else -> return PROGRESS_BEFORE
+        }
+    }
+    private fun setProgressThirdItem(progress: String): Int {
+        when (progress) {
+            PROGRESS_THIRD -> return PROGRESS_CURRENT
+            PROGRESS_FOURTH -> return PROGRESS_BEFORE
+            else -> return PROGRESS_AFTER
+        }
+    }
+    private fun setProgressFourthItem(progress: String): Int {
+        when (progress) {
+            PROGRESS_FOURTH -> return PROGRESS_CURRENT
+            else -> return PROGRESS_AFTER
+        }
+    }
+
+
+    companion object {
+        const val PROGRESS_BEFORE = 0
+        const val PROGRESS_CURRENT = 1
+        const val PROGRESS_AFTER = 2
+        const val PROGRESS_FIRST = "접수"
+        const val PROGRESS_SECOND = "배정"
+        const val PROGRESS_THIRD = "심사"
+        const val PROGRESS_FOURTH = "완료"
     }
 }
