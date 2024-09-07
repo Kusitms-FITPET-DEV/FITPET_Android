@@ -333,6 +333,7 @@
                         android:id="@+id/tvRangeTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
                         android:text="@string/insurance_no_register_insurance_range"
                         android:textAppearance="@style/b5"
                         app:layout_constraintStart_toStartOf="parent"
@@ -341,13 +342,13 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/clNoRegisterRange"
-                        android:layout_width="68dp"
+                        android:layout_width="70dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
                         android:paddingTop="6dp"
                         android:paddingBottom="6dp"
                         android:paddingStart="12dp"
-                        android:paddingEnd="12dp"
+                        android:paddingEnd="14dp"
                         app:layout_constraintStart_toEndOf="@id/tvRangeTitle"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -473,11 +474,11 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/viewRangeBoxSelect"
-                    android:layout_width="68dp"
+                    android:layout_width="70dp"
                     android:layout_height="0dp"
                     android:layout_marginTop="3dp"
                     android:foreground="@drawable/bg_insurance_range_box"
-                    app:layout_constraintDimensionRatio="68:96"
+                    app:layout_constraintDimensionRatio="70:104"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="0dp"
                     app:layout_constraintEnd_toEndOf="@id/clNoRegisterRangeBox"
