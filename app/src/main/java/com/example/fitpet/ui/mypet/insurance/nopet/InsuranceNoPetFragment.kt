@@ -32,10 +32,8 @@ class InsuranceNoPetFragment : BaseFragment<FragmentInsuranceNoPetBinding, Insur
 
             lifecycleScope.launch {
                 delay(5000)
-                binding.let { binding ->
-                    if (isAdded) {
-                        binding.fabInsuranceKakaoBig.shrink()
-                    }
+                if (isAdded && view != null) {  // view가 여전히 살아 있는지 확인
+                    binding.fabInsuranceKakaoBig.shrink()
                 }
             }
 

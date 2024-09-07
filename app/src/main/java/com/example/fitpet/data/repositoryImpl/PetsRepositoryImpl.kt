@@ -4,6 +4,7 @@ import com.example.fitpet.data.repository.PetsRepository
 import com.example.fitpet.data.service.PetsService
 import com.example.fitpet.model.request.RegisterPetRequest
 import com.example.fitpet.model.response.EstimateList
+import com.example.fitpet.model.response.GetPetInsuranceResponse
 import com.example.fitpet.model.response.PetInsuranceResponse
 import com.example.fitpet.model.response.PetResponse
 import com.example.fitpet.model.response.SearchPetBreedResponse
@@ -61,6 +62,20 @@ class PetsRepositoryImpl @Inject constructor(
         emit(
             kotlin.runCatching {
                 val response = petsService.getPetAllMainInfo()
+
+                if (response.success) {
+                    response.data
+                } else {
+                    throw RuntimeException("GetPetInfo Failed ${response.status}")
+                }
+            }
+        )
+    }
+
+    override suspend fun getPetInsuranceInfo(petId: Int, priceId: Int): Flow<Result<GetPetInsuranceResponse>> = flow {
+        emit(
+            kotlin.runCatching {
+                val response = petsService.getPetInsuranceInfo(petId, priceId)
 
                 if (response.success) {
                     response.data

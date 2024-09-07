@@ -63,7 +63,7 @@
 
 
     <!--  PetNameInput  -->
-    <string name="my_pet_registration">MY펫 등록</string>
+    <string name="my_pet_registration">보험 추천</string>
     <string name="pet_name_registration">반려동물 이름을 입력해 주세요.</string>
     <string name="pet_name_input_hint">예) 홍길동</string>
 
@@ -129,6 +129,10 @@
     <string name="insurance_main_blue_title2">상담사 연결하기</string>
     <string name="insurance_main_charge_title">보험금 \n청구</string>
     <string name="insurance_main_check_title">보상내역 \n확인</string>
+
+    <!-- RecommendInsurance -->
+    <string name="recommend_insurance_toolbar">보험추천</string>
+    <string name="recommend_insurance_btn">보험 가입하기</string>
 
     <!--  PermissionSettingsBottomSheet  -->
     <string name="permission_title">서비스 이용을 위해\n접근 권한에 동의해 주세요</string>

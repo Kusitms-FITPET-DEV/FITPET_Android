@@ -7,5 +7,8 @@ import kotlinx.coroutines.flow.StateFlow
 
 data class MypetMainPageState(
     var insuranceSuggestion: StateFlow<PetInsuranceResponse?>,
-    var petCount: StateFlow<PetResponse?>
+    var petCount: StateFlow<PetResponse?>,
+    var petId: StateFlow<Int?>,
+    var priceId: StateFlow<Int?>,
+    var company: StateFlow<String?>
 ): PageState
