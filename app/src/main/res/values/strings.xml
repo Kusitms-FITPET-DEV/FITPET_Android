@@ -47,12 +47,12 @@
     <string name="input_error">특수문자는 제외해야 해요.</string>
 
     <!--  OnBoarding  -->
-    <string name="onboarding1_title">간편한 상담</string>
+    <string name="onboarding1_title">갑작스러운 지출 대비</string>
     <string name="onboarding2_title">편리한 관리</string>
     <string name="onboarding3_title">풍부한 반려생활</string>
-    <string name="onboarding1_content">1:1 전문 상담사를 통해 합리적인\n보험 견적서를 확인하세요.</string>
-    <string name="onboarding2_content">가입한 보험을 확인하고\n간단하게 보험 청구를 확인해보세요.</string>
-    <string name="onboarding3_content">우리아이와 오랫동안 행복할 수 있는 방법,\n반려생활에서 확인하세요</string>
+    <string name="onboarding1_content">예방접종, 진료비, 입원비, 수술비\n모두 맞춤형 보험으로 대비하세요</string>
+    <string name="onboarding2_content">견적조회, 보험 상담, 보험 관리,\n보험금 청구를 한번에!</string>
+    <string name="onboarding3_content">우리 아이와 오랫동안 행복할 수 있는 방법,\n반려생활에서 그 비법을 알려드릴게요</string>
 
     <!--  KakaoLogin  -->
     <string name="kakao_login_title">신뢰할 수 있는 보험 관리 플랫폼</string>
@@ -63,7 +63,7 @@
 
 
     <!--  PetNameInput  -->
-    <string name="my_pet_registration">보험 추천</string>
+    <string name="my_pet_registration">MY펫 등록</string>
     <string name="pet_name_registration">반려동물 이름을 입력해 주세요.</string>
     <string name="pet_name_input_hint">예) 홍길동</string>
 
