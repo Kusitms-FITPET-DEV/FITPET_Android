@@ -27,8 +27,8 @@
     <string name="go_to_register">1:1 펫보험 상담하기</string>
     <string name="pet_info">%1$d살 | %2$s</string>
     <string name="pet_insurance_range"> ~ %s</string>
-    <string name="question">\?</string>
-
+    <string name="question_mark">\?</string>
+    <string name="slash">/</string>
 
 
     <!-- insuranceCompany -->

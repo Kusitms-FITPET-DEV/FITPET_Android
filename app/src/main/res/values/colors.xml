@@ -45,7 +45,4 @@
     <color name="ic_kakao">#FFFAE100</color>
     <color name="kakao_text">#FF000000</color>
 
-    <!--  table  -->
-    <color name="pastel_dark_blue">#FFDFECF7</color>
-
 </resources>
