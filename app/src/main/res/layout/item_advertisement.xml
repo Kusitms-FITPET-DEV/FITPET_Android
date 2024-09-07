@@ -4,10 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <ImageView
-        android:id="@+id/image"
+    <FrameLayout
+        android:id="@+id/bgFrame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerInside"/>
+        android:background="@drawable/bg_rectangle_filled_gradient_orange_radius_12">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_advertisement3" />
+
+    </FrameLayout>
 
 </layout>
