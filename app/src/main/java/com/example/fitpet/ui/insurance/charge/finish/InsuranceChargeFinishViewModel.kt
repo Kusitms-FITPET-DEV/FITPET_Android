@@ -10,4 +10,12 @@ class InsuranceChargeFinishViewModel @Inject constructor(): BaseViewModel<PageSt
 
     override val uiState: PageState.Default
         get() = TODO("Not yet implemented")
+
+    fun onClickBackBtn() {
+        emitEventFlow(InsuranceChargeFinishEvent.GoToMyPetPage)
+    }
+
+    fun onClickCompensationBtn() {
+        emitEventFlow(InsuranceChargeFinishEvent.GoToCompensationPage)
+    }
 }

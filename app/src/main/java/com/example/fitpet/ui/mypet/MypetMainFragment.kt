@@ -1,6 +1,7 @@
 package com.example.fitpet.ui.mypet
 
 import android.util.Log
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -25,7 +26,7 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainBinding, MypetMainPageSt
 
     private var isFetched : Boolean = false
 
-    override val viewModel: MypetMainViewModel by viewModels()
+    override val viewModel: MypetMainViewModel by activityViewModels()
 
     @Inject
     lateinit var resourceProvider: ResourceProvider
@@ -54,6 +55,9 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainBinding, MypetMainPageSt
             MypetMainEvent.GoToNoRegister -> goToNoRegister()
             MypetMainEvent.FetchPetData -> fetchPetData()
             MypetMainEvent.FetchInsuranceData -> fetchInsuranceData()
+            is MypetMainEvent.GoToInsuranceInfoCheckPage -> goToInsuranceInfo()
+            is MypetMainEvent.GoTOCompensationPage -> goToCompensation()
+            is MypetMainEvent.GoToInsuranceChargePage -> goToInsuranceCharge()
         }
     }
 
@@ -97,6 +101,24 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainBinding, MypetMainPageSt
 
     private fun initListVPAdapter(isNoPet: Boolean, isNoRegister: Boolean) {
         _mypetVPA = MypetMainVPA(this, isNoPet, isNoRegister)
+
+    private fun goToInsuranceInfo() {
+        val action = MypetMainFragmentDirections.actionMypetToInsuranceInfoCheck()
+        navigator.navigate(action)
+    }
+
+    private fun goToCompensation() {
+        val action = MypetMainFragmentDirections.actionMypetToInsuranceCompensation()
+        navigator.navigate(action)
+    }
+
+    private fun goToInsuranceCharge() {
+        val action = MypetMainFragmentDirections.actionMypetToInsuranceChargeCause()
+        navigator.navigate(action)
+    }
+
+    private fun initListVPAdapter() {
+        _mypetVPA = MypetMainVPA(this)
         with(binding) {
             vpMypetMain.adapter = mypetVPA
             TabLayoutMediator(tabMypetMain, vpMypetMain) { tab, position ->

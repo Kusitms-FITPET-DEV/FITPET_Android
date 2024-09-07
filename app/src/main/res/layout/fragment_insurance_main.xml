@@ -8,6 +8,9 @@
         <variable
             name="vm"
             type="com.example.fitpet.ui.mypet.insurance.main.InsuranceMainViewModel" />
+        <variable
+            name="mainViewModel"
+            type="com.example.fitpet.ui.mypet.MypetMainViewModel" />
 
     </data>
 
@@ -147,7 +150,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        android:onClick="@{() -> vm.onClickContractCheckBtn()}"
+                        android:onClick="@{() -> mainViewModel.onClickContractCheckBtn()}"
                         />
 
                     <View
@@ -167,7 +170,7 @@
                         app:layout_constraintStart_toStartOf="@id/ivNoRegisterMyPet"
                         app:layout_constraintTop_toBottomOf="@id/viewInsuranceBoxMg4"
                         app:layout_constraintEnd_toStartOf="@id/viewInsuranceMainBoxMg2"
-                        android:onClick="@{() -> vm.onClickContractCheckBtn()}"
+                        android:onClick="@{() -> mainViewModel.onClickContractCheckBtn()}"
                         >
 
                         <ImageView
@@ -217,7 +220,7 @@
                         app:layout_constraintStart_toStartOf="@id/ivNoRegisterMyPet"
                         app:layout_constraintTop_toBottomOf="@id/viewInsuranceBoxMg5"
                         app:layout_constraintEnd_toStartOf="@id/viewInsuranceMainBoxMg2"
-                        android:onClick="@{() -> vm.onClickContractCheckBtn()}">
+                        android:onClick="@{() -> mainViewModel.onClickContractCheckBtn()}">
 
                         <TextView
                             android:id="@+id/tvInsuranceBoxMonth"
@@ -433,7 +436,7 @@
                     app:layout_constraintEnd_toEndOf="@id/cvInsuranceMainConsultChargeBtn"
                     app:layout_constraintTop_toTopOf="@id/cvInsuranceMainConsultChargeBtn"
                     app:layout_constraintBottom_toBottomOf="@id/cvInsuranceMainConsultChargeBtn"
-                    android:onClick="@{() -> vm.onClickChargeBtn()}">
+                    android:onClick="@{() -> mainViewModel.onClickInsuranceCharge()}">
 
                     <TextView
                         android:id="@+id/tvMainConsultChargeBtnTitle1"
@@ -496,7 +499,7 @@
                     app:layout_constraintEnd_toEndOf="@id/cvInsuranceMainConsultCheckBtn"
                     app:layout_constraintTop_toTopOf="@id/cvInsuranceMainConsultCheckBtn"
                     app:layout_constraintBottom_toBottomOf="@id/cvInsuranceMainConsultCheckBtn"
-                    android:onClick="@{() -> vm.onClickCompensationCheckBtn()}">
+                    android:onClick="@{() ->  mainViewModel.onClickCompensationBtn()}">
 
                     <TextView
                         android:id="@+id/tvMainConsultCheckBtnTitle1"

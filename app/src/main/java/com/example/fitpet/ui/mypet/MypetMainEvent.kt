@@ -9,4 +9,7 @@ sealed class MypetMainEvent: Event {
     data object GoToMain : MypetMainEvent()
     data object FetchPetData : MypetMainEvent()
     data object FetchInsuranceData : MypetMainEvent()
+    data object GoToInsuranceInfoCheckPage: MypetMainEvent()
+    data object GoTOCompensationPage: MypetMainEvent()
+    data object GoToInsuranceChargePage: MypetMainEvent()
 }

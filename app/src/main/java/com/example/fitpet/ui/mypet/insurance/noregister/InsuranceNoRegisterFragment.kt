@@ -95,6 +95,7 @@ class InsuranceNoRegisterFragment : BaseFragment<FragmentInsuranceNoRegisterBind
         viewModel.fetchPetInsuranceInfo(viewModel.getFirstPet()!!, viewModel.uiState.insuranceRangePercent.value.toString()+"%")
     }
 
+
     private fun changeRange() {
         // api 연결
         viewModel.fetchPetInsuranceInfo(viewModel.uiState.petInfo.value?.petId!!, viewModel.uiState.insuranceRangePercent.value.toString()+"%" )
@@ -117,6 +118,18 @@ class InsuranceNoRegisterFragment : BaseFragment<FragmentInsuranceNoRegisterBind
 
     private fun initInsuranceNoRegisterRVAdapter() {
         binding.rvNoRegisterInsurance.adapter = insuranceNoRegisterRVA
+    }
+
+    private fun goToConsult(){
+        // 카카오톡 채널 추가하기 URL
+        val url = TalkApiClient.instance.chatChannelUrl(CHANNEL_ID)
+
+        // CustomTabs 로 열기
+        KakaoCustomTabsClient.openWithDefault(requireContext(), url)
+    }
+
+    companion object{
+        const val CHANNEL_ID = "_cxdAfG"
     }
 
     private fun goToConsult(){

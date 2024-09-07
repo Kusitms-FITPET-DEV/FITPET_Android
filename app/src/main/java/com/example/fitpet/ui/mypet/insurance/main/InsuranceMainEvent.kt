@@ -6,7 +6,7 @@ import com.example.fitpet.ui.mypet.insurance.noregister.InsuranceNoRegisterEvent
 sealed class InsuranceMainEvent: Event {
     data object GoToConsult: InsuranceMainEvent()
     data object GoToCharge: InsuranceMainEvent()
-    data object GoToContractCheck: InsuranceMainEvent()
+//    data object GoToContractCheck: InsuranceMainEvent()
     data object GoToCompensationCheck: InsuranceMainEvent()
     data object OpenMyPetDialog: InsuranceMainEvent()
     data object UpdatePetInfo: InsuranceMainEvent()
