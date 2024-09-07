@@ -35,26 +35,13 @@ class InsuranceContractCheckViewModel @Inject constructor(
                 })
             }
         }
-
-//        viewModelScope.launch {
-//            _insuranceInfo.update {
-//                InsuranceContractInfo(
-//                    InsuranceContractInfo.Contract(
-//                        "김이름", "보리", "2024.09.05", "2024.09.05", "3년", 10000, "70%", "자동이체(25일)", "카카오뱅크", "****12341234", "월납"
-//                    ),
-//                    InsuranceContractInfo.Coverage(
-//                        "15만원", "300만원 (연2회)", "1500만원", "O", "O", "O", "O", "X", "1일 보상한도 보장", "1일 보상한도 보장", "1만원", "3000 만원", "15만원 (만8세이상 장례비 제외)"
-//                    )
-//                )
-//            }
-//        }
     }
 
     private fun updateInsuranceContractData(data: InsuranceDetailResponse) {
         _insuranceInfo.update {
             InsuranceContractInfo(
                 InsuranceContractInfo.Contract(data.contract.contractor, data.contract.insurant, data.contract.startDate, data.contract.endDate, data.contract.updateCycle, data.contract.insuranceFee, data.contract.priceRate, data.contract.payWay, data.contract.bank, data.contract.bankAccount, data.contract.payCycle),
-                InsuranceContractInfo.Coverage(data.coverage.dailyTreatLimit, data.coverage.dailySurgeryCostLimit, data.coverage.yearReward, data.coverage.hipJointLimit, data.coverage.skinDisease, data.coverage.skinEtc, data.coverage.dentalCoverage, data.coverage.inspectionCoverage, data.coverage.foreignObjectRemoval, data.coverage.selfBurden, data.coverage.compensationLiability, data.coverage.funeralAid)
+                InsuranceContractInfo.Coverage(data.coverage.dailyTreatLimit, data.coverage.dailySurgeryCostLimit, data.coverage.yearReward, data.coverage.hipJointLimit, data.coverage.skinDisease, data.coverage.skinEtc, data.coverage.oralCoverage, data.coverage.dentalCoverage, data.coverage.inspectionCoverage, data.coverage.foreignObjectRemoval, data.coverage.selfBurden, data.coverage.compensationLiability, data.coverage.funeralAid)
             )
         }
     }

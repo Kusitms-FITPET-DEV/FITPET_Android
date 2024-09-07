@@ -131,6 +131,14 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:listitem="@layout/item_insurance_compensation"/>
 
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="10dp"
+                android:src="@drawable/bg_top_bar_gradation"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

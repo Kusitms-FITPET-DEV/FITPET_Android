@@ -15,6 +15,14 @@
         android:layout_height="match_parent"
         android:background="@color/bg_primary">
 
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            android:src="@drawable/bg_top_bar_gradation"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_contract_contractor"
             android:layout_width="0dp"
