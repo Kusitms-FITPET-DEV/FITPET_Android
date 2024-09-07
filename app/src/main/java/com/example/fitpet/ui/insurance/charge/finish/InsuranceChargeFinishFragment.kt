@@ -2,9 +2,11 @@ package com.example.fitpet.ui.insurance.charge.finish
 
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.fitpet.PageState
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceChargeCheckFinishBinding
+import com.example.fitpet.ui.insurance.charge.check.InsuranceChargeCheckFragmentArgs
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -44,7 +46,8 @@ class InsuranceChargeFinishFragment: BaseFragment<FragmentInsuranceChargeCheckFi
     }
 
     private fun goToCompensationPage() {
-//        val action = InsuranceChargeFinishFragmentDirections.actionInsuranceFinishToCompensation()
-//        findNavController().navigate(action)
+        val arguments: InsuranceChargeFinishFragmentArgs by navArgs()
+        val action = InsuranceChargeFinishFragmentDirections.actionInsuranceFinishToCompensation(arguments.petId)
+        findNavController().navigate(action)
     }
 }
