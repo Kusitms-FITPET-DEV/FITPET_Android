@@ -75,7 +75,13 @@ class InsuranceNoRegisterFragment : BaseFragment<FragmentInsuranceNoRegisterBind
             InsuranceNoRegisterEvent.ShowNothing -> showNothing()
             InsuranceNoRegisterEvent.FetchInsurance -> fetchInsurance()
             InsuranceNoRegisterEvent.FetchPetData -> fetchPetData()
+            InsuranceNoRegisterEvent.UpdateUI -> updateUI()
         }
+    }
+
+    private fun updateUI(){
+        binding.tvNoRegisterPriceFront.text = viewModel.getFormattedPriceStart()
+        binding.tvNoRegisterPriceBack.text = " ~ " + viewModel.getFormattedPriceEnd()
     }
 
     private fun fetchInsurance() {

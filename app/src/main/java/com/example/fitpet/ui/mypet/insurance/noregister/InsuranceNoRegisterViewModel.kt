@@ -164,8 +164,9 @@ class InsuranceNoRegisterViewModel @Inject constructor(
                     // Update both pet info and estimate list
                     petInsuranceFlow.update { petInsuranceResponse }
                     suggestionFlow.update { petInsuranceResponse.estimateList }
-                    updatePriceStart(petInsuranceResponse.minInsuranceFee)
-                    updatePriceEnd(petInsuranceResponse.maxInsuranceFee)
+                    priceEndFlow.update { petInsuranceResponse.maxInsuranceFee }
+                    priceStartFlow.update { petInsuranceResponse.minInsuranceFee }
+                    emitEventFlow(InsuranceNoRegisterEvent.UpdateUI)
                     if(petInsuranceResponse.estimateList.isEmpty()){
                         emitEventFlow(InsuranceNoRegisterEvent.ShowNothing)
                     }else {

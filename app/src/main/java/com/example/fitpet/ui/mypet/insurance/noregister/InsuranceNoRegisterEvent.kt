@@ -10,4 +10,5 @@ sealed class InsuranceNoRegisterEvent: Event {
     data object ShowNothing: InsuranceNoRegisterEvent()
     data object FetchInsurance: InsuranceNoRegisterEvent()
     data object FetchPetData : InsuranceNoRegisterEvent()
+    data object UpdateUI : InsuranceNoRegisterEvent()
 }
