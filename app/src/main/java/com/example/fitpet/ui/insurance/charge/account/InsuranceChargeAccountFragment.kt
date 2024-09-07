@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -63,8 +64,10 @@ class InsuranceChargeAccountFragment: BaseFragment<FragmentInsuranceChargeAccoun
 
                 if (position == BANK_SPINNER_DEFAULT) {
                     textView.text = getString(R.string.insurance_charge_account)
+                    textView.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_disable))
                 } else {
                     textView.text = bankList[position]
+                    textView.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
                 }
 
                 return view
