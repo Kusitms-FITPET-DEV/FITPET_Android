@@ -3,6 +3,7 @@ package com.example.fitpet.data.service
 import com.example.fitpet.base.ApiResponse
 import com.example.fitpet.model.request.RegisterPetRequest
 import com.example.fitpet.model.response.EstimateList
+import com.example.fitpet.model.response.GetPetInsuranceResponse
 import com.example.fitpet.model.response.PetInsuranceResponse
 import com.example.fitpet.model.response.PetResponse
 import com.example.fitpet.model.response.SearchPetBreedResponse
@@ -33,4 +34,10 @@ interface PetsService {
     @GET(Endpoints.Pets.PETS)
     suspend fun getPetAllMainInfo(
     ): ApiResponse<PetResponse>
+
+    @GET("${Endpoints.Pets.PETS}/{petId}/{priceId}")
+    suspend fun getPetInsuranceInfo(
+        @Path("petId") petId: Int,
+        @Path("priceId") priceId: Int,
+    ): ApiResponse<GetPetInsuranceResponse>
 }

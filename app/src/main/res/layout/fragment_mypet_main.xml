@@ -54,7 +54,7 @@
                     app:tabTextAppearance="@style/b3_B"
                     app:tabSelectedTextAppearance="@style/b3_B"
                     app:tabGravity="center"
-                    app:tabMode="scrollable"
+                    app:tabMode="fixed"
                     app:tabMaxWidth="100dp"
                     app:tabIndicator="@drawable/rect_tab_indicator"
                     app:tabIndicatorHeight="3dp"

@@ -58,25 +58,13 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainBinding, MypetMainPageSt
             is MypetMainEvent.GoToInsuranceInfoCheckPage -> goToInsuranceInfo()
             is MypetMainEvent.GoTOCompensationPage -> goToCompensation()
             is MypetMainEvent.GoToInsuranceChargePage -> goToInsuranceCharge()
+            MypetMainEvent.GoToRecommendButtonClick -> goToRecommend()
         }
     }
 
     private fun goToAddPet() {
         val action = MypetMainFragmentDirections.actionMypetToPetNameInput()
         navigator.navigate(action)
-    }
-
-    private fun fetchPetData() {
-        if(!isFetched){
-            if(viewModel.checkCount() > 0) {
-                Timber.tag("log1").d(viewModel.getFirstPet()!!.toString())
-                viewModel.fetchPetInsuranceInfo(viewModel.getFirstPet()!!, "70%")
-                isFetched = true
-            } else {
-                isFetched = true
-                goToNoPet() // Pet이 없을 때
-            }
-        }
     }
 
     private fun fetchInsuranceData() {
@@ -102,6 +90,25 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainBinding, MypetMainPageSt
     private fun goToInsuranceInfo() {
         val action = MypetMainFragmentDirections.actionMypetToInsuranceInfoCheck()
         navigator.navigate(action)
+    }
+
+    private fun goToRecommend() {
+        val action = MypetMainFragmentDirections.actionMypetToInsuranceRecommend(viewModel.uiState.petId.value!!,viewModel.uiState.priceId.value!!,viewModel.uiState.company.value.toString())
+        navigator.navigate(action)
+    }
+
+
+    private fun fetchPetData() {
+        if(!isFetched){
+            if(viewModel.checkCount() > 0) {
+                Timber.tag("log1").d(viewModel.getFirstPet()!!.toString())
+                viewModel.fetchPetInsuranceInfo(viewModel.getFirstPet()!!, "")
+                isFetched = true
+            } else {
+                isFetched = true
+                goToNoPet() // Pet이 없을 때
+            }
+        }
     }
 
     private fun goToCompensation() {

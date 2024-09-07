@@ -2,8 +2,11 @@ package com.example.fitpet.ui.mypet.insurance.noregister
 
 import android.os.Handler
 import android.os.Looper
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceNoPetBinding
 import com.example.fitpet.databinding.FragmentInsuranceNoRegisterBinding
@@ -25,6 +28,7 @@ import javax.inject.Inject
 class InsuranceNoRegisterFragment : BaseFragment<FragmentInsuranceNoRegisterBinding, InsuranceNoRegisterPageState, InsuranceNoRegisterViewModel>(
     FragmentInsuranceNoRegisterBinding::inflate
 ) {
+    private val mypetMainViewModel: MypetMainViewModel by activityViewModels()
     override val viewModel: InsuranceNoRegisterViewModel by viewModels()
 
     @Inject
@@ -34,7 +38,7 @@ class InsuranceNoRegisterFragment : BaseFragment<FragmentInsuranceNoRegisterBind
         InsuranceNoRegisterRVA(
             resourceProvider = resourceProvider,
             onClicked = { insurance ->
-                //navigate
+                goToRecommend(viewModel.getFirstPet()!!,insurance.priceId, insurance.insuranceCompany)
             }
         )
     }
@@ -46,10 +50,8 @@ class InsuranceNoRegisterFragment : BaseFragment<FragmentInsuranceNoRegisterBind
         }
         lifecycleScope.launch {
             delay(5000)
-            binding?.let { binding ->
-                if (isAdded) {
-                    binding.fabInsuranceKakaoBig.shrink()
-                }
+            if (isAdded && view != null) {  // view가 여전히 살아 있는지 확인
+                binding.fabInsuranceKakaoBig.shrink()
             }
         }
 
@@ -82,6 +84,12 @@ class InsuranceNoRegisterFragment : BaseFragment<FragmentInsuranceNoRegisterBind
     private fun updateUI(){
         binding.tvNoRegisterPriceFront.text = viewModel.getFormattedPriceStart()
         binding.tvNoRegisterPriceBack.text = " ~ " + viewModel.getFormattedPriceEnd()
+        if(viewModel.uiState.petInfo.value?.species == "DOG"){
+            Timber.d("dog~~")
+            binding.ivNoRegisterMyPet.setImageResource(R.drawable.ic_mypet_dog)
+        }else{
+            binding.ivNoRegisterMyPet.setImageResource(R.drawable.ic_mypet_cat)
+        }
     }
 
     private fun fetchInsurance() {
@@ -126,6 +134,10 @@ class InsuranceNoRegisterFragment : BaseFragment<FragmentInsuranceNoRegisterBind
 
         // CustomTabs 로 열기
         KakaoCustomTabsClient.openWithDefault(requireContext(), url)
+    }
+
+    private fun goToRecommend(petId: Int, priceId: Int, company:String) {
+        mypetMainViewModel.onInsuranceRecommendFragmentClick(petId, priceId, company)
     }
 
     companion object{

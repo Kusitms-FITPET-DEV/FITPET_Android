@@ -1,0 +1,921 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="vm"
+            type="com.example.fitpet.ui.mypet.insurance.noregister.InsuranceRecommendViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/tool_bar"
+            android:layout_width="match_parent"
+            android:layout_height="61dp"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/ic_back_recommend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_back"
+                android:layout_marginStart="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/my_pet_registration"
+                android:textAppearance="@style/b3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/neutral_100"
+                android:elevation="1dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/bg_main"
+            app:layout_constraintTop_toBottomOf="@id/tool_bar"
+            app:layout_constraintBottom_toTopOf="@+id/clBtnGoToRegister">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:id="@+id/view_blue_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="224dp"
+                    android:background="@color/bg_deep_blue" />
+
+                <ImageView
+                    android:id="@+id/iv_pet_icon"
+                    android:layout_width="148dp"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/ic_dog_glass"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_insurance_box"
+                    android:layout_width="180dp"
+                    android:layout_height="94dp"
+                    android:layout_marginStart="20dp"
+                    app:layout_constraintTop_toTopOf="@id/iv_pet_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_pet_icon"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <ImageView
+                        android:id="@+id/iv_company"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_meritz_recommend"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tv_insurance_name"
+                        app:layout_constraintBottom_toBottomOf="@id/tv_insurance_name" />
+
+                    <TextView
+                        android:id="@+id/tv_insurance_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="12dp"
+                        android:text="@{vm.uiState.insuranceSuggestionResponse.insuranceCompany}"
+                        android:textAppearance="@style/b3"
+                        android:textColor="@color/white"
+                        app:layout_constraintStart_toEndOf="@id/iv_company" />
+
+
+                    <TextView
+                        android:id="@+id/tv_insurance_price_before_month"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="월 "
+                        android:layout_marginTop="15dp"
+                        android:textAppearance="@style/h3_S"
+                        android:textColor="@color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_insurance_name" />
+
+                    <TextView
+                        android:id="@+id/tvInsuranceBoxMonthPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/h3_S"
+                        android:textColor="@color/white"
+                        app:layout_constraintTop_toTopOf="@id/tv_insurance_price_before_month"
+                        app:layout_constraintStart_toEndOf="@id/tv_insurance_price_before_month"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tvInsuranceBoxMonthWon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/h3_S"
+                        android:textColor="@color/white"
+                        android:text="@string/insurance_no_register_pet_box_won"
+                        app:layout_constraintTop_toTopOf="@id/tv_insurance_price_before_month"
+                        app:layout_constraintStart_toEndOf="@id/tvInsuranceBoxMonthPrice" />
+
+                    <TextView
+                        android:id="@+id/tv_insurance_price_after"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="할인 전 보험료 "
+                        android:layout_marginTop="4dp"
+                        android:textAppearance="@style/b5"
+                        android:textColor="@color/white"
+                        app:layout_constraintStart_toStartOf="@id/tv_insurance_price_before_month"
+                        app:layout_constraintTop_toBottomOf="@id/tv_insurance_price_before_month" />
+
+                    <TextView
+                        android:id="@+id/tvInsuranceBoxMonthPrice2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/b5"
+                        android:textColor="@color/white"
+                        android:text="65,600"
+                        app:layout_constraintTop_toTopOf="@id/tv_insurance_price_after"
+                        app:layout_constraintStart_toEndOf="@id/tv_insurance_price_after" />
+
+                    <TextView
+                        android:id="@+id/tvInsuranceBoxMonthWon2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/b5"
+                        android:textColor="@color/white"
+                        android:text="@string/insurance_no_register_pet_box_won"
+                        app:layout_constraintTop_toTopOf="@id/tv_insurance_price_after"
+                        app:layout_constraintStart_toEndOf="@id/tvInsuranceBoxMonthPrice2" />
+
+                    <View
+                        android:id="@+id/viewMainLine"
+                        android:layout_width="0dp"
+                        android:layout_height="0.5dp"
+                        android:background="@color/neutral_300"
+                        app:layout_constraintTop_toTopOf="@id/tvInsuranceBoxMonthWon2"
+                        app:layout_constraintBottom_toBottomOf="@id/tvInsuranceBoxMonthWon2"
+                        app:layout_constraintStart_toStartOf="@id/tv_insurance_price_after"
+                        app:layout_constraintEnd_toEndOf="@id/tvInsuranceBoxMonthWon2" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/viewRangeBoxBg"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:foreground="@drawable/bg_insurance_range"
+                    android:foregroundTint="@color/tag"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintStart_toStartOf="@id/clNoRegisterRange"
+                    app:layout_constraintEnd_toEndOf="@id/clNoRegisterRange"
+                    app:layout_constraintTop_toTopOf="@id/clNoRegisterRange"
+                    app:layout_constraintBottom_toBottomOf="@id/clNoRegisterRange" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clNoRegisterRange"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingStart="9.7dp"
+                    android:paddingEnd="9.7dp"
+                    app:layout_constraintStart_toStartOf="@id/cl_insurance_box"
+                    app:layout_constraintTop_toBottomOf="@id/iv_pet_icon">
+
+                    <TextView
+                        android:id="@+id/tvRangeNumberPercent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="동물등록우대 할인 2%"
+                        android:textAppearance="@style/recommend_text"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/viewRangeBoxBg2"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:foreground="@drawable/bg_insurance_range"
+                    android:foregroundTint="@color/tag"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintStart_toStartOf="@id/clNoRegisterRange2"
+                    app:layout_constraintEnd_toEndOf="@id/clNoRegisterRange2"
+                    app:layout_constraintTop_toTopOf="@id/clNoRegisterRange2"
+                    app:layout_constraintBottom_toBottomOf="@id/clNoRegisterRange2" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clNoRegisterRange2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="8dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingStart="9.7dp"
+                    android:paddingEnd="9.7dp"
+                    app:layout_constraintStart_toEndOf="@id/clNoRegisterRange"
+                    app:layout_constraintTop_toBottomOf="@id/iv_pet_icon">
+
+                    <TextView
+                        android:id="@+id/tvRangeNumberPercent2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="다펫할인 5%"
+                        android:textAppearance="@style/recommend_text"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:id="@+id/view_first_white_box"
+                    android:layout_width="match_parent"
+                    android:layout_height="118dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@color/white"
+                    app:layout_constraintTop_toBottomOf="@id/view_blue_bg" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="24dp"
+                    android:text="보험 특징 및 장점"
+                    android:textAppearance="@style/b3_S"
+                    app:layout_constraintTop_toTopOf="@id/view_first_white_box"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_garenty_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="24dp"
+                    android:text="보험금 현장 지급"
+                    android:textAppearance="@style/b4"
+                    android:lineSpacingExtra="30dp"
+                    app:layout_constraintTop_toTopOf="@id/view_first_white_box"
+                    app:layout_constraintStart_toStartOf="@id/tv_garenty_3" />
+
+                <TextView
+                    android:id="@+id/tv_garenty_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="24dp"
+                    android:text="치과치료(스케일링) 등"
+                    android:textAppearance="@style/b4"
+                    android:lineSpacingExtra="30dp"
+                    app:layout_constraintTop_toBottomOf="@id/tv_garenty_1"
+                    app:layout_constraintStart_toStartOf="@id/tv_garenty_3" />
+
+
+                <TextView
+                    android:id="@+id/tv_garenty_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="24dp"
+                    android:text="아포퀠/사이토포인트 보장"
+                    android:textAppearance="@style/b4"
+                    android:lineSpacingExtra="30dp"
+                    app:layout_constraintTop_toBottomOf="@id/tv_garenty_2"
+                    app:layout_constraintBottom_toBottomOf="@id/view_first_white_box"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+                <View
+                    android:id="@+id/view_second_white_box"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@color/white"
+                    app:layout_constraintTop_toTopOf="@id/cl_insurance_bottom_box"
+                    app:layout_constraintBottom_toBottomOf="@id/cl_insurance_bottom_box"
+                    app:layout_constraintStart_toStartOf="@id/cl_insurance_bottom_box"
+                    app:layout_constraintEnd_toEndOf="@id/cl_insurance_bottom_box" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_insurance_bottom_box"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:layout_constraintTop_toBottomOf="@id/view_first_white_box"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <TextView
+                        android:id="@+id/tv_title_reward"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="보장내용"
+                        android:textAppearance="@style/b1_S"
+                        android:layout_marginTop="42dp"
+                        android:layout_marginStart="24dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <View
+                        android:id="@+id/view_title_reward_line1"
+                        android:layout_width="0dp"
+                        android:layout_height="0.5dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@color/neutral_200"
+                        app:layout_constraintTop_toBottomOf="@id/tv_title_reward"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_insurance_bottom_box1"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintDimensionRatio="320:56"
+                        app:layout_constraintWidth_percent="0.888"
+                        app:layout_constraintTop_toBottomOf="@id/view_title_reward_line1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="치료비 1일 보상한도"
+                            android:textAppearance="@style/b3_M"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tvBig1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="15만원"
+                            android:textAppearance="@style/b3"
+                            android:textColor="@color/text_disable"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="@color/neutral_200"
+                        app:layout_constraintStart_toStartOf="@id/cl_insurance_bottom_box1"
+                        app:layout_constraintEnd_toEndOf="@id/cl_insurance_bottom_box1"
+                        app:layout_constraintTop_toBottomOf="@id/cl_insurance_bottom_box1" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_insurance_bottom_box2"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintDimensionRatio="320:56"
+                        app:layout_constraintWidth_percent="0.888"
+                        app:layout_constraintTop_toBottomOf="@id/cl_insurance_bottom_box1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="수술비 1일 보상한도"
+                            android:textAppearance="@style/b3_M"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tvBig2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="15만원"
+                            android:textAppearance="@style/b3"
+                            android:textColor="@color/text_disable"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="@color/neutral_200"
+                        app:layout_constraintStart_toStartOf="@id/cl_insurance_bottom_box2"
+                        app:layout_constraintEnd_toEndOf="@id/cl_insurance_bottom_box2"
+                        app:layout_constraintTop_toBottomOf="@id/cl_insurance_bottom_box2" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_insurance_bottom_box3"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintDimensionRatio="320:56"
+                        app:layout_constraintWidth_percent="0.888"
+                        app:layout_constraintTop_toBottomOf="@id/cl_insurance_bottom_box2"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="연가 보상한도"
+                            android:textAppearance="@style/b3_M"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tvBig3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="15만원"
+                            android:textAppearance="@style/b3"
+                            android:textColor="@color/text_disable"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="@color/neutral_200"
+                        app:layout_constraintStart_toStartOf="@id/cl_insurance_bottom_box3"
+                        app:layout_constraintEnd_toEndOf="@id/cl_insurance_bottom_box3"
+                        app:layout_constraintTop_toBottomOf="@id/cl_insurance_bottom_box3" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_insurance_bottom_box4"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintDimensionRatio="320:56"
+                        app:layout_constraintWidth_percent="0.888"
+                        app:layout_constraintTop_toBottomOf="@id/cl_insurance_bottom_box3"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:onClick="@{() -> vm.updateDetailPopup()}">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="치료비 주요 보장 내용"
+                            android:textAppearance="@style/b3_M"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_arrow_up"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:visibility="@{vm.uiState.isOpened() ? View.VISIBLE : View.GONE}"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_arrow_dorp_down"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:visibility="@{vm.uiState.isOpened() ? View.GONE : View.VISIBLE}"/>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/cl_insurance_bottom_box4"
+                        android:paddingBottom="20dp"
+                        android:visibility="@{vm.uiState.isOpened() ? View.VISIBLE : View.GONE}">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_detail_1"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            app:layout_constraintDimensionRatio="300:36"
+                            app:layout_constraintWidth_percent="0.8333"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="슬고관절 수술비"
+                                android:textAppearance="@style/b4_M"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_detail_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="O"
+                                android:textAppearance="@style/b4"
+                                android:textColor="@color/text_disable"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_detail_2"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            app:layout_constraintDimensionRatio="300:36"
+                            app:layout_constraintWidth_percent="0.8333"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginTop="12dp"
+                            app:layout_constraintTop_toBottomOf="@id/cl_detail_1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="피부병"
+                                android:textAppearance="@style/b4_M"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_detail_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="O"
+                                android:textAppearance="@style/b4"
+                                android:textColor="@color/text_disable"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_detail_3"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            app:layout_constraintDimensionRatio="300:36"
+                            app:layout_constraintWidth_percent="0.8333"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginTop="12dp"
+                            app:layout_constraintTop_toBottomOf="@id/cl_detail_2">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="아포퀠/사이토포인트"
+                                android:textAppearance="@style/b4_M"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_detail_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="O"
+                                android:textAppearance="@style/b4"
+                                android:textColor="@color/text_disable"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_detail_4"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            app:layout_constraintDimensionRatio="300:36"
+                            app:layout_constraintWidth_percent="0.8333"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginTop="12dp"
+                            app:layout_constraintTop_toBottomOf="@id/cl_detail_3">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="구강질환 보장"
+                                android:textAppearance="@style/b4_M"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_detail_4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="O"
+                                android:textAppearance="@style/b4"
+                                android:textColor="@color/text_disable"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_detail_5"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            app:layout_constraintDimensionRatio="300:36"
+                            app:layout_constraintWidth_percent="0.8333"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginTop="12dp"
+                            app:layout_constraintTop_toBottomOf="@id/cl_detail_4">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="치과질환 보장"
+                                android:textAppearance="@style/b4_M"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_detail_5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="O"
+                                android:textAppearance="@style/b4"
+                                android:textColor="@color/text_disable"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_detail_6"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            app:layout_constraintDimensionRatio="300:36"
+                            app:layout_constraintWidth_percent="0.8333"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginTop="12dp"
+                            app:layout_constraintTop_toBottomOf="@id/cl_detail_5">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="MRI/CT검사 보장"
+                                android:textAppearance="@style/b4_M"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_detail_6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="O"
+                                android:textAppearance="@style/b4"
+                                android:textColor="@color/text_disable"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_detail_7"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintWidth_percent="0.8333"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginTop="12dp"
+                            app:layout_constraintTop_toBottomOf="@id/cl_detail_6">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginBottom="8dp"
+                                android:text="이물제거 보장"
+                                android:textAppearance="@style/b4_M"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_detail_7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="O"
+                                android:textAppearance="@style/b4"
+                                android:maxWidth="200dp"
+                                android:textColor="@color/text_disable"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_detail_8"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            app:layout_constraintDimensionRatio="300:36"
+                            app:layout_constraintWidth_percent="0.8333"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginTop="12dp"
+                            app:layout_constraintTop_toBottomOf="@id/cl_detail_7">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="자기부담금"
+                                android:textAppearance="@style/b4_M"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_detail_8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="O"
+                                android:textAppearance="@style/b4"
+                                android:textColor="@color/text_disable"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_detail_9"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            app:layout_constraintDimensionRatio="300:36"
+                            app:layout_constraintWidth_percent="0.8333"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginTop="12dp"
+                            app:layout_constraintTop_toBottomOf="@id/cl_detail_8">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="반려견 배상책임"
+                                android:textAppearance="@style/b4_M"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_detail_9"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="O"
+                                android:textAppearance="@style/b4"
+                                android:textColor="@color/text_disable"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_detail_10"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            app:layout_constraintDimensionRatio="300:36"
+                            app:layout_constraintWidth_percent="0.8333"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginTop="12dp"
+                            app:layout_constraintTop_toBottomOf="@id/cl_detail_9">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="장례지원금"
+                                android:textAppearance="@style/b4_M"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_detail_10"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="O"
+                                android:textAppearance="@style/b4"
+                                android:textColor="@color/text_disable"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:id="@+id/viewInsuranceNoPetBottomMg1"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="20:48"
+                    app:layout_constraintWidth_percent="0.0556"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cl_insurance_bottom_box" />
+
+
+                <TextView
+                    android:id="@+id/tvInsuranceNoPetBottomInfo"
+                    android:layout_width="320dp"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/describe_b5_M"
+                    android:textColor="@color/neutral_500"
+                    android:text="@string/insurance_no_pet_bottom"
+                    app:layout_constraintTop_toBottomOf="@id/viewInsuranceNoPetBottomMg1"
+                    app:layout_constraintStart_toEndOf="@id/viewInsuranceNoPetBottomMg1" />
+
+                <View
+                    android:id="@+id/viewInsuranceNoPetBottomMg2"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="20:48"
+                    app:layout_constraintWidth_percent="0.0556"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvInsuranceNoPetBottomInfo" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clBtnGoToRegister"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:elevation="10dp">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnGoToRegister"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/recommend_insurance_btn"
+                android:textAppearance="@style/b2_S"
+                android:textColor="@color/white"
+                android:stateListAnimator="@null"
+                android:layout_marginStart="28dp"
+                android:layout_marginEnd="28dp"
+                android:background="@drawable/bg_rectangle_filled_point_blue_radius_8"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:onClick="@{() -> vm.onClickBtnConsult()}"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
