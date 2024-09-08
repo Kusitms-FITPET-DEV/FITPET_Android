@@ -1,9 +1,11 @@
 package com.example.fitpet.ui.insurance.charge.cause.calendar
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -11,6 +13,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.example.fitpet.databinding.BottomSheetCalendarBinding
 import com.example.fitpet.model.CalendarDate
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -34,6 +37,16 @@ class CalendarBottomSheet(
 
         val behavior = BottomSheetBehavior.from(requireView().parent as View)
         behavior.state = BottomSheetBehavior.STATE_EXPANDED
+    }
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val dlg = ( super.onCreateDialog(savedInstanceState).apply {
+            setOnShowListener {
+                val bottomSheet = findViewById<View>(com.google.android.material.R.id.design_bottom_sheet) as FrameLayout
+                bottomSheet.setBackgroundResource(android.R.color.transparent)
+            }
+        } ) as BottomSheetDialog
+        return dlg
     }
 
     override fun onCreateView(

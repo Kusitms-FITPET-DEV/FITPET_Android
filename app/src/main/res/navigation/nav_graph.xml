@@ -198,6 +198,17 @@
                 android:name="company"
                 app:argType="string" />
         </action>
+
+        <action
+            android:id="@+id/action_mypet_to_hospital_record"
+            app:destination="@id/fragmentHospitalRecord"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentHospitalRecord"
+        android:name="com.example.fitpet.ui.mypet.life.hospitalRecord.HospitalRecordFragment"
+        android:label="fragmentHospitalRecord"
+        android:layout="@layout/fragment_hospital_record">
     </fragment>
 
     <fragment
@@ -214,6 +225,10 @@
         android:layout="@layout/fragment_insurance_contract_check"
         tools:layout="@layout/fragment_insurance_contract_check">
 
+        <argument
+            android:name="petId"
+            app:argType="integer"/>
+
     </fragment>
 
     <fragment
@@ -222,6 +237,10 @@
         android:label="fragmentInsuranceCompensation"
         android:layout="@layout/fragment_insurance_compensation"
         tools:layout="@layout/fragment_insurance_compensation">
+
+        <argument
+            android:name="petId"
+            app:argType="integer"/>
 
     </fragment>
 
@@ -319,6 +338,10 @@
         <action
             android:id="@+id/action_insurance_finish_to_compensation"
             app:destination="@id/fragmentInsuranceCompensation"/>
+
+        <argument
+            android:name="petId"
+            app:argType="integer"/>
 
     </fragment>
 

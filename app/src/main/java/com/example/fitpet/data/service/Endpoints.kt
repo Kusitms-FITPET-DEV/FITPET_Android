@@ -14,8 +14,18 @@ object Endpoints {
         const val SEARCH = "$PETS/breeds/search"
     }
 
+    object PetLife{
+        const val HOME = "/home"
+        const val JOURNAL = "/journal"
+    }
+
     object Charge {
         const val CHARGE = "/charge"
         const val UPLOAD = "$CHARGE/upload"
+    }
+
+    object Insurance {
+        const val COMPENSATIONS = "/compensations"
+        const val INSURANCES = "/insurances"
     }
 }

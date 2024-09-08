@@ -42,7 +42,7 @@ class InsuranceChargeCheckFragment: BaseFragment<FragmentInsuranceChargeCheckBin
     }
 
     private fun goToFinishPage() {
-        val action = InsuranceChargeCheckFragmentDirections.actionInsuranceChargeCheckToFinish()
+        val action = InsuranceChargeCheckFragmentDirections.actionInsuranceChargeCheckToFinish(arguments.insuranceArgument.petId)
         val navOptions = NavOptions.Builder()
             .setPopUpTo(R.id.fragmentInsuranceChargeCause, true)
             .build()

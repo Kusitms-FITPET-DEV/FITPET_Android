@@ -3,6 +3,7 @@ package com.example.fitpet.ui.insurance.info
 import android.os.Bundle
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceContractCheckBinding
@@ -22,7 +23,10 @@ class InsuranceContractCheckFragment: BaseFragment<FragmentInsuranceContractChec
 
     override val viewModel: InsuranceContractCheckViewModel by viewModels()
 
+    val arguments: InsuranceContractCheckFragmentArgs by navArgs()
+
     private lateinit var insurancePage: ArrayList<String>
+
     private var _insurancePageAdapter: InsuranceContractCheckAdapter? = null
     private val insurancePageAdapter
         get() = requireNotNull(_insurancePageAdapter)
@@ -31,19 +35,21 @@ class InsuranceContractCheckFragment: BaseFragment<FragmentInsuranceContractChec
         binding.viewModel = viewModel
 
         initSetAdapter()
-        viewModel.getInsuranceInfo()
+        viewModel.getInsuranceInfo(arguments.petId)
     }
 
     override fun initState() {
         launchWhenStarted(viewLifecycleOwner) {
             launch {
-                viewModel.uiState.insuranceContractInfo.collect { info ->
-                    initSetAdapterPage(info)
+                viewModel.eventFlow.collect { event ->
+                    handleEvent(event as InsuranceContractCheckEvent)
                 }
             }
             launch {
-                viewModel.eventFlow.collect { event ->
-                    handleEvent(event as InsuranceContractCheckEvent)
+                viewModel.uiState.insuranceContractInfo.collect { insuranceInfo ->
+                    if (insuranceInfo.contract != null) {
+                        initSetAdapterPage(insuranceInfo)
+                    }
                 }
             }
         }
@@ -68,10 +74,11 @@ class InsuranceContractCheckFragment: BaseFragment<FragmentInsuranceContractChec
     }
 
     private fun initSetAdapterPage(info: InsuranceContractInfo) {
+
         val contractData = Bundle().apply { putParcelable(CONTRACT, info.contract) }
         val coverageData = Bundle().apply { putParcelable(COVERAGE, info.coverage) }
 
-        insurancePageAdapter.apply {
+        _insurancePageAdapter?.apply {
             addFragment(InsuranceInfoContractFragment().apply { arguments = contractData })
             addFragment(InsuranceInfoCoverageFragment().apply { arguments = coverageData })
         }
