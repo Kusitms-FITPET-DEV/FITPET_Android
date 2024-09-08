@@ -15,6 +15,7 @@ import com.example.fitpet.model.domain.insurance.main.InsuranceSuggestion
 import com.example.fitpet.model.domain.insurance.main.MyPet
 import com.example.fitpet.ui.mypet.MypetMainViewModel
 import com.example.fitpet.ui.mypet.adapter.InsuranceNoRegisterRVA
+import com.example.fitpet.ui.mypet.insurance.petEdit.PetBottomSheetFragment
 import com.example.fitpet.util.ResourceProvider
 import com.kakao.sdk.common.util.KakaoCustomTabsClient
 import com.kakao.sdk.talk.TalkApiClient
@@ -28,8 +29,9 @@ import javax.inject.Inject
 class InsuranceNoRegisterFragment : BaseFragment<FragmentInsuranceNoRegisterBinding, InsuranceNoRegisterPageState, InsuranceNoRegisterViewModel>(
     FragmentInsuranceNoRegisterBinding::inflate
 ) {
-    private val mypetMainViewModel: MypetMainViewModel by activityViewModels()
+//    private val mypetMainViewModel: MypetMainViewModel by activityViewModels()
     override val viewModel: InsuranceNoRegisterViewModel by viewModels()
+    private val myPetMainViewModel: MypetMainViewModel by activityViewModels()
 
     @Inject
     lateinit var resourceProvider: ResourceProvider
@@ -54,8 +56,10 @@ class InsuranceNoRegisterFragment : BaseFragment<FragmentInsuranceNoRegisterBind
                 binding.fabInsuranceKakaoBig.shrink()
             }
         }
+        if(myPetMainViewModel.uiState.petId.value!=0) {
+            viewModel.fetchPetInsuranceInfo(myPetMainViewModel.uiState.petId.value!!, "")
+        }else viewModel.loadPetData()
 
-        viewModel.loadPetData()
         initInsuranceNoRegisterRVAdapter()
     }
 
@@ -112,7 +116,8 @@ class InsuranceNoRegisterFragment : BaseFragment<FragmentInsuranceNoRegisterBind
     }
 
     private fun openMyPetDialog() {
-        //다이얼로그 띄우기
+        val dialogFragment = PetBottomSheetFragment()
+        dialogFragment.show(childFragmentManager, "ListDialogueListselectFragment")
     }
 
     private fun showNothing() {
@@ -137,7 +142,7 @@ class InsuranceNoRegisterFragment : BaseFragment<FragmentInsuranceNoRegisterBind
     }
 
     private fun goToRecommend(petId: Int, priceId: Int, company:String) {
-        mypetMainViewModel.onInsuranceRecommendFragmentClick(petId, priceId, company)
+        myPetMainViewModel.onInsuranceRecommendFragmentClick(petId, priceId, company)
     }
 
     companion object{

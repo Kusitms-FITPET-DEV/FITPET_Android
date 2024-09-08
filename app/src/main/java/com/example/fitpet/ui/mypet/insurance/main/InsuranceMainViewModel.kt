@@ -66,6 +66,7 @@ class InsuranceMainViewModel @Inject constructor(
     fun updatePetInfo(pet: PetInfo){
         viewModelScope.launch {
             myPetFlow.update { pet }
+            Timber.d("[테스트] -> 처음 ${myPetFlow.value?.name}")
         }
         Timber.d(myPetFlow.value?.name)
         Timber.d(myPetFlow.value?.breed)
@@ -107,6 +108,10 @@ class InsuranceMainViewModel @Inject constructor(
 //        emitEventFlow(InsuranceMainEvent.GoToContractCheck)
 //    }
 
+    fun onClickDialog(){
+        emitEventFlow(InsuranceMainEvent.OpenMyPetDialog)
+    }
+
     //다이얼로그 닫을 시 펫 정보 및 보험 정보 업데이트 필요
     fun onDismissPetDialog() {
         emitEventFlow(InsuranceMainEvent.UpdatePetInfo)
@@ -125,10 +130,12 @@ class InsuranceMainViewModel @Inject constructor(
     }
 
     fun loadPetData() {
+        Timber.d("[테스트] -> 처음 loadPetData(): t")
         viewModelScope.launch {
             petsRepository.getPetAllMainInfo().collect { result ->
                 result.onSuccess { response ->
                     // Update both pet info and estimate list
+                    Timber.d("[테스트] -> 처음 loadPetData(): ${response}")
                     petResponseFlow.update { response }
                     updatePetInfo(response.petList.get(0))
                 }.onFailure {
@@ -145,6 +152,9 @@ class InsuranceMainViewModel @Inject constructor(
                 result.onSuccess { petInsuranceResponse ->
                     // Update both pet info and estimate list
                     petInsuranceFlow.update { petInsuranceResponse }
+                    myPetFlow.update { PetInfo(petId, petInsuranceResponse.name, petInsuranceResponse.birthYear, petInsuranceResponse.age, petInsuranceResponse.species, petInsuranceResponse.breed) }
+                    insuranceInfoFlow.update { petInsuranceResponse.estimateList[0] }
+
                     emitEventFlow(InsuranceMainEvent.UpdateInsuranceInfo)
                 }.onFailure {
                     // Handle error

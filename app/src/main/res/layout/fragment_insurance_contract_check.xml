@@ -57,7 +57,7 @@
             android:layout_marginStart="20dp"
             android:textColor="@color/black"
             android:textAppearance="@style/b1_M"
-            android:text="@string/insurance_name"
+            android:text="@{viewModel.uiState.company}"
             app:layout_constraintTop_toBottomOf="@id/iv_insurance_contract_check_insurance_name"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="삼성화재 위풍댕댕"/>

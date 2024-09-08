@@ -1,5 +1,7 @@
 package com.example.fitpet.data.repository
 
+import com.example.fitpet.data.service.PetsService
+import com.example.fitpet.model.request.PetEditRequest
 import com.example.fitpet.model.request.RegisterPetRequest
 import com.example.fitpet.model.response.EstimateList
 
@@ -15,4 +17,6 @@ interface PetsRepository {
     suspend fun getPetMainInfo(priceRate: String, petId: Int): Flow<Result<PetInsuranceResponse>>
     suspend fun getPetAllMainInfo(): Flow<Result<PetResponse>>
     suspend fun getPetInsuranceInfo(petId: Int, priceId: Int): Flow<Result<GetPetInsuranceResponse>>
+    suspend fun editPet(petId: Int, petEditRequest: PetEditRequest): Flow<Result<Unit>>
+    suspend fun deletePet(petId: Int): Flow<Result<Unit>>
 }

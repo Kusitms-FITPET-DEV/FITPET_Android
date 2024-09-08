@@ -10,6 +10,7 @@ data class EstimateList(
 )
 
 data class PetInsuranceResponse(
+    @SerializedName("birthYear") val birthYear: Int = 0,
     @SerializedName("name") val name: String = "",
     @SerializedName("species") val species: String = "",
     @SerializedName("age") val age: Int = 0,

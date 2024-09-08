@@ -2,6 +2,7 @@ package com.example.fitpet.data.repositoryImpl
 
 import com.example.fitpet.data.repository.PetsRepository
 import com.example.fitpet.data.service.PetsService
+import com.example.fitpet.model.request.PetEditRequest
 import com.example.fitpet.model.request.RegisterPetRequest
 import com.example.fitpet.model.response.EstimateList
 import com.example.fitpet.model.response.GetPetInsuranceResponse
@@ -76,6 +77,34 @@ class PetsRepositoryImpl @Inject constructor(
         emit(
             kotlin.runCatching {
                 val response = petsService.getPetInsuranceInfo(petId, priceId)
+
+                if (response.success) {
+                    response.data
+                } else {
+                    throw RuntimeException("GetPetInfo Failed ${response.status}")
+                }
+            }
+        )
+    }
+
+    override suspend fun editPet(petId: Int, request: PetEditRequest): Flow<Result<Unit>> = flow {
+        emit(
+            kotlin.runCatching {
+                val response = petsService.editMyPet(petId, request)
+
+                if (response.success) {
+                    response.data
+                } else {
+                    throw RuntimeException("RegisterPet Failed ${response.status}")
+                }
+            }
+        )
+    }
+
+    override suspend fun deletePet(petId: Int): Flow<Result<Unit>> = flow {
+        emit(
+            kotlin.runCatching {
+                val response = petsService.deleteMyPet(petId)
 
                 if (response.success) {
                     response.data

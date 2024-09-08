@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class GetPetInsuranceResponse(
     @SerializedName("insuranceCompany") val insuranceCompany: String,
+    @SerializedName("insuranceName") val insuranceName: String,
     @SerializedName("discountList") val discountList: List<String>,
     @SerializedName("positiveList") val positiveList: List<String>,
     @SerializedName("beforeDiscountFee") val beforeDiscountFee: Int,

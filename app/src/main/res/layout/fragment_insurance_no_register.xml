@@ -91,7 +91,8 @@
                         app:layout_constraintWidth_percent="0.1625"
                         android:background="@drawable/ic_mypet_dog"
                         app:layout_constraintStart_toEndOf="@id/viewInsuranceBoxMg1"
-                        app:layout_constraintTop_toBottomOf="@id/viewInsuranceBoxMg1"/>
+                        app:layout_constraintTop_toBottomOf="@id/viewInsuranceBoxMg1"
+                        android:onClick="@{() -> vm.onClickDialog()}"/>
 
                     <TextView
                         android:id="@+id/tvNoRegisterMypetName"
@@ -102,6 +103,7 @@
                         android:layout_marginStart="12dp"
                         app:layout_constraintStart_toEndOf="@id/ivNoRegisterMyPet"
                         app:layout_constraintTop_toTopOf="@id/ivNoRegisterMyPet"
+                        android:onClick="@{() -> vm.onClickDialog()}"
                         />
 
                     <ImageView
@@ -115,7 +117,8 @@
                         android:background="@drawable/ic_triangle_mypet"
                         app:layout_constraintStart_toEndOf="@id/tvNoRegisterMypetName"
                         app:layout_constraintTop_toTopOf="@id/tvNoRegisterMypetName"
-                        app:layout_constraintBottom_toBottomOf="@id/tvNoRegisterMypetName"/>
+                        app:layout_constraintBottom_toBottomOf="@id/tvNoRegisterMypetName"
+                        android:onClick="@{() -> vm.onClickDialog()}"/>
 
                     <TextView
                         android:id="@+id/tvNoRegisterMypetInfo"
@@ -124,8 +127,10 @@
                         android:text="@{String.valueOf(@string/pet_info(vm.uiState.petInfo.age, vm.uiState.petInfo.breed))}"
                         android:textAppearance="@style/insurance_pet_info"
                         android:layout_marginStart="12dp"
+                        android:layout_marginTop="5dp"
                         app:layout_constraintStart_toEndOf="@id/ivNoRegisterMyPet"
-                        app:layout_constraintBottom_toBottomOf="@id/ivNoRegisterMyPet"
+                        app:layout_constraintTop_toBottomOf="@id/tvNoRegisterMypetName"
+                        android:onClick="@{() -> vm.onClickDialog()}"
                         />
 
                     <View
@@ -341,13 +346,13 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/clNoRegisterRange"
-                        android:layout_width="68dp"
+                        android:layout_width="70dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
                         android:paddingTop="6dp"
                         android:paddingBottom="6dp"
                         android:paddingStart="12dp"
-                        android:paddingEnd="12dp"
+                        android:paddingEnd="14dp"
                         app:layout_constraintStart_toEndOf="@id/tvRangeTitle"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -473,11 +478,11 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/viewRangeBoxSelect"
-                    android:layout_width="68dp"
+                    android:layout_width="70dp"
                     android:layout_height="0dp"
                     android:layout_marginTop="3dp"
                     android:foreground="@drawable/bg_insurance_range_box"
-                    app:layout_constraintDimensionRatio="68:96"
+                    app:layout_constraintDimensionRatio="70:104"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="0dp"
                     app:layout_constraintEnd_toEndOf="@id/clNoRegisterRangeBox"

@@ -36,6 +36,7 @@ class InsuranceContractCheckFragment: BaseFragment<FragmentInsuranceContractChec
 
         initSetAdapter()
         viewModel.getInsuranceInfo(arguments.petId)
+        viewModel.getCompany(arguments.company)
     }
 
     override fun initState() {
@@ -52,6 +53,11 @@ class InsuranceContractCheckFragment: BaseFragment<FragmentInsuranceContractChec
                     }
                 }
             }
+//            launch {
+//                viewModel.uiState.companyImg.collect {
+//                    binding.ivInsuranceContractCheckInsuranceName.setImageResource(it)
+//                }
+//            }
         }
     }
 
