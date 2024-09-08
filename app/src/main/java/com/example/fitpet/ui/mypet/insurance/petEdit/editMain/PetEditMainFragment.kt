@@ -58,6 +58,7 @@ class PetEditMainFragment : BaseFragment<FragmentAddNewPetBinding, PetEditMainPa
         }
         viewModel.loadPetData()
         binding.icBackRecommend.setOnClickListener { navigator.navigateUp() }
+        binding.btnGoToAddMyPet.setOnClickListener{ navigator.navigate(PetEditMainFragmentDirections.actionPetEditMainToAdd())}
     }
 
     private val myAddPetRVA by lazy {
