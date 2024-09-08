@@ -103,6 +103,11 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainDrawerBinding, MypetMain
         binding.ivMypetNotification.setOnClickListener {
             binding.drawerlayoutMain.openDrawer(GravityCompat.END)
         }
+        binding.ivDrawerClose.setOnClickListener {
+            if (binding.drawerlayoutMain.isDrawerOpen(GravityCompat.END)) {
+                binding.drawerlayoutMain.closeDrawer(GravityCompat.END)
+            }
+        }
     }
 
     private fun goToNoPet() {
