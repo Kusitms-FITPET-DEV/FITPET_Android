@@ -2,7 +2,10 @@ package com.example.fitpet.ui.mypet
 
 import androidx.lifecycle.viewModelScope
 import com.example.fitpet.base.BaseViewModel
+import com.example.fitpet.data.repository.AlarmRepository
 import com.example.fitpet.data.repository.PetsRepository
+import com.example.fitpet.model.InsuranceAlarm
+import com.example.fitpet.model.response.AlarmHistoryResponse
 import com.example.fitpet.model.response.PetInsuranceResponse
 import com.example.fitpet.model.response.PetResponse
 import com.example.fitpet.util.ResourceProvider
@@ -11,18 +14,20 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import com.example.fitpet.ui.mypet.insurance.main.InsuranceMainEvent
-import com.example.fitpet.ui.onboarding.OnBoardingPageState
-import kotlinx.coroutines.flow.StateFlow
+import org.threeten.bp.Duration
+import org.threeten.bp.LocalDateTime
+import org.threeten.bp.format.DateTimeFormatter
 import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
 class MypetMainViewModel @Inject constructor(
     private val resourceProvider: ResourceProvider,
-    private val petsRepository: PetsRepository
+    private val petsRepository: PetsRepository,
+    private val alarmRepository: AlarmRepository
 ): BaseViewModel<MypetMainPageState>() {
 
+    private val _insuranceAlarmList: MutableStateFlow<List<InsuranceAlarm>> = MutableStateFlow(emptyList())
     private val petResponseFlow: MutableStateFlow<PetResponse?> = MutableStateFlow(null)
     private val petInsuranceFlow: MutableStateFlow<PetInsuranceResponse?> = MutableStateFlow(null)
     private val petIdFlow: MutableStateFlow<Int?> = MutableStateFlow(0)
@@ -31,6 +36,7 @@ class MypetMainViewModel @Inject constructor(
     private val petNameFlow: MutableStateFlow<String?> = MutableStateFlow(null)
 
     override val uiState = MypetMainPageState(
+        insuranceAlarmList = _insuranceAlarmList.asStateFlow(),
         petCount = petResponseFlow.asStateFlow(),
         insuranceSuggestion = petInsuranceFlow.asStateFlow(),
         petId = petIdFlow.asStateFlow(),
@@ -38,6 +44,68 @@ class MypetMainViewModel @Inject constructor(
         company = companyFlow.asStateFlow(),
         petName = petNameFlow.asStateFlow()
     )
+
+    fun setInsuranceAlarmList() {
+        Timber.d("[서버통신 테스트] -> 확인 ")
+        viewModelScope.launch {
+            alarmRepository.getAlarmHistoryList().collect { result ->
+                resultResponse(result, { data ->
+                    Timber.d("[서버통신 테스트] -> $data")
+                    _insuranceAlarmList.update { setAlarmList(data) }
+                })
+            }
+        }
+    }
+
+    fun changeAlarmConfirm(historyId: Int) {
+        viewModelScope.launch {
+            alarmRepository.changeAlarmConfirm(historyId).collect {
+                resultResponse(it, {
+                    Timber.d("[서버통신 테스트] 성공")
+                    setInsuranceAlarmList()
+                })
+            }
+        }
+    }
+
+    private fun setAlarmList(data: List<AlarmHistoryResponse.HistoryItem>): List<InsuranceAlarm> {
+        val tempList = ArrayList<InsuranceAlarm>()
+
+        for (i in data.indices) {
+            with (data[i]) {
+                tempList.add(InsuranceAlarm(historyId, progress, timeDiffFromNow(time), confirmed))
+            }
+        }
+
+        return tempList
+    }
+
+    private fun timeDiffFromNow(timeStr: String): String {
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSS")
+        val givenTime = LocalDateTime.parse(timeStr, formatter)
+
+        val now = LocalDateTime.now()
+        val duration = Duration.between(givenTime, now)
+
+        return when {
+            // 하루 이상 차이
+            duration.toDays() >= 1 -> {
+                val daysAgo = duration.toDays()
+                "${daysAgo}일 전"
+            }
+            // 하루 이하, 한 시간 이상 차이
+            duration.toHours() >= 1 -> {
+                val hoursAgo = duration.toHours()
+                "${hoursAgo}시간 전"
+            }
+            // 한 시간 이하 차이
+            else -> {
+                val minutesAgo = duration.toMinutes()
+                "${minutesAgo}분 전"
+            }
+        }
+    }
+
 
     fun onInsuranceNoPetFragmentClick() {
         emitEventFlow(MypetMainEvent.GoToAddPetButtonClick)

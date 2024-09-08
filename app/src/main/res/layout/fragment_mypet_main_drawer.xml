@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawerlayout_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_primary">
+        
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_mypet_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_mypet_main"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintDimensionRatio="360:55"
+                android:contentInsetStart="0dp"
+                android:contentInsetLeft="0dp"
+                android:contentInsetRight="0dp"
+                android:contentInsetEnd="0dp"
+                app:contentInsetLeft="0dp"
+                app:contentInsetStart="0dp"
+                app:contentInsetRight="0dp"
+                app:contentInsetEnd="0dp"
+                android:background="@color/white">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_mypet_main_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <View
+                        android:id="@+id/toolbar_mg1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        app:layout_constraintWidth_percent="0.03"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/tab_mypet_main"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        app:tabIndicatorFullWidth="false"
+                        app:tabIndicatorColor="@color/black"
+                        app:tabSelectedTextColor="@color/black"
+                        app:tabTextColor="@color/tab_disable"
+                        app:tabTextAppearance="@style/b3_B"
+                        app:tabSelectedTextAppearance="@style/b3_B"
+                        app:tabGravity="center"
+                        app:tabMode="fixed"
+                        app:tabMaxWidth="100dp"
+                        app:tabIndicator="@drawable/rect_tab_indicator"
+                        app:tabIndicatorHeight="3dp"
+                        app:tabBackground="@color/white"
+                        app:layout_constraintStart_toEndOf="@id/toolbar_mg1"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent">
+
+                        <com.google.android.material.tabs.TabItem
+                            android:id="@+id/tab_mypet_insurance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tab_insurance" />
+
+                        <com.google.android.material.tabs.TabItem
+                            android:id="@+id/tab_list_item_like"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tab_life" />
+
+                    </com.google.android.material.tabs.TabLayout>
+
+                    <ImageView
+                        android:id="@+id/iv_mypet_notification"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_notification_default"
+                        android:padding="5dp"
+                        android:layout_marginEnd="10dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/iv_mypet_mypage" />
+
+                    <ImageView
+                        android:id="@+id/iv_mypet_mypage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_person"
+                        android:padding="5dp"
+                        android:layout_marginEnd="20dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.appcompat.widget.Toolbar>
+
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/vp_mypet_main"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintTop_toBottomOf="@id/toolbar_mypet_main"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@drawable/bg_mypet_shadow"
+                app:layout_constraintTop_toBottomOf="@id/toolbar_mypet_main" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/drawer_alarm_menu"
+            android:layout_width="268dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:background="@color/bg_primary">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    android:id="@+id/iv_drawer_close"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_close"
+                    android:layout_marginTop="23dp"
+                    android:layout_marginStart="16dp"
+                    android:background="@android:color/transparent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="알림"
+                    android:textAppearance="@style/b3"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintTop_toTopOf="@id/iv_drawer_close"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_drawer_close"
+                    app:layout_constraintStart_toEndOf="@id/iv_drawer_close"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcv_drawer_alarm"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="26dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toBottomOf="@id/iv_drawer_close"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:listitem="@layout/item_drawer_alarm"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.navigation.NavigationView>
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+</layout>
