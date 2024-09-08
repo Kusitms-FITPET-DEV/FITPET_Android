@@ -15,6 +15,7 @@ import com.example.fitpet.model.domain.insurance.main.InsuranceSuggestion
 import com.example.fitpet.model.domain.insurance.main.MyPet
 import com.example.fitpet.ui.mypet.MypetMainViewModel
 import com.example.fitpet.ui.mypet.adapter.InsuranceNoRegisterRVA
+import com.example.fitpet.ui.mypet.insurance.petEdit.PetBottomSheetFragment
 import com.example.fitpet.util.ResourceProvider
 import com.kakao.sdk.common.util.KakaoCustomTabsClient
 import com.kakao.sdk.talk.TalkApiClient
@@ -115,7 +116,8 @@ class InsuranceNoRegisterFragment : BaseFragment<FragmentInsuranceNoRegisterBind
     }
 
     private fun openMyPetDialog() {
-        //다이얼로그 띄우기
+        val dialogFragment = PetBottomSheetFragment()
+        dialogFragment.show(childFragmentManager, "ListDialogueListselectFragment")
     }
 
     private fun showNothing() {

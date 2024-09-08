@@ -107,6 +107,10 @@ class InsuranceMainViewModel @Inject constructor(
 //        emitEventFlow(InsuranceMainEvent.GoToContractCheck)
 //    }
 
+    fun onClickDialog(){
+        emitEventFlow(InsuranceMainEvent.OpenMyPetDialog)
+    }
+
     //다이얼로그 닫을 시 펫 정보 및 보험 정보 업데이트 필요
     fun onDismissPetDialog() {
         emitEventFlow(InsuranceMainEvent.UpdatePetInfo)

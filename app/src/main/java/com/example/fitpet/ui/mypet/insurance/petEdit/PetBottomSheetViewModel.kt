@@ -47,14 +47,6 @@ class PetBottomSheetViewModel @Inject constructor(private val petsRepository: Pe
         }
     }
 
-    fun emitClickedPet(){
-        emitEventFlow(MypetMainEvent.ClickedPet)
-    }
-
-    fun emitEditedPet(){
-        emitEventFlow(MypetMainEvent.ClickedEditPet)
-    }
-
 
 
     // Pet 정보를 불러오는 함수

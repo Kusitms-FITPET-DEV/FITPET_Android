@@ -64,13 +64,13 @@ class PetBottomSheetFragment (): BottomSheetDialogFragment() {
             onEditClicked = {mypet ->
                 viewModel.updateEditPetId(mypet.petId)
                 myPetMainViewModel.updatePetId(mypet.petId)
-                viewModel.emitEditedPet()
+                myPetMainViewModel.emitEditedPet()
                 dismiss()
             },
             onClicked = { mypet ->
                 viewModel.updatePetInfo(mypet)
                 myPetMainViewModel.updatePetId(mypet.petId)
-                viewModel.emitClickedPet()
+                myPetMainViewModel.emitClickedPet()
                 dismiss()
             }
         )

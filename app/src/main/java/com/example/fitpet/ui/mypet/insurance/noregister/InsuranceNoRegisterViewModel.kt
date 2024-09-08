@@ -126,6 +126,10 @@ class InsuranceNoRegisterViewModel @Inject constructor(
         }
     }
 
+    fun onClickDialog(){
+        emitEventFlow(InsuranceNoRegisterEvent.OpenMyPetDialog)
+    }
+
 
     fun getFirstPet(): Int?{
         return petResponseFlow.value?.petList?.get(0)?.petId

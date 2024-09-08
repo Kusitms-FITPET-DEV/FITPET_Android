@@ -94,7 +94,8 @@
                         app:layout_constraintWidth_percent="0.1625"
                         android:background="@drawable/ic_mypet_dog"
                         app:layout_constraintStart_toEndOf="@id/viewInsuranceBoxMg1"
-                        app:layout_constraintTop_toBottomOf="@id/viewInsuranceBoxMg1"/>
+                        app:layout_constraintTop_toBottomOf="@id/viewInsuranceBoxMg1"
+                        android:onClick="@{() -> vm.onClickDialog()}"/>
 
                     <TextView
                         android:id="@+id/tvNoRegisterMypetName"
@@ -105,6 +106,7 @@
                         android:layout_marginStart="12dp"
                         app:layout_constraintStart_toEndOf="@id/ivNoRegisterMyPet"
                         app:layout_constraintTop_toTopOf="@id/ivNoRegisterMyPet"
+                        android:onClick="@{() -> vm.onClickDialog()}"
                         />
 
                     <ImageView
@@ -118,7 +120,8 @@
                         android:background="@drawable/ic_triangle_mypet"
                         app:layout_constraintStart_toEndOf="@id/tvNoRegisterMypetName"
                         app:layout_constraintTop_toTopOf="@id/tvNoRegisterMypetName"
-                        app:layout_constraintBottom_toBottomOf="@id/tvNoRegisterMypetName"/>
+                        app:layout_constraintBottom_toBottomOf="@id/tvNoRegisterMypetName"
+                        android:onClick="@{() -> vm.onClickDialog()}"/>
 
                     <TextView
                         android:id="@+id/tvNoRegisterMypetInfo"

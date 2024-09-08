@@ -61,7 +61,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:minHeight="190dp"
-            android:maxHeight="325dp"
+            android:maxHeight="340dp"
             android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="@id/layout_insurance_agree_all"
             app:layout_constraintEnd_toEndOf="@id/layout_insurance_agree_all"

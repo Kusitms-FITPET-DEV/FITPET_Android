@@ -147,4 +147,12 @@ class MypetMainViewModel @Inject constructor(
         emitEventFlow(MypetMainEvent.GoToInsuranceChargePage)
 
     }
+
+    fun emitClickedPet(){
+        emitEventFlow(MypetMainEvent.ClickedPet)
+    }
+
+    fun emitEditedPet(){
+        emitEventFlow(MypetMainEvent.ClickedEditPet)
+    }
 }
