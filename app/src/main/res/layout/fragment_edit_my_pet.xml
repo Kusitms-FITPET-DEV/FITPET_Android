@@ -344,7 +344,7 @@
             app:layout_constraintStart_toEndOf="@id/view_edit_my_pet_mg1"
             app:layout_constraintEnd_toStartOf="@id/view_edit_my_pet_mg2"
             app:layout_constraintBottom_toTopOf="@id/tv_erase_all"
-            android:onClick="@{() -> vm.onClickBtnConsult()}" />
+            />
 
 
         <TextView

@@ -43,14 +43,6 @@ class PetEditMainFragment : BaseFragment<FragmentAddNewPetBinding, PetEditMainPa
 
     private val navigator by lazy { findNavController() }
 
-    private val petId: Int? by lazy {
-        arguments?.getInt("petId")
-    }
-
-    private val isEdit: Boolean? by lazy {
-        arguments?.getBoolean("isEdit")
-    }
-
     override fun initView() {
         binding.apply {
             vm = viewModel
