@@ -13,6 +13,7 @@ import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentMypetMainBinding
 import com.example.fitpet.databinding.FragmentMypetMainDrawerBinding
 import com.example.fitpet.ui.model.InsuranceCharge
+import com.example.fitpet.ui.mypet.adapter.MainInsuranceAlarmAdapter
 import com.example.fitpet.ui.mypet.adapter.MypetMainVPA
 import com.example.fitpet.util.ResourceProvider
 import com.google.android.material.tabs.TabLayoutMediator
@@ -33,15 +34,20 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainDrawerBinding, MypetMain
 
     override val viewModel: MypetMainViewModel by activityViewModels()
 
+    private var _insuranceAlarmAdapter: MainInsuranceAlarmAdapter? = null
+    private val insuranceAlarmAdapter
+        get() = requireNotNull(_insuranceAlarmAdapter)
+
     @Inject
     lateinit var resourceProvider: ResourceProvider
 
     override fun initView() {
         // 초기 상태에 맞게 어댑터를 설정
         initListVPAdapter(isNoPet = false, isNoRegister = false)
+        viewModel.setInsuranceAlarmList()
         viewModel.loadPetData()
 
-        clickAlarmDrawable()
+        setAlarmDrawable()
     }
 
     override fun initState() {
@@ -82,7 +88,18 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainDrawerBinding, MypetMain
         }
     }
 
-    private fun clickAlarmDrawable() {
+    private fun setAlarmDrawable() {
+        _insuranceAlarmAdapter = MainInsuranceAlarmAdapter()
+        binding.rcvDrawerAlarm.adapter = insuranceAlarmAdapter
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiState.insuranceAlarmList.collect { alarmList ->
+                    insuranceAlarmAdapter.submitList(alarmList)
+                }
+            }
+        }
+
         binding.ivMypetNotification.setOnClickListener {
             binding.drawerlayoutMain.openDrawer(GravityCompat.END)
         }

@@ -3,6 +3,7 @@ package com.example.fitpet.ui.mypet
 import androidx.lifecycle.viewModelScope
 import com.example.fitpet.base.BaseViewModel
 import com.example.fitpet.data.repository.PetsRepository
+import com.example.fitpet.model.InsuranceAlarm
 import com.example.fitpet.model.response.PetInsuranceResponse
 import com.example.fitpet.model.response.PetResponse
 import com.example.fitpet.util.ResourceProvider
@@ -23,6 +24,7 @@ class MypetMainViewModel @Inject constructor(
     private val petsRepository: PetsRepository
 ): BaseViewModel<MypetMainPageState>() {
 
+    private val _insuranceAlarmList: MutableStateFlow<List<InsuranceAlarm>> = MutableStateFlow(emptyList())
     private val petResponseFlow: MutableStateFlow<PetResponse?> = MutableStateFlow(null)
     private val petInsuranceFlow: MutableStateFlow<PetInsuranceResponse?> = MutableStateFlow(null)
     private val petIdFlow: MutableStateFlow<Int?> = MutableStateFlow(null)
@@ -30,12 +32,21 @@ class MypetMainViewModel @Inject constructor(
     private val companyFlow: MutableStateFlow<String?> = MutableStateFlow(null)
 
     override val uiState = MypetMainPageState(
+        insuranceAlarmList = _insuranceAlarmList.asStateFlow(),
         petCount = petResponseFlow.asStateFlow(),
         insuranceSuggestion = petInsuranceFlow.asStateFlow(),
         petId = petIdFlow.asStateFlow(),
         priceId = priceIdFlow.asStateFlow(),
         company = companyFlow.asStateFlow()
     )
+
+    fun setInsuranceAlarmList() {
+        viewModelScope.launch {
+            _insuranceAlarmList.update {
+                listOf(InsuranceAlarm(1, "알림1", "", false), InsuranceAlarm(2, "알림2", "", false), InsuranceAlarm(3, "알림3", "", false))
+            }
+        }
+    }
 
     fun onInsuranceNoPetFragmentClick() {
         emitEventFlow(MypetMainEvent.GoToAddPetButtonClick)
