@@ -103,4 +103,7 @@ dependencies {
 
     // glide
     implementation(libs.glide)
+
+    // drawable
+    implementation(libs.drawable)
 }
