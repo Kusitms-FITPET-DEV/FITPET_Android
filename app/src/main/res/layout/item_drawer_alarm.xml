@@ -12,7 +12,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@{item.confirmed ? @color/bg_primary : @color/pastel_dark_blue}">
 
         <ImageView
             android:id="@+id/iv_item_drawer_alarm"
@@ -32,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:layout_marginStart="12dp"
-            android:textColor="@color/text_body"
+            android:textColor="@{item.confirmed ? @color/text_grey : @color/text_body}"
             android:textAppearance="@style/b4_M"
             android:text="@{item.progress}"
             app:layout_constraintTop_toTopOf="parent"

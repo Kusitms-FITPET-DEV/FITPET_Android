@@ -129,7 +129,8 @@
             android:id="@+id/drawer_alarm_menu"
             android:layout_width="268dp"
             android:layout_height="match_parent"
-            android:layout_gravity="end">
+            android:layout_gravity="end"
+            android:background="@color/bg_primary">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
