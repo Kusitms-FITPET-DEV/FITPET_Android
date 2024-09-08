@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.fitpet.ui.mypet.insurance.petedit.PetBottomSheetViewModel" />
+            type="com.example.fitpet.ui.mypet.insurance.petEdit.PetBottomSheetViewModel" />
 
     </data>
 
@@ -69,6 +69,7 @@
 
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_bottom_my_pet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:listitem="@layout/item_my_pet_bottom"
