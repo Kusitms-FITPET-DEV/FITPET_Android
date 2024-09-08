@@ -294,4 +294,7 @@
     <string name="insurance_compensation_name_title">반려동물</string>
     <string name="insurance_compensation_date_title">가입 기간</string>
 
+    <!--  HospitalRecord  -->
+    <string name="hospital_record_title">우리아이 병원일지</string>
+
 </resources>
