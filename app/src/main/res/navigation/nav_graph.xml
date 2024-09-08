@@ -39,6 +39,10 @@
             android:id="@+id/action_to_kakao_login_to_pet_name_input"
             app:destination="@id/fragmentPetNameInput"/>
 
+        <action
+            android:id="@+id/action_to_kakao_login_to_mypet"
+            app:destination="@id/fragmentMypet"/>
+
     </fragment>
 
     <fragment

@@ -71,7 +71,7 @@ class LifeFragment : BaseFragment<FragmentLifeBinding, LifePageState, LifeViewMo
 
     private fun handleEvent(event: LifeEvent) {
         when(event) {
-            LifeEvent.GetNewQuote -> TODO()
+            LifeEvent.GetNewQuote -> goToPetNameInput()
             LifeEvent.ShowCorrectDialog -> showCorrectDialog()
             LifeEvent.ShowFalseDialog -> showFalseDialog()
             LifeEvent.GoToHospitalRecordDetail -> goToHospitalRecordDetail()
@@ -109,6 +109,11 @@ class LifeFragment : BaseFragment<FragmentLifeBinding, LifePageState, LifeViewMo
 
     private fun goToFaq() {
         val action = MypetMainFragmentDirections.actionMypetToFaq()
+        findNavController().navigate(action)
+    }
+
+    private fun goToPetNameInput() {
+        val action = MypetMainFragmentDirections.actionMypetToPetNameInput()
         findNavController().navigate(action)
     }
 }

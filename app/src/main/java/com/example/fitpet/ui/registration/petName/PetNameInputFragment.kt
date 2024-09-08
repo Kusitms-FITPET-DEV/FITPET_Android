@@ -1,6 +1,7 @@
 package com.example.fitpet.ui.registration.petName
 
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
@@ -63,6 +64,9 @@ class PetNameInputFragment : BaseFragment<FragmentPetNameInputBinding, PetNameIn
 
     private fun goToMyPetInsurance() {
         val action = PetNameInputFragmentDirections.actionPetNameInputToMyPet()
-        findNavController().navigate(action)
+        val navOptions = NavOptions.Builder()
+            .setPopUpTo(R.id.nav_graph, true)
+            .build()
+        findNavController().navigate(action, navOptions)
     }
 }

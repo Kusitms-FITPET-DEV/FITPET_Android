@@ -2,6 +2,7 @@ package com.example.fitpet.ui.registration.petDetailBreed
 
 import androidx.fragment.app.viewModels
 import android.widget.ArrayAdapter
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.fitpet.R
@@ -104,7 +105,10 @@ class PetDetailBreedInputFragment : BaseFragment<FragmentPetDetailBreedInputBind
 
     private fun goToMyPetInsurance() {
         val action = PetDetailBreedInputFragmentDirections.actionPetDetailBreedInputToMyPet()
-        findNavController().navigate(action)
+        val navOptions = NavOptions.Builder()
+            .setPopUpTo(R.id.nav_graph, true)
+            .build()
+        findNavController().navigate(action, navOptions)
     }
 
     private fun showDropdown() {

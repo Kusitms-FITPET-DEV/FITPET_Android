@@ -38,8 +38,9 @@ abstract class BaseFragment<BINDING: ViewDataBinding, STATE: PageState, VM: Base
     protected abstract fun initState()
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
+        @SuppressLint("RestrictedApi")
         override fun handleOnBackPressed() {
-            if (navController.currentDestination?.id != navController.graph.startDestinationId) {
+            if (navController.currentBackStack.value.size > 1) {
                 navController.popBackStack()
                 return
             }
