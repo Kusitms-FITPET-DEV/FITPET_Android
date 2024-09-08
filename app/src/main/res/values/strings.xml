@@ -29,7 +29,10 @@
     <string name="pet_insurance_range"> ~ %s</string>
     <string name="question_mark">\?</string>
     <string name="slash">/</string>
-
+    <string name="correct">정답이에요!</string>
+    <string name="incorrect">아쉬워요!</string>
+    <string name="close">닫기</string>
+    <string name="Q">Q</string>
 
     <!-- insuranceCompany -->
     <string name="db">DB손해보험</string>
@@ -218,17 +221,17 @@
     <string name="insurance_agree_type_choice">TYPE_CHOICE</string>
     
     <!--  Life  -->
-    <string name="btn_get_new_quote">새 견적 받아보기 ></string>
+    <string name="btn_get_new_quote">새 견적 받아보기</string>
     <string name="get_new_quote_content">어디가 아픈지 말 못 하는 우리 아이,\n미리 대비해 주는 건 어때요?</string>
     <string name="my_pet_health_plus">우리 아이 건강 플러스</string>
     <string name="my_pet_hospital_record">우리 아이 병원일지</string>
-    <string name="my_pet_hospital_record_detail">더보기 ></string>
+    <string name="my_pet_hospital_record_detail">더보기</string>
     <string name="quiz_title">재미 쏙쏙 지식퀴즈</string>
     <string name="quiz_content">깜짝 지식 퀴즈</string>
     <string name="O">O</string>
     <string name="X">X</string>
     <string name="question">궁금해요</string>
-    <string name="question_all">전체보기 ></string>
+    <string name="question_all">전체보기</string>
     <string name="guide_text">[ 필수안내사항 ]
 \n※ 보험대리점 : 스마트커버 인슈어런스(주)    \n\t 협회등록번호 : 제2023120019호
 \n※ 본 광고는 광고심의기준을 준수하였으며,
