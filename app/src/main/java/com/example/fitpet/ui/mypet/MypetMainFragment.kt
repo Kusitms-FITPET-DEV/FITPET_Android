@@ -35,6 +35,7 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainBinding, MypetMainPageSt
     override fun initView() {
         // 초기 상태에 맞게 어댑터를 설정
         initListVPAdapter(isNoPet = false, isNoRegister = false)
+        binding.vpMypetMain.isUserInputEnabled = false
         viewModel.loadPetData()
     }
 

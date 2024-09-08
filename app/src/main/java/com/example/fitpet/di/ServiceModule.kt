@@ -1,6 +1,7 @@
 package com.example.fitpet.di
 
 import com.example.fitpet.data.service.AuthService
+import com.example.fitpet.data.service.PetLifeService
 import com.example.fitpet.data.service.ChargeService
 import com.example.fitpet.data.service.InsuranceDetailService
 import com.example.fitpet.data.service.PetsService
@@ -22,6 +23,11 @@ object ServiceModule {
     @Provides
     fun providesPetsService(retrofit: Retrofit): PetsService {
         return retrofit.create(PetsService::class.java)
+    }
+
+    @Provides
+    fun providesPetLifeService(retrofit: Retrofit): PetLifeService {
+        return retrofit.create(PetLifeService::class.java)
     }
 
     @Provides
