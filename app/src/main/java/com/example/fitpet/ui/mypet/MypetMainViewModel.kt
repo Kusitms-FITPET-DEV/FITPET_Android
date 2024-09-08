@@ -14,6 +14,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import org.threeten.bp.Duration
+import org.threeten.bp.LocalDateTime
+import org.threeten.bp.format.DateTimeFormatter
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -68,12 +71,39 @@ class MypetMainViewModel @Inject constructor(
 
         for (i in data.indices) {
             with (data[i]) {
-                tempList.add(InsuranceAlarm(historyId, progress, time, confirmed))
+                tempList.add(InsuranceAlarm(historyId, progress, timeDiffFromNow(time), confirmed))
             }
         }
 
         return tempList
     }
+
+    private fun timeDiffFromNow(timeStr: String): String {
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSS")
+        val givenTime = LocalDateTime.parse(timeStr, formatter)
+
+        val now = LocalDateTime.now()
+        val duration = Duration.between(givenTime, now)
+
+        return when {
+            // 하루 이상 차이
+            duration.toDays() >= 1 -> {
+                val daysAgo = duration.toDays()
+                "${daysAgo}일 전"
+            }
+            // 하루 이하, 한 시간 이상 차이
+            duration.toHours() >= 1 -> {
+                val hoursAgo = duration.toHours()
+                "${hoursAgo}시간 전"
+            }
+            // 한 시간 이하 차이
+            else -> {
+                val minutesAgo = duration.toMinutes()
+                "${minutesAgo}분 전"
+            }
+        }
+    }
+
 
     fun onInsuranceNoPetFragmentClick() {
         emitEventFlow(MypetMainEvent.GoToAddPetButtonClick)

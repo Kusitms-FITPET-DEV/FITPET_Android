@@ -46,6 +46,7 @@
             android:layout_marginTop="2dp"
             android:textColor="@color/text_disable"
             android:textAppearance="@style/b5"
+            android:text="@{item.time}"
             app:layout_constraintTop_toBottomOf="@id/tv_item_drawer_alarm_title"
             app:layout_constraintStart_toStartOf="@id/tv_item_drawer_alarm_title"
             tools:text="8시간 전"/>
