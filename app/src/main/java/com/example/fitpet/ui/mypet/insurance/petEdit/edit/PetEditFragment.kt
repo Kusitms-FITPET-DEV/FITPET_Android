@@ -93,12 +93,25 @@ class PetEditFragment : BaseFragment<FragmentEditMyPetBinding, PetEditPageState,
     }
     private fun goToSave() {
         with(binding) {
-            if (isEdit == true) {
-                viewModel.editPet(petId!!, etName.text.toString(), checkPetBreed(), etSpecies.text.toString(), etYear.text.toString()  )
-            } else {
-                viewModel.registerPet( etName.text.toString(), checkPetBreed(), etSpecies.text.toString(), etYear.text.toString())
+            if(etName.text != null || etYear.text != null || etSpecies.text != null) {
+                if (isEdit == true) {
+                    viewModel.editPet(
+                        petId!!,
+                        etName.text.toString(),
+                        checkPetBreed(),
+                        etSpecies.text.toString(),
+                        etYear.text.toString()
+                    )
+                } else {
+                    viewModel.registerPet(
+                        etName.text.toString(),
+                        checkPetBreed(),
+                        etSpecies.text.toString(),
+                        etYear.text.toString()
+                    )
+                }
+                viewModel.updateFlow()
             }
-            viewModel.updateFlow()
         }
     }
     private fun checkPetBreed(): String{
