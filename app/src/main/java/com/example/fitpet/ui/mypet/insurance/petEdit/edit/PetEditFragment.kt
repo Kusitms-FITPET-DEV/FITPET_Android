@@ -2,6 +2,8 @@ package com.example.fitpet.ui.mypet.insurance.petEdit.edit
 
 import android.os.Handler
 import android.os.Looper
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -63,6 +65,7 @@ class PetEditFragment : BaseFragment<FragmentEditMyPetBinding, PetEditPageState,
         binding.icBackEdit.setOnClickListener { showNotSaveDialog() }
         binding.btnSave.setOnClickListener{ goToSave() }
         binding.tvEraseAll.setOnClickListener{showEraseDialog()}
+        setYear()
     }
 
     override fun initState() {
@@ -94,7 +97,7 @@ class PetEditFragment : BaseFragment<FragmentEditMyPetBinding, PetEditPageState,
     }
     private fun goToSave() {
         with(binding) {
-            if(etName.text != null || etYear.text != null || etSpecies.text != null) {
+            if(etName.text.isNotEmpty() && etYear.text.isNotEmpty() && etSpecies.text.isNotEmpty()) {
                 if (isEdit == true) {
                     viewModel.editPet(
                         petId!!,
@@ -115,6 +118,7 @@ class PetEditFragment : BaseFragment<FragmentEditMyPetBinding, PetEditPageState,
             }
         }
     }
+
     private fun checkPetBreed(): String{
         if (viewModel.uiState.breed.value == PetType.DOG) {
             return "DOG"
@@ -130,22 +134,43 @@ class PetEditFragment : BaseFragment<FragmentEditMyPetBinding, PetEditPageState,
         with(binding) {
             if (isEdit == true) {
                 etName.hint = viewModel.uiState.insuranceSuggestionResponse.value?.name
-                etSpecies.hint = viewModel.uiState.insuranceSuggestionResponse.value?.species
+                etSpecies.hint = viewModel.uiState.insuranceSuggestionResponse.value?.breed
                 etYear.hint =
                     viewModel.uiState.insuranceSuggestionResponse.value?.birthYear.toString()
-                if (viewModel.uiState.insuranceSuggestionResponse.value?.breed == "DOG") {
+                if (viewModel.uiState.insuranceSuggestionResponse.value?.species == "DOG") {
                     viewModel.updateBreed("DOG")
                 } else viewModel.updateBreed("CAT")
             }
         }
     }
 
+    private fun setYear() {
+        binding.etYear.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                s?.let {
+                    if (it.length > 4) {
+                        binding.etYear.setText(it.subSequence(0, 4))
+                        binding.etYear.setSelection(4)
+                    }
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+        })
+    }
+
     private fun showSaveDialog(){
         saveDialog.showDialog(
             onResumeClicked = {navigator.navigate(PetEditFragmentDirections.actionPetEditToMainEdit())},
-            skipVisibility = true
+            onSkipClicked = { },
+            skipVisibility = false
         )
     }
+
     private fun showNotSaveDialog(){
         notSaveDialog.showDialog(
             onSkipClicked = { },
@@ -153,10 +178,11 @@ class PetEditFragment : BaseFragment<FragmentEditMyPetBinding, PetEditPageState,
             skipVisibility = true
         )
     }
+
     private fun showEraseDialog(){
         deleteDialog.showDialog(
-            onSkipClicked = {},
-            onResumeClicked = {goToDelete()},
+            onSkipClicked = {goToDelete()},
+            onResumeClicked = {},
             skipVisibility = true
         )
     }

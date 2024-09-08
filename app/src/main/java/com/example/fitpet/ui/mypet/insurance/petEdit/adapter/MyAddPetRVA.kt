@@ -15,8 +15,7 @@ import com.example.fitpet.model.response.PetInfo
 import com.example.fitpet.util.ItemDiffCallback
 
 class MyAddPetRVA(
-    val onEditClicked: (PetInfo) -> Unit,
-    val onClicked: (PetInfo) -> Unit) : ListAdapter<PetInfo, MyAddPetRVA.ListViewHolder>(
+    val onEditClicked: (PetInfo) -> Unit) : ListAdapter<PetInfo, MyAddPetRVA.ListViewHolder>(
     ItemDiffCallback<PetInfo>(
         onItemsTheSame = { oldItem, newItem -> oldItem.petId == newItem.petId },  // ID로 항목 비교
         onContentsTheSame = { oldItem, newItem -> oldItem == newItem }      // 객체 내용 비교
@@ -47,9 +46,6 @@ class MyAddPetRVA(
                 setTextPetInfo(tvItemMyPetInfo, pet)
                 ivEditIcon.setOnClickListener {
                     onEditClicked(pet)
-                }
-                root.setOnClickListener {
-                    onClicked(pet)
                 }
             }
         }

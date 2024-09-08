@@ -50,7 +50,7 @@ class PetEditMainFragment : BaseFragment<FragmentAddNewPetBinding, PetEditMainPa
         }
         viewModel.loadPetData()
         binding.icBackRecommend.setOnClickListener { navigator.navigateUp() }
-        binding.btnGoToAddMyPet.setOnClickListener{ navigator.navigate(PetEditMainFragmentDirections.actionPetEditMainToAdd())}
+        binding.btnGoToAddMyPet.setOnClickListener{ navigator.navigate(PetEditMainFragmentDirections.actionPetEditMainToEdit(0, false))}
     }
 
     private val myAddPetRVA by lazy {
@@ -58,10 +58,6 @@ class PetEditMainFragment : BaseFragment<FragmentAddNewPetBinding, PetEditMainPa
             onEditClicked = {mypet ->
                 viewModel.updateEditPetId(mypet.petId)
                 navigator.navigate(PetEditMainFragmentDirections.actionPetEditMainToEdit(mypet.petId, true))
-            },
-            onClicked = { mypet ->
-                viewModel.updatePetInfo(mypet)
-                navigator.navigate(PetEditMainFragmentDirections.actionPetEditMainToEdit(mypet.petId, false))
             }
         )
     }
