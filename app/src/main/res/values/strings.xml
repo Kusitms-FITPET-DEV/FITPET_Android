@@ -94,7 +94,7 @@
     <!-- InsuranceNoPet -->
     <string name="insurance_no_pet_box1">우리 아이, 갑자기 아프면 어떡하지?...</string>
     <string name="insurance_no_pet_box2">마이펫을 등록하고 보험 견적을 확인해 보세요!</string>
-    <string name="insurance_no_pet_info_box1">스마트커버인슈어런스에서는 보험 관리에 \n 필요한 <font color="#FF008CFF">시간을 30% 이상 단축</font>하고 있어요!</string>
+    <string name="insurance_no_pet_info_box1">스마트커버인슈어런스에서는 긴 보험 관리 과정을 <font color="#FF008CFF"> 하나로 통합</font>했어요</string>
     <string name="insurance_no_pet_info_box2">견적 조회만, 가입상담만 하지 않습니다! \n보험관리에 필요한 모든 절차를 SC가 책임질게요</string>
     <string name="insurance_no_pet_bottom">[ 필수안내사항 ]\n
         ※ 보험대리점 : 스마트커버 인슈어런스(주) \n
@@ -133,6 +133,17 @@
     <!-- RecommendInsurance -->
     <string name="recommend_insurance_toolbar">보험추천</string>
     <string name="recommend_insurance_btn">보험 가입하기</string>
+
+    <!-- DialogMypet -->
+    <string name="dialog_mypet_title">나의 반려가족들</string>
+
+    <!-- AddNewPet -->
+    <string name="add_new_pet_title">새로운 가족 등록하기</string>
+    <string name="add_new_pet_title_space">\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020새로운 가족 등록하기</string>
+    <string name="add_new_pet_title2">반려가족</string>
+
+    <!-- EditMyPet -->
+    <string name="edit_my_pet_title">정보 수정하기</string>
 
     <!--  PermissionSettingsBottomSheet  -->
     <string name="permission_title">서비스 이용을 위해\n접근 권한에 동의해 주세요</string>
