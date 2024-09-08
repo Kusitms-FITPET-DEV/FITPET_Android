@@ -237,6 +237,10 @@
         android:layout="@layout/fragment_insurance_contract_check"
         tools:layout="@layout/fragment_insurance_contract_check">
 
+        <argument
+            android:name="petId"
+            app:argType="integer"/>
+
     </fragment>
 
     <fragment
@@ -245,6 +249,10 @@
         android:label="fragmentInsuranceCompensation"
         android:layout="@layout/fragment_insurance_compensation"
         tools:layout="@layout/fragment_insurance_compensation">
+
+        <argument
+            android:name="petId"
+            app:argType="integer"/>
 
     </fragment>
 
@@ -342,6 +350,10 @@
         <action
             android:id="@+id/action_insurance_finish_to_compensation"
             app:destination="@id/fragmentInsuranceCompensation"/>
+
+        <argument
+            android:name="petId"
+            app:argType="integer"/>
 
     </fragment>
 

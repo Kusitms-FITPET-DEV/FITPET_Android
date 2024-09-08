@@ -293,6 +293,10 @@
     <string name="insurance_compensation_page_title">보상내역을 확인할 수 있어요</string>
     <string name="insurance_compensation_name_title">반려동물</string>
     <string name="insurance_compensation_date_title">가입 기간</string>
+    <string name="compensation_progress_first">접수</string>
+    <string name="compensation_progress_second">배정</string>
+    <string name="compensation_progress_third">심사</string>
+    <string name="compensation_progress_fourth">완료</string>
 
     <!--  HospitalRecord  -->
     <string name="hospital_record_title">우리아이 병원일지</string>
