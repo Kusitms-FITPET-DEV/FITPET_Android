@@ -94,7 +94,7 @@
                     app:cardCornerRadius="50dp"
                     app:layout_constraintTop_toTopOf="parent"
                     android:textAppearance="@style/b3_S"
-                    app:cardBackgroundColor="@{vm.uiState.breed == PetType.DOG ? @color/point_blue : @color/white}"
+                    app:cardBackgroundColor="@{vm.uiState.breed == PetType.DOG ? @color/point_blue : @color/bg_primary}"
 
                     />
 
@@ -142,7 +142,7 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="127dp"
                     android:layout_height="43dp"
-                    app:cardBackgroundColor="@{vm.uiState.breed == PetType.CAT ? @color/point_blue : @color/white}"
+                    app:cardBackgroundColor="@{vm.uiState.breed == PetType.CAT ? @color/point_blue : @color/bg_primary}"
                     app:cardCornerRadius="50dp"
                     app:cardElevation="0dp"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -271,6 +271,8 @@
                     android:layout_marginEnd="24dp"
                     android:background="@drawable/bg_transparent"
                     android:hint="예) 2012"
+                    android:digits="0123456789"
+                    android:ems="4"
                    android:text=""
                     android:textAppearance="@style/b3_M"
                     android:textColor="@color/text_body"

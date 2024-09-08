@@ -40,7 +40,7 @@ class InsuranceNoRegisterFragment : BaseFragment<FragmentInsuranceNoRegisterBind
         InsuranceNoRegisterRVA(
             resourceProvider = resourceProvider,
             onClicked = { insurance ->
-                goToRecommend(viewModel.getFirstPet()!!,insurance.priceId, insurance.insuranceCompany)
+                goToRecommend(viewModel.uiState.petInfo.value?.petId!!,insurance.priceId, insurance.insuranceCompany)
             }
         )
     }
@@ -142,6 +142,7 @@ class InsuranceNoRegisterFragment : BaseFragment<FragmentInsuranceNoRegisterBind
     }
 
     private fun goToRecommend(petId: Int, priceId: Int, company:String) {
+        Timber.d("$petId")
         myPetMainViewModel.onInsuranceRecommendFragmentClick(petId, priceId, company)
     }
 
