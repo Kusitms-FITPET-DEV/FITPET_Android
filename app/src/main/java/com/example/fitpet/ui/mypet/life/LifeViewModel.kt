@@ -77,4 +77,8 @@ class LifeViewModel @Inject constructor(
     fun onClickHospitalRecordDetail() {
         emitEventFlow(LifeEvent.GoToHospitalRecordDetail)
     }
+
+    fun onClickQuestionAll() {
+        emitEventFlow(LifeEvent.GoToFaq)
+    }
 }

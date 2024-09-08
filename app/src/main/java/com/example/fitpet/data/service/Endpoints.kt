@@ -17,6 +17,7 @@ object Endpoints {
     object PetLife{
         const val HOME = "/home"
         const val JOURNAL = "/journal"
+        const val QUESTIONS = "/questions"
     }
 
     object Charge {
