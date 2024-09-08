@@ -241,6 +241,10 @@
             android:name="petId"
             app:argType="integer"/>
 
+        <argument
+            android:name="company"
+            app:argType="string"/>
+
     </fragment>
 
     <fragment

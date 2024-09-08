@@ -177,6 +177,7 @@ class MypetMainViewModel @Inject constructor(
                 result.onSuccess { petInsuranceResponse ->
                     // Update both pet info and estimate list
                     petInsuranceFlow.update { petInsuranceResponse }
+                    companyFlow.update { petInsuranceResponse.estimateList[0].insuranceCompany }
                     fetchInsuranceData()
                     Timber.d("여기야! ")
                 }.onFailure {

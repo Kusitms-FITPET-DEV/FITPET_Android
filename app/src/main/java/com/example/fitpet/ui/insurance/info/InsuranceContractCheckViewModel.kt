@@ -1,6 +1,7 @@
 package com.example.fitpet.ui.insurance.info
 
 import androidx.lifecycle.viewModelScope
+import com.example.fitpet.R
 import com.example.fitpet.base.BaseViewModel
 import com.example.fitpet.data.repository.InsuranceDetailRepository
 import com.example.fitpet.model.response.InsuranceDetailResponse
@@ -21,9 +22,13 @@ class InsuranceContractCheckViewModel @Inject constructor(
     private val _insuranceInfo: MutableStateFlow<InsuranceContractInfo> = MutableStateFlow(
         InsuranceContractInfo(null, null)
     )
+    private val _company: MutableStateFlow<String> = MutableStateFlow("")
+    private val _companyImg: MutableStateFlow<Int> = MutableStateFlow(0)
 
     override val uiState = InsuranceContractCheckPageState(
-        insuranceContractInfo = _insuranceInfo.asStateFlow()
+        insuranceContractInfo = _insuranceInfo.asStateFlow(),
+        company = _company.asStateFlow(),
+        companyImg = _companyImg.asStateFlow()
     )
 
     fun getInsuranceInfo(petId: Int) {
@@ -33,6 +38,20 @@ class InsuranceContractCheckViewModel @Inject constructor(
                     Timber.d("[테스트] 보험 계약 확인 -> $data")
                     updateInsuranceContractData(data)
                 })
+            }
+        }
+    }
+
+    fun getCompany(getCompany: String) {
+        _company.update { getCompany }
+        _companyImg.update {
+            when (getCompany) {
+                "DB손해보험" -> R.drawable.ic_db_v3
+                "KB손해보험" -> R.drawable.ic_kb_v3
+                "현대해상" ->  R.drawable.ic_hyundai_v3
+                "삼성화재" ->  R.drawable.ic_samsung_v3
+                "메리츠" -> R.drawable.ic_meritz_v3
+                else -> R.drawable.ic_db_v3
             }
         }
     }

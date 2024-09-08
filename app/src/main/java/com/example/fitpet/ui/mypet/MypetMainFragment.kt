@@ -153,7 +153,8 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainDrawerBinding, MypetMain
         // TODO 드롭다운 변경 이후 petId 로직 수정
         val petInfo = viewModel.uiState.petCount.value?.petList?.get(0)?.petId ?: 0
         val petId = viewModel.uiState.petId.value ?: 0
-        val action = MypetMainFragmentDirections.actionMypetToInsuranceInfoCheck(petId)
+        val company = viewModel.uiState.company.value ?: ""
+        val action = MypetMainFragmentDirections.actionMypetToInsuranceInfoCheck(petId, company)
         navigator.navigate(action)
     }
 

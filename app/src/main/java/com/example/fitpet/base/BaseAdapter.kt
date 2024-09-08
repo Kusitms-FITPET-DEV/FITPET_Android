@@ -41,3 +41,10 @@ fun setImageUri(imageView: ImageView, imageUri: String) {
         .load(imageUri.toUri())
         .into(imageView)
 }
+
+@BindingAdapter("imageResource")
+fun setImageResource(imageView: ImageView, resource: Int?) {
+    resource?.let {
+        imageView.setImageResource(it)
+    }
+}
