@@ -1,10 +1,12 @@
 package com.example.fitpet.di
 
+import com.example.fitpet.data.repository.AlarmRepository
 import com.example.fitpet.data.repository.AuthRepository
 import com.example.fitpet.data.repository.PetLifeRepository
 import com.example.fitpet.data.repository.ChargeRepository
 import com.example.fitpet.data.repository.InsuranceDetailRepository
 import com.example.fitpet.data.repository.PetsRepository
+import com.example.fitpet.data.repositoryImpl.AlarmRepositoryImpl
 import com.example.fitpet.data.repositoryImpl.AuthRepositoryImpl
 import com.example.fitpet.data.repositoryImpl.PetLifeRepositoryImpl
 import com.example.fitpet.data.repositoryImpl.ChargeRepositoryImpl
@@ -38,4 +40,8 @@ abstract class RepositoryModule {
     @Singleton
     @Binds
     abstract fun proveidesInsuranceDetailRepository(repositoryImpl: InsuranceDetailRepositoryImpl): InsuranceDetailRepository
+
+    @Singleton
+    @Binds
+    abstract fun providesAlarmRepository(repositoryImpl: AlarmRepositoryImpl): AlarmRepository
 }

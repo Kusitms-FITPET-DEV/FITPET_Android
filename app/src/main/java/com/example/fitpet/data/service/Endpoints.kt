@@ -29,4 +29,8 @@ object Endpoints {
         const val COMPENSATIONS = "/compensations"
         const val INSURANCES = "/insurances"
     }
+
+    object Alarm {
+        const val HISTORY = "/history"
+    }
 }
