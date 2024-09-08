@@ -1,109 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/bg_primary">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.example.fitpet.ui.mypet.insurance.petEdit.editMain.PetEditMainViewModel" />
+
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/tool_bar"
         android:layout_width="match_parent"
-        android:layout_height="61dp"
-        android:background="@color/white">
+        android:layout_height="match_parent"
+        android:background="@color/bg_primary">
 
-        <ImageView
-            android:id="@+id/ic_back_recommend"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_arrow_back"
-            android:layout_marginStart="10dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/tool_bar"
+            android:layout_width="match_parent"
+            android:layout_height="61dp"
+            android:background="@color/white">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/add_new_pet_title"
-            android:textAppearance="@style/b3"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            <ImageView
+                android:id="@+id/ic_back_recommend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_back"
+                android:layout_marginStart="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_new_pet_title"
+                android:textAppearance="@style/b3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/neutral_100"
+                android:elevation="1dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/neutral_100"
-            android:elevation="1dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/view_add_new_pet_mg1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="20:36"
+            app:layout_constraintWidth_percent="0.0555"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/tool_bar" />
+
+        <View
+            android:id="@+id/view_add_new_pet_mg2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="20:36"
+            app:layout_constraintWidth_percent="0.0555"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_go_to_add_my_pet" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_go_to_add_my_pet"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:text="@string/add_new_pet_title_space"
+            android:textAppearance="@style/b2_S"
+            android:textColor="@color/white"
+            android:stateListAnimator="@null"
+            android:background="@drawable/bg_rectangle_filled_point_blue_radius_8"
+            app:layout_constraintStart_toEndOf="@id/view_add_new_pet_mg1"
+            app:layout_constraintEnd_toStartOf="@id/view_add_new_pet_mg2"
+            app:layout_constraintTop_toBottomOf="@id/view_add_new_pet_mg1"
+             />
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="73dp"
+            android:src="@drawable/ic_add_circle_enabled"
+            app:layout_constraintTop_toTopOf="@id/btn_go_to_add_my_pet"
+            app:layout_constraintBottom_toBottomOf="@id/btn_go_to_add_my_pet"
+            app:layout_constraintStart_toStartOf="@id/btn_go_to_add_my_pet" />
+
+        <TextView
+            android:id="@+id/tv_add_new_pet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_new_pet_title2"
+            app:layout_constraintTop_toBottomOf="@id/view_add_new_pet_mg2"
+            app:layout_constraintStart_toEndOf="@id/view_add_new_pet_mg1"
+            android:textAppearance="@style/b1_M" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_add_new_pet"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_add_new_rv"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintStart_toEndOf="@id/view_add_new_pet_mg1"
+            app:layout_constraintEnd_toStartOf="@id/view_add_new_pet_mg2"
+            app:layout_constraintTop_toBottomOf="@id/tv_add_new_pet"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <View
-        android:id="@+id/view_add_new_pet_mg1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintDimensionRatio="20:36"
-        app:layout_constraintWidth_percent="0.0555"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tool_bar"/>
-    <View
-        android:id="@+id/view_add_new_pet_mg2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintDimensionRatio="20:36"
-        app:layout_constraintWidth_percent="0.0555"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_go_to_add_my_pet"/>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_go_to_add_my_pet"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:text="@string/add_new_pet_title_space"
-        android:textAppearance="@style/b2_S"
-        android:textColor="@color/white"
-        android:stateListAnimator="@null"
-        android:background="@drawable/bg_rectangle_filled_point_blue_radius_8"
-        app:layout_constraintStart_toEndOf="@id/view_add_new_pet_mg1"
-        app:layout_constraintEnd_toStartOf="@id/view_add_new_pet_mg2"
-        app:layout_constraintTop_toBottomOf="@id/view_add_new_pet_mg1"
-        android:onClick="@{() -> vm.onClickBtnConsult()}"/>
-    
-    <ImageView
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="73dp"
-        android:src="@drawable/ic_add_circle_enabled"
-        app:layout_constraintTop_toTopOf="@id/btn_go_to_add_my_pet"
-        app:layout_constraintBottom_toBottomOf="@id/btn_go_to_add_my_pet"
-        app:layout_constraintStart_toStartOf="@id/btn_go_to_add_my_pet"/>
-
-    <TextView
-        android:id="@+id/tv_add_new_pet"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/add_new_pet_title2"
-        app:layout_constraintTop_toBottomOf="@id/view_add_new_pet_mg2"
-        app:layout_constraintStart_toEndOf="@id/view_add_new_pet_mg1"
-        android:textAppearance="@style/b1_M"
-        />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_add_new_pet"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_add_new_rv"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintStart_toEndOf="@id/view_add_new_pet_mg1"
-        app:layout_constraintEnd_toStartOf="@id/view_add_new_pet_mg2"
-        app:layout_constraintTop_toBottomOf="@id/tv_add_new_pet"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

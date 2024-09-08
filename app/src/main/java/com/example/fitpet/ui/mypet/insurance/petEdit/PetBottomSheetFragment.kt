@@ -103,6 +103,7 @@ class PetBottomSheetFragment (): BottomSheetDialogFragment() {
         )
         binding.rvBottomMyPet.adapter = myPetRVA
         viewModel.loadPetData()
+        binding.btnAddPet.setOnClickListener{ myPetMainViewModel.emitEditedMainPet()}
     }
 
 //    private val myPetRVA by lazy {

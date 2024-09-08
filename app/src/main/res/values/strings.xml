@@ -214,6 +214,21 @@
     <string name="stop_registration_title">등록을 멈추고 싶으신가요?</string>
     <string name="stop_registration_content">지금 등록하시면 보험 견적까지\n한 번에 받아볼 수 있어요!</string>
 
+    <!--  NotSaveDialog  -->
+    <string name="not_save_title">정보가 저장되지 않아요.</string>
+    <string name="not_save_content">작성하던 모든 기록은 지워지며,\n이후 복구는 불가능해요.\n정말 저장하지 않고 나가시겠어요?</string>
+    <string name="not_save_btn">머무르기</string>
+
+    <!--  SaveDialog  -->
+    <string name="save_title">정보가 성공적으로 저장되었어요!</string>
+    <string name="save_content">새로운 정보가 확인되었어요.\n건강하고 행복한 반려생활, 함께해요</string>
+    <string name="save_btn">확인했어요</string>
+
+    <!--  DeleteDialog  -->
+    <string name="delete_title">정말 정보를 지우시겠어요?</string>
+    <string name="delete_content">작성하던 모든 기록은 지워지며\n이후 복구는 불가능해요.</string>
+    <string name="delete_btn">지우기</string>
+
     <!--  InsuranceContact  -->
     <string name="insurance_charge_contact_title">안내 받을 연락 수단을\n모두 선택해 주세요</string>
     <string name="insurance_charge_contact_kakao">카카오톡</string>
