@@ -124,8 +124,9 @@
                         android:text="@{String.valueOf(@string/pet_info(vm.uiState.petInfo.age, vm.uiState.petInfo.breed))}"
                         android:textAppearance="@style/insurance_pet_info"
                         android:layout_marginStart="12dp"
+                        android:layout_marginTop="5dp"
                         app:layout_constraintStart_toEndOf="@id/ivNoRegisterMyPet"
-                        app:layout_constraintBottom_toBottomOf="@id/ivNoRegisterMyPet"
+                        app:layout_constraintTop_toBottomOf="@id/tvNoRegisterMypetName"
                         />
 
                     <View
@@ -333,7 +334,6 @@
                         android:id="@+id/tvRangeTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="1dp"
                         android:text="@string/insurance_no_register_insurance_range"
                         android:textAppearance="@style/b5"
                         app:layout_constraintStart_toStartOf="parent"
