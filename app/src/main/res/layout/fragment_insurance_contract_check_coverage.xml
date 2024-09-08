@@ -268,16 +268,17 @@
                         android:id="@+id/tv_insurance_contract_check_hipJointLimit_content"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:background="@color/bg_white"
+                        android:paddingVertical="12dp"
+                        android:paddingStart="12dp"
+                        android:text="@{viewModel.uiState.coverageData.hipJointLimit}"
                         android:textAppearance="@style/b5"
                         android:textColor="@color/black"
-                        android:paddingStart="12dp"
-                        android:paddingVertical="12dp"
-                        android:background="@color/bg_white"
-                        android:text="@{viewModel.uiState.coverageData.hipJointLimit}"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toEndOf="@id/tv_insurance_contract_check_hipJointLimit_title"
-                        app:layout_constraintEnd_toEndOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <com.google.android.material.divider.MaterialDivider
                         android:layout_width="0dp"
@@ -381,7 +382,7 @@
                         android:paddingStart="12dp"
                         android:paddingVertical="12dp"
                         android:background="@color/bg_white"
-                        android:text="@{viewModel.uiState.coverageData.skinDisease}"
+                        android:text="@{viewModel.uiState.coverageData.skinEtc}"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@id/tv_insurance_contract_check_skinEtc_title"
@@ -592,16 +593,17 @@
                         android:id="@+id/tv_insurance_contract_check_foreignObjectRemoval_content"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:background="@color/bg_white"
+                        android:paddingVertical="12dp"
+                        android:paddingStart="12dp"
+                        android:text="@{viewModel.uiState.coverageData.foreignObjectRemoval}"
                         android:textAppearance="@style/b5"
                         android:textColor="@color/black"
-                        android:paddingStart="12dp"
-                        android:paddingVertical="12dp"
-                        android:background="@color/bg_white"
-                        android:text="@{viewModel.uiState.coverageData.foreignObjectRemoval}"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toEndOf="@id/tv_insurance_contract_check_foreignObjectRemoval_title"
-                        app:layout_constraintEnd_toEndOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <com.google.android.material.divider.MaterialDivider
                         android:layout_width="0dp"
@@ -772,6 +774,14 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            android:src="@drawable/bg_top_bar_gradation"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
