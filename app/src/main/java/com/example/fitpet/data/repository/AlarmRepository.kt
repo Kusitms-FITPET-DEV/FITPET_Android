@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface AlarmRepository {
 
-    suspend fun getAlarmHistoryList(): Flow<Result<AlarmHistoryResponse>>
+    suspend fun getAlarmHistoryList(): Flow<Result<List<AlarmHistoryResponse.HistoryItem>>>
 }
