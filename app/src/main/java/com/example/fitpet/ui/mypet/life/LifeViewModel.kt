@@ -73,4 +73,8 @@ class LifeViewModel @Inject constructor(
         if (uiState.pageData.value.quiz.answer) emitEventFlow(LifeEvent.ShowFalseDialog)
         else emitEventFlow(LifeEvent.ShowCorrectDialog)
     }
+
+    fun onClickHospitalRecordDetail() {
+        emitEventFlow(LifeEvent.GoToHospitalRecordDetail)
+    }
 }
