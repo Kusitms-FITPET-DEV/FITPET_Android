@@ -1,6 +1,7 @@
 package com.example.fitpet.data.service
 
 import com.example.fitpet.base.ApiResponse
+import com.example.fitpet.model.request.PetEditRequest
 import com.example.fitpet.model.request.RegisterPetRequest
 import com.example.fitpet.model.response.EstimateList
 import com.example.fitpet.model.response.GetPetInsuranceResponse
@@ -9,8 +10,10 @@ import com.example.fitpet.model.response.PetResponse
 import com.example.fitpet.model.response.SearchPetBreedResponse
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -40,4 +43,16 @@ interface PetsService {
         @Path("petId") petId: Int,
         @Path("priceId") priceId: Int,
     ): ApiResponse<GetPetInsuranceResponse>
+
+    @PUT("${Endpoints.Pets.PETS}/{petId}")
+    suspend fun editMyPet(
+        @Path("petId") petId: Int,
+        @Body request: PetEditRequest
+    ): ApiResponse<Unit>
+
+    @DELETE("${Endpoints.Pets.PETS}/{petId}")
+    suspend fun deleteMyPet(
+        @Path("petId") petId: Int,
+    ): ApiResponse<Unit>
+
 }
