@@ -2,8 +2,10 @@ package com.example.fitpet.ui.mypet
 
 import androidx.lifecycle.viewModelScope
 import com.example.fitpet.base.BaseViewModel
+import com.example.fitpet.data.repository.AlarmRepository
 import com.example.fitpet.data.repository.PetsRepository
 import com.example.fitpet.model.InsuranceAlarm
+import com.example.fitpet.model.response.AlarmHistoryResponse
 import com.example.fitpet.model.response.PetInsuranceResponse
 import com.example.fitpet.model.response.PetResponse
 import com.example.fitpet.util.ResourceProvider
@@ -12,16 +14,14 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import com.example.fitpet.ui.mypet.insurance.main.InsuranceMainEvent
-import com.example.fitpet.ui.onboarding.OnBoardingPageState
-import kotlinx.coroutines.flow.StateFlow
 import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
 class MypetMainViewModel @Inject constructor(
     private val resourceProvider: ResourceProvider,
-    private val petsRepository: PetsRepository
+    private val petsRepository: PetsRepository,
+    private val alarmRepository: AlarmRepository
 ): BaseViewModel<MypetMainPageState>() {
 
     private val _insuranceAlarmList: MutableStateFlow<List<InsuranceAlarm>> = MutableStateFlow(emptyList())
@@ -41,11 +41,27 @@ class MypetMainViewModel @Inject constructor(
     )
 
     fun setInsuranceAlarmList() {
+        Timber.d("[서버통신 테스트] -> 확인 ")
         viewModelScope.launch {
-            _insuranceAlarmList.update {
-                listOf(InsuranceAlarm(1, "알림1", "", false), InsuranceAlarm(2, "알림2", "", false), InsuranceAlarm(3, "알림3", "", false))
+            alarmRepository.getAlarmHistoryList().collect { result ->
+                resultResponse(result, { data ->
+                    Timber.d("[서버통신 테스트] -> $data")
+                    _insuranceAlarmList.update { setAlarmList(data) }
+                })
             }
         }
+    }
+
+    private fun setAlarmList(data: List<AlarmHistoryResponse.HistoryItem>): List<InsuranceAlarm> {
+        val tempList = ArrayList<InsuranceAlarm>()
+
+        for (i in data.indices) {
+            with (data[i]) {
+                tempList.add(InsuranceAlarm(historyId, progress, time, confirmed))
+            }
+        }
+
+        return tempList
     }
 
     fun onInsuranceNoPetFragmentClick() {
