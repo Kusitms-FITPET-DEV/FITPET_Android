@@ -3,8 +3,10 @@ package com.example.fitpet.ui.login
 import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.example.fitpet.PageState
+import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentKakaoLoginBinding
 import com.example.fitpet.model.request.LoginRequest
@@ -40,6 +42,7 @@ class KakaoLoginFragment : BaseFragment<FragmentKakaoLoginBinding, PageState.Def
         when (event) {
             KakaoLoginEvent.OnClickKakaoLogin -> signInKakao()
             KakaoLoginEvent.GoToPetNameInput -> goToPetNameInput()
+            KakaoLoginEvent.GoToInsuranceMain -> goToInsuranceMain()
         }
     }
 
@@ -94,6 +97,17 @@ class KakaoLoginFragment : BaseFragment<FragmentKakaoLoginBinding, PageState.Def
 
     private fun goToPetNameInput() {
         val action = KakaoLoginFragmentDirections.actionToKakaoLoginToPetNameInput()
-        findNavController().navigate(action)
+        val navOptions = NavOptions.Builder()
+            .setPopUpTo(R.id.nav_graph, true)
+            .build()
+        findNavController().navigate(action, navOptions)
+    }
+
+    private fun goToInsuranceMain() {
+        val action = KakaoLoginFragmentDirections.actionToKakaoLoginToMypet()
+        val navOptions = NavOptions.Builder()
+            .setPopUpTo(R.id.nav_graph, true)
+            .build()
+        findNavController().navigate(action, navOptions)
     }
 }
