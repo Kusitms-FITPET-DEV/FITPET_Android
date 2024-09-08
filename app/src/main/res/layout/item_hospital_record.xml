@@ -35,6 +35,7 @@
                 android:id="@+id/review"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:textAppearance="@style/b5_M"
                 android:textColor="@color/text_white"
                 android:maxLines="2"
