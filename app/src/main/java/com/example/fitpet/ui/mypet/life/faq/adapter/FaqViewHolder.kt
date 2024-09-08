@@ -22,7 +22,7 @@ class FaqViewHolder(
             question.text = item.question
             answer.text = item.answer
 
-            btnToggle.setOnClickListener {
+            titleLayout.setOnClickListener {
                 isAnswerVisible = !isAnswerVisible
                 if (isAnswerVisible) {
                     answerLayout.animate().alpha(1.0f).setDuration(300)
