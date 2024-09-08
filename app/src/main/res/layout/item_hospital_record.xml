@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    <FrameLayout
+        android:layout_width="132dp"
+        android:layout_height="160dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/bg_rectangle_filled_bg_white_radius_12">
+
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_rectangle_filled_bg_white_radius_12"
+            android:scaleType="centerCrop"
+            android:clipToOutline="true"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:layout_gravity="start|bottom"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imgInsurance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_db"/>
+
+            <TextView
+                android:id="@+id/review"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/b5_M"
+                android:textColor="@color/text_white"
+                android:maxLines="2"
+                tools:text="오우씨 깜짝 놀랐네"/>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</layout>

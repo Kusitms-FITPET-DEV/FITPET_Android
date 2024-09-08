@@ -65,7 +65,11 @@ class PetBirthInputFragment : BaseFragment<FragmentPetBirthInputBinding, PetBirt
     private fun showSkipDialog() {
         dialog.showDialog(
             onSkipClicked = { goToMyPetInsurance() },
-            onResumeClicked = {}
+            onResumeClicked = {},
+            titleText = requireContext().getString(R.string.stop_registration_title),
+            contentText = requireContext().getString(R.string.stop_registration_content),
+            iconResourceId = R.drawable.ic_dog_sad,
+            skipVisibility = true
         )
     }
 

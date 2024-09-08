@@ -46,6 +46,7 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainDrawerBinding, MypetMain
         // 초기 상태에 맞게 어댑터를 설정
         initListVPAdapter(isNoPet = false, isNoRegister = false)
         viewModel.setInsuranceAlarmList()
+        binding.vpMypetMain.isUserInputEnabled = false
         viewModel.loadPetData()
 
         setAlarmDrawable()

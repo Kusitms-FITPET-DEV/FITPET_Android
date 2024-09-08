@@ -27,9 +27,12 @@
     <string name="go_to_register">1:1 펫보험 상담하기</string>
     <string name="pet_info">%1$d살 | %2$s</string>
     <string name="pet_insurance_range"> ~ %s</string>
-    <string name="question">\?</string>
-
-
+    <string name="question_mark">\?</string>
+    <string name="slash">/</string>
+    <string name="correct">정답이에요!</string>
+    <string name="incorrect">아쉬워요!</string>
+    <string name="close">닫기</string>
+    <string name="Q">Q</string>
 
     <!-- insuranceCompany -->
     <string name="db">DB손해보험</string>
@@ -47,12 +50,12 @@
     <string name="input_error">특수문자는 제외해야 해요.</string>
 
     <!--  OnBoarding  -->
-    <string name="onboarding1_title">간편한 상담</string>
+    <string name="onboarding1_title">갑작스러운 지출 대비</string>
     <string name="onboarding2_title">편리한 관리</string>
     <string name="onboarding3_title">풍부한 반려생활</string>
-    <string name="onboarding1_content">1:1 전문 상담사를 통해 합리적인\n보험 견적서를 확인하세요.</string>
-    <string name="onboarding2_content">가입한 보험을 확인하고\n간단하게 보험 청구를 확인해보세요.</string>
-    <string name="onboarding3_content">우리아이와 오랫동안 행복할 수 있는 방법,\n반려생활에서 확인하세요</string>
+    <string name="onboarding1_content">예방접종, 진료비, 입원비, 수술비\n모두 맞춤형 보험으로 대비하세요</string>
+    <string name="onboarding2_content">견적조회, 보험 상담, 보험 관리,\n보험금 청구를 한번에!</string>
+    <string name="onboarding3_content">우리 아이와 오랫동안 행복할 수 있는 방법,\n반려생활에서 그 비법을 알려드릴게요</string>
 
     <!--  KakaoLogin  -->
     <string name="kakao_login_title">신뢰할 수 있는 보험 관리 플랫폼</string>
@@ -63,7 +66,7 @@
 
 
     <!--  PetNameInput  -->
-    <string name="my_pet_registration">보험 추천</string>
+    <string name="my_pet_registration">MY펫 등록</string>
     <string name="pet_name_registration">반려동물 이름을 입력해 주세요.</string>
     <string name="pet_name_input_hint">예) 홍길동</string>
 
@@ -216,6 +219,30 @@
     <string name="insurance_agree_type_all">ALL</string>
     <string name="insurance_agree_type_essential">TYPE_ESSENTIAL</string>
     <string name="insurance_agree_type_choice">TYPE_CHOICE</string>
+    
+    <!--  Life  -->
+    <string name="btn_get_new_quote">새 견적 받아보기</string>
+    <string name="get_new_quote_content">어디가 아픈지 말 못 하는 우리 아이,\n미리 대비해 주는 건 어때요?</string>
+    <string name="my_pet_health_plus">우리 아이 건강 플러스</string>
+    <string name="my_pet_hospital_record">우리 아이 병원일지</string>
+    <string name="my_pet_hospital_record_detail">더보기</string>
+    <string name="quiz_title">재미 쏙쏙 지식퀴즈</string>
+    <string name="quiz_content">깜짝 지식 퀴즈</string>
+    <string name="O">O</string>
+    <string name="X">X</string>
+    <string name="question">궁금해요</string>
+    <string name="question_all">전체보기</string>
+    <string name="guide_text">[ 필수안내사항 ]
+\n※ 보험대리점 : 스마트커버 인슈어런스(주)    \n\t 협회등록번호 : 제2023120019호
+\n※ 본 광고는 광고심의기준을 준수하였으며,
+    \n\t 유효기간은 심의일로부터 1년입니다.
+\n※ 보험계약자가 기존 보험계약을 해지하고 새로운 보험계약을
+    \n\t 체결하는 과정에서
+    \n\t ① 질병이력, 연령증가 등으로 가입이 거절되거나 보험료가
+         \n\t\t\t 인상될 수 있습니다.
+    \n\t ② 가입 상품에 따라 새로운 면책기간 적용 및 보장 제한 등
+         \n\t\t\t 기타 불이익이 발생할 수 있습니다.
+\n준법심의필 제2024-07-0011호 (2024.07.26 ~ 2025.07.26)</string>
 
     <!--  InsuranceCheck  -->
     <string name="insurance_charge_check_title">청구 내용이 맞는지\n다시 한 번 확인해 주세요</string>
@@ -270,5 +297,8 @@
     <string name="compensation_progress_second">배정</string>
     <string name="compensation_progress_third">심사</string>
     <string name="compensation_progress_fourth">완료</string>
+
+    <!--  HospitalRecord  -->
+    <string name="hospital_record_title">우리아이 병원일지</string>
 
 </resources>
