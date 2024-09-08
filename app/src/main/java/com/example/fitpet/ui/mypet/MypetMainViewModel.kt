@@ -25,16 +25,18 @@ class MypetMainViewModel @Inject constructor(
 
     private val petResponseFlow: MutableStateFlow<PetResponse?> = MutableStateFlow(null)
     private val petInsuranceFlow: MutableStateFlow<PetInsuranceResponse?> = MutableStateFlow(null)
-    private val petIdFlow: MutableStateFlow<Int?> = MutableStateFlow(null)
+    private val petIdFlow: MutableStateFlow<Int?> = MutableStateFlow(0)
     private val priceIdFlow: MutableStateFlow<Int?> = MutableStateFlow(null)
     private val companyFlow: MutableStateFlow<String?> = MutableStateFlow(null)
+    private val petNameFlow: MutableStateFlow<String?> = MutableStateFlow(null)
 
     override val uiState = MypetMainPageState(
         petCount = petResponseFlow.asStateFlow(),
         insuranceSuggestion = petInsuranceFlow.asStateFlow(),
         petId = petIdFlow.asStateFlow(),
         priceId = priceIdFlow.asStateFlow(),
-        company = companyFlow.asStateFlow()
+        company = companyFlow.asStateFlow(),
+        petName = petNameFlow.asStateFlow()
     )
 
     fun onInsuranceNoPetFragmentClick() {
@@ -49,6 +51,14 @@ class MypetMainViewModel @Inject constructor(
         if(petInsuranceFlow.value?.insurance == true) {
             return 0
         }else return 1
+    }
+
+    fun updatePetId(int: Int){
+        petIdFlow.update { int }
+    }
+
+    fun updatePetName(string: String){
+        petNameFlow.update { string }
     }
 
     fun goToNoPet() {

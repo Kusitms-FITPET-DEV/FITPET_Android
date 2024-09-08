@@ -61,8 +61,21 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainBinding, MypetMainPageSt
             is MypetMainEvent.GoTOCompensationPage -> goToCompensation()
             is MypetMainEvent.GoToInsuranceChargePage -> goToInsuranceCharge()
             MypetMainEvent.GoToRecommendButtonClick -> goToRecommend()
+            MypetMainEvent.ClickedEditPet -> goToEditPage()
+            MypetMainEvent.ClickedPet -> checkToGo()
         }
     }
+
+    private fun checkToGo() {
+        isFetched = false
+        viewModel.fetchInsuranceData()
+    }
+
+    private fun goToEditPage() {
+        val action = MypetMainFragmentDirections.actionMypetToPetNameInput()
+        navigator.navigate(action)
+    }
+
 
     private fun goToAddPet() {
         val action = MypetMainFragmentDirections.actionMypetToPetNameInput()

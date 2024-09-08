@@ -10,5 +10,6 @@ data class MypetMainPageState(
     var petCount: StateFlow<PetResponse?>,
     var petId: StateFlow<Int?>,
     var priceId: StateFlow<Int?>,
-    var company: StateFlow<String?>
+    var company: StateFlow<String?>,
+    var petName: StateFlow<String?>
 ): PageState
