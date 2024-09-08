@@ -65,28 +65,38 @@ class InsuranceRecommendFragment : BaseFragment<FragmentRecommendInsuranceBindin
 
     private fun fetchInsurance(){
         with(binding){
-            tvInsuranceName.text = viewModel.uiState.insuranceSuggestionResponse.value?.insuranceCompany
-            tvInsuranceBoxMonthPrice.text = viewModel.getFormattedPrice(viewModel.uiState.insuranceSuggestionResponse.value?.afterDiscountFee!!)
-            tvInsuranceBoxMonthPrice2.text = viewModel.getFormattedPrice(viewModel.uiState.insuranceSuggestionResponse.value?.beforeDiscountFee!!)
-            tvRangeNumberPercent.text = viewModel.uiState.insuranceSuggestionResponse.value?.discountList?.get(0)
-            tvRangeNumberPercent2.text = viewModel.uiState.insuranceSuggestionResponse.value?.discountList?.get(1)
-            tvGarenty1.text = viewModel.uiState.insuranceSuggestionResponse.value?.positiveList?.get(0)
-            tvGarenty2.text = viewModel.uiState.insuranceSuggestionResponse.value?.positiveList?.get(1)
-            tvGarenty3.text = viewModel.uiState.insuranceSuggestionResponse.value?.positiveList?.get(2)
-            tvBig1.text = viewModel.uiState.insuranceSuggestionResponse.value?.dailyTreatLimit
-            tvBig2.text = viewModel.uiState.insuranceSuggestionResponse.value?.dailySurgeryCostLimit
-            tvBig3.text = viewModel.uiState.insuranceSuggestionResponse.value?.yearReward
-            tvDetail1.text = viewModel.uiState.insuranceSuggestionResponse.value?.hipJointLimit
-            tvDetail2.text = viewModel.uiState.insuranceSuggestionResponse.value?.skinDisease
-            tvDetail3.text = viewModel.uiState.insuranceSuggestionResponse.value?.skinEtc
-            tvDetail4.text = viewModel.uiState.insuranceSuggestionResponse.value?.oralCoverage
-            tvDetail5.text = viewModel.uiState.insuranceSuggestionResponse.value?.dentalCoverage
-            tvDetail6.text = viewModel.uiState.insuranceSuggestionResponse.value?.inspectionCoverage
-            tvDetail7.text = viewModel.uiState.insuranceSuggestionResponse.value?.foreignObjectRemoval
-            tvDetail8.text = viewModel.uiState.insuranceSuggestionResponse.value?.selfBurden
-            tvDetail9.text = viewModel.uiState.insuranceSuggestionResponse.value?.compensationLiability
-            tvDetail10.text = viewModel.uiState.insuranceSuggestionResponse.value?.funeralAid
-
+            with(viewModel.uiState.insuranceSuggestionResponse){
+            tvInsuranceName.text = value?.insuranceName
+            tvInsuranceBoxMonthPrice.text =
+                viewModel.getFormattedPrice(value?.afterDiscountFee!!)
+            tvInsuranceBoxMonthPrice2.text =
+                viewModel.getFormattedPrice(value?.beforeDiscountFee!!)
+            tvRangeNumberPercent.text =
+                value?.discountList?.get(0)
+            tvRangeNumberPercent2.text =
+                value?.discountList?.get(1)
+            tvGarenty1.text =
+                value?.positiveList?.get(0)
+            tvGarenty2.text =
+                value?.positiveList?.get(1)
+            tvGarenty3.text =
+                value?.positiveList?.get(2)
+            tvBig1.text = value?.dailyTreatLimit
+            tvBig2.text = value?.dailySurgeryCostLimit
+            tvBig3.text = value?.yearReward
+            tvDetail1.text = value?.hipJointLimit
+            tvDetail2.text = value?.skinDisease
+            tvDetail3.text = value?.skinEtc
+            tvDetail4.text = value?.oralCoverage
+            tvDetail5.text = value?.dentalCoverage
+            tvDetail6.text = value?.inspectionCoverage
+            tvDetail7.text =
+                value?.foreignObjectRemoval
+            tvDetail8.text = value?.selfBurden
+            tvDetail9.text =
+                value?.compensationLiability
+            tvDetail10.text = value?.funeralAid
+        }
         }
         setInsuranceImg()
     }
