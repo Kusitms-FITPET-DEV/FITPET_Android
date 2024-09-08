@@ -10,6 +10,7 @@ data class PetResponse(
 data class PetInfo(
     @SerializedName("petId") val petId: Int,
     @SerializedName("name") val name: String,
+    @SerializedName("birthYear") val birthYear: Int,
     @SerializedName("age") val age: Int,
     @SerializedName("species") val species: String,
     @SerializedName("breed") val breed: String
