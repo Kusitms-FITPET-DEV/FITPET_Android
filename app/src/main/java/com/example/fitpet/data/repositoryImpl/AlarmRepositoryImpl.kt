@@ -18,13 +18,26 @@ class AlarmRepositoryImpl @Inject constructor(
                 val response = alarmService.getAlarmList()
 
                 if (response.success) {
-                    Timber.d("[서버통신 테스트] -> repository ${response.data} ")
                     response.data
                 } else {
                     throw RuntimeException("Get Alarm History List Failed -> ${response.status}")
                 }
             }.onFailure {
                 Timber.d("[서버통신 테스트] -> repository error ${it.message} ")
+            }
+        )
+    }
+
+    override suspend fun changeAlarmConfirm(historyId: Int): Flow<Result<Unit>> = flow {
+        emit(
+            runCatching {
+                val response = alarmService.changeAlarmConfirm(historyId)
+
+                if (response.success) {
+                    response.data
+                } else {
+                    throw RuntimeException("Get Alarm History List Failed -> ${response.status}")
+                }
             }
         )
     }
