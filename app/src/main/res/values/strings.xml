@@ -129,6 +129,7 @@
     <string name="insurance_main_blue_title2">상담사 연결하기</string>
     <string name="insurance_main_charge_title">보험금 \n청구</string>
     <string name="insurance_main_check_title">보상내역 \n확인</string>
+    <string name="insurance_main_see">자세히 보기</string>
 
     <!-- RecommendInsurance -->
     <string name="recommend_insurance_toolbar">보험추천</string>
