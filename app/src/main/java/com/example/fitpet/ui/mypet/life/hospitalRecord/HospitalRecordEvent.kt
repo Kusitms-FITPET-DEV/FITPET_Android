@@ -1,4 +1,7 @@
 package com.example.fitpet.ui.mypet.life.hospitalRecord
 
-class HospitalRecordEvent {
+import com.example.fitpet.Event
+
+sealed class HospitalRecordEvent: Event {
+
 }

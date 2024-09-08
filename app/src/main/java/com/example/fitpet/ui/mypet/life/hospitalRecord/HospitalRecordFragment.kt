@@ -6,26 +6,39 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitpet.R
+import com.example.fitpet.base.BaseFragment
+import com.example.fitpet.databinding.FragmentHospitalRecordBinding
+import com.example.fitpet.ui.mypet.life.hospitalRecord.adapter.HospitalRecordAdapter
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
-class HospitalRecordFragment : Fragment() {
+@AndroidEntryPoint
+class HospitalRecordFragment : BaseFragment<FragmentHospitalRecordBinding, HospitalRecordPageState, HospitalRecordViewModel>(
+    FragmentHospitalRecordBinding::inflate
+) {
+    override val viewModel: HospitalRecordViewModel by viewModels()
 
-    companion object {
-        fun newInstance() = HospitalRecordFragment()
+    private val hospitalRecordAdapter = HospitalRecordAdapter()
+
+    override fun initView() {
+        binding.apply {
+            vm = viewModel
+
+            hospitalRecordRecyclerView.adapter = hospitalRecordAdapter
+            hospitalRecordRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        }
     }
 
-    private val viewModel: HospitalRecordViewModel by viewModels()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        // TODO: Use the ViewModel
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.fragment_hospital_record, container, false)
+    override fun initState() {
+        launchWhenStarted(viewLifecycleOwner) {
+            launch {
+                viewModel.uiState.recordList.collect {
+                    hospitalRecordAdapter.submitList(it + it)
+                }
+            }
+        }
     }
 }
