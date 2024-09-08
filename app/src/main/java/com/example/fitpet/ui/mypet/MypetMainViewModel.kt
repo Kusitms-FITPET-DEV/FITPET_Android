@@ -52,6 +52,17 @@ class MypetMainViewModel @Inject constructor(
         }
     }
 
+    fun changeAlarmConfirm(historyId: Int) {
+        viewModelScope.launch {
+            alarmRepository.changeAlarmConfirm(historyId).collect {
+                resultResponse(it, {
+                    Timber.d("[서버통신 테스트] 성공")
+                    setInsuranceAlarmList()
+                })
+            }
+        }
+    }
+
     private fun setAlarmList(data: List<AlarmHistoryResponse.HistoryItem>): List<InsuranceAlarm> {
         val tempList = ArrayList<InsuranceAlarm>()
 

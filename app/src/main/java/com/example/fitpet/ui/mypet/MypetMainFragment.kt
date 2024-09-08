@@ -58,6 +58,12 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainDrawerBinding, MypetMain
                     handleEvent(event as MypetMainEvent)
                 }
             }
+            launch {
+                viewModel.uiState.insuranceAlarmList.collect { alarmList ->
+                    Timber.d("[테스트] 클릭 후 -> $alarmList")
+                    insuranceAlarmAdapter.submitList(alarmList)
+                }
+            }
         }
     }
 
@@ -94,18 +100,11 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainDrawerBinding, MypetMain
             setOnClickListener(object : MainInsuranceAlarmAdapter.OnItemClickListener{
                 override fun onItemClick(item: InsuranceAlarm) {
                     Timber.d("[클릭 테스트] -> ${item.historyId}")
+                    item.historyId?.let { viewModel.changeAlarmConfirm(it) }
                 }
             })
         }
         binding.rcvDrawerAlarm.adapter = insuranceAlarmAdapter
-
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.uiState.insuranceAlarmList.collect { alarmList ->
-                    insuranceAlarmAdapter.submitList(alarmList)
-                }
-            }
-        }
 
         binding.ivMypetNotification.setOnClickListener {
             binding.drawerlayoutMain.openDrawer(GravityCompat.END)
