@@ -17,13 +17,14 @@
 
         <include
             android:id="@+id/top_bar"
-            layout="@layout/top_bar_hospital_record"/>
+            layout="@layout/top_bar_faq"/>
 
         <HorizontalScrollView
             android:id="@+id/btnLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
+            android:scrollbars="none"
             app:layout_constraintTop_toBottomOf="@id/top_bar"
             android:fillViewport="true">
 
@@ -43,6 +44,7 @@
                     android:gravity="center"
                     android:paddingVertical="0dp"
                     android:text="@string/reward"
+                    android:stateListAnimator="@null"
                     android:textAppearance="@style/b4"
                     android:background="@{vm.uiState.selectedFaqType == FaqType.REWARD ? @drawable/bg_rectangle_filled_point_blue_radius_16 : @drawable/bg_rectangle_filled_bg_white_stroke_point_blue_radius_16}"
                     android:textColor="@{vm.uiState.selectedFaqType == FaqType.REWARD ? @color/text_white : @color/point_blue}"
@@ -56,6 +58,7 @@
                     android:paddingVertical="0dp"
                     android:layout_marginStart="12dp"
                     android:text="@string/insurance_fee"
+                    android:stateListAnimator="@null"
                     android:textAppearance="@style/b4"
                     android:background="@{vm.uiState.selectedFaqType == FaqType.INSURANCE_FEE ? @drawable/bg_rectangle_filled_point_blue_radius_16 : @drawable/bg_rectangle_filled_bg_white_stroke_point_blue_radius_16}"
                     android:textColor="@{vm.uiState.selectedFaqType == FaqType.INSURANCE_FEE ? @color/text_white : @color/point_blue}"
@@ -69,6 +72,7 @@
                     android:paddingVertical="0dp"
                     android:layout_marginStart="12dp"
                     android:text="@string/coverage_range"
+                    android:stateListAnimator="@null"
                     android:textAppearance="@style/b4"
                     android:background="@{vm.uiState.selectedFaqType == FaqType.COVERAGE_RANGE ? @drawable/bg_rectangle_filled_point_blue_radius_16 : @drawable/bg_rectangle_filled_bg_white_stroke_point_blue_radius_16}"
                     android:textColor="@{vm.uiState.selectedFaqType == FaqType.COVERAGE_RANGE ? @color/text_white : @color/point_blue}"
@@ -82,6 +86,7 @@
                     android:paddingVertical="0dp"
                     android:layout_marginStart="12dp"
                     android:text="@string/coverage_period"
+                    android:stateListAnimator="@null"
                     android:textAppearance="@style/b4"
                     android:background="@{vm.uiState.selectedFaqType == FaqType.COVERAGE_PERIOD ? @drawable/bg_rectangle_filled_point_blue_radius_16 : @drawable/bg_rectangle_filled_bg_white_stroke_point_blue_radius_16}"
                     android:textColor="@{vm.uiState.selectedFaqType == FaqType.COVERAGE_PERIOD ? @color/text_white : @color/point_blue}"
@@ -95,6 +100,7 @@
                     android:paddingVertical="0dp"
                     android:layout_marginStart="12dp"
                     android:text="@string/subscription_term"
+                    android:stateListAnimator="@null"
                     android:textAppearance="@style/b4"
                     android:background="@{vm.uiState.selectedFaqType == FaqType.SUBSCRIPTION_TERM ? @drawable/bg_rectangle_filled_point_blue_radius_16 : @drawable/bg_rectangle_filled_bg_white_stroke_point_blue_radius_16}"
                     android:textColor="@{vm.uiState.selectedFaqType == FaqType.SUBSCRIPTION_TERM ? @color/text_white : @color/point_blue}"
@@ -108,6 +114,7 @@
                     android:paddingVertical="0dp"
                     android:layout_marginStart="12dp"
                     android:text="@string/other_info"
+                    android:stateListAnimator="@null"
                     android:textAppearance="@style/b4"
                     android:background="@{vm.uiState.selectedFaqType == FaqType.OTHER_INFO ? @drawable/bg_rectangle_filled_point_blue_radius_16 : @drawable/bg_rectangle_filled_bg_white_stroke_point_blue_radius_16}"
                     android:textColor="@{vm.uiState.selectedFaqType == FaqType.OTHER_INFO ? @color/text_white : @color/point_blue}"
