@@ -1,4 +1,7 @@
 package com.example.fitpet.ui.mypet.life.faq
 
-class FaqEvent {
+import com.example.fitpet.Event
+
+sealed class FaqEvent: Event {
+
 }

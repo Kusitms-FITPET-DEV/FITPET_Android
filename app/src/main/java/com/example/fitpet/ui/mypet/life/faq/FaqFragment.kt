@@ -6,26 +6,42 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitpet.R
+import com.example.fitpet.base.BaseFragment
+import com.example.fitpet.databinding.FragmentFaqBinding
+import com.example.fitpet.ui.mypet.life.faq.adapter.FaqAdapter
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
-class FaqFragment : Fragment() {
+@AndroidEntryPoint
+class FaqFragment : BaseFragment<FragmentFaqBinding, FaqPageState, FaqViewModel>(
+    FragmentFaqBinding::inflate
+) {
+    override val viewModel: FaqViewModel by viewModels()
 
-    companion object {
-        fun newInstance() = FaqFragment()
+    private val faqAdapter = FaqAdapter()
+
+    override fun initView() {
+        binding.apply {
+            vm = viewModel
+
+            faqRecyclerView.adapter = faqAdapter
+            faqRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+            topBar.btnBack.setOnClickListener { findNavController().popBackStack() }
+        }
     }
 
-    private val viewModel: FaqViewModel by viewModels()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        // TODO: Use the ViewModel
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.fragment_faq, container, false)
+    override fun initState() {
+        launchWhenStarted(viewLifecycleOwner) {
+            launch {
+                viewModel.uiState.faqList.collect {
+                    faqAdapter.submitList(it)
+                }
+            }
+        }
     }
 }
