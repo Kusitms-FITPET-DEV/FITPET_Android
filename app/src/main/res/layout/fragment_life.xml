@@ -292,13 +292,14 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:onClick="@{()->vm.onClickQuestionAll()}"
                         android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="@string/my_pet_hospital_record_detail"
+                            android:text="@string/question_all"
                             android:textAppearance="@style/b4_M"
                             android:textColor="@color/text_grey"/>
 
