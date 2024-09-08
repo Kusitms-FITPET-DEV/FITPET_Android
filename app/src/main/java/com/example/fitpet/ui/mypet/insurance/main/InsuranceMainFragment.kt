@@ -146,6 +146,7 @@ class InsuranceMainFragment : BaseFragment<FragmentInsuranceMainBinding, Insuran
     private fun setInsuranceImg(){
         var drawable: Int = 0
         val company = viewModel.uiState.insuranceInfo.value?.insuranceCompany
+        Timber.d("[보험 테스트] -> ${viewModel.uiState.insuranceInfo.value?.insuranceCompany}")
 
         when (company) {
             "DB손해보험" -> drawable = R.drawable.ic_db_v3

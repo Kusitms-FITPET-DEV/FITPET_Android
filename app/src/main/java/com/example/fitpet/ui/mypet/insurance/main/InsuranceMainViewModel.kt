@@ -153,6 +153,7 @@ class InsuranceMainViewModel @Inject constructor(
                     // Update both pet info and estimate list
                     petInsuranceFlow.update { petInsuranceResponse }
                     myPetFlow.update { PetInfo(petId, petInsuranceResponse.name, petInsuranceResponse.birthYear, petInsuranceResponse.age, petInsuranceResponse.species, petInsuranceResponse.breed) }
+                    insuranceInfoFlow.update { petInsuranceResponse.estimateList[0] }
 
                     emitEventFlow(InsuranceMainEvent.UpdateInsuranceInfo)
                 }.onFailure {
