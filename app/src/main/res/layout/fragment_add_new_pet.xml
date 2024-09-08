@@ -82,7 +82,7 @@
             app:layout_constraintStart_toEndOf="@id/view_add_new_pet_mg1"
             app:layout_constraintEnd_toStartOf="@id/view_add_new_pet_mg2"
             app:layout_constraintTop_toBottomOf="@id/view_add_new_pet_mg1"
-            android:onClick="@{() -> vm.onClickBtnConsult()}" />
+             />
 
         <ImageView
             android:layout_width="24dp"
