@@ -2,6 +2,7 @@ package com.example.fitpet.ui.registration.petBirthInput
 
 import android.text.InputFilter
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.fitpet.R
@@ -97,6 +98,9 @@ class PetBirthInputFragment : BaseFragment<FragmentPetBirthInputBinding, PetBirt
 
     private fun goToMyPetInsurance() {
         val action = PetBirthInputFragmentDirections.actionPetBirthInputToMyPet()
-        findNavController().navigate(action)
+        val navOptions = NavOptions.Builder()
+            .setPopUpTo(R.id.nav_graph, true)
+            .build()
+        findNavController().navigate(action, navOptions)
     }
 }

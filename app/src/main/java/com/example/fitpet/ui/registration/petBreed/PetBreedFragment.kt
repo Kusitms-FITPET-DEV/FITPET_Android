@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.fitpet.R
@@ -70,6 +71,9 @@ class PetBreedFragment : BaseFragment<FragmentPetBreedBinding, PetBreedPageState
 
     private fun goToMyPetInsurance() {
         val action = PetBreedFragmentDirections.actionPetBreedToMyPet()
-        findNavController().navigate(action)
+        val navOptions = NavOptions.Builder()
+            .setPopUpTo(R.id.nav_graph, true)
+            .build()
+        findNavController().navigate(action, navOptions)
     }
 }

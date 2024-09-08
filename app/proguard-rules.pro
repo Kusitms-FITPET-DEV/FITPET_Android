@@ -20,18 +20,6 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
--keep class com.kakao.** { *; }
--keepattributes Signature, *Annotation*, EnclosingMethod
-
--keep class retrofit2.** { *; }
--keepattributes Signature
-
--keep class com.google.gson.** { *; }
+-keep class com.kakao.sdk.**.model.* { <fields>; }
 -keep class * extends com.google.gson.TypeAdapter
--keepclassmembers class ** {
-    @com.google.gson.annotations.SerializedName <fields>;
-}
--keep class com.example.myapp.** { *; }
--keepclassmembers class com.example.myapp.MyClass {
-    public void myMethod();
-}
+-keep class com.google.googlesignin.** { *; }

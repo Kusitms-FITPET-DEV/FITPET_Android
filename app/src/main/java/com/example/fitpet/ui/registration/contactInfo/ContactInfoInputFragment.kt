@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.fitpet.R
@@ -125,7 +126,10 @@ class ContactInfoInputFragment : BaseFragment<FragmentContactInfoInputBinding, C
 
     private fun goToMyPetInsurance() {
         val action = ContactInfoInputFragmentDirections.actionContactInfoInputToMyPet()
-        findNavController().navigate(action)
+        val navOptions = NavOptions.Builder()
+            .setPopUpTo(R.id.nav_graph, true)
+            .build()
+        findNavController().navigate(action, navOptions)
     }
 
     private fun registerPet() {

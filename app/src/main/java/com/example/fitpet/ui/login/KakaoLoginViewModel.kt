@@ -6,8 +6,10 @@ import com.example.fitpet.PageState
 import com.example.fitpet.base.BaseViewModel
 import com.example.fitpet.data.FitPetDataStore
 import com.example.fitpet.data.repository.AuthRepository
+import com.example.fitpet.data.repository.PetsRepository
 import com.example.fitpet.model.request.LoginRequest
 import com.example.fitpet.model.response.LoginResponse
+import com.example.fitpet.model.response.PetResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -15,6 +17,7 @@ import javax.inject.Inject
 @HiltViewModel
 class KakaoLoginViewModel @Inject constructor(
     private val authRepository: AuthRepository,
+    private val petsRepository: PetsRepository,
     private val dataStore: FitPetDataStore
 ) : BaseViewModel<PageState.Default>() {
     override val uiState: PageState.Default
@@ -36,7 +39,20 @@ class KakaoLoginViewModel @Inject constructor(
         viewModelScope.launch {
             dataStore.saveAccessToken(token.accessToken)
             dataStore.saveRefreshToken(token.refreshToken)
-            emitEventFlow(KakaoLoginEvent.GoToPetNameInput)
+            isPetExist()
         }
+    }
+
+    private fun isPetExist() {
+        viewModelScope.launch {
+            petsRepository.getPetAllMainInfo().collect {
+                resultResponse(it, ::onSuccessGetAllPetList)
+            }
+        }
+    }
+
+    private fun onSuccessGetAllPetList(response: PetResponse) {
+        if (response.petCount == 0) emitEventFlow(KakaoLoginEvent.GoToPetNameInput)
+        else emitEventFlow(KakaoLoginEvent.GoToInsuranceMain)
     }
 }
