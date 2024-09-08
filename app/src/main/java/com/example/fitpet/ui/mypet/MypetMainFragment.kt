@@ -1,5 +1,8 @@
 package com.example.fitpet.ui.mypet
 
+import android.view.Gravity
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -8,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentMypetMainBinding
+import com.example.fitpet.databinding.FragmentMypetMainDrawerBinding
 import com.example.fitpet.ui.model.InsuranceCharge
 import com.example.fitpet.ui.mypet.adapter.MypetMainVPA
 import com.example.fitpet.util.ResourceProvider
@@ -18,8 +22,8 @@ import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MypetMainFragment : BaseFragment<FragmentMypetMainBinding, MypetMainPageState, MypetMainViewModel>(
-    FragmentMypetMainBinding::inflate
+class MypetMainFragment : BaseFragment<FragmentMypetMainDrawerBinding, MypetMainPageState, MypetMainViewModel>(
+    FragmentMypetMainDrawerBinding::inflate
 ) {
     private var _mypetVPA: MypetMainVPA? = null
     private val mypetVPA get() = _mypetVPA
@@ -36,6 +40,8 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainBinding, MypetMainPageSt
         // 초기 상태에 맞게 어댑터를 설정
         initListVPAdapter(isNoPet = false, isNoRegister = false)
         viewModel.loadPetData()
+
+        clickAlarmDrawable()
     }
 
     override fun initState() {
@@ -73,6 +79,12 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainBinding, MypetMainPageSt
             goToMain() // 보험 정보가 있을 때
         } else {
             goToNoRegister() // 보험 정보가 없을 때
+        }
+    }
+
+    private fun clickAlarmDrawable() {
+        binding.ivMypetNotification.setOnClickListener {
+            binding.drawerlayoutMain.openDrawer(GravityCompat.END)
         }
     }
 
