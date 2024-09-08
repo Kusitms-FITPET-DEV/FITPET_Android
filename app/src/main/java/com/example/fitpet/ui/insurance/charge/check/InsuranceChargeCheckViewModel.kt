@@ -32,6 +32,7 @@ class InsuranceChargeCheckViewModel @Inject constructor(
             receiptUrl = insuranceArgument.receiptUrl
             medicalExpensesUrl = insuranceArgument.medicalExpensesUrl
             etcUrl = insuranceArgument.etcUrl
+            accountOwner = insuranceArgument.accountOwner
             accountBank = insuranceArgument.accountBank
             accountNumber = insuranceArgument.accountNumber
             contactMethodMsg = insuranceArgument.contactMethodMsg
