@@ -12,6 +12,7 @@ import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentMypetMainBinding
 import com.example.fitpet.databinding.FragmentMypetMainDrawerBinding
+import com.example.fitpet.model.InsuranceAlarm
 import com.example.fitpet.ui.model.InsuranceCharge
 import com.example.fitpet.ui.mypet.adapter.MainInsuranceAlarmAdapter
 import com.example.fitpet.ui.mypet.adapter.MypetMainVPA
@@ -89,7 +90,13 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainDrawerBinding, MypetMain
     }
 
     private fun setAlarmDrawable() {
-        _insuranceAlarmAdapter = MainInsuranceAlarmAdapter()
+        _insuranceAlarmAdapter = MainInsuranceAlarmAdapter().apply {
+            setOnClickListener(object : MainInsuranceAlarmAdapter.OnItemClickListener{
+                override fun onItemClick(item: InsuranceAlarm) {
+                    Timber.d("[클릭 테스트] -> ${item.historyId}")
+                }
+            })
+        }
         binding.rcvDrawerAlarm.adapter = insuranceAlarmAdapter
 
         lifecycleScope.launch {

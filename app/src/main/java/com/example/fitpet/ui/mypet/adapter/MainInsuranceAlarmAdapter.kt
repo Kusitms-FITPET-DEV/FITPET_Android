@@ -14,12 +14,22 @@ class MainInsuranceAlarmAdapter: ListAdapter<InsuranceAlarm, MainInsuranceAlarmV
     )
 ) {
 
+    var onItemClickListener: OnItemClickListener? = null
+
+    interface OnItemClickListener {
+        fun onItemClick(item: InsuranceAlarm)
+    }
+
+    fun setOnClickListener(listener: OnItemClickListener) {
+        this.onItemClickListener = listener
+    }
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): MainInsuranceAlarmViewHolder {
         val binding = ItemDrawerAlarmBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return MainInsuranceAlarmViewHolder(binding)
+        return MainInsuranceAlarmViewHolder(binding, this)
     }
 
     override fun onBindViewHolder(holder: MainInsuranceAlarmViewHolder, position: Int) {

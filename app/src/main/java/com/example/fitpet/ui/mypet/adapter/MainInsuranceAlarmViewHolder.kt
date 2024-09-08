@@ -5,10 +5,19 @@ import com.example.fitpet.databinding.ItemDrawerAlarmBinding
 import com.example.fitpet.model.InsuranceAlarm
 
 class MainInsuranceAlarmViewHolder(
-    private val binding: ItemDrawerAlarmBinding
+    private val binding: ItemDrawerAlarmBinding,
+    private val adapter: MainInsuranceAlarmAdapter
 ): RecyclerView.ViewHolder(binding.root) {
 
     fun onBind(data: InsuranceAlarm) {
         binding.item = data
+
+        binding.apply {
+            item = data
+
+            root.setOnClickListener {
+                adapter.onItemClickListener?.onItemClick(data)
+            }
+        }
     }
 }
