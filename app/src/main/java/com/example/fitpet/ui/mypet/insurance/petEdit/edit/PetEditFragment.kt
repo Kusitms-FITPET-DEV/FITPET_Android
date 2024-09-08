@@ -60,8 +60,9 @@ class PetEditFragment : BaseFragment<FragmentEditMyPetBinding, PetEditPageState,
             vm = viewModel
         }
         viewModel.fetchPetInsuranceInfo(petId!!, "")
-        binding.icBackEdit.setOnClickListener { navigator.navigateUp() }
+        binding.icBackEdit.setOnClickListener { showNotSaveDialog() }
         binding.btnSave.setOnClickListener{ goToSave() }
+        binding.tvEraseAll.setOnClickListener{showEraseDialog()}
     }
 
     override fun initState() {

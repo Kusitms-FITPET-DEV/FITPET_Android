@@ -56,10 +56,10 @@ class MyPetRVA(
         var drawable: Drawable? = null
         when(company){
             DOG -> {
-                drawable = ContextCompat.getDrawable(view.context, R.drawable.ic_illuste_dog)
+                drawable = ContextCompat.getDrawable(view.context, R.drawable.ic_mypet_dog)
             }
             CAT -> {
-                drawable = ContextCompat.getDrawable(view.context, R.drawable.ic_illuste_cat)
+                drawable = ContextCompat.getDrawable(view.context, R.drawable.ic_mypet_cat)
             }
             else -> null
         }
