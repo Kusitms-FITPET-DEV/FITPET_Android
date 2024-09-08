@@ -62,7 +62,7 @@
                 android:layout_marginBottom="28dp"
                 android:layout_marginTop="16dp"
                 android:layout_gravity="center"
-                android:text="@string/underline_skip"
+                android:text="@string/not_save_btn"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>

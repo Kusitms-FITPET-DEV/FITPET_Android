@@ -55,6 +55,19 @@
                 android:textAppearance="@style/b3_S"
                 android:textColor="@color/text_white" />
 
+            <TextView
+                android:id="@+id/btnSkip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="28dp"
+                android:layout_marginTop="16dp"
+                android:layout_gravity="center"
+                android:text="@string/underline_skip"
+                android:visibility="invisible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
             <View
                 android:id="@+id/singleBtnSpace"
                 android:layout_width="0dp"

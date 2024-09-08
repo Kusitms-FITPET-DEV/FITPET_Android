@@ -46,7 +46,6 @@ class DeleteDialog @Inject constructor(
         onSkipClicked: () -> Unit,
         titleText: String = "",
         contentText: String = "",
-        iconResourceId: Int = R.drawable.ic_dog_sad,
         buttonText: String = "",
         skipVisibility: Boolean = true
     ) {
@@ -54,8 +53,6 @@ class DeleteDialog @Inject constructor(
             if (titleText.isNotEmpty()) title.text = titleText
             if (contentText.isNotEmpty()) content.text = contentText
             if (buttonText.isNotEmpty()) btnResume.text = buttonText
-
-            icon.setImageResource(iconResourceId)
 
             btnSkip.visibility = if (skipVisibility) View.VISIBLE else View.GONE
             singleBtnSpace.visibility = if (skipVisibility) View.GONE else View.VISIBLE

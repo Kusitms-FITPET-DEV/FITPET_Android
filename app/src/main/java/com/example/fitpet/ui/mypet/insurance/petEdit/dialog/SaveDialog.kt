@@ -43,14 +43,20 @@ class SaveDialog @Inject constructor(
 
     fun showDialog(
         onResumeClicked: () -> Unit,
+        onSkipClicked: () -> Unit,
         skipVisibility: Boolean = true
     ) {
         binding.apply {
 
+            btnSkip.visibility = if (skipVisibility) View.VISIBLE else View.GONE
             singleBtnSpace.visibility = if (skipVisibility) View.GONE else View.VISIBLE
 
             btnResume.setOnClickListener {
                 onResumeClicked()
+                dialog.dismiss()
+            }
+            btnSkip.setOnClickListener {
+                onSkipClicked()
                 dialog.dismiss()
             }
         }
