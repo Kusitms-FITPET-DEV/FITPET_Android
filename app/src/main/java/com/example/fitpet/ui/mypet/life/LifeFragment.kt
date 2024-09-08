@@ -75,6 +75,7 @@ class LifeFragment : BaseFragment<FragmentLifeBinding, LifePageState, LifeViewMo
             LifeEvent.ShowCorrectDialog -> showCorrectDialog()
             LifeEvent.ShowFalseDialog -> showFalseDialog()
             LifeEvent.GoToHospitalRecordDetail -> goToHospitalRecordDetail()
+            LifeEvent.GoToFaq -> goToFaq()
         }
     }
 
@@ -103,6 +104,11 @@ class LifeFragment : BaseFragment<FragmentLifeBinding, LifePageState, LifeViewMo
 
     private fun goToHospitalRecordDetail() {
         val action = MypetMainFragmentDirections.actionMypetToHospitalRecord()
+        findNavController().navigate(action)
+    }
+
+    private fun goToFaq() {
+        val action = MypetMainFragmentDirections.actionMypetToFaq()
         findNavController().navigate(action)
     }
 }

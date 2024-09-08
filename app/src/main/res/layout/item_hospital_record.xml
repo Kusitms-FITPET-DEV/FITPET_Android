@@ -18,6 +18,12 @@
             android:scaleType="centerCrop"
             android:clipToOutline="true"/>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/bg_rectangle_filled_gradient_black_radius_12"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -35,6 +41,7 @@
                 android:id="@+id/review"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:textAppearance="@style/b5_M"
                 android:textColor="@color/text_white"
                 android:maxLines="2"
