@@ -202,6 +202,11 @@
         <action
             android:id="@+id/action_mypet_to_hospital_record"
             app:destination="@id/fragmentHospitalRecord"/>
+
+        <action
+            android:id="@+id/action_mypet_to_faq"
+            app:destination="@id/fragmentFaq"/>
+
     </fragment>
 
     <fragment
@@ -209,6 +214,13 @@
         android:name="com.example.fitpet.ui.mypet.life.hospitalRecord.HospitalRecordFragment"
         android:label="fragmentHospitalRecord"
         android:layout="@layout/fragment_hospital_record">
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentFaq"
+        android:name="com.example.fitpet.ui.mypet.life.faq.FaqFragment"
+        android:label="fragmentFaq"
+        android:layout="@layout/fragment_faq">
     </fragment>
 
     <fragment
