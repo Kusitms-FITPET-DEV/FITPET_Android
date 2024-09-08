@@ -46,6 +46,13 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainBinding, MypetMainPageSt
                     handleEvent(event as MypetMainEvent)
                 }
             }
+            launch {
+                viewModel.uiState.petId.collect { petId ->
+                    if (petId != null) {
+                        viewModel.fetchPetInsuranceInfo(petId, "")
+                    }
+                }
+            }
         }
     }
 

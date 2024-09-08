@@ -166,10 +166,15 @@ class InsuranceNoRegisterViewModel @Inject constructor(
             petsRepository.getPetMainInfo(priceRate, petId).collect { result ->
                 result.onSuccess { petInsuranceResponse ->
                     // Update both pet info and estimate list
+                    Timber.d("[등록x] 테스트 -> fetchpetInsuranceInfo")
+
                     petInsuranceFlow.update { petInsuranceResponse }
                     suggestionFlow.update { petInsuranceResponse.estimateList }
                     priceEndFlow.update { petInsuranceResponse.maxInsuranceFee }
                     priceStartFlow.update { petInsuranceResponse.minInsuranceFee }
+
+                    myPetFlow.update { PetInfo(petId, petInsuranceResponse.name, petInsuranceResponse.birthYear, petInsuranceResponse.age, petInsuranceResponse.species, petInsuranceResponse.breed) }
+
                     emitEventFlow(InsuranceNoRegisterEvent.UpdateUI)
                     if(petInsuranceResponse.estimateList.isEmpty()){
                         emitEventFlow(InsuranceNoRegisterEvent.ShowNothing)

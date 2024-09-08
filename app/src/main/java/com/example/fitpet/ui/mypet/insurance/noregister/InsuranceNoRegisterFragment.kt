@@ -29,7 +29,7 @@ import javax.inject.Inject
 class InsuranceNoRegisterFragment : BaseFragment<FragmentInsuranceNoRegisterBinding, InsuranceNoRegisterPageState, InsuranceNoRegisterViewModel>(
     FragmentInsuranceNoRegisterBinding::inflate
 ) {
-    private val mypetMainViewModel: MypetMainViewModel by activityViewModels()
+//    private val mypetMainViewModel: MypetMainViewModel by activityViewModels()
     override val viewModel: InsuranceNoRegisterViewModel by viewModels()
     private val myPetMainViewModel: MypetMainViewModel by activityViewModels()
 
@@ -142,7 +142,7 @@ class InsuranceNoRegisterFragment : BaseFragment<FragmentInsuranceNoRegisterBind
     }
 
     private fun goToRecommend(petId: Int, priceId: Int, company:String) {
-        mypetMainViewModel.onInsuranceRecommendFragmentClick(petId, priceId, company)
+        myPetMainViewModel.onInsuranceRecommendFragmentClick(petId, priceId, company)
     }
 
     companion object{
