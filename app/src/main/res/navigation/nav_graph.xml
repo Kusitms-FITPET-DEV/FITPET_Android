@@ -207,6 +207,26 @@
             android:id="@+id/action_mypet_to_faq"
             app:destination="@id/fragmentFaq"/>
 
+        <action
+            android:id="@+id/action_mypet_to_pet_edit_main"
+            app:destination="@id/fragmentPetEditMain"/>
+
+        <action
+            android:id="@+id/action_mypet_to_pet_edit"
+            app:destination="@id/fragmentPetEdit">
+
+            <argument
+                android:name="petId"
+                app:argType="integer"/>
+
+            <argument
+                android:name="isEdit"
+                app:argType="boolean"/>
+
+        </action>
+
+
+
     </fragment>
 
     <fragment
@@ -384,7 +404,9 @@
                 app:argType="boolean"/>
 
         </action>
-
+        <action
+            android:id="@+id/action_pet_edit_main_to_add"
+            app:destination="@id/fragmentPetNameInput"/>
 
     </fragment>
 
