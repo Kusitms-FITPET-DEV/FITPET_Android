@@ -1,21 +1,16 @@
 package com.example.fitpet.ui.mypet.insurance.main
 
-import android.graphics.drawable.Drawable
 import android.os.Build
-import android.os.Handler
-import android.os.Looper
 import androidx.annotation.RequiresApi
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceMainBinding
-import com.example.fitpet.model.domain.PetType
-import com.example.fitpet.model.domain.insurance.main.InsuranceSuggestion
-import com.example.fitpet.model.domain.insurance.main.MyPet
 import com.example.fitpet.ui.mypet.MypetMainViewModel
+import com.example.fitpet.ui.mypet.insurance.petEdit.PetBottomSheetFragment
+import com.example.fitpet.ui.mypet.insurance.petEdit.PetBottomSheetViewModel
 import com.kakao.sdk.common.util.KakaoCustomTabsClient
 import com.kakao.sdk.talk.TalkApiClient
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,6 +23,7 @@ class InsuranceMainFragment : BaseFragment<FragmentInsuranceMainBinding, Insuran
     FragmentInsuranceMainBinding::inflate
 ) {
     override val viewModel: InsuranceMainViewModel by viewModels()
+    private val viewModelBottom: PetBottomSheetViewModel by viewModels()
     private val myPetMainViewModel: MypetMainViewModel by activityViewModels()
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -46,7 +42,10 @@ class InsuranceMainFragment : BaseFragment<FragmentInsuranceMainBinding, Insuran
         }
 
         setMonth()
-        viewModel.loadPetData()
+        //처음 방지용
+        if(myPetMainViewModel.uiState.petId.value!=0) {
+            viewModel.fetchPetInsuranceInfo(myPetMainViewModel.uiState.petId.value!!, "")
+        }else viewModel.loadPetData()
     }
 
     override fun initState() {
@@ -92,7 +91,16 @@ class InsuranceMainFragment : BaseFragment<FragmentInsuranceMainBinding, Insuran
     }
 
     private fun openMyPetDialog() {
-        //다이얼로그 띄우기
+        val dialogFragment = PetBottomSheetFragment()
+        dialogFragment.show(childFragmentManager, "ListDialogueListselectFragment")
+    }
+
+    private fun fetchPet(){
+        viewModel.updatePetInfo(viewModelBottom.uiState.clickedPet.value!!)
+    }
+
+    private fun clickedEditPet(){
+        myPetMainViewModel.updatePetId(viewModelBottom.uiState.clickedPet.value?.petId!!)
     }
 
 
@@ -107,6 +115,7 @@ class InsuranceMainFragment : BaseFragment<FragmentInsuranceMainBinding, Insuran
         }else{
             binding.ivNoRegisterMyPet.setImageResource(R.drawable.ic_mypet_cat)
         }
+        myPetMainViewModel.updatePetName(viewModel.uiState.petInfo.value?.name!!)
     }
 
     private fun setInsuranceInfo(){

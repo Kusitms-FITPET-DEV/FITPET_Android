@@ -1,7 +1,6 @@
 package com.example.fitpet.ui.mypet.insurance.main
 
 import com.example.fitpet.Event
-import com.example.fitpet.ui.mypet.insurance.noregister.InsuranceNoRegisterEvent
 
 sealed class InsuranceMainEvent: Event {
     data object GoToConsult: InsuranceMainEvent()

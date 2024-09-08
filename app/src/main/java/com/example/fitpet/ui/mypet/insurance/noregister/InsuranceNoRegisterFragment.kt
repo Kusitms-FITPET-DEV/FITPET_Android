@@ -30,6 +30,7 @@ class InsuranceNoRegisterFragment : BaseFragment<FragmentInsuranceNoRegisterBind
 ) {
     private val mypetMainViewModel: MypetMainViewModel by activityViewModels()
     override val viewModel: InsuranceNoRegisterViewModel by viewModels()
+    private val myPetMainViewModel: MypetMainViewModel by activityViewModels()
 
     @Inject
     lateinit var resourceProvider: ResourceProvider
@@ -54,8 +55,10 @@ class InsuranceNoRegisterFragment : BaseFragment<FragmentInsuranceNoRegisterBind
                 binding.fabInsuranceKakaoBig.shrink()
             }
         }
+        if(myPetMainViewModel.uiState.petId.value!=0) {
+            viewModel.fetchPetInsuranceInfo(myPetMainViewModel.uiState.petId.value!!, "")
+        }else viewModel.loadPetData()
 
-        viewModel.loadPetData()
         initInsuranceNoRegisterRVAdapter()
     }
 
