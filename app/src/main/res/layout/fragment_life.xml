@@ -45,12 +45,27 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/btn_get_new_quote"
-                        android:textAppearance="@style/b5_M"
-                        android:textColor="@color/text_white"/>
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/btn_get_new_quote"
+                            android:textAppearance="@style/b5_M"
+                            android:textColor="@color/text_white"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:src="@drawable/ic_right_arrow"
+                            android:layout_gravity="center"
+                            app:tint="@color/white"/>
+
+                    </LinearLayout>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -68,7 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
-                android:layout_marginHorizontal="20dp"
+                android:layout_marginStart="20dp"
                 android:orientation="vertical"
                 app:layout_constraintTop_toBottomOf="@id/getNewQuoteFrame">
 
@@ -82,6 +97,7 @@
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="240dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_marginTop="20dp">
 
                     <androidx.viewpager2.widget.ViewPager2
@@ -90,36 +106,42 @@
                         android:layout_height="match_parent"/>
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="32dp"
+                        android:layout_height="16dp"
                         android:layout_gravity="end|bottom"
+                        android:gravity="center"
                         android:layout_marginBottom="16dp"
                         android:layout_marginEnd="15dp"
-                        android:paddingHorizontal="9dp"
-                        android:paddingVertical="2dp"
+                        android:paddingBottom="1dp"
                         android:orientation="horizontal"
                         android:background="@drawable/bg_rectangle_filled_black_opacity_50_radius_8">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            tools:text="@{vm.uiState.currentPage}"
+                            android:text="@{vm.uiState.currentPage.toString()}"
                             android:textColor="@color/text_white"
-                            android:textAppearance="@style/b4_M"/>
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:textAppearance="@style/describe_b6"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/slash"
-                            android:textColor="@color/text_white"
-                            android:textAppearance="@style/b4_M"/>
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:textAppearance="@style/describe_b6"
+                            android:textColor="@color/text_white" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            tools:text="@{vm.uiState.pageCount}"
+                            android:text="@{vm.uiState.pageCount.toString()}"
                             android:textColor="@color/text_white"
-                            android:textAppearance="@style/b4_M"/>
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:textAppearance="@style/describe_b6"/>
 
                     </LinearLayout>
 
@@ -129,6 +151,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="48dp"
+                    android:layout_marginEnd="20dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -144,24 +167,40 @@
                         android:layout_height="0dp"
                         android:layout_weight="1"/>
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="@string/my_pet_hospital_record_detail"
-                        android:textAppearance="@style/b4_M"
-                        android:textColor="@color/text_body"/>
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/my_pet_hospital_record_detail"
+                            android:textAppearance="@style/b4_M"
+                            android:textColor="@color/text_grey"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:src="@drawable/ic_right_arrow"
+                            android:layout_gravity="center"/>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
-                <androidx.viewpager2.widget.ViewPager2
+                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/myPetHospitalRecordViewPager"
                     android:layout_width="match_parent"
-                    android:layout_height="180dp"/>
+                    android:layout_height="160dp"
+                    android:layout_marginTop="20dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="48dp"
                     android:text="@string/quiz_title"
                     android:textAppearance="@style/b1_S"
                     android:textColor="@color/text_body"/>
@@ -170,6 +209,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="20dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_marginTop="20dp"
                     android:orientation="vertical"
                     android:background="@drawable/bg_rectangle_filled_bg_white_radius_12">
@@ -189,12 +229,13 @@
                         android:layout_marginTop="12dp"
                         android:textAppearance="@style/b3_S"
                         android:textColor="@color/text_body"
-                        tools:text="테스트 질문"/>
+                        android:text="@{vm.uiState.pageData.quiz.question}"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="32dp"
+                        android:layout_marginBottom="1dp"
                         android:orientation="horizontal">
 
                         <androidx.appcompat.widget.AppCompatButton
@@ -204,12 +245,14 @@
                             android:text="@string/O"
                             android:textAppearance="@style/h3_S"
                             android:textColor="@color/text_white"
+                            android:onClick="@{()->vm.onClickBtnTrue()}"
+                            android:stateListAnimator="@null"
                             android:background="@drawable/bg_rectangle_filled_point_blue_radius_8"/>
 
                         <Space
                             android:layout_width="20dp"
                             android:layout_height="0dp"/>
-                        
+
                         <androidx.appcompat.widget.AppCompatButton
                             android:layout_width="0dp"
                             android:layout_height="40dp"
@@ -217,6 +260,8 @@
                             android:text="@string/X"
                             android:textAppearance="@style/h3_S"
                             android:textColor="@color/text_body"
+                            android:onClick="@{()->vm.onClickBtnFalse()}"
+                            android:stateListAnimator="@null"
                             android:background="@drawable/bg_rectangle_filled_pastel_dark_blue_radius_8"/>
 
                     </LinearLayout>
@@ -227,6 +272,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="48dp"
+                    android:layout_marginEnd="20dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -242,78 +288,152 @@
                         android:layout_height="0dp"
                         android:layout_weight="1"/>
 
-                    <TextView
-                        android:id="@+id/btnQuestionAll"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="@string/question_all"
-                        android:textAppearance="@style/b4_M"
-                        android:textColor="@color/text_body"/>
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/my_pet_hospital_record_detail"
+                            android:textAppearance="@style/b4_M"
+                            android:textColor="@color/text_grey"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:src="@drawable/ic_right_arrow"
+                            android:layout_gravity="center"/>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="20dp"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/question1"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginVertical="8dp"
+                        android:layout_marginVertical="12dp"
                         android:layout_marginTop="32dp"
-                        android:textAppearance="@style/b4"
-                        android:textColor="@color/text_body"
-                        tools:text="example"/>
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="6dp"
+                            android:textAppearance="@style/b4_M"
+                            android:text="@string/Q"/>
+
+                        <TextView
+                            android:id="@+id/question1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{vm.uiState.pageData.questionList[0]}"
+                            android:textAppearance="@style/b4"
+                            android:textColor="@color/text_body" />
+
+                    </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
-                        android:background="@color/bg_dark"/>
+                        android:layout_height="1dp"
+                        android:background="@color/neutral_300"/>
 
-                    <TextView
-                        android:id="@+id/question2"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginVertical="8dp"
+                        android:layout_marginVertical="12dp"
                         android:layout_marginTop="32dp"
-                        android:textAppearance="@style/b4"
-                        android:textColor="@color/text_body"/>
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="6dp"
+                            android:textAppearance="@style/b4_M"
+                            android:text="@string/Q"/>
+
+                        <TextView
+                            android:id="@+id/question2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/b4"
+                            android:textColor="@color/text_body"
+                            android:text="@{vm.uiState.pageData.questionList[1]}"/>
+
+                    </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
-                        android:background="@color/bg_dark"/>
+                        android:layout_height="1dp"
+                        android:background="@color/neutral_300"/>
 
-                    <TextView
-                        android:id="@+id/question3"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginVertical="8dp"
+                        android:layout_marginVertical="12dp"
                         android:layout_marginTop="32dp"
-                        android:textAppearance="@style/b4"
-                        android:textColor="@color/text_body"/>
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="6dp"
+                            android:textAppearance="@style/b4_M"
+                            android:text="@string/Q"/>
+
+                        <TextView
+                            android:id="@+id/question3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/b4"
+                            android:textColor="@color/text_body"
+                            android:text="@{vm.uiState.pageData.questionList[2]}"/>
+
+                    </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
-                        android:background="@color/bg_dark"/>
+                        android:layout_height="1dp"
+                        android:background="@color/neutral_300"/>
 
-                    <TextView
-                        android:id="@+id/question4"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginVertical="8dp"
+                        android:layout_marginVertical="12dp"
                         android:layout_marginTop="32dp"
-                        android:textAppearance="@style/b4"
-                        android:textColor="@color/text_body"/>
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="6dp"
+                            android:textAppearance="@style/b4_M"
+                            android:text="@string/Q"/>
+
+                        <TextView
+                            android:id="@+id/question4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/b4"
+                            android:textColor="@color/text_body"
+                            android:text="@{vm.uiState.pageData.questionList[3]}"/>
+
+                    </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
-                        android:background="@color/bg_dark"/>
+                        android:layout_height="1dp"
+                        android:background="@color/neutral_300"/>
 
                 </LinearLayout>
 

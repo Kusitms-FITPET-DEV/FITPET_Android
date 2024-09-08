@@ -22,13 +22,7 @@ class LifeViewModel @Inject constructor(
     private val currentPageStateFlow: MutableStateFlow<Int> = MutableStateFlow(1)
     private val pageCountStateFlow: MutableStateFlow<Int> = MutableStateFlow(3)
     private val pageDataStateFlow: MutableStateFlow<PetLifeHomeResponse> = MutableStateFlow(PetLifeHomeResponse())
-    private val advertisementStateFlow: MutableStateFlow<List<AdvertisementItemVo>> = MutableStateFlow(
-        listOf(
-            AdvertisementItemVo(1, R.drawable.ic_advertisement1),
-            AdvertisementItemVo(2, R.drawable.ic_advertisement2),
-            AdvertisementItemVo(3, R.drawable.ic_advertisement3)
-        )
-    )
+    private val advertisementStateFlow: MutableStateFlow<List<AdvertisementItemVo>> = MutableStateFlow(emptyList())
 
     init {
         getPetLifeHomeData()
@@ -58,6 +52,25 @@ class LifeViewModel @Inject constructor(
     }
 
     private fun onSuccessGetPetLifeHomeData(data: PetLifeHomeResponse) {
+        viewModelScope.launch {
+            pageDataStateFlow.update { data }
+            advertisementStateFlow.update {
+                listOf(
+                    AdvertisementItemVo(1, R.drawable.ic_advertisement1),
+                    AdvertisementItemVo(2, R.drawable.ic_advertisement2),
+                    AdvertisementItemVo(3, R.drawable.ic_advertisement3)
+                )
+            }
+        }
+    }
 
+    fun onClickBtnTrue() {
+        if (uiState.pageData.value.quiz.answer) emitEventFlow(LifeEvent.ShowCorrectDialog)
+        else emitEventFlow(LifeEvent.ShowFalseDialog)
+    }
+
+    fun onClickBtnFalse() {
+        if (uiState.pageData.value.quiz.answer) emitEventFlow(LifeEvent.ShowFalseDialog)
+        else emitEventFlow(LifeEvent.ShowCorrectDialog)
     }
 }
