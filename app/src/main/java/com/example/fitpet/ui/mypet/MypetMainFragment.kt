@@ -89,6 +89,7 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainDrawerBinding, MypetMain
             MypetMainEvent.GoToRecommendButtonClick -> goToRecommend()
             MypetMainEvent.ClickedEditPet -> goToEditPage()
             MypetMainEvent.ClickedPet -> checkToGo()
+            MypetMainEvent.ClickedEditPetMain -> goToEditMainPage()
         }
     }
 
@@ -98,7 +99,12 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainDrawerBinding, MypetMain
     }
 
     private fun goToEditPage() {
-        val action = MypetMainFragmentDirections.actionMypetToPetNameInput()
+        val action = MypetMainFragmentDirections.actionMypetToPetEdit(viewModel.uiState.petId.value!!, true)
+        navigator.navigate(action)
+    }
+
+    private fun goToEditMainPage() {
+        val action = MypetMainFragmentDirections.actionMypetToPetEditMain()
         navigator.navigate(action)
     }
 

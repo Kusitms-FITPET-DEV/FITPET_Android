@@ -227,4 +227,8 @@ class MypetMainViewModel @Inject constructor(
     fun emitEditedPet(){
         emitEventFlow(MypetMainEvent.ClickedEditPet)
     }
+
+    fun emitEditedMainPet(){
+        emitEventFlow(MypetMainEvent.ClickedEditPetMain)
+    }
 }

@@ -15,4 +15,5 @@ sealed class MypetMainEvent: Event {
     data object GoToRecommendButtonClick: MypetMainEvent()
     data object ClickedPet : MypetMainEvent()
     data object ClickedEditPet : MypetMainEvent()
+    data object ClickedEditPetMain : MypetMainEvent()
 }
