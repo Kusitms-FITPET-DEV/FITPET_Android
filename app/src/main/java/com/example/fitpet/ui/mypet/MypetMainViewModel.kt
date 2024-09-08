@@ -89,7 +89,11 @@ class MypetMainViewModel @Inject constructor(
             petsRepository.getPetAllMainInfo().collect { result ->
                 result.onSuccess { response ->
                     // Update both pet info and estimate list
+                    Timber.d("[테스트] -> 처음 mypetmain loadPetData(): ${response}")
+                    
                     petResponseFlow.update { response }
+                    petIdFlow.update { response.petList[0].petId }
+                    petNameFlow.update { response.petList[0].name }
                     fetchPetData()
                 }.onFailure {
                     // Handle error

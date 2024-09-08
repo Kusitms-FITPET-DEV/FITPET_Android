@@ -4,7 +4,9 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentInsuranceMainBinding
@@ -42,6 +44,7 @@ class InsuranceMainFragment : BaseFragment<FragmentInsuranceMainBinding, Insuran
         }
 
         setMonth()
+//        viewModel.loadPetData()
         //처음 방지용
         if(myPetMainViewModel.uiState.petId.value!=0) {
             viewModel.fetchPetInsuranceInfo(myPetMainViewModel.uiState.petId.value!!, "")
@@ -53,6 +56,13 @@ class InsuranceMainFragment : BaseFragment<FragmentInsuranceMainBinding, Insuran
             launch {
                 viewModel.eventFlow.collect { event ->
                     handleEvent(event as InsuranceMainEvent)
+                }
+            }
+            launch {
+                viewModel.uiState.insuranceSuggestionResponse.collect {
+                    if (it != null) {
+                        myPetMainViewModel.updatePetName(it.name)
+                    }
                 }
             }
         }
@@ -120,8 +130,17 @@ class InsuranceMainFragment : BaseFragment<FragmentInsuranceMainBinding, Insuran
 
     private fun setInsuranceInfo(){
         viewModel.updatePrice(viewModel.uiState.insuranceSuggestionResponse.value?.estimateList?.get(0)?.insuranceFee!!)
-        viewModel.updateInsuranceInfo(viewModel.uiState.insuranceInfo.value!!)
+        viewModel.uiState.insuranceInfo.value?.let { viewModel.updateInsuranceInfo(it) }
         setInsuranceImg()
+
+//        lifecycleScope.launch {
+//            repeatOnLifecycle(Lifecycle.State.STARTED) {
+//                viewModel.uiState.insuranceInfo.collect {
+//                    viewModel.updateInsuranceInfo(it)
+//                }
+//                setInsuranceImg()
+//            }
+//        }
     }
 
     private fun setInsuranceImg(){

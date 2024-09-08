@@ -66,6 +66,7 @@ class InsuranceMainViewModel @Inject constructor(
     fun updatePetInfo(pet: PetInfo){
         viewModelScope.launch {
             myPetFlow.update { pet }
+            Timber.d("[테스트] -> 처음 ${myPetFlow.value?.name}")
         }
         Timber.d(myPetFlow.value?.name)
         Timber.d(myPetFlow.value?.breed)
@@ -129,10 +130,12 @@ class InsuranceMainViewModel @Inject constructor(
     }
 
     fun loadPetData() {
+        Timber.d("[테스트] -> 처음 loadPetData(): t")
         viewModelScope.launch {
             petsRepository.getPetAllMainInfo().collect { result ->
                 result.onSuccess { response ->
                     // Update both pet info and estimate list
+                    Timber.d("[테스트] -> 처음 loadPetData(): ${response}")
                     petResponseFlow.update { response }
                     updatePetInfo(response.petList.get(0))
                 }.onFailure {
@@ -149,6 +152,8 @@ class InsuranceMainViewModel @Inject constructor(
                 result.onSuccess { petInsuranceResponse ->
                     // Update both pet info and estimate list
                     petInsuranceFlow.update { petInsuranceResponse }
+                    myPetFlow.update { PetInfo(petId, petInsuranceResponse.name, petInsuranceResponse.birthYear, petInsuranceResponse.age, petInsuranceResponse.species, petInsuranceResponse.breed) }
+
                     emitEventFlow(InsuranceMainEvent.UpdateInsuranceInfo)
                 }.onFailure {
                     // Handle error

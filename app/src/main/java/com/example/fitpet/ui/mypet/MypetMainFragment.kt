@@ -105,7 +105,8 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainBinding, MypetMainPageSt
     private fun goToInsuranceInfo() {
         // TODO 드롭다운 변경 이후 petId 로직 수정
         val petInfo = viewModel.uiState.petCount.value?.petList?.get(0)?.petId ?: 0
-        val action = MypetMainFragmentDirections.actionMypetToInsuranceInfoCheck(petInfo)
+        val petId = viewModel.uiState.petId.value ?: 0
+        val action = MypetMainFragmentDirections.actionMypetToInsuranceInfoCheck(petId)
         navigator.navigate(action)
     }
 
@@ -131,14 +132,17 @@ class MypetMainFragment : BaseFragment<FragmentMypetMainBinding, MypetMainPageSt
     private fun goToCompensation() {
         // TODO 드롭다운 변경 이후 petId 로직 수정
         val petInfo = viewModel.uiState.petCount.value?.petList?.get(0)?.petId ?: 0
-        val action = MypetMainFragmentDirections.actionMypetToInsuranceCompensation(petInfo)
+        val petId = viewModel.uiState.petId.value ?: 0
+        val action = MypetMainFragmentDirections.actionMypetToInsuranceCompensation(petId)
         navigator.navigate(action)
     }
 
     private fun goToInsuranceCharge() {
         // TODO 드롭다운 변경 이후 petId 로직 수정
         val petInfo = viewModel.uiState.petCount.value?.petList?.get(0)
-        val insurancePetData = InsuranceCharge(petId = petInfo?.petId ?: 0, targetName = petInfo?.name ?: "")
+        val petId = viewModel.uiState.petId.value ?: 0
+        val petName = viewModel.uiState.petName.value ?: ""
+        val insurancePetData = InsuranceCharge(petId = petId, targetName = petName)
 
         val action = MypetMainFragmentDirections.actionMypetToInsuranceChargeCause(insurancePetData)
         navigator.navigate(action)

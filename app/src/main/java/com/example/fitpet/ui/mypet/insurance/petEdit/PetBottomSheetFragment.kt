@@ -27,6 +27,32 @@ class PetBottomSheetFragment (): BottomSheetDialogFragment() {
     val binding: BottomSheetMyPetBinding
         get() = requireNotNull(_binding as BottomSheetMyPetBinding)
 
+    private var _myPetRVA: MyPetRVA? = null
+    private val myPetRVA
+        get() = requireNotNull(_myPetRVA)
+
+//    private val myPetRVA by lazy {
+//        MyPetRVA(
+//            onEditClicked = { mypet ->
+//                viewModel.updateEditPetId(mypet.petId)
+//                myPetMainViewModel.updatePetId(mypet.petId)
+//                myPetMainViewModel.emitEditedPet()
+//                if (isAdded) {
+//                    dismiss()
+//                }
+//            },
+//            onClicked = { mypet ->
+//                viewModel.updatePetInfo(mypet)
+//                myPetMainViewModel.updatePetId(mypet.petId)
+//                myPetMainViewModel.emitClickedPet()
+////                dismiss()
+//                if (isAdded) {
+//                    dismiss()
+//                }
+//            }
+//        )
+//    }
+
     override fun onStart() {
         super.onStart()
 
@@ -55,26 +81,51 @@ class PetBottomSheetFragment (): BottomSheetDialogFragment() {
         binding.viewModel = viewModel
 
         initState()
-        binding.rvBottomMyPet.adapter = myPetRVA
-        viewModel.loadPetData()
-    }
 
-    private val myPetRVA by lazy {
-        MyPetRVA(
-            onEditClicked = {mypet ->
+        _myPetRVA  = MyPetRVA(
+            onEditClicked = { mypet ->
                 viewModel.updateEditPetId(mypet.petId)
                 myPetMainViewModel.updatePetId(mypet.petId)
                 myPetMainViewModel.emitEditedPet()
-                dismiss()
+                if (isAdded) {
+                    dismiss()
+                }
             },
             onClicked = { mypet ->
                 viewModel.updatePetInfo(mypet)
                 myPetMainViewModel.updatePetId(mypet.petId)
                 myPetMainViewModel.emitClickedPet()
-                dismiss()
+//                dismiss()
+                if (isAdded) {
+                    dismiss()
+                }
             }
         )
+        binding.rvBottomMyPet.adapter = myPetRVA
+        viewModel.loadPetData()
     }
+
+//    private val myPetRVA by lazy {
+//        MyPetRVA(
+//            onEditClicked = { mypet ->
+//                viewModel.updateEditPetId(mypet.petId)
+//                myPetMainViewModel.updatePetId(mypet.petId)
+//                myPetMainViewModel.emitEditedPet()
+//                if (isAdded) {
+//                    dismiss()
+//                }
+//            },
+//            onClicked = { mypet ->
+//                viewModel.updatePetInfo(mypet)
+//                myPetMainViewModel.updatePetId(mypet.petId)
+//                myPetMainViewModel.emitClickedPet()
+////                dismiss()
+//                if (isAdded) {
+//                    dismiss()
+//                }
+//            }
+//        )
+//    }
 
     private fun initState(){
         launchWhenStarted(viewLifecycleOwner) {
