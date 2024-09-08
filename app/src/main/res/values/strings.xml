@@ -301,8 +301,8 @@
     <string name="faq_title">궁금해요</string>
     <string name="reward">보상</string>
     <string name="insurance_fee">보험료</string>
-    <string name="coverage_range">보장 범위</string>
-    <string name="coverage_period">보장 기간</string>
+    <string name="coverage_range">보장범위</string>
+    <string name="coverage_period">보장기간</string>
     <string name="subscription_term">가입조건</string>
     <string name="other_info">기타정보</string>
     <string name="A">A</string>
