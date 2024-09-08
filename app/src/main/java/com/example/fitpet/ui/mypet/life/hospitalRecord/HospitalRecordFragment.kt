@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
@@ -29,6 +30,10 @@ class HospitalRecordFragment : BaseFragment<FragmentHospitalRecordBinding, Hospi
 
             hospitalRecordRecyclerView.adapter = hospitalRecordAdapter
             hospitalRecordRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+            topBar.btnBack.setOnClickListener {
+                findNavController().popBackStack()
+            }
         }
     }
 
