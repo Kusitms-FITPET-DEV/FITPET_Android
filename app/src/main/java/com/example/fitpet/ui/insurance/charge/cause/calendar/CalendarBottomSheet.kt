@@ -86,7 +86,7 @@ class CalendarBottomSheet(
     private fun clickSelectBtn() {
         binding.btnCalendarDateSelect.setOnClickListener {
             with (viewModel.uiState) {
-                onSelectedDate("${currentYear.value}. ${currentMonth.value}. ${selectedDate.value}")
+                onSelectedDate(viewModel.formatDate("${currentYear.value}-${currentMonth.value}-${selectedDate.value}"))
             }
             dismiss()
         }

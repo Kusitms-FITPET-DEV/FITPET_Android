@@ -7,5 +7,6 @@ data class InsuranceChargeCausePageState (
     val selectedCause: StateFlow<String>,
     val currentDate: StateFlow<String>,
     val selectedDate: StateFlow<String>,
+    val selectedDatePageFormat: StateFlow<String>,
     val isBtnEnabled: StateFlow<Boolean>
 ): PageState
