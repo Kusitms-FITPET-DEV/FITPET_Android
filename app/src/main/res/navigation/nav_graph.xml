@@ -198,6 +198,17 @@
                 android:name="company"
                 app:argType="string" />
         </action>
+
+        <action
+            android:id="@+id/action_mypet_to_hospital_record"
+            app:destination="@id/fragmentHospitalRecord"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentHospitalRecord"
+        android:name="com.example.fitpet.ui.mypet.life.hospitalRecord.HospitalRecordFragment"
+        android:label="fragmentHospitalRecord"
+        android:layout="@layout/fragment_hospital_record">
     </fragment>
 
     <fragment

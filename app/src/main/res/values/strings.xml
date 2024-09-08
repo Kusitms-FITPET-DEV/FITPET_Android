@@ -298,4 +298,7 @@
     <string name="compensation_progress_third">심사</string>
     <string name="compensation_progress_fourth">완료</string>
 
+    <!--  HospitalRecord  -->
+    <string name="hospital_record_title">우리아이 병원일지</string>
+
 </resources>

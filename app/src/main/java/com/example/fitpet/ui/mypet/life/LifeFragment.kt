@@ -1,11 +1,13 @@
 package com.example.fitpet.ui.mypet.life
 
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.fitpet.R
 import com.example.fitpet.base.BaseFragment
 import com.example.fitpet.databinding.FragmentLifeBinding
+import com.example.fitpet.ui.mypet.MypetMainFragmentDirections
 import com.example.fitpet.ui.mypet.life.adapter.AdvertisementAdapter
 import com.example.fitpet.ui.mypet.life.adapter.InsuranceRecordAdapter
 import com.example.fitpet.ui.onboarding.dialog.SkipDialog
@@ -72,6 +74,7 @@ class LifeFragment : BaseFragment<FragmentLifeBinding, LifePageState, LifeViewMo
             LifeEvent.GetNewQuote -> TODO()
             LifeEvent.ShowCorrectDialog -> showCorrectDialog()
             LifeEvent.ShowFalseDialog -> showFalseDialog()
+            LifeEvent.GoToHospitalRecordDetail -> goToHospitalRecordDetail()
         }
     }
 
@@ -96,5 +99,10 @@ class LifeFragment : BaseFragment<FragmentLifeBinding, LifePageState, LifeViewMo
             skipVisibility = false,
             buttonText = requireContext().getString(R.string.close)
         )
+    }
+
+    private fun goToHospitalRecordDetail() {
+        val action = MypetMainFragmentDirections.actionMypetToHospitalRecord()
+        findNavController().navigate(action)
     }
 }
